@@ -2,1722 +2,534 @@
   "schema_version": "1.0",
   "meta": {
     "disease": "Plaque psoriasis",
-    "aliases": [
-      "psoriasis vulgaris",
-      "chronic plaque psoriasis"
-    ],
+    "aliases": ["psoriasis vulgaris", "chronic plaque psoriasis", "psoriasis"],
     "scope": "indication",
     "generated": "2026-07-23",
     "generator": "disease-atlas skill v0.1",
-    "one_liner": "Chronic, immune-mediated inflammatory skin disease driven by the IL-23 / IL-17 axis; a mature, biologics-led market now moving toward oral targeted therapy.",
-    "coverage_note": "Demonstration atlas, corroborated by a live public-API pull on 2026-07-23 — ClinicalTrials.gov (901 interventional psoriasis studies), Open Targets (946 associated targets, 167 drug candidates), and openFDA labels. The pipeline, standard-of-care and MoA structure match the live data; company attribution and prose are curated because raw trial sponsors are noisy (e.g. a shared trial can mis-tag a drug's sponsor). Epidemiology, market and sales figures are from the cited web sources. Efficacy percentages are approximate, cross-trial figures unless a head-to-head is cited."
+    "one_liner": "Chronic, immune-mediated skin disease driven by the IL-23 → Th17 → IL-17 axis; a maturing, ~$21B market where injectable IL-23/IL-17 biologics dominate efficacy and the next battle is oral, biologic-grade therapy.",
+    "coverage_note": "Pipeline and mechanism data from ClinicalTrials.gov (901 interventional studies) and Open Targets (167 drug candidates, 85 mechanism groups); approved-drug/label data from openFDA. Market size, product sales, epidemiology, deals and catalysts are from cited web sources (company filings/press releases, GBD 2021, peer-reviewed prevalence studies, named analyst reports). Sales figures are FY2024 unless noted. Some emerging-asset details (e.g. Oruka programs) have thin public data and are flagged."
   },
+
   "headline_stats": [
-    {
-      "label": "Worldwide prevalence",
-      "value": "~125M",
-      "detail": "~2–3% of the global population",
-      "value_num": 125000000,
-      "sources": [
-        "npf",
-        "gbd"
-      ]
-    },
-    {
-      "label": "US adults affected",
-      "value": "~7.5M",
-      "detail": "~3.0% of adults ≥20y",
-      "value_num": 7500000,
-      "sources": [
-        "npf",
-        "usprev"
-      ]
-    },
-    {
-      "label": "Global market (2024)",
-      "value": "$27–33B",
-      "detail": "treatment market, estimate range",
-      "is_estimate": true,
-      "sources": [
-        "fbi",
-        "smr"
-      ]
-    },
-    {
-      "label": "Approved MoA classes",
-      "value": "8+",
-      "detail": "TNF, IL-12/23, IL-17, IL-23, PDE4, TYK2, AhR, topicals",
-      "sources": [
-        "fda"
-      ]
-    },
-    {
-      "label": "Moderate-to-severe",
-      "value": "~20%",
-      "detail": "of patients; biologic-eligible",
-      "is_estimate": true,
-      "sources": [
-        "npf"
-      ]
-    },
-    {
-      "label": "Top product (2023)",
-      "value": "$10.9B",
-      "detail": "Stelara WW (incl. IBD); Skyrizi $7.8B",
-      "value_num": 10858,
-      "sources": [
-        "xtalks"
-      ]
-    }
+    { "label": "US prevalence", "value": "~7.5M adults", "detail": "~3% of US adults ≥20y; plaque type ~80–90% of cases", "value_num": 7550000, "is_estimate": false, "sources": ["s8"] },
+    { "label": "Global prevalence", "value": "~43–125M", "detail": "GBD 2021 counts ~43M; WHO estimates >60M; higher-end figures include all severities", "value_num": 43000000, "is_estimate": true, "sources": ["s7"] },
+    { "label": "Moderate-to-severe", "value": "~20–25%", "detail": "share of patients eligible for systemic/biologic therapy", "value_num": 21.5, "is_estimate": true, "sources": ["s8"] },
+    { "label": "Global drug market (2024)", "value": "$21.1B", "detail": "→ ~$39B by 2030 (10.9% CAGR); biologics ~46% of value", "value_num": 21116, "is_estimate": false, "sources": ["s5"] },
+    { "label": "Approved systemic/biologic classes", "value": "6+", "detail": "TNF, IL-12/23, IL-17, IL-23, PDE4, TYK2 — plus first oral IL-23R (2026)", "is_estimate": false, "sources": ["s1", "s2"] },
+    { "label": "Active clinical-stage assets", "value": "~180 Ph1–Ph3", "detail": "188 assets seen at Phase 3, 266 at Phase 2 across trials", "value_num": 180, "is_estimate": true, "sources": ["s1"] },
+    { "label": "Leading product (Skyrizi)", "value": "$11.7B", "detail": "FY2024 global net revenue; ~$17.5B in 2025", "value_num": 11718, "is_estimate": false, "sources": ["s6"] },
+    { "label": "Best-in-class skin clearance", "value": "PASI 90 ~60–70%", "detail": "at wk16 for IL-17/IL-23 biologics vs ~5% placebo", "value_num": 65, "is_estimate": true, "sources": ["s_lit1"] }
   ],
+
   "overview": {
-    "definition": "Plaque psoriasis is a chronic, immune-mediated inflammatory disease that produces well-demarcated, scaly erythematous plaques, most commonly on the scalp, elbows, knees and trunk. It accounts for ~80–90% of psoriasis cases and is frequently accompanied by psoriatic arthritis and cardiometabolic comorbidity.",
-    "pathophysiology": "Aberrant activation of the IL-23 / IL-17 axis drives keratinocyte hyperproliferation and inflammation. Dendritic-cell–derived IL-23 sustains pathogenic Th17 cells, which release IL-17A/F and TNF, amplifying the inflammatory loop that maintains plaques.",
-    "state_of_play": "Psoriasis is one of the great success stories of targeted immunology: selective IL-23 and IL-17 biologics now deliver near-clear skin (PASI 90) in the majority of moderate-to-severe patients. The frontier has shifted from efficacy to (1) convenience and cost — oral targeted agents (TYK2, oral IL-23) challenging injectables — and (2) access, with the field still under-treated. TNF biosimilars and, from 2025, Stelara biosimilars are reshaping economics.",
-    "sources": [
-      "npf",
-      "gbd"
-    ]
+    "definition": "Plaque psoriasis (psoriasis vulgaris) is a chronic, relapsing, immune-mediated inflammatory skin disease characterized by well-demarcated, raised, erythematous plaques with silvery scale, typically on the extensor surfaces (elbows, knees), scalp, and lower back. It is the most common form of psoriasis, accounting for roughly 80–90% of cases.",
+    "pathophysiology": "The disease is driven by a dysregulated adaptive immune response in genetically predisposed individuals. Activated dendritic cells release IL-23, which sustains pathogenic T-helper-17 (Th17) cells; these secrete IL-17A/F and IL-22, driving keratinocyte hyperproliferation, neutrophil recruitment, and a self-amplifying inflammatory loop. TNF-α and the intracellular kinase TYK2 (upstream of IL-23 signaling) are additional validated nodes. This 'IL-23/IL-17 axis' is the organizing principle of both the biology and the drug landscape.",
+    "state_of_play": "Psoriasis is one of the great success stories of translational immunology: over two decades the field moved from broad immunosuppression (methotrexate, cyclosporine) to TNF inhibitors, then to highly selective IL-17 and IL-23 antibodies that routinely deliver PASI 90 (90% skin clearance) — a bar unthinkable 20 years ago. The clinical problem of 'can we clear skin?' is largely solved for patients who can access biologics. The frontier has shifted to three questions: (1) can an ORAL drug match biologic efficacy and tolerability (the oral TYK2 and oral IL-23R race — the March 2026 approval of icotrokinra/Icotyde, the first oral IL-23 receptor antagonist, is the landmark event); (2) can therapy be made more durable and convenient (half-life-extended antibodies, less-frequent dosing); and (3) how does the market absorb the coming biosimilar erosion (Stelara's cliff hit in 2025; Cosentyx/Taltz follow ~2028–2029). The strategic tension is no longer efficacy but access, route, and price.",
+    "sources": ["s1", "s2", "s5", "s7", "s15"]
   },
+
   "epidemiology": {
-    "summary": "Psoriasis affects roughly 125 million people worldwide (2–3% of the population) with marked geographic variation (higher in high-latitude, high-income regions). In the US it affects ~3.0% of adults (>7.5 million), rising with age and highest in White populations.",
+    "summary": "Psoriasis affects an estimated 2–3% of adults worldwide, with marked geographic variation (higher in high-SDI regions — Western Europe, North America). Prevalence has risen over three decades as populations age and diagnosis improves. Plaque psoriasis is the dominant subtype. The commercially and clinically decisive segmentation is severity: the ~20–25% with moderate-to-severe disease drive nearly all systemic and biologic use.",
     "measures": [
-      {
-        "label": "Global prevalence",
-        "value": "≈125M (2–3%)",
-        "value_num": 125000000,
-        "geography": "Global",
-        "year": 2023,
-        "is_estimate": true,
-        "sources": [
-          "npf",
-          "gbd"
-        ]
-      },
-      {
-        "label": "US adult prevalence",
-        "value": "~7.5M (3.0%)",
-        "value_num": 7500000,
-        "geography": "United States",
-        "year": 2021,
-        "sources": [
-          "npf",
-          "usprev"
-        ]
-      },
-      {
-        "label": "Undiagnosed (US)",
-        "value": "~600k adults",
-        "geography": "United States",
-        "is_estimate": true,
-        "sources": [
-          "npf"
-        ]
-      },
-      {
-        "label": "Peak age prevalence",
-        "value": "4.3% (age 50–59)",
-        "geography": "United States",
-        "sources": [
-          "npf"
-        ]
-      }
+      { "label": "US adult prevalence", "value": "~7.55M (~3%)", "value_num": 7550000, "year": 2021, "geography": "United States", "is_estimate": false, "sources": ["s8"] },
+      { "label": "Global prevalence (GBD 2021)", "value": "~43M", "value_num": 42980000, "year": 2021, "geography": "Global", "is_estimate": false, "sources": ["s7"] },
+      { "label": "Global prevalence (WHO estimate)", "value": ">60M", "value_num": 60000000, "year": 2023, "geography": "Global", "is_estimate": true, "sources": ["s7"] },
+      { "label": "Plaque subtype share", "value": "~80–90% of psoriasis", "value_num": 85, "year": 2023, "geography": "Global", "is_estimate": true, "sources": ["s2"] },
+      { "label": "Moderate-to-severe share", "value": "~21.5%", "value_num": 21.5, "year": 2021, "geography": "United States", "is_estimate": true, "sources": ["s8"] },
+      { "label": "30-yr prevalence growth", "value": "~23M → 43M (1990→2021)", "value_num": 86, "year": 2021, "geography": "Global", "is_estimate": false, "sources": ["s7"] }
     ],
     "segments": [
-      {
-        "name": "Mild (topical-managed)",
-        "share": "~80%",
-        "share_pct": 80,
-        "note": "limited body-surface area; managed with topicals ± phototherapy",
-        "sources": [
-          "npf"
-        ]
-      },
-      {
-        "name": "Moderate-to-severe (systemic-eligible)",
-        "share": "~20%",
-        "share_pct": 20,
-        "note": "the biologic/oral-systemic opportunity",
-        "is_estimate": true,
-        "sources": [
-          "npf"
-        ]
-      }
+      { "name": "Mild (topical-managed)", "share": "~75–80%", "share_pct": 78, "note": "Limited body-surface-area involvement; managed with topical corticosteroids, vitamin D analogs, and combinations. Large population, low per-patient drug spend.", "sources": ["s8"] },
+      { "name": "Moderate-to-severe (systemic-eligible)", "share": "~20–25%", "share_pct": 22, "note": "≥3 palms / ≥10% BSA, or special-site or high-impact disease. The economic engine: candidates for biologics, oral systemics (apremilast, deucravacitinib), and phototherapy.", "sources": ["s8"] },
+      { "name": "Difficult-to-treat sites", "share": "subset", "share_pct": 30, "note": "Scalp, nail, genital, palmoplantar involvement — higher QoL impact, often undertreated; a differentiation battleground (e.g. icotrokinra scalp/genital data).", "sources": ["s19"] },
+      { "name": "Psoriatic arthritis overlap", "share": "~20–30% of psoriasis", "share_pct": 25, "note": "Up to a third develop psoriatic arthritis; drives choice toward agents with joint efficacy (IL-17, IL-23, TNF, TYK2).", "sources": ["s22"] }
     ],
-    "demographics": "Bimodal onset (peaks ~20s and ~50s); affects sexes roughly equally; highest prevalence in White populations (US 3.6%) vs Asian (2.5%) and Black (1.5%). ~30% of patients develop psoriatic arthritis; elevated cardiovascular, metabolic and depression risk.",
-    "unmet_need": "Despite excellent biologics, a large share of moderate-to-severe patients remain untreated or under-treated (cost, access, injection aversion, specialist bottlenecks). Oral options with biologic-like efficacy, durable remission/disease modification, and treatment of hard-to-treat sites (scalp, nails, palmoplantar, genital) remain the key gaps.",
+    "demographics": "Bimodal onset (peaks ~20–30y and ~50–60y); roughly equal sex distribution. Strong genetic component (HLA-C*06:02) and heritability. Key comorbidities — psoriatic arthritis, cardiometabolic disease, obesity, depression — add to burden and inform the emerging interest in metabolic agents (GLP-1) as adjuncts.",
+    "unmet_need": "Despite excellent biologics, real-world unmet need persists: (1) most patients still receive no systemic therapy due to access, cost, or needle aversion — an oral, biologic-grade option addresses a huge underserved base; (2) durability/relapse after discontinuation; (3) difficult sites (scalp, nails, genitals) and PsA prevention; (4) safety concerns limiting JAK-class uptake; (5) the ~30–40% who do not reach complete clearance (PASI 100) on current agents.",
     "patient_journey": [
-      {
-        "stage": "Onset & diagnosis",
-        "description": "Clinical diagnosis by dermatologist/PCP; often delayed; comorbidity screening (PsA, cardiometabolic) frequently missed."
-      },
-      {
-        "stage": "First-line (mild)",
-        "description": "Topical corticosteroids, vitamin D analogs, and non-steroidals (roflumilast, tapinarof); phototherapy for wider disease."
-      },
-      {
-        "stage": "Systemic step-up",
-        "description": "Moderate-to-severe patients escalate to oral systemics (apremilast, deucravacitinib, methotrexate) or biologics."
-      },
-      {
-        "stage": "Biologic maintenance",
-        "description": "IL-23 / IL-17 biologics give durable near-clearance; switching driven by loss of response, access or comorbidity (e.g. concurrent PsA/IBD)."
-      }
+      { "stage": "Onset & diagnosis", "description": "Clinical diagnosis by appearance; often delayed or self-managed. Genetic and environmental triggers (infection, stress, trauma — Koebner phenomenon)." },
+      { "stage": "Topical era", "description": "First-line for mild disease: corticosteroids + vitamin D analogs (± nonsteroidal tapinarof/roflumilast). Many patients cycle here for years." },
+      { "stage": "Systemic escalation", "description": "Moderate-to-severe or topical-refractory disease steps up to phototherapy, oral systemics (methotrexate, apremilast, deucravacitinib), or biologics." },
+      { "stage": "Biologic optimization", "description": "IL-23 or IL-17 biologics for durable clearance; switching between classes on loss of response; matching to comorbidities (PsA, IBD)." },
+      { "stage": "Maintenance & relapse", "description": "Chronic, lifelong management; relapse on discontinuation; evolving question of drug holidays and disease modification." }
     ],
-    "sources": [
-      "npf",
-      "gbd",
-      "usprev"
-    ]
+    "sources": ["s7", "s8", "s2", "s19", "s22"]
   },
+
   "biology": {
-    "summary": "The IL-23 / IL-17 axis is the validated core of psoriasis pathogenesis. IL-23 (p19/p40) from dendritic cells maintains pathogenic Th17 cells; downstream IL-17A/F and TNF drive keratinocyte activation. Intracellular TYK2 transmits IL-23 (and type-I IFN) signalling — the basis of oral TYK2 inhibition. Open Targets ranks the top disease-associated targets as IL12B (0.74), TYK2 (0.71), IL23A (0.64), TNF (0.61), PDE4A (0.61), NR3C1/glucocorticoid receptor (0.60), VDR (0.60) and IL17A (0.60) — mirroring the drugged mechanism classes below.",
-    "sources": [
-      "ot"
-    ],
+    "summary": "Psoriasis biology converges on a single dominant circuit: dendritic-cell-derived IL-23 licenses pathogenic Th17 cells, whose effector cytokines (IL-17A, IL-17F, IL-22) drive keratinocyte activation, neutrophilic inflammation, and epidermal hyperplasia. TNF-α amplifies the loop, and the intracellular kinase TYK2 transduces IL-23 (and type-I-IFN) signaling — making each step a validated, sequentially drugged target. This clean, well-mapped pathway is why psoriasis has the most target-validated pipeline in immunology.",
     "pathways": [
-      {
-        "name": "IL-23 → Th17 → IL-17 axis",
-        "role": "Central pathogenic loop; target of the most effective biologics.",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "name": "TNF signalling",
-        "role": "Amplifies inflammation; the first successful biologic target.",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "name": "TYK2 / JAK-STAT",
-        "role": "Intracellular transducer of IL-23 and type-I IFN; drugged orally (allosteric TYK2).",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "name": "cAMP / PDE4",
-        "role": "Immunomodulatory; PDE4 inhibition raises cAMP to dampen cytokine output (oral & topical).",
-        "sources": [
-          "ot"
-        ]
-      }
+      { "name": "IL-23 / Th17 axis", "role": "Central disease driver. IL-23 (p19/p40) maintains Th17 cells; blocking IL-23 (p19) collapses the downstream cascade with high durability — the most successful modern target.", "sources": ["s2"] },
+      { "name": "IL-17 effector signaling", "role": "IL-17A/F act on keratinocytes via IL-17RA to drive the clinical plaque; direct blockade gives the fastest, deepest skin clearance.", "sources": ["s2"] },
+      { "name": "TNF-α signaling", "role": "Amplifies inflammation; the original biologic target, now a mature/biosimilar class, still relevant for PsA and cross-indication.", "sources": ["s2"] },
+      { "name": "TYK2 / JAK-STAT", "role": "TYK2 transduces IL-23 and IL-12 signaling intracellularly; selective allosteric TYK2 inhibition (deucravacitinib) enables oral targeting of the axis without broad JAK toxicity.", "sources": ["s2"] },
+      { "name": "PDE4 / cAMP", "role": "PDE4 inhibition raises intracellular cAMP, dampening pro-inflammatory cytokine output — the mechanism of oral apremilast and topical roflumilast.", "sources": ["s2"] },
+      { "name": "IL-36 / innate", "role": "IL-36 signaling drives the pustular/innate arm (pivotal in generalized pustular psoriasis; spesolimab); less central to plaque disease but mechanistically distinct.", "sources": ["s2"] },
+      { "name": "AhR & retinoid/vitamin-D nuclear receptors", "role": "Aryl hydrocarbon receptor (tapinarof) and VDR/RAR agonism normalize keratinocyte differentiation — the basis of modern nonsteroidal topicals.", "sources": ["s2"] }
     ],
     "targets": [
-      {
-        "symbol": "IL23A",
-        "name": "Interleukin-23 subunit p19",
-        "rationale": "Selective IL-23 blockade = best-in-class efficacy + durable, infrequent dosing.",
-        "tractability": "clinically drugged (mAb; oral peptide emerging)",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "IL17A",
-        "name": "Interleukin-17A",
-        "rationale": "Rapid, high skin clearance; the effector cytokine.",
-        "tractability": "clinically drugged (mAb, nanobody)",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "IL12B",
-        "name": "IL-12/23 subunit p40",
-        "rationale": "First IL-23-pathway target (ustekinumab); now bettered by selective p19.",
-        "tractability": "clinically drugged",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "TNF",
-        "name": "Tumor necrosis factor",
-        "rationale": "Legacy target; broad but less skin-selective; biosimilar era.",
-        "tractability": "clinically drugged",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "TYK2",
-        "name": "Tyrosine kinase 2",
-        "rationale": "Enables oral targeting of the IL-23 pathway with biologic-adjacent efficacy.",
-        "tractability": "clinically drugged (oral, allosteric)",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "PDE4",
-        "name": "Phosphodiesterase 4B",
-        "rationale": "Oral and topical immunomodulation; modest efficacy, good convenience/safety.",
-        "tractability": "clinically drugged",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "IL17RA",
-        "name": "IL-17 receptor A",
-        "rationale": "Blocks IL-17A/C/E/F signalling (brodalumab).",
-        "tractability": "clinically drugged",
-        "sources": [
-          "ot"
-        ]
-      },
-      {
-        "symbol": "AHR",
-        "name": "Aryl hydrocarbon receptor",
-        "rationale": "Topical non-steroidal mechanism (tapinarof).",
-        "tractability": "clinically drugged (topical)",
-        "sources": [
-          "ot"
-        ]
-      }
+      { "symbol": "IL23A", "name": "Interleukin-23 subunit p19", "rationale": "Apex driver of the pathogenic circuit; p19 blockade gives durable clearance with infrequent dosing.", "tractability": "clinically drugged (mAb approved; first oral 2026)", "sources": ["s2"] },
+      { "symbol": "IL17A", "name": "Interleukin-17A", "rationale": "Key effector cytokine; direct blockade gives fastest/deepest clearance.", "tractability": "clinically drugged (mAb)", "sources": ["s2"] },
+      { "symbol": "IL17F", "name": "Interleukin-17F", "rationale": "Co-driver with IL-17A; dual A/F blockade (bimekizumab) raises the efficacy ceiling.", "tractability": "clinically drugged (mAb)", "sources": ["s2"] },
+      { "symbol": "IL17RA", "name": "IL-17 receptor A", "rationale": "Blocks signaling of multiple IL-17 family members (brodalumab).", "tractability": "clinically drugged (mAb)", "sources": ["s2"] },
+      { "symbol": "TYK2", "name": "Tyrosine kinase 2", "rationale": "Intracellular node for IL-23/IL-12; allosteric (pseudokinase-domain) inhibition enables oral, selective targeting.", "tractability": "clinically drugged (oral small molecule)", "sources": ["s2"] },
+      { "symbol": "IL12B", "name": "IL-12/23 subunit p40", "rationale": "Shared p40 blockade (ustekinumab) hits both IL-12 and IL-23; first-generation validated target.", "tractability": "clinically drugged (mAb)", "sources": ["s2"] },
+      { "symbol": "TNF", "name": "Tumor necrosis factor-α", "rationale": "Amplifier cytokine; foundational biologic target, now biosimilar-eroded.", "tractability": "clinically drugged (mAb/fusion)", "sources": ["s2"] },
+      { "symbol": "PDE4B", "name": "Phosphodiesterase 4B", "rationale": "cAMP regulator; oral (apremilast) and topical (roflumilast) anti-inflammatory.", "tractability": "clinically drugged (small molecule)", "sources": ["s2"] },
+      { "symbol": "AHR", "name": "Aryl hydrocarbon receptor", "rationale": "Modulates keratinocyte differentiation and Th17 balance; basis of tapinarof.", "tractability": "clinically drugged (topical)", "sources": ["s2"] },
+      { "symbol": "IL1RL2", "name": "IL-36 receptor", "rationale": "Innate/pustular arm; spesolimab validated in GPP.", "tractability": "clinically drugged (mAb)", "sources": ["s2"] }
     ],
     "subtypes": [
-      {
-        "name": "Plaque (vulgaris)",
-        "description": "~80–90% of cases; the focus of this atlas.",
-        "biomarker": "clinical"
-      },
-      {
-        "name": "Guttate / inverse / erythrodermic",
-        "description": "Less common morphologies; different triggers and management.",
-        "biomarker": "clinical"
-      },
-      {
-        "name": "Pustular (GPP)",
-        "description": "Rare, severe; distinct IL-36 biology — adjacent indication (spesolimab).",
-        "biomarker": "IL36RN"
-      },
-      {
-        "name": "With psoriatic arthritis",
-        "description": "~30% comorbidity; steers drug choice toward agents with joint efficacy.",
-        "biomarker": "clinical/imaging"
-      }
-    ]
+      { "name": "Chronic plaque (vulgaris)", "description": "The dominant phenotype targeted by nearly all systemic development.", "biomarker": "HLA-C*06:02 (associated; also predicts some IL-12/23 response)" },
+      { "name": "Scalp / nail / genital / palmoplantar", "description": "Site-specific, high-impact variants used for differentiation.", "biomarker": "clinical" },
+      { "name": "Pustular (incl. GPP)", "description": "Innate IL-36-driven; distinct biology and drugs (spesolimab).", "biomarker": "IL36RN mutations (in GPP)" }
+    ],
+    "schematic": null
   },
+
   "standard_of_care": {
-    "paradigm": "Care is severity-driven. Mild disease (~80%) is managed topically (corticosteroids, vitamin D analogs, and newer non-steroidals roflumilast and tapinarof) ± phototherapy. Moderate-to-severe disease steps up to oral systemics (deucravacitinib, apremilast, methotrexate) or biologics, where selective IL-23 and IL-17 agents are now preferred for their durable near-clearance. Drug choice is shaped by comorbidity — PsA favours IL-17/TNF/IL-23 with joint data; concurrent IBD favours IL-23 and avoids IL-17.",
+    "paradigm": "Treatment is stratified by severity and site. MILD disease: topical corticosteroids ± vitamin D analogs, with nonsteroidal tapinarof (AhR) and roflumilast (PDE4) as steroid-sparing options. MODERATE-TO-SEVERE: step to phototherapy or systemic therapy. Oral systemics — methotrexate (cheap, legacy), apremilast (PDE4), and deucravacitinib (oral TYK2, the modern oral of choice) — sit below biologics. BIOLOGICS are the efficacy standard: IL-23 inhibitors (risankizumab, guselkumab, tildrakizumab) and IL-17 inhibitors (secukinumab, ixekizumab, bimekizumab, brodalumab) deliver PASI 90 in the majority; TNF inhibitors and IL-12/23 (ustekinumab) are older lines now facing biosimilars. The 2026 arrival of oral IL-23R antagonist icotrokinra (Icotyde) begins to blur the oral/biologic line at the top of the funnel.",
     "lines": [
-      {
-        "line": "First-line (mild/localised)",
-        "options": [
-          "topical corticosteroids",
-          "vitamin D analogs",
-          "tapinarof",
-          "topical roflumilast"
-        ],
-        "note": "± phototherapy for wider BSA"
-      },
-      {
-        "line": "Oral systemic (moderate)",
-        "options": [
-          "deucravacitinib (TYK2)",
-          "apremilast (PDE4)",
-          "methotrexate"
-        ],
-        "note": "oral convenience; step before/alongside biologics"
-      },
-      {
-        "line": "Biologic (moderate-to-severe)",
-        "options": [
-          "IL-23 (risankizumab, guselkumab)",
-          "IL-17 (ixekizumab, bimekizumab, secukinumab)",
-          "TNF (biosimilars)"
-        ],
-        "note": "IL-23/IL-17 preferred; choice tuned to comorbidity"
-      }
+      { "line": "First-line (mild)", "options": ["topical corticosteroids", "vitamin D analogs (calcipotriene)", "tapinarof (Vtama)", "roflumilast (Zoryve)"], "note": "Most patients; low drug cost. Nonsteroidals reduce steroid-related atrophy." },
+      { "line": "Moderate-to-severe, oral/conventional", "options": ["methotrexate", "apremilast (Otezla)", "deucravacitinib (Sotyktu)", "acitretin", "cyclosporine (short-term)"], "note": "Deucravacitinib is displacing apremilast as the preferred modern oral; methotrexate remains a global cost anchor." },
+      { "line": "Moderate-to-severe, biologic (IL-23)", "options": ["risankizumab (Skyrizi)", "guselkumab (Tremfya)", "tildrakizumab (Ilumya)"], "note": "Preferred for durability and infrequent (q8–12w) dosing; excellent long-term safety." },
+      { "line": "Moderate-to-severe, biologic (IL-17)", "options": ["secukinumab (Cosentyx)", "ixekizumab (Taltz)", "bimekizumab (Bimzelx)", "brodalumab (Siliq)"], "note": "Fastest/deepest clearance; bimekizumab (dual IL-17A/F) sets the PASI-100 ceiling. Caution in IBD; candidiasis risk." },
+      { "line": "Legacy biologic (TNF / IL-12-23)", "options": ["adalimumab (Humira)", "etanercept (Enbrel)", "ustekinumab (Stelara)", "certolizumab (Cimzia)"], "note": "Mature classes, biosimilar-eroded; still used for PsA and in pregnancy (certolizumab)." },
+      { "line": "First oral IL-23R (new)", "options": ["icotrokinra (Icotyde)"], "note": "Approved Mar 2026; oral peptide positioned for first-line systemic use, especially needle-averse and difficult-site patients." }
     ],
     "top_products": [
-      {
-        "brand": "Stelara",
-        "generic": "ustekinumab",
-        "company": "Johnson & Johnson",
-        "moa_class": "IL-12/23 inhibitor",
-        "modality": "mAb",
-        "approval_year": 2009,
-        "key_indications": [
-          "plaque psoriasis",
-          "PsA",
-          "IBD"
-        ],
-        "annual_sales_usd_m": 10858,
-        "sales_year": 2023,
-        "note": "WW sales incl. IBD; biosimilars from 2025",
-        "sources": [
-          "xtalks"
-        ]
-      },
-      {
-        "brand": "Skyrizi",
-        "generic": "risankizumab",
-        "company": "AbbVie",
-        "moa_class": "IL-23 inhibitor",
-        "modality": "mAb",
-        "approval_year": 2019,
-        "key_indications": [
-          "plaque psoriasis",
-          "PsA",
-          "Crohn's"
-        ],
-        "annual_sales_usd_m": 7763,
-        "sales_year": 2023,
-        "note": "fastest-growing; AbbVie's post-Humira anchor",
-        "sources": [
-          "xtalks"
-        ]
-      },
-      {
-        "brand": "Cosentyx",
-        "generic": "secukinumab",
-        "company": "Novartis",
-        "moa_class": "IL-17A inhibitor",
-        "modality": "mAb",
-        "approval_year": 2015,
-        "key_indications": [
-          "plaque psoriasis",
-          "PsA",
-          "axSpA"
-        ],
-        "annual_sales_usd_m": 4800,
-        "sales_year": 2022,
-        "note": "first IL-17; broad rheum franchise",
-        "sources": [
-          "xtalks"
-        ]
-      },
-      {
-        "brand": "Taltz",
-        "generic": "ixekizumab",
-        "company": "Eli Lilly",
-        "moa_class": "IL-17A inhibitor",
-        "modality": "mAb",
-        "approval_year": 2016,
-        "key_indications": [
-          "plaque psoriasis",
-          "PsA",
-          "axSpA"
-        ],
-        "note": "multi-billion blockbuster",
-        "sources": [
-          "ibj"
-        ]
-      },
-      {
-        "brand": "Sotyktu",
-        "generic": "deucravacitinib",
-        "company": "Bristol Myers Squibb",
-        "moa_class": "TYK2 inhibitor",
-        "modality": "small molecule (oral)",
-        "approval_year": 2022,
-        "key_indications": [
-          "plaque psoriasis"
-        ],
-        "note": "first oral TYK2; growth driver",
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "brand": "Otezla",
-        "generic": "apremilast",
-        "company": "Amgen",
-        "moa_class": "PDE4 inhibitor",
-        "modality": "small molecule (oral)",
-        "approval_year": 2014,
-        "key_indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "note": "oral convenience tier",
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "brand": "Bimzelx",
-        "generic": "bimekizumab",
-        "company": "UCB",
-        "moa_class": "IL-17A/F inhibitor",
-        "modality": "mAb",
-        "approval_year": 2023,
-        "key_indications": [
-          "plaque psoriasis",
-          "PsA",
-          "HS"
-        ],
-        "note": "highest PASI 100 rates in class",
-        "sources": [
-          "fda",
-          "fierce"
-        ]
-      }
+      { "brand": "Skyrizi", "generic": "risankizumab", "company": "AbbVie", "moa_class": "IL-23 inhibitor", "modality": "mAb", "approval_year": 2019, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "Crohn's", "UC"], "annual_sales_usd_m": 11718, "sales_year": 2024, "note": "Market leader; ~45% of US psoriasis biologic new-Rx share in Q4 2024. Cross-indication franchise; ~$17.5B in 2025.", "sources": ["s6"] },
+      { "brand": "Stelara", "generic": "ustekinumab", "company": "Johnson & Johnson", "moa_class": "IL-12/23 inhibitor", "modality": "mAb", "approval_year": 2009, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "Crohn's", "UC"], "annual_sales_usd_m": 10360, "sales_year": 2024, "note": "Global sales ~$10.4B in 2024 but declining ~14% as US biosimilars launched from Jan 2025 (loss of exclusivity).", "sources": ["s9", "s20"] },
+      { "brand": "Cosentyx", "generic": "secukinumab", "company": "Novartis", "moa_class": "IL-17A inhibitor", "modality": "mAb", "approval_year": 2015, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "axSpA", "HS"], "annual_sales_usd_m": 6140, "sales_year": 2024, "note": "~$6.1B, +24% cc; broad label. US core patent ~2029.", "sources": ["s11"] },
+      { "brand": "Tremfya", "generic": "guselkumab", "company": "Johnson & Johnson", "moa_class": "IL-23 inhibitor", "modality": "mAb", "approval_year": 2017, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "UC"], "annual_sales_usd_m": 3670, "sales_year": 2024, "note": "+16.6% YoY; J&J's designated growth engine to offset Stelara erosion.", "sources": ["s9"] },
+      { "brand": "Taltz", "generic": "ixekizumab", "company": "Eli Lilly", "moa_class": "IL-17A inhibitor", "modality": "mAb", "approval_year": 2016, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "axSpA"], "annual_sales_usd_m": 3200, "sales_year": 2024, "note": "US patent expiry ~2028.", "sources": ["s10"] },
+      { "brand": "Otezla", "generic": "apremilast", "company": "Amgen", "moa_class": "PDE4 inhibitor", "modality": "small_molecule", "approval_year": 2014, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "oral ulcers of Behçet's"], "annual_sales_usd_m": 2200, "sales_year": 2024, "note": "Oral incumbent; sales down ~3–4% on price/competition from Sotyktu.", "sources": ["s12"] },
+      { "brand": "Bimzelx", "generic": "bimekizumab", "company": "UCB", "moa_class": "IL-17A/F inhibitor", "modality": "mAb", "approval_year": 2023, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "axSpA", "HS"], "annual_sales_usd_m": 716, "sales_year": 2024, "note": "Dual IL-17A/F; highest PASI-100 rates. Fast launch — €607M ($716M) 2024 → ~$2.6B 2025.", "sources": ["s13"] },
+      { "brand": "Sotyktu", "generic": "deucravacitinib", "company": "Bristol Myers Squibb", "moa_class": "TYK2 inhibitor", "modality": "small_molecule", "approval_year": 2022, "key_indications": ["plaque psoriasis", "psoriatic arthritis (2026)"], "annual_sales_usd_m": null, "sales_year": 2024, "note": "First oral selective TYK2; US demand +21% in 2024 (exact FY revenue not separately disclosed here). PsA approval added 2026.", "sources": ["s14", "s22"] },
+      { "brand": "Humira", "generic": "adalimumab", "company": "AbbVie", "moa_class": "TNF inhibitor", "modality": "mAb", "approval_year": 2008, "key_indications": ["plaque psoriasis", "psoriatic arthritis", "RA", "IBD"], "annual_sales_usd_m": null, "sales_year": 2024, "note": "Foundational TNF; heavily biosimilar-eroded since 2023 in the US. Psoriasis now a small fraction of use.", "sources": ["s1"] },
+      { "brand": "Icotyde", "generic": "icotrokinra", "company": "Johnson & Johnson", "moa_class": "IL-23 receptor antagonist (oral)", "modality": "peptide", "approval_year": 2026, "key_indications": ["moderate-to-severe plaque psoriasis (≥12y)"], "annual_sales_usd_m": null, "sales_year": 2026, "note": "First-in-class oral IL-23R antagonist, approved Mar 18 2026; once-daily pill positioned for first-line systemic use.", "sources": ["s15"] }
     ],
     "class_share": [
-      {
-        "class": "IL-23 inhibitors",
-        "share_pct": 34,
-        "basis": "approx. share of psoriasis biologic sales",
-        "is_estimate": true,
-        "sources": [
-          "xtalks",
-          "fbi"
-        ]
-      },
-      {
-        "class": "IL-17 inhibitors",
-        "share_pct": 30,
-        "basis": "approx. share of psoriasis biologic sales",
-        "is_estimate": true,
-        "sources": [
-          "xtalks"
-        ]
-      },
-      {
-        "class": "IL-12/23 (p40)",
-        "share_pct": 16,
-        "basis": "declining; Stelara pre-biosimilar",
-        "is_estimate": true,
-        "sources": [
-          "xtalks"
-        ]
-      },
-      {
-        "class": "TNF inhibitors",
-        "share_pct": 12,
-        "basis": "biosimilar/value tier",
-        "is_estimate": true,
-        "sources": [
-          "xtalks"
-        ]
-      },
-      {
-        "class": "Oral (TYK2 + PDE4)",
-        "share_pct": 8,
-        "basis": "growing oral segment",
-        "is_estimate": true,
-        "sources": [
-          "fbi"
-        ]
-      }
+      { "class": "IL-23 inhibitors", "share_pct": 34, "basis": "approx. share of psoriasis biologic value, 2024 (Skyrizi+Tremfya+Ilumya)", "sources": ["s6", "s9"] },
+      { "class": "IL-17 inhibitors", "share_pct": 30, "basis": "approx. share of psoriasis biologic value, 2024 (Cosentyx+Taltz+Bimzelx+Siliq)", "sources": ["s11", "s10", "s13"] },
+      { "class": "IL-12/23 (ustekinumab)", "share_pct": 14, "basis": "declining on biosimilars from 2025", "sources": ["s9", "s20"] },
+      { "class": "Oral systemics (PDE4/TYK2)", "share_pct": 12, "basis": "Otezla + Sotyktu", "sources": ["s12", "s14"] },
+      { "class": "TNF inhibitors", "share_pct": 6, "basis": "biosimilar-eroded legacy", "sources": ["s1"] }
     ],
     "guidelines": [
-      {
-        "name": "AAD–NPF psoriasis guidelines",
-        "note": "US treatment guidance (biologics, systemics, topicals, comorbidity screening).",
-        "url": "https://www.aad.org/member/clinical-quality/guidelines/psoriasis"
-      }
+      { "name": "AAD-NPF Guidelines of Care for Psoriasis (2019–2021)", "note": "US joint American Academy of Dermatology / National Psoriasis Foundation guidelines spanning biologics, systemics, topicals, phototherapy, and comorbidity screening.", "url": "https://www.aad.org/member/clinical-quality/guidelines/psoriasis" },
+      { "name": "NPF treat-to-target", "note": "Target of ≤1% BSA (or PASI response) within 3 months of therapy initiation.", "url": "https://www.psoriasis.org" }
     ],
-    "sources": [
-      "fda",
-      "xtalks"
-    ]
+    "sources": ["s6", "s9", "s11", "s10", "s12", "s13", "s14", "s15", "s20", "s1"]
   },
+
   "moa_landscape": [
     {
-      "class": "IL-23 inhibitors (p19)",
-      "target": "IL23A",
+      "class": "IL-23 inhibitors (anti-p19 mAb)",
+      "target": "IL23A (p19 subunit)",
+      "rationale": "IL-23 is the apex cytokine sustaining pathogenic Th17 cells; blocking it upstream collapses the whole IL-17 cascade with exceptional durability.",
+      "mechanism": "Monoclonal antibodies bind the p19 subunit of IL-23, preventing receptor engagement and Th17 maintenance.",
       "modality": "mAb",
       "validation_status": "validated",
-      "rationale": "Selective IL-23 blockade is the current efficacy + durability benchmark in psoriasis.",
-      "mechanism": "Anti–IL-23 p19 mAbs starve pathogenic Th17 cells of their maintenance signal.",
-      "pros": [
-        "highest durable PASI 90",
-        "infrequent dosing (q8–12w)",
-        "clean safety"
-      ],
-      "cons": [
-        "parenteral",
-        "cost"
-      ],
-      "key_players": [
-        "AbbVie",
-        "Johnson & Johnson",
-        "Sun Pharma",
-        "Eli Lilly"
-      ],
-      "drugs": [
-        "d_risankizumab",
-        "d_guselkumab",
-        "d_tildrakizumab",
-        "d_mirikizumab"
-      ],
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "class": "IL-17 inhibitors (A / A-F / RA)",
-      "target": "IL17A / IL17RA",
-      "modality": "mAb",
-      "validation_status": "validated",
-      "rationale": "Blocking the effector cytokine gives the fastest, deepest skin clearance.",
-      "mechanism": "Neutralise IL-17A (± IL-17F) or the IL-17 receptor.",
-      "pros": [
-        "rapid, very high skin clearance",
-        "effective in PsA/axSpA"
-      ],
-      "cons": [
-        "candidiasis risk",
-        "caution in IBD",
-        "more frequent dosing"
-      ],
-      "key_players": [
-        "Novartis",
-        "Eli Lilly",
-        "UCB",
-        "Bausch Health",
-        "MoonLake"
-      ],
-      "drugs": [
-        "d_secukinumab",
-        "d_ixekizumab",
-        "d_bimekizumab",
-        "d_brodalumab",
-        "d_sonelokimab"
-      ],
-      "sources": [
-        "ot",
-        "fda",
-        "fierce"
-      ]
-    },
-    {
-      "class": "TYK2 inhibitors (oral)",
-      "target": "TYK2",
-      "modality": "small_molecule",
-      "validation_status": "validated",
-      "rationale": "First oral agent to approach biologic-class efficacy; anchors the oral-targeted shift.",
-      "mechanism": "Allosteric inhibition of the TYK2 pseudokinase domain blocks IL-23/type-I IFN signalling.",
-      "pros": [
-        "oral",
-        "superior to apremilast",
-        "favourable safety vs JAK1/2/3"
-      ],
-      "cons": [
-        "below top biologics on PASI 90",
-        "long-term data maturing"
-      ],
-      "key_players": [
-        "Bristol Myers Squibb",
-        "Takeda"
-      ],
-      "drugs": [
-        "d_deucravacitinib",
-        "d_zasocitinib"
-      ],
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "class": "IL-12/23 inhibitors (p40)",
-      "target": "IL12B",
-      "modality": "mAb",
-      "validation_status": "validated",
-      "rationale": "Pioneered the IL-23 pathway; now being displaced by selective p19 and facing biosimilars.",
-      "mechanism": "Anti-p40 blocks both IL-12 and IL-23.",
-      "pros": [
-        "long track record",
-        "broad IMID use"
-      ],
-      "cons": [
-        "bettered by selective IL-23",
-        "biosimilar erosion (2025)"
-      ],
-      "key_players": [
-        "Johnson & Johnson"
-      ],
-      "drugs": [
-        "d_ustekinumab"
-      ],
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "class": "TNF inhibitors",
-      "target": "TNF",
-      "modality": "mAb",
-      "validation_status": "validated",
-      "rationale": "The original psoriasis biologic class; now legacy/value tier in the biosimilar era.",
-      "mechanism": "Neutralise TNF-α.",
-      "pros": [
-        "cheap (biosimilars)",
-        "broad IMID coverage"
-      ],
-      "cons": [
-        "lower skin clearance than IL-23/17",
-        "boxed warnings (infection, malignancy)"
-      ],
-      "key_players": [
-        "AbbVie",
-        "Amgen",
-        "UCB"
-      ],
-      "drugs": [
-        "d_adalimumab",
-        "d_etanercept",
-        "d_certolizumab"
-      ],
-      "sources": [
-        "ot",
-        "fda"
-      ]
+      "pros": ["durable, deep clearance (PASI 90+)", "infrequent q8–12w dosing", "best-in-class long-term safety", "strong cross-indication (IBD, PsA)"],
+      "cons": ["parenteral (SC injection)", "high cost", "slower onset than IL-17"],
+      "key_players": ["AbbVie", "Johnson & Johnson", "Sun Pharma / Almirall", "Eli Lilly"],
+      "drugs": ["d_risankizumab", "d_guselkumab", "d_tildrakizumab", "d_mirikizumab"],
+      "sources": ["s2", "s6", "s9"]
     },
     {
       "class": "Oral IL-23 receptor antagonists",
       "target": "IL23R",
+      "rationale": "Deliver the durable, safe IL-23 mechanism in an ORAL format — addressing the huge needle-averse / access-limited moderate-to-severe base at the top of the funnel.",
+      "mechanism": "Targeted oral peptide selectively blocks the IL-23 receptor, disrupting IL-23 signaling without a systemic antibody.",
       "modality": "peptide",
+      "validation_status": "validated",
+      "pros": ["once-daily oral", "biologic-like selectivity/safety", "first-line positioning", "adolescent label"],
+      "cons": ["skin clearance modestly below best injectables", "new class — long-term/real-world data maturing"],
+      "key_players": ["Johnson & Johnson", "Protagonist Therapeutics", "Oruka Therapeutics"],
+      "drugs": ["d_icotrokinra", "d_orka001"],
+      "sources": ["s15", "s19"]
+    },
+    {
+      "class": "IL-17A inhibitors",
+      "target": "IL17A",
+      "rationale": "Direct blockade of the key effector cytokine gives the fastest and deepest skin clearance.",
+      "mechanism": "mAbs neutralize IL-17A, blocking keratinocyte activation and neutrophilic inflammation.",
+      "modality": "mAb",
+      "validation_status": "validated",
+      "pros": ["rapid onset", "deep clearance", "strong PsA/axSpA data"],
+      "cons": ["mucocutaneous candidiasis", "contraindicated/caution in IBD", "more frequent dosing"],
+      "key_players": ["Novartis", "Eli Lilly"],
+      "drugs": ["d_secukinumab", "d_ixekizumab"],
+      "sources": ["s2", "s11", "s10", "s_lit1"]
+    },
+    {
+      "class": "IL-17A/F dual inhibitors",
+      "target": "IL17A + IL17F",
+      "rationale": "Neutralizing both IL-17A and IL-17F raises the efficacy ceiling to the highest PASI-100 rates seen.",
+      "mechanism": "Single mAb binds both IL-17A and IL-17F homo/heterodimers.",
+      "modality": "mAb",
+      "validation_status": "validated",
+      "pros": ["highest complete-clearance (PASI 100) rates", "superiority vs adalimumab, secukinumab, ustekinumab in head-to-heads"],
+      "cons": ["higher candidiasis rates", "IBD caution"],
+      "key_players": ["UCB"],
+      "drugs": ["d_bimekizumab"],
+      "sources": ["s2", "s13"]
+    },
+    {
+      "class": "IL-17 receptor A antagonists",
+      "target": "IL17RA",
+      "rationale": "Blocking the shared receptor inhibits signaling of multiple IL-17 family members.",
+      "mechanism": "mAb against IL-17RA.",
+      "modality": "mAb",
+      "validation_status": "validated",
+      "pros": ["broad IL-17 blockade", "rapid clearance"],
+      "cons": ["boxed warning for suicidal ideation/behavior (brodalumab) — REMS", "candidiasis"],
+      "key_players": ["Bausch Health", "Kyowa Kirin"],
+      "drugs": ["d_brodalumab"],
+      "sources": ["s2", "s1"]
+    },
+    {
+      "class": "IL-12/23 (p40) inhibitors",
+      "target": "IL12B (p40)",
+      "rationale": "First-generation axis blockade hitting shared p40 of IL-12 and IL-23; proof-of-concept for the whole modern era.",
+      "mechanism": "mAb against the p40 subunit.",
+      "modality": "mAb",
+      "validation_status": "validated",
+      "pros": ["long track record", "q12w dosing", "cross-indication"],
+      "cons": ["superseded on efficacy by selective IL-23", "now biosimilar-eroded"],
+      "key_players": ["Johnson & Johnson"],
+      "drugs": ["d_ustekinumab"],
+      "sources": ["s2", "s9", "s20"]
+    },
+    {
+      "class": "Oral TYK2 inhibitors (allosteric)",
+      "target": "TYK2 (pseudokinase domain)",
+      "rationale": "TYK2 transduces IL-23/IL-12 signaling intracellularly; allosteric (non-ATP-site) inhibition gives oral, selective axis blockade without broad JAK toxicity.",
+      "mechanism": "Small molecules bind the regulatory pseudokinase domain, locking TYK2 in an inactive state.",
+      "modality": "small_molecule",
+      "validation_status": "validated",
+      "pros": ["oral, once-daily", "cleaner safety than pan-JAK (no boxed JAK warning class effect to date)", "next-gen agents rival biologic efficacy"],
+      "cons": ["skin clearance historically below top biologics (first-gen)", "long-term class safety still accruing"],
+      "key_players": ["Bristol Myers Squibb", "Takeda", "Alumis", "InnoCare"],
+      "drugs": ["d_deucravacitinib", "d_zasocitinib", "d_esk001", "d_icp488"],
+      "sources": ["s2", "s14", "s16", "s18"]
+    },
+    {
+      "class": "Oral IL-17 antagonists (small molecule/peptide)",
+      "target": "IL17A",
+      "rationale": "Bring the potent IL-17 effector mechanism into an oral format.",
+      "mechanism": "Orally bioavailable small molecules / macrocyclic peptides that block IL-17A signaling.",
+      "modality": "small_molecule",
       "validation_status": "emerging",
-      "rationale": "Holy grail: IL-23-pathway efficacy in a once-daily pill.",
-      "mechanism": "Oral peptide competitively blocks the IL-23 receptor.",
-      "pros": [
-        "oral",
-        "targets the best-validated pathway"
-      ],
-      "cons": [
-        "Phase 3; efficacy vs injectable IL-23 to be proven"
-      ],
-      "key_players": [
-        "Johnson & Johnson"
-      ],
-      "drugs": [
-        "d_icotrokinra"
-      ],
-      "sources": [
-        "ctgov"
-      ]
+      "pros": ["oral IL-17 blockade", "potential biologic-like efficacy in a pill"],
+      "cons": ["early clinical", "Lilly deprioritized lead DC-806, pivoting to follow-on — class execution risk"],
+      "key_players": ["Eli Lilly (ex-DICE)"],
+      "drugs": ["d_dc806"],
+      "sources": ["s17", "s1"]
     },
     {
-      "class": "PDE4 inhibitors (oral & topical)",
-      "target": "PDE4",
-      "modality": "small_molecule",
+      "class": "TNF-α inhibitors",
+      "target": "TNF",
+      "rationale": "Amplifier cytokine of the inflammatory loop; the original biologic breakthrough.",
+      "mechanism": "mAbs / receptor-fusion neutralize TNF-α.",
+      "modality": "mAb",
       "validation_status": "validated",
-      "rationale": "Convenience/safety tier; oral apremilast and topical roflumilast for milder disease.",
-      "mechanism": "Raise intracellular cAMP to dampen pro-inflammatory cytokines.",
-      "pros": [
-        "oral or topical",
-        "no lab monitoring (apremilast)",
-        "non-steroidal topical"
-      ],
-      "cons": [
-        "modest efficacy",
-        "GI tolerability (oral)"
-      ],
-      "key_players": [
-        "Amgen",
-        "Arcutis"
-      ],
-      "drugs": [
-        "d_apremilast",
-        "d_roflumilast"
-      ],
-      "sources": [
-        "ot",
-        "fda"
-      ]
+      "pros": ["decades of data", "cheap (biosimilars)", "PsA and pregnancy (certolizumab) use"],
+      "cons": ["lower skin clearance than IL-17/23", "infection/reactivation risk", "commoditized"],
+      "key_players": ["AbbVie", "Amgen", "UCB", "Johnson & Johnson"],
+      "drugs": ["d_adalimumab", "d_etanercept", "d_certolizumab", "d_infliximab"],
+      "sources": ["s2", "s1"]
     },
     {
-      "class": "Non-steroidal topicals (AhR; vitamin D)",
-      "target": "AHR / VDR",
+      "class": "PDE4 inhibitors",
+      "target": "PDE4B/D",
+      "rationale": "Raising intracellular cAMP broadly dampens pro-inflammatory cytokine output — an oral or topical non-biologic option.",
+      "mechanism": "Inhibit PDE4, elevating cAMP in immune cells and keratinocytes.",
       "modality": "small_molecule",
       "validation_status": "validated",
-      "rationale": "Foundational first-line and steroid-sparing maintenance for mild disease and sensitive sites.",
-      "mechanism": "AhR agonism (tapinarof) and vitamin-D-receptor modulation normalise keratinocyte differentiation.",
-      "pros": [
-        "first-line",
-        "safe for chronic use",
-        "sensitive sites"
-      ],
-      "cons": [
-        "limited to milder/localised disease"
-      ],
-      "key_players": [
-        "Organon (Dermavant)",
-        "LEO Pharma"
-      ],
-      "drugs": [
-        "d_tapinarof",
-        "d_calcipotriene"
-      ],
-      "sources": [
-        "fda"
-      ]
+      "pros": ["oral (apremilast) and topical (roflumilast) options", "no lab monitoring", "good safety"],
+      "cons": ["modest efficacy vs biologics", "GI tolerability (oral)"],
+      "key_players": ["Amgen", "Arcutis"],
+      "drugs": ["d_apremilast", "d_roflumilast"],
+      "sources": ["s2", "s12"]
     },
     {
-      "class": "Conventional oral systemics",
-      "target": "multiple",
+      "class": "Nonsteroidal nuclear-receptor topicals (AhR / retinoid / vitamin D)",
+      "target": "AHR, RAR, VDR",
+      "rationale": "Normalize keratinocyte differentiation and local immune tone — steroid-sparing topical control for mild disease and maintenance.",
+      "mechanism": "AhR agonism (tapinarof), retinoid-receptor agonism (tazarotene), and VDR agonism (calcipotriene).",
       "modality": "small_molecule",
       "validation_status": "validated",
-      "rationale": "Low-cost legacy systemics still widely used globally where biologics are inaccessible.",
-      "mechanism": "Broad immunosuppression / antiproliferation (methotrexate, cyclosporine, acitretin).",
-      "pros": [
-        "cheap",
-        "oral",
-        "familiar"
-      ],
-      "cons": [
-        "toxicity & monitoring",
-        "lower efficacy/tolerability"
-      ],
-      "key_players": [
-        "generic"
-      ],
-      "drugs": [],
-      "sources": [
-        "fda"
-      ]
+      "pros": ["steroid-free", "chronic-use friendly", "large mild-disease population"],
+      "cons": ["local irritation", "modest as monotherapy in severe disease"],
+      "key_players": ["Organon / Dermavant", "Almirall", "Leo Pharma"],
+      "drugs": ["d_tapinarof", "d_tazarotene", "d_calcipotriene"],
+      "sources": ["s2", "s1"]
+    },
+    {
+      "class": "Conventional oral systemics (DHFR / calcineurin / retinoid)",
+      "target": "DHFR, calcineurin, RAR",
+      "rationale": "Broad immunomodulation; the global cost anchor and pre-biologic legacy.",
+      "mechanism": "Methotrexate (antifolate), cyclosporine (calcineurin), acitretin (systemic retinoid).",
+      "modality": "small_molecule",
+      "validation_status": "validated",
+      "pros": ["low cost, oral", "widely available globally"],
+      "cons": ["organ toxicity / monitoring (hepatic, renal)", "teratogenic (MTX, acitretin) — boxed warnings", "modest clearance"],
+      "key_players": ["generic"],
+      "drugs": ["d_methotrexate", "d_cyclosporine", "d_acitretin"],
+      "sources": ["s3", "s1"]
+    },
+    {
+      "class": "IL-36 receptor antagonists",
+      "target": "IL1RL2 (IL-36R)",
+      "rationale": "Targets the innate/pustular arm; transformative in generalized pustular psoriasis, mechanistically distinct from plaque disease.",
+      "mechanism": "mAb blocks the IL-36 receptor.",
+      "modality": "mAb",
+      "validation_status": "validated",
+      "pros": ["disease-defining efficacy in GPP", "novel innate mechanism"],
+      "cons": ["limited role in ordinary plaque psoriasis"],
+      "key_players": ["Boehringer Ingelheim"],
+      "drugs": ["d_spesolimab"],
+      "sources": ["s2"]
+    },
+    {
+      "class": "Half-life-extended / high-affinity next-gen antibodies",
+      "target": "IL23A, IL17A/F",
+      "rationale": "Engineer IL-23/IL-17 antibodies for far less frequent dosing (potentially 1–2×/year) to defend the injectable franchise against orals and biosimilars.",
+      "mechanism": "Fc/affinity engineering to extend half-life and lower dose frequency.",
+      "modality": "mAb",
+      "validation_status": "emerging",
+      "pros": ["convenience (very infrequent dosing)", "differentiation vs biosimilars", "retains biologic efficacy"],
+      "cons": ["early clinical", "must beat entrenched, soon-cheap incumbents"],
+      "key_players": ["Oruka Therapeutics", "AbbVie", "Johnson & Johnson"],
+      "drugs": ["d_orka001"],
+      "sources": ["s1"]
+    },
+    {
+      "class": "Metabolic adjuncts (GLP-1 / GIP agonists)",
+      "target": "GLP1R, GIPR",
+      "rationale": "Obesity worsens psoriasis and blunts biologic response; incretin agonists are in trials as weight/inflammation-directed adjuncts.",
+      "mechanism": "GLP-1 / dual GIP-GLP-1 receptor agonism (semaglutide, tirzepatide).",
+      "modality": "peptide",
+      "validation_status": "unproven",
+      "pros": ["addresses cardiometabolic comorbidity", "potential adjunct benefit"],
+      "cons": ["not a psoriasis therapy per se", "efficacy on skin unproven"],
+      "key_players": ["Novo Nordisk", "Eli Lilly"],
+      "drugs": ["d_semaglutide", "d_tirzepatide"],
+      "sources": ["s2"]
+    },
+    {
+      "class": "A3 adenosine receptor agonists",
+      "target": "ADORA3",
+      "rationale": "Oral small-molecule immunomodulation via A3AR; a differentiated non-cytokine oral mechanism in late development.",
+      "mechanism": "Agonism of the A3 adenosine receptor on inflammatory cells.",
+      "modality": "small_molecule",
+      "validation_status": "emerging",
+      "pros": ["oral", "novel mechanism", "clean safety in trials"],
+      "cons": ["modest efficacy signal", "small developer"],
+      "key_players": ["Can-Fite BioPharma"],
+      "drugs": ["d_piclidenoson"],
+      "sources": ["s1"]
+    },
+    {
+      "class": "Pan-JAK inhibitors (deprioritized in plaque)",
+      "target": "JAK1/2/3",
+      "rationale": "Broad JAK blockade is efficacious but carries class safety warnings; largely bypassed in plaque psoriasis in favor of selective TYK2.",
+      "mechanism": "ATP-competitive inhibition of JAK family kinases (tofacitinib, others).",
+      "modality": "small_molecule",
+      "validation_status": "failed",
+      "pros": ["oral, potent"],
+      "cons": ["boxed warnings (thrombosis, MACE, malignancy) — unfavorable risk/benefit vs selective TYK2 in a skin-only disease", "not pursued to plaque approval"],
+      "key_players": ["Pfizer"],
+      "drugs": ["d_tofacitinib"],
+      "sources": ["s1", "s2"]
+    },
+    {
+      "class": "Alefacept / T-cell costimulation (historical, withdrawn)",
+      "target": "CD2 / LFA-3",
+      "rationale": "Early biologic targeting memory T cells; a strategic signal of a failed approach.",
+      "mechanism": "LFA-3/Fc fusion depletes CD2+ memory-effector T cells.",
+      "modality": "protein",
+      "validation_status": "failed",
+      "pros": ["proof-of-concept for T-cell targeting"],
+      "cons": ["modest efficacy; withdrawn from market. Efalizumab (anti-CD11a) withdrawn for PML risk"],
+      "key_players": ["Astellas (hist.)", "Genentech (hist.)"],
+      "drugs": ["d_alefacept", "d_efalizumab"],
+      "sources": ["s2", "s1"]
     }
   ],
+
   "pipeline": {
-    "summary": "A crowded, mature clinical pipeline. The approved core is fully built out across IL-23, IL-17, TNF, IL-12/23, PDE4, TYK2 and topicals; near-term innovation is concentrated in ORAL targeted therapy (oral IL-23R peptide icotrokinra, next-gen oral TYK2 zasocitinib) and differentiated IL-17 (nanobody sonelokimab), all in Phase 3.",
+    "summary": "The clinical-stage landscape is unusually deep and target-validated. Approved anchors span TNF, IL-12/23, IL-17, IL-23, PDE4, TYK2, and (from 2026) oral IL-23R. The active frontier is overwhelmingly ORAL: next-gen oral TYK2 inhibitors (zasocitinib, ESK-001) racing to match biologics, oral IL-23R peptides (icotrokinra approved; Protagonist/Oruka behind), and oral IL-17 antagonists (ex-DICE). A parallel thread is convenience: half-life-extended antibodies for 1–2×/year dosing. Assets below are the decision-relevant, de-duplicated set (approved + notable clinical) drawn from ~180 clinical-stage programs seen across 901 trials and Open Targets; formulation/biosimilar variants are collapsed.",
     "assets": [
-      {
-        "id": "d_risankizumab",
-        "name": "risankizumab",
-        "brand": "Skyrizi",
-        "company": "AbbVie",
-        "moa_class": "IL-23 inhibitor",
-        "target": "IL23A",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "Crohn's"
-        ],
-        "mechanism": "anti–IL-23 p19",
-        "sources": [
-          "fda",
-          "xtalks"
-        ]
-      },
-      {
-        "id": "d_guselkumab",
-        "name": "guselkumab",
-        "brand": "Tremfya",
-        "company": "Johnson & Johnson",
-        "moa_class": "IL-23 inhibitor",
-        "target": "IL23A",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "UC"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_tildrakizumab",
-        "name": "tildrakizumab",
-        "brand": "Ilumya",
-        "company": "Sun Pharma",
-        "moa_class": "IL-23 inhibitor",
-        "target": "IL23A",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_mirikizumab",
-        "name": "mirikizumab",
-        "brand": "Omvoh",
-        "company": "Eli Lilly",
-        "moa_class": "IL-23 inhibitor",
-        "target": "IL23A",
-        "modality": "mAb",
-        "phase": "phase3",
-        "phase_num": 3,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis (Ph3)",
-          "UC (approved)"
-        ],
-        "mechanism": null,
-        "sources": [
-          "ctgov"
-        ]
-      },
-      {
-        "id": "d_secukinumab",
-        "name": "secukinumab",
-        "brand": "Cosentyx",
-        "company": "Novartis",
-        "moa_class": "IL-17A inhibitor",
-        "target": "IL17A",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "axSpA"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda",
-          "xtalks"
-        ]
-      },
-      {
-        "id": "d_ixekizumab",
-        "name": "ixekizumab",
-        "brand": "Taltz",
-        "company": "Eli Lilly",
-        "moa_class": "IL-17A inhibitor",
-        "target": "IL17A",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "axSpA"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda",
-          "ibj"
-        ]
-      },
-      {
-        "id": "d_brodalumab",
-        "name": "brodalumab",
-        "brand": "Siliq",
-        "company": "Bausch Health",
-        "moa_class": "IL-17RA inhibitor",
-        "target": "IL17RA",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_bimekizumab",
-        "name": "bimekizumab",
-        "brand": "Bimzelx",
-        "company": "UCB",
-        "moa_class": "IL-17A/F inhibitor",
-        "target": "IL17A",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "HS"
-        ],
-        "mechanism": "dual anti–IL-17A and IL-17F",
-        "sources": [
-          "fda",
-          "fierce"
-        ]
-      },
-      {
-        "id": "d_ustekinumab",
-        "name": "ustekinumab",
-        "brand": "Stelara",
-        "company": "Johnson & Johnson",
-        "moa_class": "IL-12/23 inhibitor",
-        "target": "IL12B",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "Crohn's",
-          "UC"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda",
-          "xtalks"
-        ]
-      },
-      {
-        "id": "d_adalimumab",
-        "name": "adalimumab",
-        "brand": "Humira",
-        "company": "AbbVie",
-        "moa_class": "TNF inhibitor",
-        "target": "TNF",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "+many"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_etanercept",
-        "name": "etanercept",
-        "brand": "Enbrel",
-        "company": "Amgen",
-        "moa_class": "TNF inhibitor",
-        "target": "TNF",
-        "modality": "protein",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_certolizumab",
-        "name": "certolizumab pegol",
-        "brand": "Cimzia",
-        "company": "UCB",
-        "moa_class": "TNF inhibitor",
-        "target": "TNF",
-        "modality": "mAb",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_apremilast",
-        "name": "apremilast",
-        "brand": "Otezla",
-        "company": "Amgen",
-        "moa_class": "PDE4 inhibitor",
-        "target": "PDE4",
-        "modality": "small_molecule",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "PO",
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_deucravacitinib",
-        "name": "deucravacitinib",
-        "brand": "Sotyktu",
-        "company": "Bristol Myers Squibb",
-        "moa_class": "TYK2 inhibitor",
-        "target": "TYK2",
-        "modality": "small_molecule",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "PO",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "mechanism": "allosteric TYK2 inhibitor",
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_tapinarof",
-        "name": "tapinarof",
-        "brand": "Vtama",
-        "company": "Organon (Dermavant)",
-        "moa_class": "AhR agonist",
-        "target": "AHR",
-        "modality": "small_molecule",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "topical",
-        "indications": [
-          "plaque psoriasis",
-          "atopic dermatitis"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_roflumilast",
-        "name": "roflumilast (topical)",
-        "brand": "Zoryve",
-        "company": "Arcutis",
-        "moa_class": "PDE4 inhibitor",
-        "target": "PDE4",
-        "modality": "small_molecule",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "topical",
-        "indications": [
-          "plaque psoriasis",
-          "seb derm",
-          "AD"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_calcipotriene",
-        "name": "calcipotriene / corticosteroid",
-        "brand": "Enstilar/Taclonex",
-        "company": "LEO Pharma",
-        "moa_class": "Topical vitamin D + steroid",
-        "target": "VDR",
-        "modality": "small_molecule",
-        "phase": "approved",
-        "phase_num": 4,
-        "route": "topical",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "mechanism": null,
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "id": "d_icotrokinra",
-        "name": "icotrokinra (JNJ-2113)",
-        "brand": "—",
-        "company": "Johnson & Johnson",
-        "moa_class": "Oral IL-23R antagonist",
-        "target": "IL23R",
-        "modality": "peptide",
-        "phase": "phase3",
-        "phase_num": 3,
-        "route": "PO",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "mechanism": "oral peptide blocking IL-23 receptor",
-        "sources": [
-          "ctgov"
-        ]
-      },
-      {
-        "id": "d_zasocitinib",
-        "name": "zasocitinib (TAK-279)",
-        "brand": "—",
-        "company": "Takeda",
-        "moa_class": "TYK2 inhibitor",
-        "target": "TYK2",
-        "modality": "small_molecule",
-        "phase": "phase3",
-        "phase_num": 3,
-        "route": "PO",
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "mechanism": "next-gen oral allosteric TYK2",
-        "sources": [
-          "ctgov"
-        ]
-      },
-      {
-        "id": "d_sonelokimab",
-        "name": "sonelokimab",
-        "brand": "—",
-        "company": "MoonLake Immunotherapeutics",
-        "moa_class": "IL-17A/F inhibitor",
-        "target": "IL17A",
-        "modality": "protein",
-        "phase": "phase3",
-        "phase_num": 3,
-        "route": "SC",
-        "indications": [
-          "plaque psoriasis",
-          "HS",
-          "PsA"
-        ],
-        "mechanism": "IL-17A/F trivalent nanobody",
-        "sources": [
-          "ctgov"
-        ]
-      }
+      { "id": "d_risankizumab", "name": "risankizumab", "brand": "Skyrizi", "company": "AbbVie", "moa_class": "IL-23 inhibitor", "target": "IL23A", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "Crohn's", "UC"], "route": "SC", "mechanism": "anti-IL-23 p19 mAb", "is_combo": false, "sources": ["s1", "s6"] },
+      { "id": "d_guselkumab", "name": "guselkumab", "brand": "Tremfya", "company": "Johnson & Johnson", "moa_class": "IL-23 inhibitor", "target": "IL23A", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "UC"], "route": "SC", "mechanism": "anti-IL-23 p19 mAb", "is_combo": false, "sources": ["s1", "s9"] },
+      { "id": "d_tildrakizumab", "name": "tildrakizumab", "brand": "Ilumya", "company": "Sun Pharma / Almirall", "moa_class": "IL-23 inhibitor", "target": "IL23A", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis"], "route": "SC", "mechanism": "anti-IL-23 p19 mAb", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_mirikizumab", "name": "mirikizumab", "brand": "Omvoh", "company": "Eli Lilly", "moa_class": "IL-23 inhibitor", "target": "IL23A", "modality": "mAb", "phase": "phase3", "phase_num": 3, "indications": ["ulcerative colitis (appr.)", "Crohn's", "plaque psoriasis (Ph3 positive, not commercialized in pso)"], "route": "SC", "mechanism": "anti-IL-23 p19 mAb", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_icotrokinra", "name": "icotrokinra", "brand": "Icotyde", "company": "Johnson & Johnson", "moa_class": "IL-23 receptor antagonist (oral)", "target": "IL23R", "modality": "peptide", "phase": "approved", "phase_num": 4, "indications": ["moderate-to-severe plaque psoriasis (≥12y)"], "route": "PO", "mechanism": "oral peptide IL-23R antagonist", "nct_ids": ["NCT06095102"], "is_combo": false, "sources": ["s15", "s19"] },
+      { "id": "d_orka001", "name": "ORKA-001", "company": "Oruka Therapeutics", "moa_class": "IL-23 inhibitor", "target": "IL23A", "modality": "mAb", "phase": "phase1", "phase_num": 1, "indications": ["plaque psoriasis"], "route": "SC", "mechanism": "half-life-extended anti-IL-23 mAb (infrequent dosing)", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_secukinumab", "name": "secukinumab", "brand": "Cosentyx", "company": "Novartis", "moa_class": "IL-17A inhibitor", "target": "IL17A", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "axSpA", "HS"], "route": "SC", "mechanism": "anti-IL-17A mAb", "is_combo": false, "sources": ["s1", "s11"] },
+      { "id": "d_ixekizumab", "name": "ixekizumab", "brand": "Taltz", "company": "Eli Lilly", "moa_class": "IL-17A inhibitor", "target": "IL17A", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "axSpA"], "route": "SC", "mechanism": "anti-IL-17A mAb", "is_combo": false, "sources": ["s1", "s10"] },
+      { "id": "d_bimekizumab", "name": "bimekizumab", "brand": "Bimzelx", "company": "UCB", "moa_class": "IL-17A/F inhibitor", "target": "IL17A;IL17F", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "axSpA", "HS"], "route": "SC", "mechanism": "dual anti-IL-17A/F mAb", "is_combo": false, "sources": ["s1", "s13"] },
+      { "id": "d_brodalumab", "name": "brodalumab", "brand": "Siliq", "company": "Bausch Health / Kyowa Kirin", "moa_class": "IL-17 receptor A antagonist", "target": "IL17RA", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis"], "route": "SC", "mechanism": "anti-IL-17RA mAb (REMS: suicidality boxed warning)", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_ustekinumab", "name": "ustekinumab", "brand": "Stelara", "company": "Johnson & Johnson", "moa_class": "IL-12/23 inhibitor", "target": "IL12B", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "Crohn's", "UC"], "route": "SC", "mechanism": "anti-p40 (IL-12/23) mAb", "is_combo": false, "sources": ["s1", "s9", "s20"] },
+      { "id": "d_deucravacitinib", "name": "deucravacitinib", "brand": "Sotyktu", "company": "Bristol Myers Squibb", "moa_class": "TYK2 inhibitor", "target": "TYK2", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis (2026)"], "route": "PO", "mechanism": "allosteric TYK2 inhibitor", "is_combo": false, "sources": ["s1", "s14", "s22"] },
+      { "id": "d_zasocitinib", "name": "zasocitinib", "company": "Takeda (ex-Nimbus)", "moa_class": "TYK2 inhibitor", "target": "TYK2", "modality": "small_molecule", "phase": "phase3", "phase_num": 3, "indications": ["plaque psoriasis", "psoriatic arthritis"], "route": "PO", "mechanism": "highly selective allosteric TYK2 inhibitor (TAK-279)", "nct_ids": [], "is_combo": false, "sources": ["s1", "s16"] },
+      { "id": "d_esk001", "name": "ESK-001", "company": "Alumis", "moa_class": "TYK2 inhibitor", "target": "TYK2", "modality": "small_molecule", "phase": "phase3", "phase_num": 3, "indications": ["plaque psoriasis", "SLE"], "route": "PO", "mechanism": "selective allosteric TYK2 inhibitor (Ph3 ONWARD)", "is_combo": false, "sources": ["s1", "s18"] },
+      { "id": "d_icp488", "name": "ICP-488", "company": "InnoCare Pharma", "moa_class": "TYK2 inhibitor", "target": "TYK2", "modality": "small_molecule", "phase": "phase3", "phase_num": 3, "indications": ["plaque psoriasis"], "route": "PO", "mechanism": "allosteric TYK2 inhibitor", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_dc806", "name": "DC-806 / follow-on", "company": "Eli Lilly (ex-DICE)", "moa_class": "Oral IL-17 antagonist", "target": "IL17A", "modality": "small_molecule", "phase": "phase2", "phase_num": 2, "indications": ["plaque psoriasis"], "route": "PO", "mechanism": "oral small-molecule IL-17A antagonist (lead DC-806 deprioritized; follow-on pursued)", "is_combo": false, "sources": ["s1", "s17"] },
+      { "id": "d_piclidenoson", "name": "piclidenoson", "company": "Can-Fite BioPharma", "moa_class": "A3 adenosine receptor agonist", "target": "ADORA3", "modality": "small_molecule", "phase": "phase3", "phase_num": 3, "indications": ["plaque psoriasis"], "route": "PO", "mechanism": "oral A3AR agonist (CF101)", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_apremilast", "name": "apremilast", "brand": "Otezla", "company": "Amgen", "moa_class": "PDE4 inhibitor", "target": "PDE4B", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "Behçet's"], "route": "PO", "mechanism": "oral PDE4 inhibitor", "is_combo": false, "sources": ["s1", "s12"] },
+      { "id": "d_roflumilast", "name": "roflumilast (topical)", "brand": "Zoryve", "company": "Arcutis Biotherapeutics", "moa_class": "PDE4 inhibitor", "target": "PDE4B", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis (topical)", "seborrheic dermatitis", "atopic dermatitis"], "route": "topical", "mechanism": "topical PDE4 inhibitor", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_tapinarof", "name": "tapinarof", "brand": "Vtama", "company": "Organon (Dermavant)", "moa_class": "AhR agonist (topical)", "target": "AHR", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis (topical)", "atopic dermatitis"], "route": "topical", "mechanism": "topical aryl hydrocarbon receptor agonist", "is_combo": false, "sources": ["s1", "s2"] },
+      { "id": "d_tazarotene", "name": "tazarotene", "brand": "Tazorac", "company": "Almirall", "moa_class": "Retinoid (topical)", "target": "RARB", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis (topical)"], "route": "topical", "mechanism": "topical retinoid-receptor agonist", "is_combo": false, "sources": ["s3"] },
+      { "id": "d_calcipotriene", "name": "calcipotriene", "brand": "Dovonex/Enstilar", "company": "Leo Pharma", "moa_class": "Vitamin D analog (topical)", "target": "VDR", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis (topical)"], "route": "topical", "mechanism": "topical vitamin D receptor agonist (often w/ betamethasone)", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_adalimumab", "name": "adalimumab", "brand": "Humira", "company": "AbbVie", "moa_class": "TNF inhibitor", "target": "TNF", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "RA", "IBD"], "route": "SC", "mechanism": "anti-TNF mAb (biosimilar-eroded)", "is_combo": false, "sources": ["s1", "s3"] },
+      { "id": "d_etanercept", "name": "etanercept", "brand": "Enbrel", "company": "Amgen", "moa_class": "TNF inhibitor", "target": "TNF", "modality": "protein", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "RA"], "route": "SC", "mechanism": "TNF receptor-Fc fusion", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_certolizumab", "name": "certolizumab pegol", "brand": "Cimzia", "company": "UCB", "moa_class": "TNF inhibitor", "target": "TNF", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis"], "route": "SC", "mechanism": "PEGylated anti-TNF Fab (pregnancy-friendly)", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_infliximab", "name": "infliximab", "brand": "Remicade", "company": "Johnson & Johnson", "moa_class": "TNF inhibitor", "target": "TNF", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "IBD"], "route": "IV", "mechanism": "anti-TNF mAb (biosimilar-eroded)", "is_combo": false, "sources": ["s1"] },
+      { "id": "d_methotrexate", "name": "methotrexate", "company": "generic", "moa_class": "Conventional systemic (DHFR)", "target": "DHFR", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis", "psoriatic arthritis", "RA"], "route": "PO", "mechanism": "antifolate immunosuppressant (boxed warnings)", "is_combo": false, "sources": ["s3", "s1"] },
+      { "id": "d_cyclosporine", "name": "cyclosporine", "company": "generic", "moa_class": "Conventional systemic (calcineurin)", "target": "PPIA", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis (short-term)"], "route": "PO", "mechanism": "calcineurin inhibitor", "is_combo": false, "sources": ["s2"] },
+      { "id": "d_acitretin", "name": "acitretin", "brand": "Soriatane", "company": "generic", "moa_class": "Systemic retinoid", "target": "RARA", "modality": "small_molecule", "phase": "approved", "phase_num": 4, "indications": ["plaque psoriasis"], "route": "PO", "mechanism": "systemic retinoid (teratogenic — boxed warning)", "is_combo": false, "sources": ["s3"] },
+      { "id": "d_spesolimab", "name": "spesolimab", "brand": "Spevigo", "company": "Boehringer Ingelheim", "moa_class": "IL-36R antagonist", "target": "IL1RL2", "modality": "mAb", "phase": "approved", "phase_num": 4, "indications": ["generalized pustular psoriasis"], "route": "IV/SC", "mechanism": "anti-IL-36R mAb (GPP, not plaque)", "is_combo": false, "sources": ["s2"] },
+      { "id": "d_tofacitinib", "name": "tofacitinib", "brand": "Xeljanz", "company": "Pfizer", "moa_class": "Pan-JAK inhibitor", "target": "JAK1;JAK3", "modality": "small_molecule", "phase": "discontinued", "phase_num": -1, "indications": ["psoriatic arthritis (approved)", "plaque psoriasis (not pursued to approval)"], "route": "PO", "mechanism": "pan-JAK inhibitor (boxed warnings; deprioritized in plaque)", "is_combo": false, "sources": ["s1", "s2"] },
+      { "id": "d_alefacept", "name": "alefacept", "brand": "Amevive", "company": "Astellas (historical)", "moa_class": "T-cell costimulation blocker", "target": "CD2", "modality": "protein", "phase": "discontinued", "phase_num": -1, "indications": ["plaque psoriasis (withdrawn)"], "route": "IM", "mechanism": "LFA-3/Fc fusion; market-withdrawn", "is_combo": false, "sources": ["s2"] },
+      { "id": "d_efalizumab", "name": "efalizumab", "brand": "Raptiva", "company": "Genentech (historical)", "moa_class": "Anti-CD11a (LFA-1)", "target": "ITGAL", "modality": "mAb", "phase": "discontinued", "phase_num": -1, "indications": ["plaque psoriasis (withdrawn — PML risk)"], "route": "SC", "mechanism": "anti-CD11a mAb; withdrawn 2009", "is_combo": false, "sources": ["s2"] },
+      { "id": "d_semaglutide", "name": "semaglutide", "company": "Novo Nordisk", "moa_class": "GLP-1 agonist (adjunct)", "target": "GLP1R", "modality": "peptide", "phase": "phase2", "phase_num": 2, "indications": ["psoriasis + obesity (investigational adjunct)"], "route": "SC/PO", "mechanism": "GLP-1 receptor agonist (metabolic adjunct hypothesis)", "is_combo": false, "sources": ["s2"] },
+      { "id": "d_tirzepatide", "name": "tirzepatide", "company": "Eli Lilly", "moa_class": "GIP/GLP-1 agonist (adjunct)", "target": "GIPR;GLP1R", "modality": "peptide", "phase": "phase3", "phase_num": 3, "indications": ["obesity (approved)", "psoriasis-associated metabolic disease (investigational)"], "route": "SC", "mechanism": "dual GIP/GLP-1 agonist (adjunct hypothesis)", "is_combo": false, "sources": ["s2"] }
     ]
   },
+
   "companies": [
-    {
-      "name": "AbbVie",
-      "type": "large pharma",
-      "positioning": "IL-23 leadership (Skyrizi) as its post-Humira immunology anchor; legacy TNF (Humira).",
-      "moa_classes": [
-        "IL-23 inhibitor",
-        "TNF inhibitor"
-      ],
-      "assets": [
-        "d_risankizumab",
-        "d_adalimumab"
-      ],
-      "sources": [
-        "xtalks"
-      ]
-    },
-    {
-      "name": "Johnson & Johnson",
-      "type": "large pharma",
-      "positioning": "Broadest psoriasis franchise: p40 (Stelara), IL-23 (Tremfya) and the lead oral IL-23R peptide (icotrokinra).",
-      "moa_classes": [
-        "IL-12/23 inhibitor",
-        "IL-23 inhibitor",
-        "Oral IL-23R antagonist"
-      ],
-      "assets": [
-        "d_ustekinumab",
-        "d_guselkumab",
-        "d_icotrokinra"
-      ],
-      "deals": [
-        {
-          "type": "acquisition",
-          "counterparty": "Protagonist (co-dev)",
-          "note": "oral IL-23R peptide icotrokinra",
-          "year": 2017
-        }
-      ]
-    },
-    {
-      "name": "Novartis",
-      "type": "large pharma",
-      "positioning": "First-mover IL-17 (Cosentyx) with a large rheumatology footprint.",
-      "moa_classes": [
-        "IL-17A inhibitor"
-      ],
-      "assets": [
-        "d_secukinumab"
-      ]
-    },
-    {
-      "name": "Eli Lilly",
-      "type": "large pharma",
-      "positioning": "IL-17 (Taltz) plus IL-23 (mirikizumab) expanding from IBD into psoriasis.",
-      "moa_classes": [
-        "IL-17A inhibitor",
-        "IL-23 inhibitor"
-      ],
-      "assets": [
-        "d_ixekizumab",
-        "d_mirikizumab"
-      ]
-    },
-    {
-      "name": "UCB",
-      "type": "biopharma",
-      "positioning": "Differentiated dual IL-17A/F (bimekizumab) with best-in-class complete-clearance rates.",
-      "moa_classes": [
-        "IL-17A/F inhibitor",
-        "TNF inhibitor"
-      ],
-      "assets": [
-        "d_bimekizumab",
-        "d_certolizumab"
-      ]
-    },
-    {
-      "name": "Bristol Myers Squibb",
-      "type": "large pharma",
-      "positioning": "Oral pathway pioneer with first-in-class TYK2 (Sotyktu).",
-      "moa_classes": [
-        "TYK2 inhibitor"
-      ],
-      "assets": [
-        "d_deucravacitinib"
-      ]
-    },
-    {
-      "name": "Takeda",
-      "type": "large pharma",
-      "positioning": "Next-gen oral TYK2 (zasocitinib) acquired via Nimbus, chasing Sotyktu.",
-      "moa_classes": [
-        "TYK2 inhibitor"
-      ],
-      "assets": [
-        "d_zasocitinib"
-      ],
-      "deals": [
-        {
-          "type": "acquisition",
-          "counterparty": "Nimbus Therapeutics",
-          "value": "$4B upfront",
-          "year": 2023,
-          "note": "TAK-279 / zasocitinib"
-        }
-      ]
-    },
-    {
-      "name": "Amgen",
-      "type": "large pharma",
-      "positioning": "Oral PDE4 (Otezla) convenience tier + TNF (Enbrel).",
-      "moa_classes": [
-        "PDE4 inhibitor",
-        "TNF inhibitor"
-      ],
-      "assets": [
-        "d_apremilast",
-        "d_etanercept"
-      ],
-      "deals": [
-        {
-          "type": "acquisition",
-          "counterparty": "Celgene (via BMS divestiture)",
-          "value": "$13.4B",
-          "year": 2019,
-          "note": "Otezla"
-        }
-      ]
-    },
-    {
-      "name": "MoonLake Immunotherapeutics",
-      "type": "biotech",
-      "positioning": "Single-asset IL-17A/F nanobody (sonelokimab) — a differentiated, acquirable clinical-stage story.",
-      "moa_classes": [
-        "IL-17A/F inhibitor"
-      ],
-      "assets": [
-        "d_sonelokimab"
-      ]
-    },
-    {
-      "name": "Arcutis / Organon",
-      "type": "specialty derm",
-      "positioning": "Non-steroidal topicals (roflumilast, tapinarof) modernising first-line care.",
-      "moa_classes": [
-        "PDE4 inhibitor",
-        "AhR agonist"
-      ],
-      "assets": [
-        "d_roflumilast",
-        "d_tapinarof"
-      ]
-    }
+    { "name": "AbbVie", "type": "large pharma", "positioning": "Immunology leader post-Humira; Skyrizi (IL-23) is the psoriasis market leader and, with Rinvoq, the core growth engine (guided ~$31B combined by 2027). Deep cross-indication franchise.", "moa_classes": ["IL-23 inhibitor", "TNF inhibitor"], "assets": ["d_risankizumab", "d_adalimumab"], "deals": [], "sources": ["s6"] },
+    { "name": "Johnson & Johnson", "type": "large pharma", "positioning": "Broadest psoriasis franchise: Stelara (now biosimilar-eroded), Tremfya (growth driver), and the first oral IL-23R antagonist Icotyde (icotrokinra) — uniquely spanning legacy, growth, and next-gen oral.", "moa_classes": ["IL-23 inhibitor", "IL-12/23 inhibitor", "IL-23 receptor antagonist (oral)", "TNF inhibitor"], "assets": ["d_guselkumab", "d_ustekinumab", "d_icotrokinra", "d_infliximab"], "deals": [ { "type": "approval", "counterparty": "FDA", "value": "n/a", "year": 2026, "note": "Icotyde (icotrokinra) approved — first oral IL-23R antagonist; peptide licensed originally from Protagonist Therapeutics.", "sources": ["s15"] } ], "sources": ["s9", "s15", "s19"] },
+    { "name": "Novartis", "type": "large pharma", "positioning": "IL-17 pioneer with Cosentyx (~$6B), the broadest IL-17 label; defending against Bimzelx and a ~2029 patent cliff.", "moa_classes": ["IL-17A inhibitor"], "assets": ["d_secukinumab"], "deals": [], "sources": ["s11"] },
+    { "name": "Eli Lilly", "type": "large pharma", "positioning": "Taltz (IL-17) incumbent; betting on ORAL immunology via the DICE acquisition (oral IL-17) and metabolic-immunology crossover (tirzepatide).", "moa_classes": ["IL-17A inhibitor", "Oral IL-17 antagonist", "IL-23 inhibitor"], "assets": ["d_ixekizumab", "d_dc806", "d_mirikizumab", "d_tirzepatide"], "deals": [ { "type": "acquisition", "counterparty": "DICE Therapeutics", "value": "$2.4B", "year": 2023, "note": "Acquired for oral IL-17 antagonists (DC-806/DC-853); lead later deprioritized in favor of a follow-on.", "sources": ["s17"] } ], "sources": ["s10", "s17"] },
+    { "name": "UCB", "type": "large pharma", "positioning": "Bimzelx (dual IL-17A/F) is the efficacy-ceiling biologic — fastest immunology launch, crossing blockbuster in 2025; broad label (pso, PsA, axSpA, HS).", "moa_classes": ["IL-17A/F inhibitor", "TNF inhibitor"], "assets": ["d_bimekizumab", "d_certolizumab"], "deals": [], "sources": ["s13"] },
+    { "name": "Bristol Myers Squibb", "type": "large pharma", "positioning": "Category creator of oral selective TYK2 with Sotyktu (deucravacitinib); expanding into psoriatic arthritis (approved 2026). Faces next-gen TYK2 competition.", "moa_classes": ["TYK2 inhibitor"], "assets": ["d_deucravacitinib"], "deals": [], "sources": ["s14", "s22"] },
+    { "name": "Takeda", "type": "large pharma", "positioning": "Chasing best-in-class oral TYK2 with zasocitinib (TAK-279); Phase 3 positive and beat Sotyktu head-to-head; FDA filing planned 2026; guided $3–6B peak.", "moa_classes": ["TYK2 inhibitor"], "assets": ["d_zasocitinib"], "deals": [ { "type": "acquisition", "counterparty": "Nimbus Therapeutics (subsidiary)", "value": "$4B", "year": 2022, "note": "Acquired Nimbus Lakshmi to obtain TAK-279 (zasocitinib) after positive Phase 2.", "sources": ["s16"] } ], "sources": ["s16"] },
+    { "name": "Amgen", "type": "large pharma", "positioning": "Otezla (oral PDE4) incumbent under pricing/competitive pressure; also a leading Stelara-biosimilar player (Wezlana).", "moa_classes": ["PDE4 inhibitor", "TNF inhibitor"], "assets": ["d_apremilast", "d_etanercept"], "deals": [], "sources": ["s12", "s20"] },
+    { "name": "Alumis", "type": "biotech", "positioning": "Next-gen oral TYK2 (ESK-001) in Phase 3 ONWARD; merged with ACELYRIN (2025) to bolster late-stage immunology scale and cash.", "moa_classes": ["TYK2 inhibitor"], "assets": ["d_esk001"], "deals": [ { "type": "merger", "counterparty": "ACELYRIN", "value": "stock-for-stock", "year": 2025, "note": "All-stock merger creating a late-stage immunology company; ESK-001 Ph3 topline expected 1Q2026.", "sources": ["s18"] } ], "sources": ["s18"] },
+    { "name": "Oruka Therapeutics", "type": "biotech", "positioning": "Convenience-focused: half-life-extended anti-IL-23 (ORKA-001) and anti-IL-17 (ORKA-002) engineered for 1–2×/year dosing — aiming to out-convenience biosimilars. Early clinical; limited public disclosure.", "moa_classes": ["IL-23 inhibitor"], "assets": ["d_orka001"], "deals": [], "sources": ["s1"] },
+    { "name": "Arcutis Biotherapeutics", "type": "biotech", "positioning": "Topical innovator; Zoryve (roflumilast) is a leading nonsteroidal topical for plaque psoriasis, scalp, and beyond.", "moa_classes": ["PDE4 inhibitor"], "assets": ["d_roflumilast"], "deals": [], "sources": ["s1"] }
   ],
+
   "market": {
-    "summary": "A large, growing, biologics-led market. 2024 estimates cluster around $27–33B and forecasts reach ~$39–51B by the early 2030s (CAGR ~8–11%), though firms differ on scope and methodology. Value is concentrated in IL-23 and IL-17 franchises; growth drivers include the oral-targeted shift, expanded access, and switching — partly offset by TNF and (from 2025) Stelara biosimilar erosion.",
-    "current_size": {
-      "value": "$27–33B",
-      "value_usd_m": 30000,
-      "year": 2024,
-      "geography": "Global",
-      "is_estimate": true,
-      "sources": [
-        "fbi",
-        "smr"
-      ]
-    },
+    "summary": "The psoriasis drug market was ~$21B in 2024 and is forecast to reach ~$39B by 2030 (10.9% CAGR per Grand View Research), driven by biologic adoption, label expansion, and new orals. Biologics account for ~46% of value and North America ~39%. The market's defining dynamics are (1) intense IL-23 vs IL-17 competition at the premium end (Skyrizi leading), (2) a wave of biosimilar erosion — Stelara from 2025, Humira ongoing, Cosentyx/Taltz ~2028–2029 — which compresses value even as volumes rise, and (3) an oral-therapy inflection (TYK2, oral IL-23R) that could expand the treated population by pulling systemic therapy earlier and to needle-averse patients.",
+    "current_size": { "value_usd_m": 21116, "value": "$21.1B", "year": 2024, "geography": "Global", "is_estimate": false, "sources": ["s5"] },
     "forecast": [
-      {
-        "year": 2030,
-        "value": "$39–51B",
-        "value_usd_m": 45000,
-        "is_estimate": true,
-        "sources": [
-          "smr",
-          "gvr"
-        ]
-      }
+      { "year": 2030, "value_usd_m": 39114, "value": "$39.1B", "is_estimate": true, "sources": ["s5"] }
     ],
-    "cagr_pct": 9.0,
+    "cagr_pct": 10.9,
     "drivers": [
-      "Oral targeted therapy (TYK2, oral IL-23R) expanding the treatable pool",
-      "Continued penetration of selective IL-23/IL-17 in under-treated moderate-to-severe patients",
-      "Comorbidity-driven switching (PsA, IBD)",
-      "Offset: TNF and Stelara biosimilar erosion"
+      "Continued shift from topicals/conventional systemics to biologics and targeted orals",
+      "Label expansion into PsA, HS, and pediatric/adolescent use",
+      "Oral TYK2 and oral IL-23R broadening the systemic-treated population",
+      "Rising diagnosed prevalence in aging, higher-SDI populations",
+      "Offsetting headwind: biosimilar erosion of TNF, IL-12/23, then IL-17 franchises"
     ],
     "top_products_forecast": [
-      {
-        "product": "Skyrizi (across indications)",
-        "value": "consensus >$17B by ~2027",
-        "year": 2027,
-        "is_estimate": true,
-        "sources": [
-          "xtalks"
-        ]
-      }
+      { "product": "Skyrizi", "value_usd_m": 17500, "year": 2025, "sources": ["s6"] },
+      { "product": "Bimzelx", "value_usd_m": 2600, "year": 2025, "sources": ["s13"] }
     ],
-    "pricing_access": "US list prices for biologics are high (tens of thousands/yr) with heavy rebating; access is gated by payer step-edits (often TNF-first) and prior authorization. Oral agents and biosimilars are reshaping cost dynamics; ex-US access varies widely and is a major driver of global under-treatment.",
+    "pricing_access": "Biologics carry high US list prices (tens of thousands/yr) with substantial rebating; access is gated by step therapy through conventional systemics and payer formularies. Biosimilars (Stelara, Humira, and eventually IL-17s) are the primary price-compression force. BMS has notably discounted Sotyktu's list price to compete on access. An approved oral (icotrokinra) with a favorable convenience/safety profile could shift step-therapy economics by displacing older orals and pulling systemic treatment earlier.",
     "opportunity": [
-      {
-        "title": "Oral biologic-level efficacy",
-        "segment": "moderate-to-severe",
-        "rationale": "An oral matching injectable IL-23 efficacy (icotrokinra, next-gen TYK2) could convert injection-averse and undertreated patients.",
-        "sources": [
-          "ctgov"
-        ]
-      },
-      {
-        "title": "Durable remission / disease modification",
-        "segment": "all severities",
-        "rationale": "No approved therapy is curative; treatment is chronic. Durable drug-free remission is the biggest unmet scientific goal.",
-        "sources": [
-          "gbd"
-        ]
-      },
-      {
-        "title": "Hard-to-treat sites & special populations",
-        "segment": "scalp/nail/palmoplantar/genital, pediatrics",
-        "rationale": "Persistent efficacy and QoL gaps at difficult sites and in underserved groups.",
-        "sources": [
-          "npf"
-        ]
-      },
-      {
-        "title": "Global access",
-        "segment": "ex-US / value tier",
-        "rationale": "Biosimilars + low-cost orals to reach the large under-treated global population.",
-        "is_estimate": true,
-        "sources": [
-          "gbd"
-        ]
-      }
+      { "title": "Biologic-grade efficacy in a pill", "rationale": "The largest prize: an oral matching IL-23/IL-17 clearance with clean safety captures the needle-averse and access-limited majority of moderate-to-severe patients. Next-gen oral TYK2 (zasocitinib) and oral IL-23R (icotrokinra) are the front-runners.", "segment": "moderate-to-severe, systemic-naïve", "sources": ["s15", "s16"] },
+      { "title": "Convenience / durability differentiation", "rationale": "As IL-23/IL-17 antibodies commoditize toward biosimilars, ultra-infrequent dosing (1–2×/year, half-life-extended antibodies) or true drug-free remission becomes the differentiator.", "segment": "biologic-experienced maintenance", "sources": ["s1"] },
+      { "title": "Complete clearance (PASI 100)", "rationale": "~30–40% still fall short of total clearance; dual IL-17A/F (bimekizumab) raised the ceiling and defines the aspiration for next agents.", "segment": "high-expectation patients", "sources": ["s13"] },
+      { "title": "Difficult sites & PsA prevention", "rationale": "Scalp, nail, genital, palmoplantar disease and preventing progression to psoriatic arthritis are under-addressed differentiators (icotrokinra scalp/genital data; IL-23/IL-17/TYK2 joint benefit).", "segment": "special-site / at-PsA-risk", "sources": ["s19", "s22"] },
+      { "title": "Post-cliff value migration", "rationale": "Stelara/Humira/Cosentyx/Taltz losses of exclusivity free share and payer budget — whoever owns the best oral or most convenient biologic captures the switchers.", "segment": "switch market", "sources": ["s20", "s11"] }
     ],
-    "sources": [
-      "fbi",
-      "smr",
-      "gvr",
-      "xtalks"
-    ]
+    "sources": ["s5", "s6", "s13", "s15", "s16", "s20", "s11"]
   },
+
   "catalysts": [
-    {
-      "date": "2025",
-      "event": "Stelara biosimilars enter US/EU",
-      "type": "patent_expiry",
-      "company": "Johnson & Johnson",
-      "significance": "Accelerates share shift toward selective IL-23 and orals.",
-      "sources": [
-        "xtalks"
-      ]
-    },
-    {
-      "date": "2025-2026",
-      "event": "Icotrokinra (oral IL-23R) Phase 3 readouts",
-      "asset": "icotrokinra",
-      "type": "readout",
-      "company": "Johnson & Johnson",
-      "significance": "First oral targeting the best-validated pathway; could redefine the oral segment.",
-      "sources": [
-        "ctgov"
-      ]
-    },
-    {
-      "date": "2025-2026",
-      "event": "Zasocitinib (oral TYK2) Phase 3 readouts",
-      "asset": "zasocitinib",
-      "type": "readout",
-      "company": "Takeda",
-      "significance": "Next-gen oral TYK2 vs Sotyktu benchmark.",
-      "sources": [
-        "ctgov"
-      ]
-    },
-    {
-      "date": "2025-2026",
-      "event": "Sonelokimab Phase 3 (psoriasis / HS)",
-      "asset": "sonelokimab",
-      "type": "readout",
-      "company": "MoonLake",
-      "significance": "Differentiated IL-17A/F nanobody; key value inflection for a single-asset biotech.",
-      "sources": [
-        "ctgov"
-      ]
-    }
+    { "date": "2026-03", "event": "FDA approval of icotrokinra (Icotyde)", "asset": "icotrokinra", "company": "Johnson & Johnson", "type": "approval", "significance": "First oral IL-23 receptor antagonist — opens a new oral, first-line systemic category and pressures both orals (Otezla, Sotyktu) and injectable biologics.", "sources": ["s15"] },
+    { "date": "2026-01", "event": "Sotyktu approved for psoriatic arthritis (US/EU)", "asset": "deucravacitinib", "company": "Bristol Myers Squibb", "type": "approval", "significance": "Expands the oral TYK2 franchise into joints, strengthening its position vs orals and biologics.", "sources": ["s22"] },
+    { "date": "2026-Q1", "event": "ESK-001 Phase 3 ONWARD topline (psoriasis)", "asset": "ESK-001", "company": "Alumis", "type": "readout", "significance": "Key test of next-gen oral TYK2 efficacy/safety; a strong result validates the higher-exposure TYK2 thesis.", "sources": ["s18"] },
+    { "date": "2026", "event": "Zasocitinib (TAK-279) regulatory submissions", "asset": "zasocitinib", "company": "Takeda", "type": "pdufa", "significance": "Phase 3 positive and superior to Sotyktu head-to-head; filing sets up a potential best-in-class oral TYK2 launch (guided $3–6B peak).", "sources": ["s16"] },
+    { "date": "2025+", "event": "Stelara biosimilar wave (US)", "asset": "ustekinumab", "company": "multiple (Amgen, Teva, Sandoz/Samsung Bioepis, Celltrion, Biocon)", "type": "patent_expiry", "significance": "Loss of exclusivity from Jan 2025; multibillion-dollar value migration and payer-budget release toward newer agents.", "sources": ["s20"] },
+    { "date": "2028–2029", "event": "Taltz (~2028) and Cosentyx (~2029) US patent expiries", "asset": "ixekizumab / secukinumab", "company": "Eli Lilly / Novartis", "type": "patent_expiry", "significance": "IL-17 class begins its biosimilar cliff; accelerates the shift of premium value to orals and next-gen biologics.", "sources": ["s10", "s11"] },
+    { "date": "2026–2027", "event": "Icotrokinra head-to-head vs ustekinumab & continued ICONIC readouts", "asset": "icotrokinra", "company": "Johnson & Johnson", "type": "data", "significance": "First trial designed to show an oral pill superior to an injectable biologic — would be a paradigm signal for oral-first treatment.", "sources": ["s19"] }
   ],
+
   "evidence": {
-    "summary": "Cross-trial PASI 90 at ~week 16 anchors comparative efficacy (approximate; cross-trial unless a head-to-head is cited). Selective IL-23 and dual IL-17A/F lead on durable near-clearance; oral TYK2 sits below biologics but well above oral PDE4.",
-    "benchmarks": [
-      {
-        "metric": "Approx. PASI 90 at ~wk16 (cross-trial)",
-        "unit": "%",
-        "by": [
-          {
-            "label": "bimekizumab (IL-17A/F)",
-            "value": 85
-          },
-          {
-            "label": "risankizumab (IL-23)",
-            "value": 75
-          },
-          {
-            "label": "guselkumab (IL-23)",
-            "value": 73
-          },
-          {
-            "label": "ixekizumab (IL-17A)",
-            "value": 72
-          },
-          {
-            "label": "secukinumab (IL-17A)",
-            "value": 70
-          },
-          {
-            "label": "ustekinumab (IL-12/23)",
-            "value": 48
-          },
-          {
-            "label": "adalimumab (TNF)",
-            "value": 48
-          },
-          {
-            "label": "deucravacitinib (oral TYK2)",
-            "value": 35
-          },
-          {
-            "label": "apremilast (oral PDE4)",
-            "value": 20
-          }
-        ],
-        "is_estimate": true,
-        "sources": [
-          "fierce",
-          "fda"
-        ]
-      }
-    ],
+    "summary": "Psoriasis has an unusually clean efficacy hierarchy anchored on PASI response (% patients achieving 75/90/100% skin-lesion improvement) at week ~16. Dual IL-17A/F and the best IL-23 agents sit at the top (PASI 90 ~60–70%+), IL-17A and IL-23 next, oral TYK2 in the middle, and PDE4/conventional systemics lower. Head-to-head trials (a hallmark of this field) repeatedly rank newer selective agents above older ones (e.g., bimekizumab > secukinumab/adalimumab/ustekinumab; risankizumab > ustekinumab/adalimumab; deucravacitinib > apremilast; zasocitinib > deucravacitinib). Safety differentiators: IL-17 candidiasis and IBD caution; brodalumab suicidality boxed warning; JAK-class warnings that selective TYK2 has so far avoided.",
     "landmark_trials": [
-      {
-        "name": "UltIMMa-1/2",
-        "nct_id": "NCT02684370",
-        "intervention": "risankizumab",
-        "endpoint": "PASI 90 (wk16)",
-        "result": "~75% vs ~5% placebo; superior to ustekinumab",
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "name": "BE VIVID / BE RADIANT",
-        "nct_id": "NCT03370133",
-        "intervention": "bimekizumab",
-        "endpoint": "PASI 100 (wk16)",
-        "result": "highest complete-clearance rates in class",
-        "sources": [
-          "fierce"
-        ]
-      },
-      {
-        "name": "POETYK PSO-1/2",
-        "nct_id": "NCT03624127",
-        "intervention": "deucravacitinib",
-        "endpoint": "PASI 75 (wk16)",
-        "result": "~58% vs ~13% placebo; superior to apremilast",
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "name": "ERASURE / FIXTURE",
-        "intervention": "secukinumab",
-        "endpoint": "PASI 75 (wk12)",
-        "result": "~77–82% response; FIXTURE showed superiority to etanercept",
-        "sources": [
-          "epmc_secu"
-        ]
-      }
+      { "name": "ERASURE / FIXTURE", "nct_id": "NCT01365455", "intervention": "secukinumab (IL-17A)", "endpoint": "PASI 75 (wk12)", "result": "~77–82% vs ~4% placebo; superior to etanercept", "sources": ["s_lit1"] },
+      { "name": "UltIMMa-1/2", "nct_id": "NCT02684370", "intervention": "risankizumab (IL-23)", "endpoint": "PASI 90 (wk16)", "result": "~75% vs ~5% placebo and superior to ustekinumab", "sources": ["s1"] },
+      { "name": "BE VIVID / BE RADIANT", "nct_id": "NCT03370133", "intervention": "bimekizumab (IL-17A/F)", "endpoint": "PASI 100 (wk16)", "result": "Highest complete-clearance rates; superior to ustekinumab and secukinumab", "sources": ["s1", "s13"] },
+      { "name": "POETYK PSO-1/2", "nct_id": "NCT03624127", "intervention": "deucravacitinib (oral TYK2)", "endpoint": "PASI 75 (wk16)", "result": "~58–69% vs ~9% placebo; superior to apremilast", "sources": ["s14"] },
+      { "name": "ICONIC-LEAD / ADVANCE / TOTAL", "nct_id": "NCT06095102", "intervention": "icotrokinra (oral IL-23R)", "endpoint": "IGA 0/1 (wk24)", "result": "~65–74% clear/almost-clear — industry-leading for an oral, durable to wk52", "sources": ["s19"] },
+      { "name": "Zasocitinib Phase 3 (plaque psoriasis)", "nct_id": "", "intervention": "zasocitinib (oral TYK2)", "endpoint": "PASI 90 (wk16)", "result": "~52–61% PASI 90; superior to Sotyktu in head-to-head", "sources": ["s16"] }
+    ],
+    "benchmarks": [
+      { "metric": "PASI 90 at wk16 (approx.)", "unit": "%", "by": [
+        { "label": "bimekizumab (IL-17A/F)", "value": 85 },
+        { "label": "risankizumab (IL-23)", "value": 75 },
+        { "label": "ixekizumab (IL-17A)", "value": 71 },
+        { "label": "guselkumab (IL-23)", "value": 70 },
+        { "label": "secukinumab (IL-17A)", "value": 65 },
+        { "label": "zasocitinib (oral TYK2)", "value": 57 },
+        { "label": "deucravacitinib (oral TYK2)", "value": 35 },
+        { "label": "apremilast (PDE4)", "value": 20 }
+      ], "sources": ["s_lit1", "s13", "s14", "s16", "s1"] }
     ]
   },
+
   "swot": {
     "strengths": [
-      "Best-validated pathway (IL-23/IL-17) with near-clearance efficacy",
-      "Large, growing, well-reimbursed market",
-      "Multiple durable blockbuster franchises"
+      "Exceptionally well-validated biology (IL-23/IL-17 axis) — the deepest target-validated pipeline in immunology",
+      "Multiple high-efficacy classes already approved; PASI 90 routine",
+      "Large, growing, well-diagnosed patient base with clear severity segmentation"
     ],
     "weaknesses": [
-      "Extremely crowded, well-served biologic space — high bar to differentiate",
-      "Chronic (non-curative) treatment; no disease modification",
-      "Biosimilar erosion compressing legacy value"
+      "Efficacy problem largely solved — differentiation is now incremental and crowded",
+      "Chronic, relapsing disease with no cure/durable remission after stopping",
+      "Access, cost, and injection burden leave much of the eligible population untreated"
     ],
     "opportunities": [
-      "Oral biologic-level efficacy (TYK2, oral IL-23R)",
-      "Durable remission / disease modification",
-      "Hard-to-treat sites, pediatrics, and global access"
+      "Oral biologic-grade therapy (TYK2, IL-23R) to expand and pull-forward the treated population",
+      "Convenience/durability (1–2×/year dosing) as antibodies commoditize",
+      "Value migration from the 2025–2029 biosimilar cliff (Stelara → Humira → IL-17s)"
     ],
     "threats": [
-      "Fast-following orals and biosimilars",
-      "Payer step-edits and pricing pressure",
-      "Need for head-to-head superiority to win share"
+      "Biosimilar erosion compressing market value even as volumes grow",
+      "Payer step-therapy and pricing pressure",
+      "Class-safety overhangs (JAK warnings; IL-17 IBD/candidiasis) shaping positioning"
     ],
-    "sources": [
-      "fierce",
-      "fbi"
-    ]
+    "sources": ["s5", "s15", "s16", "s20"]
   },
+
   "sources": [
-    {
-      "id": "npf",
-      "type": "web",
-      "name": "National Psoriasis Foundation",
-      "title": "Psoriasis statistics / prevalence",
-      "url": "https://www.psoriasis.org/psoriasis-statistics/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "gbd",
-      "type": "publication",
-      "name": "GBD 2019",
-      "title": "The Global, Regional, and National Burden of Psoriasis: GBD 2019 Study",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8716585/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "gpa",
-      "type": "web",
-      "name": "Global Psoriasis Atlas",
-      "title": "Explore the data",
-      "url": "https://www.globalpsoriasisatlas.org/en/explore",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "usprev",
-      "type": "publication",
-      "name": "JAMA Dermatol",
-      "title": "Psoriasis Prevalence in Adults in the United States",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8246333/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "fbi",
-      "type": "web",
-      "name": "Fortune Business Insights",
-      "title": "Psoriasis Treatment Market ($27.2B, 2024)",
-      "url": "https://www.fortunebusinessinsights.com/industry-reports/psoriasis-treatment-market-100600",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "smr",
-      "type": "web",
-      "name": "Strategic Market Research",
-      "title": "Psoriasis Treatment Market ($32.5B 2024 → $51.2B 2030, 8.1% CAGR)",
-      "url": "https://www.strategicmarketresearch.com/market-report/psoriasis-treatment-market",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "gvr",
-      "type": "web",
-      "name": "Grand View Research",
-      "title": "Psoriasis Drugs Market ($39.11B by 2030)",
-      "url": "https://www.grandviewresearch.com/press-release/global-psoriasis-drugs-market",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "xtalks",
-      "type": "web",
-      "name": "Xtalks",
-      "title": "Top 10 Best-Selling Immunology Drugs by Recent Sales Data",
-      "url": "https://xtalks.com/top-10-best-selling-immunology-drugs-by-recent-sales-data-4025/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "ibj",
-      "type": "web",
-      "name": "Indianapolis Business Journal",
-      "title": "Lilly's Taltz approaching blockbuster status",
-      "url": "https://www.ibj.com/articles/lillys-hot-selling-taltz-approaching-blockbuster-status",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "fierce",
-      "type": "web",
-      "name": "FiercePharma",
-      "title": "AAD: AbbVie's Skyrizi clears psoriasis where Cosentyx, Taltz couldn't",
-      "url": "https://www.fiercepharma.com/pharma/abbvies-skyrizi-clears-psoriasis-symptoms-where-novartis-cosentyx-lillys-taltz-couldnt",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "ctgov",
-      "type": "api",
-      "name": "ClinicalTrials.gov",
-      "title": "Interventional trials in plaque psoriasis (live pull: 901 studies)",
-      "url": "https://clinicaltrials.gov/",
-      "accessed": "2026-07-23",
-      "note": "live API pull 2026-07-23 via scripts/fetch_clinical_trials.py"
-    },
-    {
-      "id": "ot",
-      "type": "api",
-      "name": "Open Targets Platform",
-      "title": "Psoriasis vulgaris (EFO_1001494): 946 associated targets, 167 drug candidates",
-      "url": "https://platform.opentargets.org/disease/EFO_1001494",
-      "accessed": "2026-07-23",
-      "note": "live API pull 2026-07-23 via scripts/fetch_open_targets.py"
-    },
-    {
-      "id": "fda",
-      "type": "label",
-      "name": "openFDA / Drugs@FDA labels",
-      "title": "FDA approvals, classes & boxed warnings for psoriasis therapies",
-      "url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
-      "accessed": "2026-07-23",
-      "note": "live openFDA label pull 2026-07-23"
-    },
-    {
-      "id": "epmc_secu",
-      "type": "publication",
-      "name": "NEJM (via Europe PMC)",
-      "title": "Secukinumab in plaque psoriasis — results of two phase 3 trials (ERASURE/FIXTURE)",
-      "url": "https://europepmc.org/article/MED/25007392",
-      "accessed": "2026-07-23"
-    }
+    { "id": "s1", "type": "api", "name": "ClinicalTrials.gov", "title": "Interventional studies for plaque psoriasis (API v2)", "url": "https://clinicaltrials.gov/api/v2/studies?query.cond=plaque%20psoriasis", "accessed": "2026-07-23", "note": "901 interventional studies; assets, phases, sponsors, statuses." },
+    { "id": "s2", "type": "api", "name": "Open Targets Platform", "title": "Psoriasis (EFO_1001494) — associated targets & drug candidates", "url": "https://platform.opentargets.org/disease/EFO_1001494", "accessed": "2026-07-23", "note": "167 drug candidates, 85 mechanism-of-action groups; target list for biology panel." },
+    { "id": "s3", "type": "label", "name": "openFDA", "title": "Drug labels & Drugs@FDA mentioning psoriasis", "url": "https://api.fda.gov/drug/label.json?search=indications_and_usage:%22psoriasis%22", "accessed": "2026-07-23", "note": "Approved products, routes, boxed warnings (acitretin, methotrexate, adalimumab)." },
+    { "id": "s_lit1", "type": "publication", "name": "Europe PMC / NEJM", "title": "Langley et al., Secukinumab in plaque psoriasis — results of two phase 3 trials (ERASURE/FIXTURE)", "url": "https://europepmc.org/article/MED/25007392", "accessed": "2026-07-23", "note": "Landmark IL-17A pivotal efficacy (PASI 75 benchmark)." },
+    { "id": "s5", "type": "web", "name": "Grand View Research", "title": "Psoriasis Drugs Market Size & Share, Industry Report 2030", "url": "https://www.grandviewresearch.com/industry-analysis/psoriasis-drugs-market", "accessed": "2026-07-23", "note": "Market $21.1B (2024) → $39.1B (2030), 10.9% CAGR; biologics ~46%; NA ~39%." },
+    { "id": "s6", "type": "filing", "name": "AbbVie", "title": "AbbVie Reports Full-Year and Fourth-Quarter 2024 Financial Results", "url": "https://www.prnewswire.com/news-releases/abbvie-reports-full-year-and-fourth-quarter-2024-financial-results-302364968.html", "accessed": "2026-07-23", "note": "Skyrizi FY2024 net revenue $11.718B; ~$17.5B in 2025." },
+    { "id": "s7", "type": "publication", "name": "GBD 2021 (PMC)", "title": "Global Trends and Future Predictions of Psoriasis Burden: Insights from GBD 2021", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12744867/", "accessed": "2026-07-23", "note": "Global prevalence ~23M (1990) → ~43M (2021); higher in high-SDI regions." },
+    { "id": "s8", "type": "publication", "name": "JAMA Dermatology (PMC)", "title": "Psoriasis Prevalence in Adults in the United States", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8246333/", "accessed": "2026-07-23", "note": "~7.55M US adults ≥20y (~3%); ~21.5% report moderate-to-severe." },
+    { "id": "s9", "type": "filing", "name": "Johnson & Johnson", "title": "Johnson & Johnson Form 10-K FY2024 (immunology sales)", "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040625000038/jnj-20241229.htm", "accessed": "2026-07-23", "note": "Tremfya $3.67B (+16.6%); Stelara ~$10.4B global, declining on biosimilars." },
+    { "id": "s10", "type": "web", "name": "DelveInsight / drugpatentwatch", "title": "Taltz market ascent; Taltz patent expiry", "url": "https://www.globenewswire.com/news-release/2025/02/24/3031431/0/en/TALTZ-s-Rapid-Market-Ascent-Reflects-its-Unparalleled-Ability-to-Transform-the-Treatment-Landscape-for-Autoimmune-Diseases-DelveInsight.html", "accessed": "2026-07-23", "note": "Taltz FY2024 ~$3.2B; US patent expiry ~2028." },
+    { "id": "s11", "type": "web", "name": "Grand View Research (market trends)", "title": "Secukinumab (Cosentyx): Navigating the Patent Cliff", "url": "https://www.grandviewresearch.com/market-trends/secukinumab-navigating-patent-cliff-strategic-implications", "accessed": "2026-07-23", "note": "Cosentyx ~$6.14B (2024); US core patent ~2029." },
+    { "id": "s12", "type": "filing", "name": "Amgen", "title": "Amgen Reports Fourth Quarter and Full Year 2024 Financial Results", "url": "https://www.prnewswire.com/news-releases/amgen-reports-fourth-quarter-and-full-year-2024-financial-results-302367906.html", "accessed": "2026-07-23", "note": "Otezla FY2024 ~$2.2B; down ~3–4% on price/competition." },
+    { "id": "s13", "type": "web", "name": "FiercePharma / UCB", "title": "UCB Bimzelx crosses blockbuster threshold", "url": "https://www.fiercepharma.com/pharma/ucbs-fast-growing-powerhouse-bimzelx-crosses-blockbuster-sales-threshold-back-heavy-hitting", "accessed": "2026-07-23", "note": "Bimzelx €607M ($716M) 2024 → €2.22B ($2.6B) 2025." },
+    { "id": "s14", "type": "filing", "name": "Bristol Myers Squibb", "title": "Bristol Myers Squibb Form 10-K FY2024 (Sotyktu)", "url": "https://www.sec.gov/Archives/edgar/data/14272/000001427225000039/bmy-20241231.htm", "accessed": "2026-07-23", "note": "Sotyktu US revenues +21% in 2024; oral selective TYK2; list-price discounting for access." },
+    { "id": "s15", "type": "web", "name": "Johnson & Johnson", "title": "FDA approval of ICOTYDE (icotrokinra) — first oral IL-23R antagonist", "url": "https://www.jnj.com/media-center/press-releases/fda-approval-of-icotyde-icotrokinra-ushers-in-new-era-for-first-line-systemic-treatment-of-plaque-psoriasis-with-a-targeted-oral-peptide", "accessed": "2026-07-23", "note": "Approved Mar 18 2026 for moderate-to-severe plaque psoriasis (≥12y, ≥40kg)." },
+    { "id": "s16", "type": "web", "name": "BioPharma Dive", "title": "Takeda says $4B TYK2 drug (zasocitinib) succeeds in large psoriasis studies", "url": "https://www.biopharmadive.com/news/takeda-zasocitinib-tyk2-psoriasis-drug-results-nimbus/808237/", "accessed": "2026-07-23", "note": "TAK-279 Ph3 positive (PASI 90 ~52–61%); beat Sotyktu head-to-head; filings 2026; from $4B Nimbus deal (2022)." },
+    { "id": "s17", "type": "web", "name": "Eli Lilly / BioPharma Dive", "title": "Lilly to Acquire DICE Therapeutics ($2.4B)", "url": "https://www.prnewswire.com/news-releases/lilly-to-acquire-dice-therapeutics-to-advance-innovation-in-immunology-301854537.html", "accessed": "2026-07-23", "note": "2023 $2.4B acquisition for oral IL-17 antagonists (DC-806/DC-853); lead later deprioritized." },
+    { "id": "s18", "type": "web", "name": "Alumis", "title": "Alumis and ACELYRIN to Merge; ESK-001 Phase 3 ONWARD", "url": "https://investors.alumis.com/news-releases/news-release-details/alumis-and-acelyrin-merge-creating-late-stage-clinical-biopharma", "accessed": "2026-07-23", "note": "All-stock merger (2025); ESK-001 oral TYK2 Ph3 topline expected 1Q2026." },
+    { "id": "s19", "type": "web", "name": "Johnson & Johnson", "title": "Icotrokinra Phase 3 ICONIC results (LEAD/ADVANCE/TOTAL)", "url": "https://www.jnj.com/media-center/press-releases/icotrokinra-results-show-potential-to-set-a-new-standard-of-treatment-in-plaque-psoriasis", "accessed": "2026-07-23", "note": "IGA 0/1 ~65–74% at wk24; durable to wk52; scalp/genital efficacy; head-to-head vs ustekinumab initiated." },
+    { "id": "s20", "type": "web", "name": "Managed Healthcare Executive", "title": "Stelara biosimilars launch (2025)", "url": "https://www.managedhealthcareexecutive.com/view/second-biosimilar-of-stelara-launches", "accessed": "2026-07-23", "note": "US loss of exclusivity 2025; multiple biosimilars (Wezlana, Selarsdi, Pyzchiva, Yesintek, Steqeyma)." },
+    { "id": "s22", "type": "web", "name": "Bristol Myers Squibb", "title": "US FDA Approves Sotyktu (deucravacitinib) for Active Psoriatic Arthritis", "url": "https://news.bms.com/news/corporate-financial/2026/U-S--FDA-Approves-Bristol-Myers-Squibbs-Sotyktu-deucravacitinib-for-the-Treatment-of-Adults-with-Active-Psoriatic-Arthritis/default.aspx", "accessed": "2026-07-23", "note": "Sotyktu PsA approval (2026); label expansion beyond plaque psoriasis." }
   ],
+
   "disclaimers": [
     "Informational only. Not medical or investment advice.",
-    "Demonstration atlas; efficacy figures are approximate cross-trial values. Verify against primary sources before relying on any number."
+    "Generated from public data and cited web research as of 2026-07-23; verify before relying on any figure.",
+    "Efficacy benchmarks are approximate, drawn from separate pivotal trials with differing populations/designs — cross-trial comparisons are indicative, not head-to-head unless stated.",
+    "Sales are reported full-year 2024 unless noted; some figures are global and some US-only per the cited source."
   ]
 }
