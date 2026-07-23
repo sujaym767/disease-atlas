@@ -9,469 +9,373 @@
   color-scheme:light;
   --plane:#f4f3ee; --surface:#fcfcfb; --panel:#ffffff;
   --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --line:#e1e0d9; --ring:rgba(11,11,11,.12);
-  /* validated categorical slots (dataviz reference palette, light) */
   --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --sN:#9a978f;
+  --good:#0ca30c; --warn:#c98500; --crit:#d03b3b;
   --shadow:0 1px 2px rgba(20,25,40,.06),0 6px 20px rgba(20,25,40,.06);
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
-  --plane:#0d0d0d; --surface:#1a1a19; --panel:#20201e;
-  --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --line:#2c2c2a; --ring:rgba(255,255,255,.14);
+  --plane:#0d0d0d; --surface:#1a1a19; --panel:#20201e; --ink:#fff; --ink2:#c3c2b7; --muted:#898781; --line:#2c2c2a; --ring:rgba(255,255,255,.14);
   --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --sN:#7d7a72;
   --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);
 }}
 :root[data-theme="dark"]{
-  --plane:#0d0d0d; --surface:#1a1a19; --panel:#20201e;
-  --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781; --line:#2c2c2a; --ring:rgba(255,255,255,.14);
+  --plane:#0d0d0d; --surface:#1a1a19; --panel:#20201e; --ink:#fff; --ink2:#c3c2b7; --muted:#898781; --line:#2c2c2a; --ring:rgba(255,255,255,.14);
   --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --sN:#7d7a72;
   --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
-body{background:var(--plane);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;overflow:hidden}
+body{background:var(--plane);color:var(--ink);font-family:var(--sans);font-size:13.5px;line-height:1.42;overflow:hidden}
 button{font-family:inherit;cursor:pointer}
-.tabnum{font-variant-numeric:tabular-nums}
-
-/* layout */
+.tab{font-variant-numeric:tabular-nums}
 .app{display:grid;grid-template-rows:auto auto 1fr;height:100vh}
-header.top{display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line);z-index:5}
-header .brand{font-weight:750;letter-spacing:-.01em;font-size:15px}
-header .brand small{display:block;color:var(--muted);font-weight:500;font-size:11px;letter-spacing:.02em}
-header .stats{display:flex;gap:12px;margin-left:6px;flex-wrap:wrap}
-.kpi{background:var(--plane);border:1px solid var(--line);border-radius:9px;padding:5px 10px;min-width:0}
-.kpi b{font-size:15px;letter-spacing:-.02em}
-.kpi span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
-header .sp{flex:1}
-.search{background:var(--plane);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 11px;font-size:13px;width:190px}
-.ghost{background:var(--plane);border:1px solid var(--line);color:var(--ink2);border-radius:8px;padding:7px 10px;font-size:12px}
+header.top{display:flex;align-items:center;gap:12px;padding:9px 15px;background:var(--surface);border-bottom:1px solid var(--line);z-index:6}
+.brand{font-weight:750;font-size:14.5px;letter-spacing:-.01em;white-space:nowrap}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:10px;letter-spacing:.02em}
+.stats{display:flex;gap:8px;margin-left:4px;flex-wrap:nowrap;overflow:hidden}
+.kpi{background:var(--plane);border:1px solid var(--line);border-radius:8px;padding:4px 9px;white-space:nowrap}
+.kpi b{font-size:14px;letter-spacing:-.02em}.kpi span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.sp{flex:1}
+.search{background:var(--plane);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:12.5px;width:180px}
+.ghost{background:var(--plane);border:1px solid var(--line);color:var(--ink2);border-radius:8px;padding:6px 9px;font-size:11.5px}
 .ghost:hover{color:var(--ink)}
-
-/* lens + legend bar */
-.lensbar{display:flex;align-items:center;gap:12px;padding:7px 16px;background:var(--surface);border-bottom:1px solid var(--line);flex-wrap:wrap}
-.seg{display:inline-flex;background:var(--plane);border:1px solid var(--line);border-radius:9px;padding:2px;gap:2px}
-.seg button{border:0;background:transparent;color:var(--ink2);border-radius:7px;padding:5px 10px;font-size:12px}
+.lensbar{display:flex;align-items:center;gap:10px;padding:6px 15px;background:var(--surface);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--plane);border:1px solid var(--line);border-radius:8px;padding:2px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--ink2);border-radius:6px;padding:4px 9px;font-size:11.5px}
 .seg button.on{background:var(--panel);color:var(--ink);box-shadow:var(--shadow);font-weight:650}
-.legend{display:flex;gap:5px 12px;flex-wrap:wrap;align-items:center;font-size:11.5px;color:var(--ink2)}
-.legend .sw{display:inline-flex;align-items:center;gap:5px;cursor:default}
-.legend i{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
-.hint{color:var(--muted);font-size:11.5px;margin-left:auto}
-
-/* stage */
-.stage{position:relative;overflow:auto;padding:14px 16px 8px}
+.legend{display:flex;gap:4px 10px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--ink2)}
+.legend .sw{display:inline-flex;align-items:center;gap:4px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+.hint{color:var(--muted);font-size:11px;margin-left:auto}
+.stage{position:relative;overflow:auto;padding:12px 15px 20px}
 .wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}
-.wires path{fill:none;stroke-linecap:round;opacity:0;transition:opacity .25s}
-.wires.show path{opacity:.85}
-
-/* landscape grid: col 1 = phase labels, then one column per MoA lane */
-.land{display:grid;gap:8px;position:relative;z-index:1;min-width:max-content}
-.phrow-label{position:sticky;left:0;z-index:2;display:flex;align-items:center;justify-content:flex-end;
-  padding-right:8px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);
-  background:linear-gradient(90deg,var(--plane) 70%,transparent);white-space:nowrap}
-.lane-head{display:flex;flex-direction:column;gap:2px;padding:7px 9px;border-radius:9px 9px 0 0;cursor:pointer;
-  border:1px solid var(--line);border-bottom:2px solid var(--laneColor,var(--sN));background:var(--surface);position:sticky;top:0;z-index:2}
-.lane-head .nm{font-weight:700;font-size:12px;line-height:1.15}
-.lane-head .mt{color:var(--muted);font-size:10px}
-.lane-head .vbadge{align-self:flex-start;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border-radius:5px;margin-top:2px}
-.cell{display:flex;flex-direction:column;gap:6px;padding:2px;border-left:1px dashed var(--line);min-height:16px}
-.cell.empty{min-height:8px;border-left-style:dotted;opacity:.5}
-
-/* drug card */
-.card{position:relative;border:1px solid var(--line);border-left:4px solid var(--laneColor,var(--sN));border-radius:8px;
-  background:color-mix(in srgb,var(--laneColor,var(--sN)) 9%,var(--surface));padding:6px 8px;cursor:pointer;transition:transform .12s,box-shadow .12s,opacity .2s}
+.wires path{fill:none;stroke-linecap:round;opacity:0;transition:opacity .25s}.wires.show path{opacity:.85}
+/* landscape */
+.land{display:grid;gap:6px;position:relative;z-index:1;min-width:max-content}
+.phlab{position:sticky;left:0;z-index:2;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;
+  font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+  background:linear-gradient(90deg,var(--plane) 72%,transparent);white-space:nowrap}
+.lane-head{padding:5px 8px;border-radius:8px 8px 0 0;cursor:pointer;border:1px solid var(--line);
+  border-bottom:2px solid var(--laneColor,var(--sN));background:var(--surface);position:sticky;top:0;z-index:2}
+.lane-head .nm{font-weight:700;font-size:11px;line-height:1.12}
+.lane-head .mt{color:var(--muted);font-size:9px}
+.cell{display:flex;flex-direction:column;gap:5px;padding:2px;border-left:1px dashed var(--line);min-height:12px}
+.cell.empty{min-height:6px;border-left-style:dotted;opacity:.45}
+/* dense drug card */
+.card{position:relative;border:1px solid var(--line);border-left:3px solid var(--laneColor,var(--sN));border-radius:7px;
+  background:color-mix(in srgb,var(--laneColor,var(--sN)) 8%,var(--surface));padding:5px 7px;cursor:pointer;transition:transform .1s,box-shadow .1s,opacity .2s;width:172px}
 .card:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-.card .dn{font-weight:680;font-size:12.5px;line-height:1.1}
-.card .dm{color:var(--ink2);font-size:10.5px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:1px}
-.card .sales{margin-top:4px;height:4px;border-radius:3px;background:var(--laneColor,var(--sN));opacity:.85}
-.card .salesv{font-size:10px;color:var(--muted);font-weight:600}
-.pill{font-size:9.5px;padding:0 5px;border-radius:5px;background:var(--plane);border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
-
-/* strips */
-.strips{display:grid;grid-template-columns:1.4fr 1fr 1.1fr;gap:12px;padding:6px 16px 16px}
-.strip{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:10px 12px;min-width:0}
-.strip h4{margin:0 0 7px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--line);background:var(--plane);border-radius:999px;padding:4px 10px;font-size:12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:opacity .2s}
-.chip:hover{border-color:var(--ring)}
-.chip .dot{width:8px;height:8px;border-radius:50%;flex:none}
-.chip .ct{color:var(--muted);font-size:10.5px}
+.card.disc{border-style:dashed;opacity:.7}.card.disc .dn{text-decoration:line-through}
+.card .dn{font-weight:680;font-size:11.5px;line-height:1.08}
+.card .co{color:var(--ink2);font-size:10px;margin-top:1px}
+.card .sub{color:var(--muted);font-size:9px;margin-top:1px}
+.card .badges{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px}
+.bdg{font-size:8.5px;padding:0 4px;border-radius:4px;background:var(--plane);border:1px solid var(--line);color:var(--ink2);white-space:nowrap;line-height:1.5}
+.bdg.p{font-weight:700}
+.mk{font-size:9px;font-weight:800;padding:0 3px;border-radius:4px}
+.mk.bio{background:color-mix(in srgb,var(--s1) 16%,var(--surface));color:var(--s1)}
+.mk.combo{background:color-mix(in srgb,var(--s3) 16%,var(--surface));color:var(--s3)}
+.mk.warn{color:var(--crit)}
+.card .pasi{margin-top:3px;font-size:9px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.card .pbar{flex:1;height:3px;border-radius:2px;background:var(--line);overflow:hidden}
+.card .pbar i{display:block;height:100%;background:var(--laneColor,var(--sN))}
+.card .sales{margin-top:3px;font-size:9.5px;color:var(--muted);font-weight:600}
+/* panels */
+.panels{display:grid;grid-template-columns:1.5fr 1fr;gap:11px;margin-top:14px}
+.panels2{display:grid;grid-template-columns:1.1fr 1fr 1.2fr;gap:11px;margin-top:11px}
+.pane{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.pane h4{margin:0 0 8px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* matrix */
+.mx{border-collapse:separate;border-spacing:0;font-size:10px;width:100%}
+.mx th{color:var(--muted);font-weight:600;font-size:9px;padding:3px 2px;text-align:center;cursor:pointer;vertical-align:bottom}
+.mx th.rh{text-align:left}
+.mx td{text-align:center;padding:2px}
+.mx td.rh{text-align:left;font-size:10px;font-weight:600;white-space:nowrap;cursor:pointer;padding-right:6px}
+.mx .cellv{display:inline-block;width:20px;height:18px;line-height:18px;border-radius:4px;font-weight:700;font-size:9.5px}
+/* bars */
+.bar{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;cursor:pointer}
+.bar .lab{width:120px;flex:none;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .track{flex:1;background:var(--plane);border-radius:5px;height:13px;overflow:hidden}
+.bar .fill{height:100%;border-radius:5px}
+.bar .val{width:34px;flex:none;text-align:right;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1px solid var(--line);background:var(--plane);border-radius:999px;padding:3px 9px;font-size:11px;cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.chip:hover{border-color:var(--ring)}.chip .dot{width:7px;height:7px;border-radius:50%;flex:none}.chip .ct{color:var(--muted);font-size:9.5px}
 .tl{display:flex;flex-direction:column;gap:6px}
-.tl .ev{display:flex;gap:8px;font-size:12px;cursor:pointer;align-items:baseline}
-.tl .ev .dt{color:var(--s1);font-weight:700;font-size:11px;white-space:nowrap;min-width:66px}
-
-/* focus states */
-.dimmed .card:not(.hi):not(.focus),.dimmed .chip:not(.hi):not(.focus),
-.dimmed .lane-head:not(.hi):not(.focus),.dimmed .ev:not(.hi){opacity:.16;filter:saturate(.4)}
+.tl .ev{display:flex;gap:7px;font-size:11px;cursor:pointer;align-items:baseline}
+.tl .ev .dt{color:var(--s1);font-weight:700;font-size:10px;white-space:nowrap;min-width:52px}
+.tl .ev .kd{font-size:8px;font-weight:800;text-transform:uppercase;padding:0 4px;border-radius:4px;background:var(--plane);border:1px solid var(--line);color:var(--muted)}
+/* focus */
+.dimmed .card:not(.hi):not(.focus),.dimmed .chip:not(.hi):not(.focus),.dimmed .lane-head:not(.hi):not(.focus),.dimmed .bar:not(.hi),.dimmed .tl .ev:not(.hi){opacity:.14;filter:saturate(.4)}
 .card.hi,.chip.hi,.lane-head.hi{outline:2px solid var(--laneColor,var(--s1));outline-offset:1px}
-.card.focus{outline:2.5px solid var(--ink);outline-offset:2px;box-shadow:var(--shadow)}
-.chip.focus,.lane-head.focus{outline:2.5px solid var(--ink);outline-offset:1px}
-
-/* detail rail */
-.rail{position:fixed;top:0;right:0;height:100vh;width:360px;max-width:92vw;background:var(--panel);border-left:1px solid var(--line);
-  box-shadow:-8px 0 30px rgba(0,0,0,.10);transform:translateX(102%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:20;display:flex;flex-direction:column}
+.card.focus,.chip.focus,.lane-head.focus{outline:2.5px solid var(--ink);outline-offset:2px}
+/* rail */
+.rail{position:fixed;top:0;right:0;height:100vh;width:370px;max-width:92vw;background:var(--panel);border-left:1px solid var(--line);box-shadow:-8px 0 30px rgba(0,0,0,.1);transform:translateX(102%);transition:transform .26s cubic-bezier(.4,0,.2,1);z-index:20;display:flex;flex-direction:column}
 .rail.open{transform:translateX(0)}
-.rail header{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
-.rail .typetag{font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:6px;color:#fff}
-.rail h2{margin:2px 0 0;font-size:18px;letter-spacing:-.01em;line-height:1.15}
-.rail .sub{color:var(--muted);font-size:12px}
-.rail .x{margin-left:auto;background:transparent;border:0;color:var(--muted);font-size:20px;line-height:1}
-.rail .body{overflow:auto;padding:12px 16px 30px}
-.rail .kpis{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.rail .kpis .k{background:var(--plane);border:1px solid var(--line);border-radius:9px;padding:7px 10px}
-.rail .kpis .k b{font-size:16px}
-.rail .kpis .k span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
-.rel{margin-top:12px}
-.rel h5{margin:0 0 5px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.rel .chips .chip{font-size:11.5px;padding:3px 9px}
-.prose{font-size:12.5px;color:var(--ink2);margin:6px 0}
-.egograph{width:100%;height:210px;margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.rail header{display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-bottom:1px solid var(--line)}
+.rail .typetag{font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;color:#fff}
+.rail h2{margin:2px 0 0;font-size:17px;letter-spacing:-.01em;line-height:1.14}
+.rail .sub{color:var(--muted);font-size:11.5px}
+.rail .x{margin-left:auto;background:transparent;border:0;color:var(--muted);font-size:19px;line-height:1}
+.rail .body{overflow:auto;padding:11px 15px 30px}
+.kpis{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.kpis .k{background:var(--plane);border:1px solid var(--line);border-radius:8px;padding:6px 9px}
+.kpis .k b{font-size:14px}.kpis .k span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.prose{font-size:12px;color:var(--ink2);margin:5px 0}
+.safety{font-size:11.5px;border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;padding:7px 9px;background:color-mix(in srgb,var(--warn) 6%,var(--surface));margin:8px 0}
+.egograph{width:100%;height:200px;margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:9px}
 .egograph text{font-family:var(--sans);fill:var(--ink)}
-.srcs{font-size:11px;color:var(--muted);margin-top:10px}
-.srcs a{color:var(--s1);text-decoration:none}
-
-.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.001);z-index:15;display:none}
-.backdrop.on{display:block}
-@media (max-width:900px){ .strips{grid-template-columns:1fr} header .stats{display:none} }
-</style>
-</head>
+.rel{margin-top:11px}.rel h5{margin:0 0 4px;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rel .chip{font-size:11px;padding:2px 8px}
+.srcs{font-size:10.5px;color:var(--muted);margin-top:9px}.srcs a{color:var(--s1);text-decoration:none}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.001);z-index:15;display:none}.backdrop.on{display:block}
+@media(max-width:1000px){.panels,.panels2{grid-template-columns:1fr} .stats{display:none}}
+</style></head>
 <body>
 <div class="app">
   <header class="top">
     <div class="brand" id="brand">Atlas</div>
     <div class="stats" id="kpis"></div>
     <div class="sp"></div>
-    <input class="search" id="search" placeholder="Search drug, company, target…" list="allnodes">
-    <datalist id="allnodes"></datalist>
-    <button class="ghost" id="reset">Reset ⎋</button>
-    <button class="ghost" id="theme">◐</button>
+    <input class="search" id="search" placeholder="Search…" list="allnodes"><datalist id="allnodes"></datalist>
+    <button class="ghost" id="reset">Reset ⎋</button><button class="ghost" id="theme">◐</button>
   </header>
-
   <div class="lensbar">
-    <span style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Color by</span>
+    <span style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Color by</span>
     <div class="seg" id="lens">
-      <button data-lens="moa" class="on">MoA class</button>
-      <button data-lens="modality">Modality</button>
-      <button data-lens="validation">Validation</button>
-      <button data-lens="phase">Phase</button>
-    </div>
+      <button data-lens="moa" class="on">Mechanism</button><button data-lens="modality">Modality</button>
+      <button data-lens="phase">Phase</button></div>
     <div class="legend" id="legend"></div>
-    <span class="hint">Click any drug · company · MoA · target to spotlight its relationships</span>
+    <span class="hint" id="hint">Click any drug · company · mechanism · target to spotlight</span>
   </div>
-
   <div class="stage" id="stage">
     <svg class="wires" id="wires"></svg>
     <div class="land" id="land"></div>
-    <div class="strips">
-      <div class="strip"><h4>Companies — click to see the MoAs they're pursuing</h4><div class="chips" id="companies"></div></div>
-      <div class="strip"><h4>Targets &amp; biology — click to trace the drugs</h4><div class="chips" id="targets"></div></div>
-      <div class="strip"><h4>Catalysts &amp; milestones</h4><div class="tl" id="catalysts"></div></div>
+    <div class="panels">
+      <div class="pane"><h4>Competitive matrix — company × mechanism (asset count)</h4><div style="overflow:auto"><table class="mx" id="matrix"></table></div></div>
+      <div class="pane"><h4>Efficacy benchmark — PASI 90 at wk 12–16 (cross-trial, NMA-anchored)</h4><div id="benchmark"></div></div>
+    </div>
+    <div class="panels2">
+      <div class="pane"><h4>Companies — click to see the mechanisms they're pursuing</h4><div class="chips" id="companies"></div></div>
+      <div class="pane"><h4>Targets &amp; biology (Open Targets association)</h4><div class="chips" id="targets"></div></div>
+      <div class="pane"><h4>Catalysts &amp; exclusivity — 2023→2033</h4><div class="tl" id="catalysts"></div></div>
     </div>
   </div>
 </div>
-
 <div class="backdrop" id="backdrop"></div>
-<aside class="rail" id="rail" aria-live="polite">
-  <header><div><div class="typetag" id="r-type">—</div><h2 id="r-name">—</h2><div class="sub" id="r-sub"></div></div><button class="x" id="r-close">×</button></header>
-  <div class="body" id="r-body"></div>
-</aside>
+<aside class="rail" id="rail"><header><div><div class="typetag" id="r-type">—</div><h2 id="r-name">—</h2><div class="sub" id="r-sub"></div></div><button class="x" id="r-close">×</button></header><div class="body" id="r-body"></div></aside>
 
 <script id="graph" type="application/json">__GRAPH__</script>
 <script>
 "use strict";
-const G = JSON.parse(document.getElementById("graph").textContent);
-const N = Object.fromEntries(G.nodes.map(n=>[n.id,n]));
-const SRC = Object.fromEntries((G.sources||[]).map(s=>[s.id,s]));
-const OUT={}, INC={};
-G.edges.forEach(e=>{ (OUT[e.source]=OUT[e.source]||[]).push(e); (INC[e.target]=INC[e.target]||[]).push(e); });
-const nbrsOut=(id,t)=>(OUT[id]||[]).filter(e=>!t||e.type===t).map(e=>({edge:e,node:N[e.target]}));
-const nbrsIn =(id,t)=>(INC[id]||[]).filter(e=>!t||e.type===t).map(e=>({edge:e,node:N[e.source]}));
+const G=JSON.parse(document.getElementById("graph").textContent);
+const N=Object.fromEntries(G.nodes.map(n=>[n.id,n])), SRC=Object.fromEntries((G.sources||[]).map(s=>[s.id,s]));
+const OUT={},INC={}; G.edges.forEach(e=>{(OUT[e.source]=OUT[e.source]||[]).push(e);(INC[e.target]=INC[e.target]||[]).push(e);});
+const oN=(id,t)=>(OUT[id]||[]).filter(e=>!t||e.type===t).map(e=>N[e.target]);
+const iN=(id,t)=>(INC[id]||[]).filter(e=>!t||e.type===t).map(e=>N[e.source]);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function el(t,a,k){const n=document.createElement(t);if(a)for(const x in a){if(x==="html")n.innerHTML=a[x];else if(x==="text")n.textContent=a[x];else if(x==="cls")n.className=a[x];else if(x[0]==="o"&&x[1]==="n")n.addEventListener(x.slice(2),a[x]);else if(a[x]!=null)n.setAttribute(x,a[x]);}for(const c of [].concat(k||[])){if(c==null)continue;n.append(c.nodeType?c:document.createTextNode(c));}return n;}
-
-// ---- palette / lenses ----
-const SLOT=["--s1","--s2","--s3","--s4","--s5","--s6","--s7","--s8"];
+function el(t,a,k){const n=document.createElement(t);if(a)for(const x in a){if(x==="html")n.innerHTML=a[x];else if(x==="text")n.textContent=a[x];else if(x==="cls")n.className=a[x];else if(x[0]=="o"&&x[1]=="n")n.addEventListener(x.slice(2),a[x]);else if(a[x]!=null)n.setAttribute(x,a[x]);}for(const c of[].concat(k||[])){if(c==null)continue;n.append(c.nodeType?c:document.createTextNode(c));}return n;}
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const PHASES=[["approved","Approved"],["filed","Filed"],["phase3","Phase 3"],["phase2_3","Phase 2/3"],["phase2","Phase 2"],["phase1_2","Phase 1/2"],["phase1","Phase 1"],["preclinical","Preclinical"]];
-const PHCOLOR={preclinical:"#cde2fb",phase1:"#9ec5f4",phase1_2:"#86b6ef",phase2:"#6da7ec",phase2_3:"#5598e7",phase3:"#3987e5",filed:"#256abf",approved:"#184f95"};
-const VALID={validated:"--s1",emerging:"--s3",unproven:"--s7",failed:"--s8"};
-const VLABEL={validated:"Validated",emerging:"Emerging",unproven:"Unproven",failed:"Failed"};
-
-// order MoA lanes: approved-first, then by drug count; assign palette slots in that order
-const drugsOfMoa = m => nbrsIn(m.id,"HAS_MECHANISM").map(x=>x.node);
-const MOAS = G.nodes.filter(n=>n.type==="MoAClass");
-MOAS.forEach(m=>{ m._drugs=drugsOfMoa(m); m._appr=m._drugs.some(d=>d.attrs.highest_phase==="approved"); });
-MOAS.sort((a,b)=> (b._appr-a._appr) || (b._drugs.length-a._drugs.length) || a.label.localeCompare(b.label));
-const moaColorVar={}, modColorVar={};
-MOAS.forEach((m,i)=> moaColorVar[m.id]= i<8?SLOT[i]:"--sN");
-[...new Set(G.nodes.filter(n=>n.type==="Drug").map(d=>d.attrs.modality).filter(Boolean))].forEach((mod,i)=> modColorVar[mod]= i<8?SLOT[i]:"--sN");
-
+const FAM=G.families||[]; const famColor={}; FAM.forEach(f=>famColor["moa:"+f.key]=f.colorVar);
+const PLABEL={approved:"Approved",filed:"Filed",phase3:"Ph 3",phase2_3:"Ph 2/3",phase2:"Ph 2",phase1_2:"Ph 1/2",phase1:"Ph 1",preclinical:"Preclin",discontinued:"Disc."};
+const PORDER=["approved","filed","phase3","phase2_3","phase2","phase1_2","phase1","preclinical","discontinued"];
+const PHCOLOR={preclinical:"#cde2fb",phase1:"#9ec5f4",phase1_2:"#86b6ef",phase2:"#6da7ec",phase2_3:"#5598e7",phase3:"#3987e5",filed:"#256abf",approved:"#184f95",discontinued:"#b9b6ad"};
+const MODC={}; [...new Set(G.nodes.filter(n=>n.type=="Drug").map(d=>d.attrs.modality).filter(Boolean))].forEach((m,i)=>MODC[m]=["--s1","--s2","--s3","--s4","--s7","--s8"][i]||"--sN");
+const MOAS=G.nodes.filter(n=>n.type=="MoAClass").sort((a,b)=>(a.attrs.order||9)-(b.attrs.order||9));
+MOAS.forEach(m=>m._drugs=iN(m.id,"HAS_MECHANISM"));
+const subIndex={}; G.nodes.filter(n=>n.type=="Drug").forEach(d=>{const s=d.attrs.sub_class;if(s)(subIndex[s]=subIndex[s]||[]).push(d.id);});
+const salesMax=Math.max(1,...G.nodes.filter(n=>n.type=="Drug").map(d=>d.attrs.annual_sales_usd_m||0));
+const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 let LENS="moa";
-function colorVarFor(drug){
-  if(LENS==="moa"){ const m=nbrsOut(drug.id,"HAS_MECHANISM")[0]; return m?moaColorVar[m.node.id]:"--sN"; }
-  if(LENS==="modality") return modColorVar[drug.attrs.modality]||"--sN";
-  if(LENS==="validation"){ const m=nbrsOut(drug.id,"HAS_MECHANISM")[0]; const vs=m&&m.node.attrs.validation_status; return VALID[vs]||"--sN"; }
-  return null; // phase handled as literal color
+function laneColorVar(m){return famColor[m.id]||"--sN";}
+function drugColor(d){
+  if(LENS=="modality")return css(MODC[d.attrs.modality]||"--sN");
+  if(LENS=="phase")return PHCOLOR[d.attrs.highest_phase]||css("--sN");
+  const m=oN(d.id,"HAS_MECHANISM")[0]; return css(m?laneColorVar(m):"--sN");
 }
-function colorForDrug(drug){ const v=colorVarFor(drug); if(v) return css(v); return PHCOLOR[drug.attrs.highest_phase]||css("--sN"); }
-const salesMax = Math.max(1,...G.nodes.filter(n=>n.type==="Drug").map(d=>d.attrs.annual_sales_usd_m||0));
-const fmt$ = m => m==null?null : (m>=1000? "$"+(m/1000).toFixed(1)+"B" : "$"+m+"M");
 
-// ---- build landscape ----
+// ---- landscape ----
 const land=document.getElementById("land");
 function buildLandscape(){
   land.innerHTML="";
-  const activePhases = PHASES.filter(([p])=> p==="approved"||p==="phase3" || G.nodes.some(n=>n.type==="Drug"&&n.attrs.highest_phase===p));
-  land.style.gridTemplateColumns = `76px repeat(${MOAS.length}, minmax(150px, 1fr))`;
-  // header row
-  land.append(el("div",{cls:"phrow-label",style:"border:0;background:transparent"}));
+  const phases=PORDER.filter(p=>G.nodes.some(n=>n.type=="Drug"&&n.attrs.highest_phase==p));
+  land.style.gridTemplateColumns=`70px repeat(${MOAS.length},max-content)`;
+  land.append(el("div",{cls:"phlab",style:"border:0;background:transparent"}));
   MOAS.forEach(m=>{
-    const cv=moaColorVar[m.id];
-    const head=el("div",{cls:"lane-head",style:`--laneColor:${css(cv)}`,"data-node":m.id,role:"button",tabindex:0},[
-      el("div",{cls:"nm",text:m.label}),
-      el("div",{cls:"mt",text:`${m._drugs.length} asset${m._drugs.length!==1?"s":""}`}),
-      el("div",{cls:"vbadge",style:`background:color-mix(in srgb,${css(cv)} 18%,var(--surface));color:${css(cv)}`,text:VLABEL[m.attrs.validation_status]||""})
-    ]);
-    head.addEventListener("click",()=>focusNode(m.id));
-    land.append(head);
+    const cv=css(laneColorVar(m));
+    const h=el("div",{cls:"lane-head",style:`--laneColor:${cv}`,"data-node":m.id},[
+      el("div",{cls:"nm",text:m.label}),el("div",{cls:"mt",text:m._drugs.length+" assets"})]);
+    h.onclick=()=>focusNode(m.id); land.append(h);
   });
-  // phase rows
-  activePhases.forEach(([p,label])=>{
-    land.append(el("div",{cls:"phrow-label",text:label}));
+  phases.forEach(p=>{
+    land.append(el("div",{cls:"phlab",text:PLABEL[p]}));
     MOAS.forEach(m=>{
-      const cards=m._drugs.filter(d=>d.attrs.highest_phase===p);
+      const cards=m._drugs.filter(d=>d.attrs.highest_phase==p).sort((a,b)=>(b.attrs.annual_sales_usd_m||0)-(a.attrs.annual_sales_usd_m||0)||(a.attrs.sub_class||"").localeCompare(b.attrs.sub_class||""));
       const cell=el("div",{cls:"cell"+(cards.length?"":" empty")});
-      cards.sort((a,b)=>(b.attrs.annual_sales_usd_m||0)-(a.attrs.annual_sales_usd_m||0));
-      cards.forEach(d=>cell.append(drugCard(d)));
-      land.append(cell);
+      cards.forEach(d=>cell.append(drugCard(d))); land.append(cell);
     });
   });
 }
 function drugCard(d){
-  const c=colorForDrug(d);
-  const comp=nbrsOut(d.id,"DEVELOPED_BY")[0];
-  const card=el("div",{cls:"card",style:`--laneColor:${c}`,"data-node":d.id,role:"button",tabindex:0},[
+  const a=d.attrs, c=drugColor(d), comp=oN(d.id,"DEVELOPED_BY")[0];
+  const badges=el("div",{cls:"badges"});
+  if(a.route)badges.append(el("span",{cls:"bdg",text:a.route}));
+  if(a.dose)badges.append(el("span",{cls:"bdg",text:a.dose}));
+  badges.append(el("span",{cls:"bdg p",text:PLABEL[a.highest_phase]}));
+  if(a.bios)badges.append(el("span",{cls:"mk bio",title:a.bios,text:"◆ biosim"}));
+  if(a.combo)badges.append(el("span",{cls:"mk combo",text:"+ combo"}));
+  if((a.note||"").toLowerCase().includes("boxed warning"))badges.append(el("span",{cls:"mk warn",title:a.note,text:"⚠"}));
+  const card=el("div",{cls:"card"+(a.highest_phase=="discontinued"?" disc":""),style:`--laneColor:${c}`,"data-node":d.id},[
     el("div",{cls:"dn",text:d.label}),
-    el("div",{cls:"dm"},[ comp?el("span",{text:comp.node.label}):null,
-       el("span",{cls:"pill",text:d.attrs.modality||""}) ])
-  ]);
-  if(d.attrs.annual_sales_usd_m){
-    card.append(el("div",{cls:"salesv tabnum",text:fmt$(d.attrs.annual_sales_usd_m)+(d.attrs.sales_year?" ("+d.attrs.sales_year+")":"")}));
-    card.append(el("div",{cls:"sales",style:`width:${Math.max(12,100*d.attrs.annual_sales_usd_m/salesMax)}%`}));
-  }
-  card.addEventListener("click",()=>focusNode(d.id));
-  return card;
+    comp?el("div",{cls:"co",text:comp.label}):null,
+    a.sub_class?el("div",{cls:"sub",text:a.sub_class}):null,
+    badges]);
+  if(a.p90!=null)card.append(el("div",{cls:"pasi"},[el("span",{cls:"tab",text:"P90 "+a.p90}),el("div",{cls:"pbar"},el("i",{style:`width:${a.p90}%`}))]));
+  if(a.annual_sales_usd_m)card.append(el("div",{cls:"sales tab",text:fmt$(a.annual_sales_usd_m)+(a.sales_year?" ("+a.sales_year+")":"")}));
+  card.onclick=()=>focusNode(d.id); return card;
 }
 
-// ---- strips ----
-function typeColorVar(n){ if(n.type==="MoAClass")return moaColorVar[n.id]; if(n.type==="Drug")return colorVarFor(n)||"--s1"; return "--sN"; }
-function buildStrips(){
-  const comps=G.nodes.filter(n=>n.type==="Company").map(c=>({c,d:nbrsIn(c.id,"DEVELOPED_BY").length})).filter(x=>x.d>0).sort((a,b)=>b.d-a.d);
-  const cc=document.getElementById("companies"); cc.innerHTML="";
-  comps.forEach(({c,d})=>{ const chip=el("div",{cls:"chip","data-node":c.id},[el("span",{text:c.label}),el("span",{cls:"ct",text:d})]); chip.onclick=()=>focusNode(c.id); cc.append(chip); });
-  const tt=document.getElementById("targets"); tt.innerHTML="";
-  G.nodes.filter(n=>n.type==="Target").map(t=>({t,d:nbrsIn(t.id,"HITS").length})).sort((a,b)=>(b.t.attrs.ot_association_score||0)-(a.t.attrs.ot_association_score||0)||b.d-a.d)
-    .forEach(({t,d})=>{ const chip=el("div",{cls:"chip","data-node":t.id},[el("span",{cls:"dot",style:`background:${css("--s3")}`}),el("span",{style:"font-family:var(--mono);font-size:11px",text:t.label}), t.attrs.ot_association_score?el("span",{cls:"ct",text:t.attrs.ot_association_score.toFixed(2)}):null ]); chip.onclick=()=>focusNode(t.id); tt.append(chip); });
-  const cat=document.getElementById("catalysts"); cat.innerHTML="";
-  G.nodes.filter(n=>n.type==="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
-    const row=el("div",{cls:"ev","data-node":ev.id},[el("span",{cls:"dt",text:ev.attrs.date||""}),el("span",{text:ev.label})]);
-    row.onclick=()=>focusNode(ev.id); cat.append(row);
+// ---- competitive matrix ----
+function buildMatrix(){
+  const comps=G.nodes.filter(n=>n.type=="Company").map(c=>({c,n:iN(c.id,"DEVELOPED_BY").length})).filter(x=>x.n>=2).sort((a,b)=>b.n-a.n).slice(0,14);
+  const t=document.getElementById("matrix"); t.innerHTML="";
+  const head=el("tr",{},[el("th",{cls:"rh",text:""})]);
+  MOAS.forEach(m=>{const th=el("th",{"data-node":m.id,title:m.label},[el("span",{text:(m.label.match(/[A-Z0-9/]+/)||[m.label])[0].slice(0,7)})]);th.onclick=()=>focusNode(m.id);head.append(th);});
+  t.append(head);
+  const maxc=3;
+  comps.forEach(({c})=>{
+    const drugs=iN(c.id,"DEVELOPED_BY");
+    const tr=el("tr"); const rh=el("td",{cls:"rh","data-node":c.id,text:c.label}); rh.onclick=()=>focusNode(c.id); tr.append(rh);
+    MOAS.forEach(m=>{
+      const k=drugs.filter(d=>(oN(d.id,"HAS_MECHANISM")[0]||{}).id==m.id).length;
+      const td=el("td"); if(k){const al=(0.2+0.8*Math.min(k,maxc)/maxc);td.append(el("span",{cls:"cellv",style:`background:color-mix(in srgb,${css(laneColorVar(m))} ${Math.round(al*100)}%,var(--surface));color:${al>.6?"#fff":"var(--ink)"}`,text:k}));}else td.textContent="·";
+      tr.append(td);
+    });
+    t.append(tr);
   });
 }
-
+// ---- PASI benchmark ----
+function buildBenchmark(){
+  const b=document.getElementById("benchmark"); b.innerHTML="";
+  const ds=G.nodes.filter(n=>n.type=="Drug"&&n.attrs.p90!=null).sort((a,b)=>b.attrs.p90-a.attrs.p90).slice(0,16);
+  ds.forEach(d=>{const row=el("div",{cls:"bar","data-node":d.id},[
+    el("div",{cls:"lab",text:d.label}),
+    el("div",{cls:"track"},el("div",{cls:"fill",style:`width:${d.attrs.p90}%;background:${drugColor(d)}`})),
+    el("div",{cls:"val tab",text:d.attrs.p90})]);
+    row.onclick=()=>focusNode(d.id); b.append(row);});
+}
+// ---- strips ----
+function buildStrips(){
+  const cc=document.getElementById("companies"); cc.innerHTML="";
+  G.nodes.filter(n=>n.type=="Company").map(c=>({c,n:iN(c.id,"DEVELOPED_BY").length})).filter(x=>x.n>0).sort((a,b)=>b.n-a.n).slice(0,20)
+    .forEach(({c,n})=>{const chip=el("div",{cls:"chip","data-node":c.id},[el("span",{text:c.label}),el("span",{cls:"ct",text:n})]);chip.onclick=()=>focusNode(c.id);cc.append(chip);});
+  const tt=document.getElementById("targets"); tt.innerHTML="";
+  G.nodes.filter(n=>n.type=="Target").map(t=>({t,n:iN(t.id,"HITS").length})).sort((a,b)=>(b.t.attrs.ot_association_score||0)-(a.t.attrs.ot_association_score||0)||b.n-a.n).slice(0,16)
+    .forEach(({t})=>{const chip=el("div",{cls:"chip","data-node":t.id},[el("span",{style:"font-family:var(--mono);font-size:10.5px",text:t.label}),t.attrs.ot_association_score?el("span",{cls:"ct",text:t.attrs.ot_association_score.toFixed(2)}):null]);chip.onclick=()=>focusNode(t.id);tt.append(chip);});
+  const cat=document.getElementById("catalysts"); cat.innerHTML="";
+  G.nodes.filter(n=>n.type=="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
+    const row=el("div",{cls:"ev","data-node":ev.id},[el("span",{cls:"dt",text:ev.attrs.date}),el("span",{cls:"kd",text:(ev.attrs.kind||"").replace("_"," ")}),el("span",{text:ev.label})]);
+    row.onclick=()=>focusNode(ev.id); cat.append(row);});
+}
 // ---- legend ----
 function buildLegend(){
-  const L=document.getElementById("legend"); L.innerHTML="";
-  let items=[];
-  if(LENS==="moa") items=MOAS.map(m=>[css(moaColorVar[m.id]),m.label]);
-  else if(LENS==="modality") items=Object.entries(modColorVar).map(([m,v])=>[css(v),m]);
-  else if(LENS==="validation") items=Object.entries(VLABEL).map(([k,l])=>[css(VALID[k]),l]);
-  else items=PHASES.filter(([p])=>p==="approved"||p==="phase3"||p==="phase2"||p==="phase1"||p==="preclinical").map(([p,l])=>[PHCOLOR[p],l]);
+  const L=document.getElementById("legend"); L.innerHTML=""; let items=[];
+  if(LENS=="moa")items=MOAS.map(m=>[css(laneColorVar(m)),m.label]);
+  else if(LENS=="modality")items=Object.entries(MODC).map(([m,v])=>[css(v),m]);
+  else items=["approved","phase3","phase2","phase1","discontinued"].map(p=>[PHCOLOR[p],PLABEL[p]]);
   items.forEach(([c,l])=>L.append(el("span",{cls:"sw"},[el("i",{style:`background:${c}`}),el("span",{text:l})])));
+  L.append(el("span",{cls:"sw",style:"color:var(--muted)",html:"<span class='mk bio'>◆</span> biosimilar &nbsp; <span class='mk combo'>+</span> combo &nbsp; ⚠ boxed warning"}));
 }
 
-// ---- focus / spotlight ----
-const stage=document.getElementById("stage"), wires=document.getElementById("wires");
-const rail=document.getElementById("rail"), backdrop=document.getElementById("backdrop");
+// ---- focus ----
+const stage=document.getElementById("stage"),wires=document.getElementById("wires"),rail=document.getElementById("rail"),backdrop=document.getElementById("backdrop");
 let FOCUS=null;
-function clearFocus(){
-  FOCUS=null; stage.classList.remove("dimmed"); wires.classList.remove("show"); wires.innerHTML="";
-  document.querySelectorAll(".hi,.focus").forEach(n=>n.classList.remove("hi","focus"));
-  rail.classList.remove("open"); backdrop.classList.remove("on");
-}
-function elFor(id){ return stage.querySelector(`[data-node="${CSS.escape(id)}"]`); }
-function markHi(ids){ ids.forEach(id=>{ const e=elFor(id); if(e)e.classList.add("hi"); }); }
-
+function clearFocus(){FOCUS=null;stage.classList.remove("dimmed");wires.classList.remove("show");wires.innerHTML="";document.querySelectorAll(".hi,.focus").forEach(n=>n.classList.remove("hi","focus"));rail.classList.remove("open");backdrop.classList.remove("on");}
+function elsFor(id){return[...stage.querySelectorAll(`[data-node="${CSS.escape(id)}"]`)];}
+function markHi(ids){ids.forEach(id=>elsFor(id).forEach(e=>e.classList.add("hi")));}
+const dedupe=arr=>{const s=new Set(),o=[];arr.forEach(n=>{if(n&&!s.has(n.id)){s.add(n.id);o.push(n);}});return o;};
 function relatedFor(id){
-  // returns {highlight:Set, wires:[[fromId,toId]], groups:[{label,nodes}], center}
-  const n=N[id]; const H=new Set([id]); const W=[]; const groups=[];
-  const push=(label,arr)=>{ if(arr.length) groups.push({label,nodes:arr}); arr.forEach(x=>H.add(x.id)); };
-  if(n.type==="Drug"){
-    const moa=nbrsOut(id,"HAS_MECHANISM").map(x=>x.node);
-    const comp=nbrsOut(id,"DEVELOPED_BY").map(x=>x.node);
-    const tgts=nbrsOut(id,"HITS").map(x=>x.node);
-    const segs=nbrsOut(id,"SERVES").map(x=>x.node);
-    const cats=nbrsOut(id,"HAS_CATALYST").map(x=>x.node);
-    const compet=moa.flatMap(m=>nbrsIn(m.id,"HAS_MECHANISM").map(x=>x.node)).filter(d=>d.id!==id);
-    push("Mechanism",moa); push("Developer",comp); push("Targets",tgts); push("Serves segment",segs); push("Catalysts",cats);
-    push("Competitors (same MoA)",dedupe(compet));
-    comp.forEach(c=>W.push([id,c.id])); tgts.forEach(t=>W.push([id,t.id])); cats.forEach(c=>W.push([id,c.id])); moa.forEach(m=>W.push([id,m.id]));
-  } else if(n.type==="Company"){
-    const drugs=nbrsIn(id,"DEVELOPED_BY").map(x=>x.node);
-    const moas=dedupe(drugs.flatMap(d=>nbrsOut(d.id,"HAS_MECHANISM").map(x=>x.node)));
-    const deals=nbrsOut(id,"PARTY_TO").map(x=>x.node);
-    push("MoAs pursued here",moas); push("Portfolio",drugs); push("Deals",deals);
-    drugs.forEach(d=>W.push([id,d.id]));
-  } else if(n.type==="MoAClass"){
-    const drugs=nbrsIn(id,"HAS_MECHANISM").map(x=>x.node);
-    const tgts=nbrsOut(id,"ACTS_ON").map(x=>x.node);
-    const players=dedupe(drugs.flatMap(d=>nbrsOut(d.id,"DEVELOPED_BY").map(x=>x.node)));
-    push("Drugs",drugs); push("Targets",tgts); push("Players",players);
-    drugs.forEach(d=>W.push([id,d.id])); tgts.forEach(t=>W.push([id,t.id]));
-  } else if(n.type==="Target"){
-    const drugs=nbrsIn(id,"HITS").map(x=>x.node);
-    const moas=dedupe(nbrsIn(id,"ACTS_ON").map(x=>x.node));
-    push("Drugs hitting it",drugs); push("MoA classes",moas);
-    drugs.forEach(d=>W.push([id,d.id]));
-  } else if(n.type==="MarketSegment"){
-    const drugs=nbrsIn(id,"SERVES").map(x=>x.node);
-    push("Drugs serving it",drugs); drugs.forEach(d=>W.push([id,d.id]));
-  } else if(n.type==="Catalyst"){
-    const drugs=nbrsIn(id,"HAS_CATALYST").map(x=>x.node);
-    push("Affects",drugs); drugs.forEach(d=>W.push([id,d.id]));
-  }
-  return {H,W,groups};
+  const n=N[id],H=new Set([id]),W=[],groups=[];
+  const push=(l,arr)=>{arr=dedupe(arr);if(arr.length)groups.push({label:l,nodes:arr});arr.forEach(x=>H.add(x.id));};
+  if(n.type=="Drug"){
+    const moa=oN(id,"HAS_MECHANISM"),comp=oN(id,"DEVELOPED_BY"),tg=oN(id,"HITS"),seg=oN(id,"SERVES"),cat=oN(id,"HAS_CATALYST");
+    const compet=(subIndex[n.attrs.sub_class]||[]).map(x=>N[x]).filter(x=>x.id!=id);
+    push("Mechanism",moa);push("Developer",comp);push("Targets",tg);push("Serves",seg);push("Catalysts",cat);push("Competitors (same sub-class)",compet);
+    comp.forEach(c=>W.push([id,c.id]));tg.forEach(t=>W.push([id,t.id]));moa.forEach(m=>W.push([id,m.id]));cat.forEach(c=>W.push([id,c.id]));
+  }else if(n.type=="Company"){
+    const dr=iN(id,"DEVELOPED_BY"),moas=dedupe(dr.flatMap(d=>oN(d.id,"HAS_MECHANISM"))),deals=oN(id,"PARTY_TO");
+    push("Mechanisms pursued",moas);push("Portfolio",dr);if(deals.length)push("Deals",deals);
+    dr.forEach(d=>W.push([id,d.id]));
+  }else if(n.type=="MoAClass"){
+    const dr=iN(id,"HAS_MECHANISM"),tg=oN(id,"ACTS_ON"),players=dedupe(dr.flatMap(d=>oN(d.id,"DEVELOPED_BY")));
+    push("Drugs",dr);push("Players",players);
+    dr.forEach(d=>W.push([id,d.id]));
+  }else if(n.type=="Target"){
+    const dr=iN(id,"HITS");push("Drugs hitting it",dr);dr.forEach(d=>W.push([id,d.id]));
+  }else if(n.type=="MarketSegment"){const dr=iN(id,"SERVES");push("Drugs serving it",dr);dr.forEach(d=>W.push([id,d.id]));}
+  else if(n.type=="Catalyst"){const dr=iN(id,"HAS_CATALYST");push("Affects",dr);dr.forEach(d=>W.push([id,d.id]));}
+  return{H,W,groups};
 }
-const dedupe=arr=>{const s=new Set(),o=[];arr.forEach(n=>{if(!s.has(n.id)){s.add(n.id);o.push(n);}});return o;};
-
-function focusNode(id){
-  const n=N[id]; if(!n) return;
-  clearFocus(); FOCUS=id; stage.classList.add("dimmed");
-  const {H,W,groups}=relatedFor(id);
-  markHi([...H]); const fe=elFor(id); if(fe){fe.classList.remove("hi");fe.classList.add("focus");}
-  drawWires(id,W);
-  openRail(n,groups);
-}
+function focusNode(id){const n=N[id];if(!n)return;clearFocus();FOCUS=id;stage.classList.add("dimmed");
+  const{H,W,groups}=relatedFor(id);markHi([...H]);elsFor(id).forEach(e=>{e.classList.remove("hi");e.classList.add("focus");});
+  drawWires(id,W);openRail(n,groups);}
 function drawWires(fromId,pairs){
-  wires.innerHTML=""; const sr=stage.getBoundingClientRect();
-  const ox=stage.scrollLeft, oy=stage.scrollTop;
-  const center=e=>{const r=e.getBoundingClientRect();return {x:r.left-sr.left+ox+r.width/2,y:r.top-sr.top+oy+r.height/2};};
-  const a=elFor(fromId); if(!a)return; const A=center(a);
-  const col=css(typeColorVar(N[fromId])==="--sN"?"--s1":typeColorVar(N[fromId]));
-  pairs.slice(0,26).forEach(([f,t])=>{
-    const be=elFor(t); if(!be)return; const B=center(be);
-    const mx=(A.x+B.x)/2;
-    const d=`M${A.x},${A.y} C${mx},${A.y} ${mx},${B.y} ${B.x},${B.y}`;
-    const path=document.createElementNS("http://www.w3.org/2000/svg","path");
-    path.setAttribute("d",d); path.setAttribute("stroke",col); path.setAttribute("stroke-width","1.6");
-    wires.append(path);
-  });
+  wires.innerHTML="";const sr=stage.getBoundingClientRect(),ox=stage.scrollLeft,oy=stage.scrollTop;
+  const ctr=e=>{const r=e.getBoundingClientRect();return{x:r.left-sr.left+ox+r.width/2,y:r.top-sr.top+oy+r.height/2};};
+  const a=stage.querySelector(`.focus[data-node="${CSS.escape(fromId)}"]`)||elsFor(fromId)[0];if(!a)return;const A=ctr(a);
+  const col=css(N[fromId].type=="Drug"?(famColor[(oN(fromId,"HAS_MECHANISM")[0]||{}).id]||"--s1"):(famColor[fromId]||"--s1"));
+  const seen=new Set();
+  pairs.forEach(([f,t])=>{if(seen.has(t))return;seen.add(t);const be=elsFor(t)[0];if(!be)return;const B=ctr(be);const mx=(A.x+B.x)/2;
+    const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d",`M${A.x},${A.y} C${mx},${A.y} ${mx},${B.y} ${B.x},${B.y}`);p.setAttribute("stroke",col);p.setAttribute("stroke-width","1.5");wires.append(p);});
   wires.classList.add("show");
 }
-
-// ---- detail rail ----
-const TYPECOLOR={Drug:"--s1",Company:"--s2",MoAClass:"--s7",Target:"--s3",MarketSegment:"--s4",Catalyst:"--s5",Indication:"--ink2"};
-function srcLinks(ids){ if(!ids||!ids.length)return ""; return " "+ids.filter(i=>SRC[i]).map(i=>{const s=SRC[i];return s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(s.name||"")}">↗</a>`:"";}).join(""); }
+// ---- rail ----
+const TC={Drug:"--s1",Company:"--s2",MoAClass:"--s7",Target:"--s3",MarketSegment:"--s4",Catalyst:"--s5",Indication:"--ink2"};
 function openRail(n,groups){
-  document.getElementById("r-type").textContent=n.type;
-  document.getElementById("r-type").style.background=css(TYPECOLOR[n.type]||"--ink2");
+  document.getElementById("r-type").textContent=n.type;document.getElementById("r-type").style.background=css(TC[n.type]||"--ink2");
   document.getElementById("r-name").textContent=n.label;
-  const body=document.getElementById("r-body"); body.innerHTML="";
-  const sub=[]; if(n.attrs.brand)sub.push("brand "+n.attrs.brand); if(n.attrs.type)sub.push(n.attrs.type);
+  const sub=[];if(n.attrs.brand)sub.push(n.attrs.brand);if(n.attrs.sub_class)sub.push(n.attrs.sub_class);if(n.attrs.type)sub.push(n.attrs.type);
   document.getElementById("r-sub").textContent=sub.join(" · ");
-
-  // KPIs by type
-  const kp=el("div",{cls:"kpis"});
-  const K=(v,l)=> kp.append(el("div",{cls:"k"},[el("b",{text:v}),el("span",{text:l})]));
-  if(n.type==="Drug"){
-    const m=nbrsOut(n.id,"HAS_MECHANISM")[0];
-    K(PHLABEL(n.attrs.highest_phase),"phase");
-    if(n.attrs.annual_sales_usd_m)K(fmt$(n.attrs.annual_sales_usd_m),"sales "+(n.attrs.sales_year||""));
-    if(n.attrs.route)K(n.attrs.route,"route");
-    if(m)K(m.node.attrs.validation_status||"—","MoA status");
-    if(n.attrs.mechanism)body.append(kp,el("div",{cls:"prose",text:n.attrs.mechanism}));
-    else body.append(kp);
-  } else if(n.type==="Company"){
-    const drugs=nbrsIn(n.id,"DEVELOPED_BY").map(x=>x.node);
-    K(drugs.length,"assets here");
-    K(dedupe(drugs.flatMap(d=>nbrsOut(d.id,"HAS_MECHANISM").map(x=>x.node))).length,"MoAs pursued");
-    const appr=drugs.filter(d=>d.attrs.highest_phase==="approved").length; K(appr,"approved");
-    body.append(kp); if(n.attrs.positioning)body.append(el("div",{cls:"prose",text:n.attrs.positioning}));
-  } else if(n.type==="MoAClass"){
-    K(n._drugs?n._drugs.length:nbrsIn(n.id,"HAS_MECHANISM").length,"drugs");
-    K(VLABEL[n.attrs.validation_status]||"—","validation");
-    body.append(kp);
-    if(n.attrs.rationale)body.append(el("div",{cls:"prose",html:"<b>Rationale.</b> "+esc(n.attrs.rationale)}));
-    if(n.attrs.mechanism)body.append(el("div",{cls:"prose",html:"<b>Mechanism.</b> "+esc(n.attrs.mechanism)}));
-    if((n.attrs.pros||[]).length||(n.attrs.cons||[]).length)body.append(el("div",{cls:"prose",html:`<b>Trade-offs.</b> ✓ ${esc((n.attrs.pros||[]).join("; "))} · ✕ ${esc((n.attrs.cons||[]).join("; "))}`}));
-  } else if(n.type==="Target"){
-    if(n.attrs.ot_association_score)K(n.attrs.ot_association_score.toFixed(2),"OT assoc.");
-    K(nbrsIn(n.id,"HITS").length,"drugs");
-    body.append(kp);
-    if(n.attrs.rationale)body.append(el("div",{cls:"prose",text:n.attrs.rationale}));
-  } else { body.append(kp); if(n.attrs.significance)body.append(el("div",{cls:"prose",text:n.attrs.significance})); if(n.attrs.note)body.append(el("div",{cls:"prose",text:n.attrs.note})); }
-
-  // ego graph
+  const body=document.getElementById("r-body");body.innerHTML="";const kp=el("div",{cls:"kpis"});const K=(v,l)=>kp.append(el("div",{cls:"k"},[el("b",{text:v}),el("span",{text:l})]));
+  if(n.type=="Drug"){const a=n.attrs;K(PLABEL[a.highest_phase],"phase");if(a.annual_sales_usd_m)K(fmt$(a.annual_sales_usd_m),"sales "+(a.sales_year||""));if(a.p90!=null)K(a.p90+"%","PASI 90");if(a.route)K(a.route+(a.dose?" "+a.dose:""),"route/dose");if(a.appr)K(a.appr,"approved");body.append(kp);
+    if(a.note)body.append(el("div",{cls:"prose",text:a.note}));if(a.bios)body.append(el("div",{cls:"prose",html:"<b>Biosimilars:</b> "+esc(a.bios)}));
+    const m=oN(n.id,"HAS_MECHANISM")[0];if(m&&m.attrs.safety)body.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(m.attrs.safety)}));
+  }else if(n.type=="Company"){const dr=iN(n.id,"DEVELOPED_BY");K(dr.length,"assets");K(dedupe(dr.flatMap(d=>oN(d.id,"HAS_MECHANISM"))).length,"mechanisms");K(dr.filter(d=>d.attrs.highest_phase=="approved").length,"approved");body.append(kp);if(n.attrs.positioning)body.append(el("div",{cls:"prose",text:n.attrs.positioning}));
+  }else if(n.type=="MoAClass"){const dr=iN(n.id,"HAS_MECHANISM");K(dr.length,"drugs");K(dr.filter(d=>d.attrs.highest_phase=="approved").length,"approved");const best=Math.max(0,...dr.map(d=>d.attrs.p90||0));if(best)K(best+"%","best PASI 90");body.append(kp);
+    if(n.attrs.safety)body.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(n.attrs.safety)}));
+  }else if(n.type=="Target"){if(n.attrs.ot_association_score)K(n.attrs.ot_association_score.toFixed(2),"OT assoc.");K(iN(n.id,"HITS").length,"drugs");body.append(kp);
+  }else if(n.type=="Catalyst"){K(n.attrs.date,"date");if(n.attrs.kind)K(n.attrs.kind.replace("_"," "),"type");body.append(kp);if(n.attrs.significance)body.append(el("div",{cls:"prose",text:n.attrs.significance}));if(n.attrs.company)body.append(el("div",{cls:"prose",html:"<b>Company:</b> "+esc(n.attrs.company)}));}
+  else body.append(kp);
   body.append(egoGraph(n,groups));
-  // relationship groups
-  groups.forEach(g=>{
-    const wrap=el("div",{cls:"rel"},[el("h5",{text:g.label+" · "+g.nodes.length})]);
-    const chips=el("div",{cls:"chips"});
-    g.nodes.slice(0,24).forEach(nn=>{
-      const chip=el("div",{cls:"chip"},[el("span",{cls:"dot",style:`background:${css(TYPECOLOR[nn.type]||"--sN")}`}),el("span",{text:nn.label})]);
-      chip.onclick=()=>focusNode(nn.id); chips.append(chip);
-    });
-    wrap.append(chips); body.append(wrap);
-  });
-  // sources
-  if(n.sources&&n.sources.length){ body.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")})); }
-  rail.classList.add("open"); backdrop.classList.add("on");
+  groups.forEach(g=>{const w=el("div",{cls:"rel"},[el("h5",{text:g.label+" · "+g.nodes.length})]);const ch=el("div",{cls:"chips"});g.nodes.slice(0,28).forEach(nn=>{const c=el("div",{cls:"chip"},[el("span",{cls:"dot",style:`background:${css(TC[nn.type]||"--sN")}`}),el("span",{text:nn.label})]);c.onclick=()=>focusNode(nn.id);ch.append(c);});w.append(ch);body.append(w);});
+  if(n.sources&&n.sources.length)body.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")}));
+  rail.classList.add("open");backdrop.classList.add("on");
 }
-function PHLABEL(p){return ({approved:"Approved",filed:"Filed",phase3:"Ph 3",phase2_3:"Ph 2/3",phase2:"Ph 2",phase1_2:"Ph 1/2",phase1:"Ph 1",preclinical:"Preclin"})[p]||p;}
-
 function egoGraph(center,groups){
-  const NS="http://www.w3.org/2000/svg"; const W=328,H=210,cx=W/2,cy=H/2;
-  const svg=document.createElementNS(NS,"svg"); svg.setAttribute("class","egograph"); svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
-  const neigh=[]; groups.forEach(g=>g.nodes.slice(0,3).forEach(nn=>neigh.push(nn)));
-  const seen=new Set(), uniq=[]; neigh.forEach(n=>{if(!seen.has(n.id)&&n.id!==center.id){seen.add(n.id);uniq.push(n);}});
-  const pts=uniq.slice(0,10); const R=78;
-  pts.forEach((nn,i)=>{
-    const ang=-Math.PI/2 + i*2*Math.PI/Math.max(1,pts.length);
-    const x=cx+R*Math.cos(ang), y=cy+R*Math.sin(ang);
-    const ln=document.createElementNS(NS,"line"); ln.setAttribute("x1",cx);ln.setAttribute("y1",cy);ln.setAttribute("x2",x);ln.setAttribute("y2",y);
-    ln.setAttribute("stroke",css("--line"));ln.setAttribute("stroke-width","1.4"); svg.append(ln);
-    const c=document.createElementNS(NS,"circle"); c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r",7);
-    c.setAttribute("fill",css(TYPECOLOR[nn.type]||"--sN")); c.style.cursor="pointer"; c.addEventListener("click",()=>focusNode(nn.id)); svg.append(c);
-    const tx=document.createElementNS(NS,"text"); tx.setAttribute("x",x);tx.setAttribute("y",y> cy? y+15:y-11);
-    tx.setAttribute("text-anchor","middle");tx.setAttribute("font-size","8.5");tx.textContent=nn.label.length>16?nn.label.slice(0,15)+"…":nn.label; svg.append(tx);
-  });
-  const c0=document.createElementNS(NS,"circle"); c0.setAttribute("cx",cx);c0.setAttribute("cy",cy);c0.setAttribute("r",11);
-  c0.setAttribute("fill",css(TYPECOLOR[center.type]||"--s1")); c0.setAttribute("stroke",css("--ink"));c0.setAttribute("stroke-width","2"); svg.append(c0);
-  const t0=document.createElementNS(NS,"text"); t0.setAttribute("x",cx);t0.setAttribute("y",cy+24);t0.setAttribute("text-anchor","middle");t0.setAttribute("font-size","9.5");t0.setAttribute("font-weight","700");t0.textContent=center.label.length>20?center.label.slice(0,19)+"…":center.label; svg.append(t0);
+  const NS="http://www.w3.org/2000/svg",W=338,H=200,cx=W/2,cy=H/2;
+  const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","egograph");svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const seen=new Set(),pts=[];groups.forEach(g=>g.nodes.slice(0,3).forEach(nn=>{if(!seen.has(nn.id)&&nn.id!=center.id){seen.add(nn.id);pts.push(nn);}}));
+  const P=pts.slice(0,10),R=74;
+  P.forEach((nn,i)=>{const ang=-Math.PI/2+i*2*Math.PI/Math.max(1,P.length),x=cx+R*Math.cos(ang),y=cy+R*Math.sin(ang);
+    const ln=document.createElementNS(NS,"line");ln.setAttribute("x1",cx);ln.setAttribute("y1",cy);ln.setAttribute("x2",x);ln.setAttribute("y2",y);ln.setAttribute("stroke",css("--line"));ln.setAttribute("stroke-width","1.3");svg.append(ln);
+    const c=document.createElementNS(NS,"circle");c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r",6.5);c.setAttribute("fill",css(TC[nn.type]||"--sN"));c.style.cursor="pointer";c.onclick=()=>focusNode(nn.id);svg.append(c);
+    const tx=document.createElementNS(NS,"text");tx.setAttribute("x",x);tx.setAttribute("y",y>cy?y+14:y-10);tx.setAttribute("text-anchor","middle");tx.setAttribute("font-size","8");tx.textContent=nn.label.length>15?nn.label.slice(0,14)+"…":nn.label;svg.append(tx);});
+  const c0=document.createElementNS(NS,"circle");c0.setAttribute("cx",cx);c0.setAttribute("cy",cy);c0.setAttribute("r",10);c0.setAttribute("fill",css(TC[center.type]||"--s1"));c0.setAttribute("stroke",css("--ink"));c0.setAttribute("stroke-width","2");svg.append(c0);
+  const t0=document.createElementNS(NS,"text");t0.setAttribute("x",cx);t0.setAttribute("y",cy+22);t0.setAttribute("text-anchor","middle");t0.setAttribute("font-size","9");t0.setAttribute("font-weight","700");t0.textContent=center.label.length>18?center.label.slice(0,17)+"…":center.label;svg.append(t0);
   return svg;
 }
-
-// ---- wire redraw on scroll/resize ----
-let raf; function redraw(){ if(!FOCUS)return; cancelAnimationFrame(raf); raf=requestAnimationFrame(()=>{ const {W}=relatedFor(FOCUS); drawWires(FOCUS,W); }); }
-stage.addEventListener("scroll",redraw); window.addEventListener("resize",()=>{ buildLandscape(); if(FOCUS){const{H,W}=relatedFor(FOCUS);markHi([...H]);const fe=elFor(FOCUS);if(fe)fe.classList.add("focus");drawWires(FOCUS,W);} });
-
-// ---- controls ----
-document.getElementById("lens").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b)return;
-  document.querySelectorAll("#lens button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); LENS=b.dataset.lens;
-  buildLandscape(); buildLegend(); if(FOCUS)focusNode(FOCUS); });
-document.getElementById("reset").onclick=clearFocus;
-document.getElementById("r-close").onclick=clearFocus;
-backdrop.onclick=clearFocus;
-document.addEventListener("keydown",e=>{ if(e.key==="Escape")clearFocus(); });
-document.getElementById("theme").onclick=()=>{ const r=document.documentElement; const cur=r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"); r.setAttribute("data-theme",cur==="dark"?"light":"dark"); buildLandscape(); buildStrips(); buildLegend(); if(FOCUS)focusNode(FOCUS); };
-const search=document.getElementById("search");
-search.addEventListener("change",()=>{ const q=search.value.trim().toLowerCase(); const hit=G.nodes.find(n=>n.label.toLowerCase()===q)||G.nodes.find(n=>n.label.toLowerCase().includes(q)); if(hit){focusNode(hit.id); search.value=hit.label;} });
-
-// ---- header ----
-document.getElementById("brand").innerHTML=`${esc(G.meta.focus)} <small>${G.meta.scope==="therapeutic_area"?"THERAPEUTIC AREA":"INDICATION"} ATLAS · SPOTLIGHT PROTOTYPE · generated ${esc(G.meta.generated||"")}</small>`;
-(function kpis(){ const k=document.getElementById("kpis"); (G.meta.headline_stats||[]).slice(0,4).forEach(s=>k.append(el("div",{cls:"kpi"},[el("b",{text:s.value}),el("span",{text:s.label})]))); })();
-(function dl(){ const d=document.getElementById("allnodes"); G.nodes.filter(n=>["Drug","Company","MoAClass","Target"].includes(n.type)).forEach(n=>d.append(el("option",{value:n.label}))); })();
-
-buildLandscape(); buildStrips(); buildLegend();
-</script>
-</body>
-</html>
+let raf;function redraw(){if(!FOCUS)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const{W}=relatedFor(FOCUS);drawWires(FOCUS,W);});}
+stage.addEventListener("scroll",redraw);
+document.getElementById("lens").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#lens button").forEach(x=>x.classList.remove("on"));b.classList.add("on");LENS=b.dataset.lens;buildLandscape();buildBenchmark();buildLegend();if(FOCUS)focusNode(FOCUS);};
+document.getElementById("reset").onclick=clearFocus;document.getElementById("r-close").onclick=clearFocus;backdrop.onclick=clearFocus;
+document.addEventListener("keydown",e=>{if(e.key=="Escape")clearFocus();});
+document.getElementById("theme").onclick=()=>{const r=document.documentElement,cur=r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");r.setAttribute("data-theme",cur=="dark"?"light":"dark");buildLandscape();buildMatrix();buildBenchmark();buildStrips();buildLegend();if(FOCUS)focusNode(FOCUS);};
+const search=document.getElementById("search");search.addEventListener("change",()=>{const q=search.value.trim().toLowerCase();const hit=G.nodes.find(n=>n.label.toLowerCase()==q)||G.nodes.find(n=>n.label.toLowerCase().includes(q));if(hit){focusNode(hit.id);search.value=hit.label;}});
+document.getElementById("brand").innerHTML=`${esc(G.meta.focus)} <small>INDICATION ATLAS · SPOTLIGHT PROTOTYPE · ${esc(G.meta.as_of||G.meta.generated||"")} · ${G.nodes.filter(n=>n.type=="Drug").length} assets</small>`;
+(function(){const k=document.getElementById("kpis");(G.meta.headline_stats||[]).forEach(s=>k.append(el("div",{cls:"kpi"},[el("b",{text:s.value}),el("span",{text:s.label})])));})();
+(function(){const d=document.getElementById("allnodes");G.nodes.filter(n=>["Drug","Company","MoAClass","Target"].includes(n.type)).forEach(n=>d.append(el("option",{value:n.label})));})();
+if(G.meta.sales_note)document.getElementById("hint").title=G.meta.sales_note;
+buildLandscape();buildMatrix();buildBenchmark();buildStrips();buildLegend();
+</script></body></html>

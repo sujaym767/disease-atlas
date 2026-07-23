@@ -3,470 +3,268 @@
     "scope": "indication",
     "focus": "Plaque psoriasis",
     "generated": "2026-07-23",
-    "one_liner": "Chronic, immune-mediated inflammatory skin disease driven by the IL-23 / IL-17 axis; a mature, biologics-led market now moving toward oral targeted therapy.",
+    "as_of": "July 2026",
+    "one_liner": "Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market shifting to oral targeted therapy.",
+    "sales_note": "Product sales are most-recent full-year (FY2025) company-reported franchise totals across ALL indications — not psoriasis-only. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.",
     "headline_stats": [
       {
         "label": "Worldwide prevalence",
-        "value": "~125M",
-        "detail": "~2–3% of the global population",
-        "value_num": 125000000,
-        "sources": [
-          "npf",
-          "gbd"
-        ]
+        "value": "~125M"
       },
       {
-        "label": "US adults affected",
-        "value": "~7.5M",
-        "detail": "~3.0% of adults ≥20y",
-        "value_num": 7500000,
-        "sources": [
-          "npf",
-          "usprev"
-        ]
+        "label": "US adults",
+        "value": "~7.5M"
       },
       {
         "label": "Global market (2024)",
-        "value": "$27–33B",
-        "detail": "treatment market, estimate range",
-        "is_estimate": true,
-        "sources": [
-          "fbi",
-          "smr"
-        ]
+        "value": "$27–33B"
       },
       {
-        "label": "Approved MoA classes",
-        "value": "8+",
-        "detail": "TNF, IL-12/23, IL-17, IL-23, PDE4, TYK2, AhR, topicals",
-        "sources": [
-          "fda"
-        ]
-      },
-      {
-        "label": "Moderate-to-severe",
-        "value": "~20%",
-        "detail": "of patients; biologic-eligible",
-        "is_estimate": true,
-        "sources": [
-          "npf"
-        ]
-      },
-      {
-        "label": "Top product (2023)",
-        "value": "$10.9B",
-        "detail": "Stelara WW (incl. IBD); Skyrizi $7.8B",
-        "value_num": 10858,
-        "sources": [
-          "xtalks"
-        ]
+        "label": "Assets mapped",
+        "value": "55"
       }
-    ],
-    "market": {
-      "current_size": {
-        "value": "$27–33B",
-        "value_usd_m": 30000,
-        "year": 2024,
-        "geography": "Global",
-        "is_estimate": true,
-        "sources": [
-          "fbi",
-          "smr"
-        ]
-      },
-      "summary": "A large, growing, biologics-led market. 2024 estimates cluster around $27–33B and forecasts reach ~$39–51B by the early 2030s (CAGR ~8–11%), though firms differ on scope and methodology. Value is concentrated in IL-23 and IL-17 franchises; growth drivers include the oral-targeted shift, expanded access, and switching — partly offset by TNF and (from 2025) Stelara biosimilar erosion."
-    }
+    ]
   },
+  "families": [
+    {
+      "key": "il23",
+      "label": "IL-23 / Th17 axis",
+      "colorVar": "--s1",
+      "order": 1
+    },
+    {
+      "key": "il17",
+      "label": "IL-17 axis",
+      "colorVar": "--s2",
+      "order": 2
+    },
+    {
+      "key": "tnf",
+      "label": "TNF inhibitors",
+      "colorVar": "--s5",
+      "order": 3
+    },
+    {
+      "key": "kinase",
+      "label": "Oral kinase inhibitors (TYK2 / JAK)",
+      "colorVar": "--s3",
+      "order": 4
+    },
+    {
+      "key": "pde4",
+      "label": "PDE4 inhibitors",
+      "colorVar": "--s7",
+      "order": 5
+    },
+    {
+      "key": "topical",
+      "label": "Topical non-steroidal",
+      "colorVar": "--s4",
+      "order": 6
+    },
+    {
+      "key": "steroid",
+      "label": "Topical corticosteroids",
+      "colorVar": "--sN",
+      "order": 7
+    },
+    {
+      "key": "conv",
+      "label": "Conventional systemics",
+      "colorVar": "--s8",
+      "order": 8
+    },
+    {
+      "key": "novel",
+      "label": "Novel / emerging mechanisms",
+      "colorVar": "--s6",
+      "order": 9
+    },
+    {
+      "key": "hist",
+      "label": "Withdrawn / discontinued",
+      "colorVar": "--sN",
+      "order": 10
+    }
+  ],
   "nodes": [
     {
       "id": "ind:plaque-psoriasis",
       "type": "Indication",
       "label": "Plaque psoriasis",
       "attrs": {
-        "area": "Immuno-dermatology",
-        "one_liner": "Chronic, immune-mediated inflammatory skin disease driven by the IL-23 / IL-17 axis; a mature, biologics-led market now moving toward oral targeted therapy."
+        "area": "Immuno-dermatology"
       },
       "sources": []
     },
     {
-      "id": "moa:il-23-inhibitors-p19",
+      "id": "moa:il23",
       "type": "MoAClass",
-      "label": "IL-23 inhibitors (p19)",
+      "label": "IL-23 / Th17 axis",
       "attrs": {
-        "validation_status": "validated",
-        "rationale": "Selective IL-23 blockade is the current efficacy + durability benchmark in psoriasis.",
-        "mechanism": "Anti–IL-23 p19 mAbs starve pathogenic Th17 cells of their maintenance signal.",
-        "modality": "mAb",
-        "pros": [
-          "highest durable PASI 90",
-          "infrequent dosing (q8–12w)",
-          "clean safety"
-        ],
-        "cons": [
-          "parenteral",
-          "cost"
-        ],
-        "key_players": [
-          "AbbVie",
-          "Johnson & Johnson",
-          "Sun Pharma",
-          "Eli Lilly"
-        ]
-      },
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "id": "target:IL23A",
-      "type": "Target",
-      "label": "IL23A",
-      "attrs": {
-        "name": "Interleukin-23 subunit p19",
-        "rationale": "Selective IL-23 blockade = best-in-class efficacy + durable, infrequent dosing.",
-        "tractability": "clinically drugged (mAb; oral peptide emerging)",
-        "ot_association_score": 0.64
+        "family_key": "il23",
+        "colorVar": "--s1",
+        "order": 1,
+        "safety": "Cleanest profile — no increased candidiasis or IBD signal (may be IBD-protective), low serious-infection rates, no boxed warnings."
       },
       "sources": []
     },
     {
-      "id": "moa:il-17-inhibitors-a-a-f-ra",
+      "id": "moa:il17",
       "type": "MoAClass",
-      "label": "IL-17 inhibitors (A / A-F / RA)",
+      "label": "IL-17 axis",
       "attrs": {
-        "validation_status": "validated",
-        "rationale": "Blocking the effector cytokine gives the fastest, deepest skin clearance.",
-        "mechanism": "Neutralise IL-17A (± IL-17F) or the IL-17 receptor.",
+        "family_key": "il17",
+        "colorVar": "--s2",
+        "order": 2,
+        "safety": "Mucocutaneous Candida (highest with bimekizumab); caution/avoid in IBD; brodalumab carries a boxed warning for suicidal ideation. No consistent MACE/malignancy signal."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:tnf",
+      "type": "MoAClass",
+      "label": "TNF inhibitors",
+      "attrs": {
+        "family_key": "tnf",
+        "colorVar": "--s5",
+        "order": 3,
+        "safety": "Boxed warnings: serious infections (incl. TB reactivation — screen first) and malignancy (lymphoma). HBV reactivation, demyelination, CHF worsening; highest herpes-zoster rate."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:kinase",
+      "type": "MoAClass",
+      "label": "Oral kinase inhibitors (TYK2 / JAK)",
+      "attrs": {
+        "family_key": "kinase",
+        "colorVar": "--s3",
+        "order": 4,
+        "safety": "Selective TYK2 (deucravacitinib) does NOT carry the JAK boxed warning; 5-yr data show no MACE/VTE/malignancy signal. Classic JAK inhibitors carry the class boxed warning (infection, MACE, thrombosis, malignancy)."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:pde4",
+      "type": "MoAClass",
+      "label": "PDE4 inhibitors",
+      "attrs": {
+        "family_key": "pde4",
+        "colorVar": "--s7",
+        "order": 5,
+        "safety": "No boxed warning, no lab monitoring. GI (diarrhea/nausea), weight loss, and a depression/mood warning (apremilast)."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:topical",
+      "type": "MoAClass",
+      "label": "Topical non-steroidal",
+      "attrs": {
+        "family_key": "topical",
+        "colorVar": "--s4",
+        "order": 6,
+        "safety": "Local, well-tolerated; steroid-sparing. Suitable for chronic use and sensitive sites."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:steroid",
+      "type": "MoAClass",
+      "label": "Topical corticosteroids",
+      "attrs": {
+        "family_key": "steroid",
+        "colorVar": "--sN",
+        "order": 7,
+        "safety": "Skin atrophy, striae, tachyphylaxis and HPA-axis suppression with chronic/high-potency use."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:conv",
+      "type": "MoAClass",
+      "label": "Conventional systemics",
+      "attrs": {
+        "family_key": "conv",
+        "colorVar": "--s8",
+        "order": 8,
+        "safety": "Organ toxicity and monitoring: MTX (hepatotoxicity, cytopenia, teratogenic), cyclosporine (nephrotoxicity, hypertension), acitretin (teratogenic, hyperlipidemia)."
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:novel",
+      "type": "MoAClass",
+      "label": "Novel / emerging mechanisms",
+      "attrs": {
+        "family_key": "novel",
+        "colorVar": "--s6",
+        "order": 9,
+        "safety": null
+      },
+      "sources": []
+    },
+    {
+      "id": "moa:hist",
+      "type": "MoAClass",
+      "label": "Withdrawn / discontinued",
+      "attrs": {
+        "family_key": "hist",
+        "colorVar": "--sN",
+        "order": 10,
+        "safety": null
+      },
+      "sources": []
+    },
+    {
+      "id": "seg:mild",
+      "type": "MarketSegment",
+      "label": "Mild (topical-managed)",
+      "attrs": {
+        "share_pct": 80
+      },
+      "sources": []
+    },
+    {
+      "id": "seg:modsev",
+      "type": "MarketSegment",
+      "label": "Moderate-to-severe (systemic-eligible)",
+      "attrs": {
+        "share_pct": 20
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:guselkumab",
+      "type": "Drug",
+      "label": "guselkumab",
+      "attrs": {
+        "brand": "Tremfya",
+        "sub": "IL-23 p19 inhibitor",
+        "route": "SC",
+        "dose": "q8w",
+        "appr": 2017,
+        "sales": 5200,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 91,
+        "p90": 73,
+        "p100": 37,
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
         "modality": "mAb",
-        "pros": [
-          "rapid, very high skin clearance",
-          "effective in PsA/axSpA"
-        ],
-        "cons": [
-          "candidiasis risk",
-          "caution in IBD",
-          "more frequent dosing"
-        ],
-        "key_players": [
-          "Novartis",
-          "Eli Lilly",
-          "UCB",
-          "Bausch Health",
-          "MoonLake"
-        ]
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-23 p19 inhibitor",
+        "annual_sales_usd_m": 5200,
+        "sales_year": 2025
       },
       "sources": [
         "ot",
         "fda",
-        "fierce"
-      ]
-    },
-    {
-      "id": "target:IL17A",
-      "type": "Target",
-      "label": "IL17A",
-      "attrs": {
-        "name": "Interleukin-17A",
-        "rationale": "Rapid, high skin clearance; the effector cytokine.",
-        "tractability": "clinically drugged (mAb, nanobody)",
-        "ot_association_score": 0.6
-      },
-      "sources": []
-    },
-    {
-      "id": "target:IL17RA",
-      "type": "Target",
-      "label": "IL17RA",
-      "attrs": {
-        "name": "IL-17 receptor A",
-        "rationale": "Blocks IL-17A/C/E/F signalling (brodalumab).",
-        "tractability": "clinically drugged",
-        "ot_association_score": 0.58
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:tyk2-inhibitors-oral",
-      "type": "MoAClass",
-      "label": "TYK2 inhibitors (oral)",
-      "attrs": {
-        "validation_status": "validated",
-        "rationale": "First oral agent to approach biologic-class efficacy; anchors the oral-targeted shift.",
-        "mechanism": "Allosteric inhibition of the TYK2 pseudokinase domain blocks IL-23/type-I IFN signalling.",
-        "modality": "small_molecule",
-        "pros": [
-          "oral",
-          "superior to apremilast",
-          "favourable safety vs JAK1/2/3"
-        ],
-        "cons": [
-          "below top biologics on PASI 90",
-          "long-term data maturing"
-        ],
-        "key_players": [
-          "Bristol Myers Squibb",
-          "Takeda"
-        ]
-      },
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "id": "target:TYK2",
-      "type": "Target",
-      "label": "TYK2",
-      "attrs": {
-        "name": "Tyrosine kinase 2",
-        "rationale": "Enables oral targeting of the IL-23 pathway with biologic-adjacent efficacy.",
-        "tractability": "clinically drugged (oral, allosteric)",
-        "ot_association_score": 0.71
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:il-12-23-inhibitors-p40",
-      "type": "MoAClass",
-      "label": "IL-12/23 inhibitors (p40)",
-      "attrs": {
-        "validation_status": "validated",
-        "rationale": "Pioneered the IL-23 pathway; now being displaced by selective p19 and facing biosimilars.",
-        "mechanism": "Anti-p40 blocks both IL-12 and IL-23.",
-        "modality": "mAb",
-        "pros": [
-          "long track record",
-          "broad IMID use"
-        ],
-        "cons": [
-          "bettered by selective IL-23",
-          "biosimilar erosion (2025)"
-        ],
-        "key_players": [
-          "Johnson & Johnson"
-        ]
-      },
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "id": "target:IL12B",
-      "type": "Target",
-      "label": "IL12B",
-      "attrs": {
-        "name": "IL-12/23 subunit p40",
-        "rationale": "First IL-23-pathway target (ustekinumab); now bettered by selective p19.",
-        "tractability": "clinically drugged",
-        "ot_association_score": 0.74
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:tnf-inhibitors",
-      "type": "MoAClass",
-      "label": "TNF inhibitors",
-      "attrs": {
-        "validation_status": "validated",
-        "rationale": "The original psoriasis biologic class; now legacy/value tier in the biosimilar era.",
-        "mechanism": "Neutralise TNF-α.",
-        "modality": "mAb",
-        "pros": [
-          "cheap (biosimilars)",
-          "broad IMID coverage"
-        ],
-        "cons": [
-          "lower skin clearance than IL-23/17",
-          "boxed warnings (infection, malignancy)"
-        ],
-        "key_players": [
-          "AbbVie",
-          "Amgen",
-          "UCB"
-        ]
-      },
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "id": "target:TNF",
-      "type": "Target",
-      "label": "TNF",
-      "attrs": {
-        "name": "Tumor necrosis factor",
-        "rationale": "Legacy target; broad but less skin-selective; biosimilar era.",
-        "tractability": "clinically drugged",
-        "ot_association_score": 0.61
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:oral-il-23-receptor-antagonists",
-      "type": "MoAClass",
-      "label": "Oral IL-23 receptor antagonists",
-      "attrs": {
-        "validation_status": "emerging",
-        "rationale": "Holy grail: IL-23-pathway efficacy in a once-daily pill.",
-        "mechanism": "Oral peptide competitively blocks the IL-23 receptor.",
-        "modality": "peptide",
-        "pros": [
-          "oral",
-          "targets the best-validated pathway"
-        ],
-        "cons": [
-          "Phase 3; efficacy vs injectable IL-23 to be proven"
-        ],
-        "key_players": [
-          "Johnson & Johnson"
-        ]
-      },
-      "sources": [
-        "ctgov"
-      ]
-    },
-    {
-      "id": "target:IL23R",
-      "type": "Target",
-      "label": "IL23R",
-      "attrs": {
-        "ot_association_score": 0.55
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:pde4-inhibitors-oral-topical",
-      "type": "MoAClass",
-      "label": "PDE4 inhibitors (oral & topical)",
-      "attrs": {
-        "validation_status": "validated",
-        "rationale": "Convenience/safety tier; oral apremilast and topical roflumilast for milder disease.",
-        "mechanism": "Raise intracellular cAMP to dampen pro-inflammatory cytokines.",
-        "modality": "small_molecule",
-        "pros": [
-          "oral or topical",
-          "no lab monitoring (apremilast)",
-          "non-steroidal topical"
-        ],
-        "cons": [
-          "modest efficacy",
-          "GI tolerability (oral)"
-        ],
-        "key_players": [
-          "Amgen",
-          "Arcutis"
-        ]
-      },
-      "sources": [
-        "ot",
-        "fda"
-      ]
-    },
-    {
-      "id": "target:PDE4",
-      "type": "Target",
-      "label": "PDE4",
-      "attrs": {
-        "name": "Phosphodiesterase 4B",
-        "rationale": "Oral and topical immunomodulation; modest efficacy, good convenience/safety.",
-        "tractability": "clinically drugged",
-        "ot_association_score": 0.61
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:non-steroidal-topicals-ahr-vitamin-d",
-      "type": "MoAClass",
-      "label": "Non-steroidal topicals (AhR; vitamin D)",
-      "attrs": {
-        "validation_status": "validated",
-        "rationale": "Foundational first-line and steroid-sparing maintenance for mild disease and sensitive sites.",
-        "mechanism": "AhR agonism (tapinarof) and vitamin-D-receptor modulation normalise keratinocyte differentiation.",
-        "modality": "small_molecule",
-        "pros": [
-          "first-line",
-          "safe for chronic use",
-          "sensitive sites"
-        ],
-        "cons": [
-          "limited to milder/localised disease"
-        ],
-        "key_players": [
-          "Organon (Dermavant)",
-          "LEO Pharma"
-        ]
-      },
-      "sources": [
-        "fda"
-      ]
-    },
-    {
-      "id": "target:AHR",
-      "type": "Target",
-      "label": "AHR",
-      "attrs": {
-        "name": "Aryl hydrocarbon receptor",
-        "rationale": "Topical non-steroidal mechanism (tapinarof).",
-        "tractability": "clinically drugged (topical)",
-        "ot_association_score": 0.45
-      },
-      "sources": []
-    },
-    {
-      "id": "target:VDR",
-      "type": "Target",
-      "label": "VDR",
-      "attrs": {
-        "ot_association_score": 0.6
-      },
-      "sources": []
-    },
-    {
-      "id": "moa:conventional-oral-systemics",
-      "type": "MoAClass",
-      "label": "Conventional oral systemics",
-      "attrs": {
-        "validation_status": "validated",
-        "rationale": "Low-cost legacy systemics still widely used globally where biologics are inaccessible.",
-        "mechanism": "Broad immunosuppression / antiproliferation (methotrexate, cyclosporine, acitretin).",
-        "modality": "small_molecule",
-        "pros": [
-          "cheap",
-          "oral",
-          "familiar"
-        ],
-        "cons": [
-          "toxicity & monitoring",
-          "lower efficacy/tolerability"
-        ],
-        "key_players": [
-          "generic"
-        ]
-      },
-      "sources": [
-        "fda"
-      ]
-    },
-    {
-      "id": "target:multiple",
-      "type": "Target",
-      "label": "multiple",
-      "attrs": {},
-      "sources": []
-    },
-    {
-      "id": "company:abbvie",
-      "type": "Company",
-      "label": "AbbVie",
-      "attrs": {
-        "type": "large pharma",
-        "positioning": "IL-23 leadership (Skyrizi) as its post-Humira immunology anchor; legacy TNF (Humira)."
-      },
-      "sources": [
-        "xtalks"
+        "jnj25"
       ]
     },
     {
@@ -474,148 +272,18 @@
       "type": "Company",
       "label": "Johnson & Johnson",
       "attrs": {
-        "type": "large pharma",
-        "positioning": "Broadest psoriasis franchise: p40 (Stelara), IL-23 (Tremfya) and the lead oral IL-23R peptide (icotrokinra)."
+        "type": "company"
       },
       "sources": []
     },
     {
-      "id": "deal:johnson-johnson-acquisition",
-      "type": "Deal",
-      "label": "Acquisition · Protagonist (co-dev)",
+      "id": "target:IL23A",
+      "type": "Target",
+      "label": "IL23A",
       "attrs": {
-        "value": null,
-        "year": 2017,
-        "note": "oral IL-23R peptide icotrokinra"
+        "ot_association_score": 0.64
       },
       "sources": []
-    },
-    {
-      "id": "company:novartis",
-      "type": "Company",
-      "label": "Novartis",
-      "attrs": {
-        "type": "large pharma",
-        "positioning": "First-mover IL-17 (Cosentyx) with a large rheumatology footprint."
-      },
-      "sources": []
-    },
-    {
-      "id": "company:eli-lilly",
-      "type": "Company",
-      "label": "Eli Lilly",
-      "attrs": {
-        "type": "large pharma",
-        "positioning": "IL-17 (Taltz) plus IL-23 (mirikizumab) expanding from IBD into psoriasis."
-      },
-      "sources": []
-    },
-    {
-      "id": "company:ucb",
-      "type": "Company",
-      "label": "UCB",
-      "attrs": {
-        "type": "biopharma",
-        "positioning": "Differentiated dual IL-17A/F (bimekizumab) with best-in-class complete-clearance rates."
-      },
-      "sources": []
-    },
-    {
-      "id": "company:bristol-myers-squibb",
-      "type": "Company",
-      "label": "Bristol Myers Squibb",
-      "attrs": {
-        "type": "large pharma",
-        "positioning": "Oral pathway pioneer with first-in-class TYK2 (Sotyktu)."
-      },
-      "sources": []
-    },
-    {
-      "id": "company:takeda",
-      "type": "Company",
-      "label": "Takeda",
-      "attrs": {
-        "type": "large pharma",
-        "positioning": "Next-gen oral TYK2 (zasocitinib) acquired via Nimbus, chasing Sotyktu."
-      },
-      "sources": []
-    },
-    {
-      "id": "deal:takeda-acquisition",
-      "type": "Deal",
-      "label": "Acquisition · Nimbus Therapeutics",
-      "attrs": {
-        "value": "$4B upfront",
-        "year": 2023,
-        "note": "TAK-279 / zasocitinib"
-      },
-      "sources": []
-    },
-    {
-      "id": "company:amgen",
-      "type": "Company",
-      "label": "Amgen",
-      "attrs": {
-        "type": "large pharma",
-        "positioning": "Oral PDE4 (Otezla) convenience tier + TNF (Enbrel)."
-      },
-      "sources": []
-    },
-    {
-      "id": "deal:amgen-acquisition",
-      "type": "Deal",
-      "label": "Acquisition · Celgene (via BMS divestiture)",
-      "attrs": {
-        "value": "$13.4B",
-        "year": 2019,
-        "note": "Otezla"
-      },
-      "sources": []
-    },
-    {
-      "id": "company:moonlake-immunotherapeutics",
-      "type": "Company",
-      "label": "MoonLake Immunotherapeutics",
-      "attrs": {
-        "type": "biotech",
-        "positioning": "Single-asset IL-17A/F nanobody (sonelokimab) — a differentiated, acquirable clinical-stage story."
-      },
-      "sources": []
-    },
-    {
-      "id": "company:arcutis-organon",
-      "type": "Company",
-      "label": "Arcutis / Organon",
-      "attrs": {
-        "type": "specialty derm",
-        "positioning": "Non-steroidal topicals (roflumilast, tapinarof) modernising first-line care."
-      },
-      "sources": []
-    },
-    {
-      "id": "drug:risankizumab",
-      "type": "Drug",
-      "label": "risankizumab",
-      "attrs": {
-        "brand": "Skyrizi",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "mAb",
-        "route": "SC",
-        "mechanism": "anti–IL-23 p19",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "Crohn's"
-        ],
-        "moa_class": "IL-23 inhibitor",
-        "annual_sales_usd_m": 7763,
-        "sales_year": 2023
-      },
-      "sources": [
-        "fda",
-        "xtalks"
-      ]
     },
     {
       "id": "modality:mab",
@@ -625,26 +293,46 @@
       "sources": []
     },
     {
-      "id": "drug:guselkumab",
+      "id": "drug:risankizumab",
       "type": "Drug",
-      "label": "guselkumab",
+      "label": "risankizumab",
       "attrs": {
-        "brand": "Tremfya",
+        "brand": "Skyrizi",
+        "sub": "IL-23 p19 inhibitor",
+        "route": "SC",
+        "dose": "q12w",
+        "appr": 2019,
+        "sales": 17562,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 88,
+        "p90": 75,
+        "p100": 36,
+        "note": "FY2025 sales all-indication (PsO+PsA+IBD); AbbVie's top product",
+        "mod": "mAb",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "UC"
-        ],
-        "moa_class": "IL-23 inhibitor"
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-23 p19 inhibitor",
+        "annual_sales_usd_m": 17562,
+        "sales_year": 2025
       },
       "sources": [
-        "fda"
+        "ot",
+        "fda",
+        "abbvie25"
       ]
+    },
+    {
+      "id": "company:abbvie",
+      "type": "Company",
+      "label": "AbbVie",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
     },
     {
       "id": "drug:tildrakizumab",
@@ -652,17 +340,24 @@
       "label": "tildrakizumab",
       "attrs": {
         "brand": "Ilumya",
+        "sub": "IL-23 p19 inhibitor",
+        "route": "SC",
+        "dose": "q12w",
+        "appr": 2018,
+        "combo": false,
+        "disc": false,
+        "p75": 64,
+        "p90": 35,
+        "p100": 14,
+        "mod": "mAb",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "moa_class": "IL-23 inhibitor"
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-23 p19 inhibitor"
       },
       "sources": [
+        "ot",
         "fda"
       ]
     },
@@ -681,20 +376,179 @@
       "label": "mirikizumab",
       "attrs": {
         "brand": "Omvoh",
+        "sub": "IL-23 p19 inhibitor",
+        "route": "SC",
+        "dose": "q8w",
+        "combo": false,
+        "disc": false,
+        "p90": 74,
+        "note": "approved in UC; Ph3 in psoriasis",
+        "mod": "mAb",
         "highest_phase": "phase3",
         "phase_num": 3,
         "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis (Ph3)",
-          "UC (approved)"
-        ],
-        "moa_class": "IL-23 inhibitor"
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-23 p19 inhibitor"
       },
       "sources": [
-        "ctgov"
+        "ot"
       ]
+    },
+    {
+      "id": "company:eli-lilly",
+      "type": "Company",
+      "label": "Eli Lilly",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:icotrokinra",
+      "type": "Drug",
+      "label": "icotrokinra",
+      "attrs": {
+        "brand": "Icotyde",
+        "sub": "Oral IL-23R antagonist",
+        "route": "PO",
+        "dose": "QD",
+        "appr": 2026,
+        "combo": false,
+        "disc": false,
+        "note": "first oral IL-23R peptide; FDA-approved Mar 2026 (JNJ-2113)",
+        "mod": "peptide",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "peptide",
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "Oral IL-23R antagonist"
+      },
+      "sources": [
+        "ot",
+        "fda"
+      ]
+    },
+    {
+      "id": "target:IL23R",
+      "type": "Target",
+      "label": "IL23R",
+      "attrs": {
+        "ot_association_score": 0.55
+      },
+      "sources": []
+    },
+    {
+      "id": "modality:peptide",
+      "type": "Modality",
+      "label": "peptide",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:ustekinumab",
+      "type": "Drug",
+      "label": "ustekinumab",
+      "attrs": {
+        "brand": "Stelara",
+        "sub": "IL-12/23 p40 inhibitor",
+        "route": "SC",
+        "dose": "q12w",
+        "appr": 2009,
+        "sales": 6080,
+        "syr": 2025,
+        "bios": "biosimilars from Jan 2025 (Wezlana, Steqeyma…); sales −41% YoY",
+        "combo": false,
+        "disc": false,
+        "p75": 67,
+        "p90": 42,
+        "p100": 20,
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "mAb",
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-12/23 p40 inhibitor",
+        "annual_sales_usd_m": 6080,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "jnj25"
+      ]
+    },
+    {
+      "id": "target:IL12B",
+      "type": "Target",
+      "label": "IL12B",
+      "attrs": {
+        "ot_association_score": 0.74
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:briakinumab",
+      "type": "Drug",
+      "label": "briakinumab",
+      "attrs": {
+        "brand": "—",
+        "sub": "IL-12/23 p40 inhibitor",
+        "route": "SC",
+        "dose": "q4w",
+        "combo": false,
+        "disc": true,
+        "note": "Ph3; withdrawn (cardiovascular signal)",
+        "mod": "mAb",
+        "highest_phase": "discontinued",
+        "phase_num": -1,
+        "modality": "mAb",
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-12/23 p40 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:abbott",
+      "type": "Company",
+      "label": "Abbott",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:ebdarokimab",
+      "type": "Drug",
+      "label": "ebdarokimab",
+      "attrs": {
+        "brand": "—",
+        "sub": "IL-12/23 p40 inhibitor",
+        "route": "SC",
+        "dose": "q12w",
+        "combo": false,
+        "disc": false,
+        "note": "Ph3 in China",
+        "mod": "mAb",
+        "highest_phase": "phase3",
+        "phase_num": 3,
+        "modality": "mAb",
+        "moa_family": "IL-23 / Th17 axis",
+        "sub_class": "IL-12/23 p40 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:akeso",
+      "type": "Company",
+      "label": "Akeso",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
     },
     {
       "id": "drug:secukinumab",
@@ -702,24 +556,49 @@
       "label": "secukinumab",
       "attrs": {
         "brand": "Cosentyx",
+        "sub": "IL-17A inhibitor",
+        "route": "SC",
+        "dose": "q4w",
+        "appr": 2015,
+        "sales": 6700,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 82,
+        "p90": 59,
+        "p100": 29,
+        "mod": "mAb",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "axSpA"
-        ],
-        "moa_class": "IL-17A inhibitor",
-        "annual_sales_usd_m": 4800,
-        "sales_year": 2022
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A inhibitor",
+        "annual_sales_usd_m": 6700,
+        "sales_year": 2025
       },
       "sources": [
+        "ot",
         "fda",
-        "xtalks"
+        "nvs25"
       ]
+    },
+    {
+      "id": "company:novartis",
+      "type": "Company",
+      "label": "Novartis",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:IL17A",
+      "type": "Target",
+      "label": "IL17A",
+      "attrs": {
+        "ot_association_score": 0.6
+      },
+      "sources": []
     },
     {
       "id": "drug:ixekizumab",
@@ -727,22 +606,145 @@
       "label": "ixekizumab",
       "attrs": {
         "brand": "Taltz",
+        "sub": "IL-17A inhibitor",
+        "route": "SC",
+        "dose": "q4w",
+        "appr": 2016,
+        "sales": 3260,
+        "syr": 2024,
+        "combo": false,
+        "disc": false,
+        "p75": 89,
+        "p90": 71,
+        "p100": 40,
+        "mod": "mAb",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "axSpA"
-        ],
-        "moa_class": "IL-17A inhibitor"
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A inhibitor",
+        "annual_sales_usd_m": 3260,
+        "sales_year": 2024
       },
       "sources": [
+        "ot",
         "fda",
-        "ibj"
+        "lilly_taltz"
       ]
+    },
+    {
+      "id": "drug:vunakizumab",
+      "type": "Drug",
+      "label": "vunakizumab",
+      "attrs": {
+        "brand": "—",
+        "sub": "IL-17A inhibitor",
+        "route": "SC",
+        "dose": "q8w",
+        "combo": false,
+        "disc": false,
+        "note": "Ph3 in China",
+        "mod": "mAb",
+        "highest_phase": "phase3",
+        "phase_num": 3,
+        "modality": "mAb",
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:jiangsu-hengrui",
+      "type": "Company",
+      "label": "Jiangsu Hengrui",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:bimekizumab",
+      "type": "Drug",
+      "label": "bimekizumab",
+      "attrs": {
+        "brand": "Bimzelx",
+        "sub": "IL-17A/F inhibitor",
+        "route": "SC",
+        "dose": "q8w",
+        "appr": 2023,
+        "sales": 2400,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 93,
+        "p90": 85,
+        "p100": 61,
+        "note": "dual IL-17A and IL-17F; highest PASI 100; sales +>200% YoY",
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "mAb",
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A/F inhibitor",
+        "annual_sales_usd_m": 2400,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "ucb25"
+      ]
+    },
+    {
+      "id": "company:ucb",
+      "type": "Company",
+      "label": "UCB",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:sonelokimab",
+      "type": "Drug",
+      "label": "sonelokimab",
+      "attrs": {
+        "brand": "—",
+        "sub": "IL-17A/F inhibitor",
+        "route": "SC",
+        "dose": "q8w",
+        "combo": false,
+        "disc": false,
+        "p90": 80,
+        "note": "IL-17A/F Nanobody (M-1095); Ph2 MIRA in PsO, sponsor prioritizing HS",
+        "mod": "protein",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "protein",
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A/F inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:moonlake-immunotherapeutics",
+      "type": "Company",
+      "label": "MoonLake Immunotherapeutics",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "modality:protein",
+      "type": "Modality",
+      "label": "protein",
+      "attrs": {},
+      "sources": []
     },
     {
       "id": "drug:brodalumab",
@@ -750,17 +752,25 @@
       "label": "brodalumab",
       "attrs": {
         "brand": "Siliq",
+        "sub": "IL-17RA inhibitor",
+        "route": "SC",
+        "dose": "q2w",
+        "appr": 2017,
+        "combo": false,
+        "disc": false,
+        "p75": 86,
+        "p90": 70,
+        "p100": 44,
+        "note": "boxed warning (suicidal ideation)",
+        "mod": "mAb",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "moa_class": "IL-17RA inhibitor"
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17RA inhibitor"
       },
       "sources": [
+        "ot",
         "fda"
       ]
     },
@@ -774,145 +784,77 @@
       "sources": []
     },
     {
-      "id": "drug:bimekizumab",
-      "type": "Drug",
-      "label": "bimekizumab",
+      "id": "target:IL17RA",
+      "type": "Target",
+      "label": "IL17RA",
       "attrs": {
-        "brand": "Bimzelx",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "mAb",
-        "route": "SC",
-        "mechanism": "dual anti–IL-17A and IL-17F",
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "HS"
-        ],
-        "moa_class": "IL-17A/F inhibitor"
+        "ot_association_score": 0.58
       },
-      "sources": [
-        "fda",
-        "fierce"
-      ]
-    },
-    {
-      "id": "drug:ustekinumab",
-      "type": "Drug",
-      "label": "ustekinumab",
-      "attrs": {
-        "brand": "Stelara",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "Crohn's",
-          "UC"
-        ],
-        "moa_class": "IL-12/23 inhibitor",
-        "annual_sales_usd_m": 10858,
-        "sales_year": 2023
-      },
-      "sources": [
-        "fda",
-        "xtalks"
-      ]
-    },
-    {
-      "id": "drug:adalimumab",
-      "type": "Drug",
-      "label": "adalimumab",
-      "attrs": {
-        "brand": "Humira",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "mAb",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA",
-          "+many"
-        ],
-        "moa_class": "TNF inhibitor"
-      },
-      "sources": [
-        "fda"
-      ]
-    },
-    {
-      "id": "drug:etanercept",
-      "type": "Drug",
-      "label": "etanercept",
-      "attrs": {
-        "brand": "Enbrel",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "protein",
-        "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "moa_class": "TNF inhibitor"
-      },
-      "sources": [
-        "fda"
-      ]
-    },
-    {
-      "id": "modality:protein",
-      "type": "Modality",
-      "label": "protein",
-      "attrs": {},
       "sources": []
     },
     {
-      "id": "drug:certolizumab-pegol",
+      "id": "drug:izokibep",
       "type": "Drug",
-      "label": "certolizumab pegol",
+      "label": "izokibep",
       "attrs": {
-        "brand": "Cimzia",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "mAb",
+        "brand": "—",
+        "sub": "IL-17A (small protein)",
         "route": "SC",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "moa_class": "TNF inhibitor"
+        "dose": "q2w",
+        "combo": false,
+        "disc": false,
+        "note": "IL-17A affibody; derm development deprioritized (2024)",
+        "mod": "protein",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "protein",
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A (small protein)"
       },
       "sources": [
-        "fda"
+        "ot"
       ]
     },
     {
-      "id": "drug:apremilast",
-      "type": "Drug",
-      "label": "apremilast",
+      "id": "company:acelyrin-alumis",
+      "type": "Company",
+      "label": "ACELYRIN / Alumis",
       "attrs": {
-        "brand": "Otezla",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "small_molecule",
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:dc-806",
+      "type": "Drug",
+      "label": "DC-806",
+      "attrs": {
+        "brand": "—",
+        "sub": "Oral IL-17 inhibitor",
         "route": "PO",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "moa_class": "PDE4 inhibitor"
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "oral IL-17A antagonist",
+        "mod": "small_molecule",
+        "highest_phase": "phase1",
+        "phase_num": 1,
+        "modality": "small_molecule",
+        "moa_family": "IL-17 axis",
+        "sub_class": "Oral IL-17 inhibitor"
       },
       "sources": [
-        "fda"
+        "ot"
       ]
+    },
+    {
+      "id": "company:leo-pharma-dice",
+      "type": "Company",
+      "label": "LEO Pharma (DICE)",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
     },
     {
       "id": "modality:small-molecule",
@@ -922,23 +864,587 @@
       "sources": []
     },
     {
+      "id": "drug:cjm-112",
+      "type": "Drug",
+      "label": "CJM-112",
+      "attrs": {
+        "brand": "—",
+        "sub": "IL-17A inhibitor",
+        "route": "SC",
+        "dose": "—",
+        "combo": false,
+        "disc": false,
+        "mod": "mAb",
+        "highest_phase": "phase1",
+        "phase_num": 1,
+        "modality": "mAb",
+        "moa_family": "IL-17 axis",
+        "sub_class": "IL-17A inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "drug:adalimumab",
+      "type": "Drug",
+      "label": "adalimumab",
+      "attrs": {
+        "brand": "Humira",
+        "sub": "TNF inhibitor",
+        "route": "SC",
+        "dose": "q2w",
+        "appr": 2008,
+        "sales": 4540,
+        "syr": 2025,
+        "bios": "biosimilars from 2023 (US); sales collapsed from ~$21B peak",
+        "combo": false,
+        "disc": false,
+        "p75": 71,
+        "p90": 45,
+        "p100": 17,
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "mAb",
+        "moa_family": "TNF inhibitors",
+        "sub_class": "TNF inhibitor",
+        "annual_sales_usd_m": 4540,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "abbvie25"
+      ]
+    },
+    {
+      "id": "target:TNF",
+      "type": "Target",
+      "label": "TNF",
+      "attrs": {
+        "ot_association_score": 0.61
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:etanercept",
+      "type": "Drug",
+      "label": "etanercept",
+      "attrs": {
+        "brand": "Enbrel",
+        "sub": "TNF inhibitor",
+        "route": "SC",
+        "dose": "weekly",
+        "appr": 2004,
+        "sales": 2200,
+        "syr": 2025,
+        "bios": "biosimilars in EU; none in US (patents ~2029)",
+        "combo": false,
+        "disc": false,
+        "p75": 44,
+        "p90": 21,
+        "p100": 4,
+        "mod": "protein",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "protein",
+        "moa_family": "TNF inhibitors",
+        "sub_class": "TNF inhibitor",
+        "annual_sales_usd_m": 2200,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "amgen25"
+      ]
+    },
+    {
+      "id": "company:amgen",
+      "type": "Company",
+      "label": "Amgen",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:infliximab",
+      "type": "Drug",
+      "label": "infliximab",
+      "attrs": {
+        "brand": "Remicade",
+        "sub": "TNF inhibitor",
+        "route": "IV",
+        "dose": "q8w",
+        "appr": 2006,
+        "sales": 1768,
+        "syr": 2025,
+        "bios": "biosimilars since 2016 (Inflectra, Renflexis, Avsola)",
+        "combo": false,
+        "disc": false,
+        "p75": 80,
+        "p90": 57,
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "mAb",
+        "moa_family": "TNF inhibitors",
+        "sub_class": "TNF inhibitor",
+        "annual_sales_usd_m": 1768,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "jnj25"
+      ]
+    },
+    {
+      "id": "drug:certolizumab-pegol",
+      "type": "Drug",
+      "label": "certolizumab pegol",
+      "attrs": {
+        "brand": "Cimzia",
+        "sub": "TNF inhibitor",
+        "route": "SC",
+        "dose": "q2w",
+        "appr": 2018,
+        "sales": 2100,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 83,
+        "p90": 60,
+        "note": "PEGylated Fab' (no Fc); used more in arthritis than PsO",
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "mAb",
+        "moa_family": "TNF inhibitors",
+        "sub_class": "TNF inhibitor",
+        "annual_sales_usd_m": 2100,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "ucb25"
+      ]
+    },
+    {
       "id": "drug:deucravacitinib",
       "type": "Drug",
       "label": "deucravacitinib",
       "attrs": {
         "brand": "Sotyktu",
+        "sub": "TYK2 allosteric inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "appr": 2022,
+        "sales": 291,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 58,
+        "p90": 35,
+        "p100": 17,
+        "note": "first oral TYK2; FY2025 sales $291M",
+        "mod": "small_molecule",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "small_molecule",
-        "route": "PO",
-        "mechanism": "allosteric TYK2 inhibitor",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "moa_class": "TYK2 inhibitor"
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "TYK2 allosteric inhibitor",
+        "annual_sales_usd_m": 291,
+        "sales_year": 2025
       },
       "sources": [
-        "fda"
+        "ot",
+        "fda",
+        "bms25"
+      ]
+    },
+    {
+      "id": "company:bristol-myers-squibb",
+      "type": "Company",
+      "label": "Bristol Myers Squibb",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:TYK2",
+      "type": "Target",
+      "label": "TYK2",
+      "attrs": {
+        "ot_association_score": 0.71
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:zasocitinib",
+      "type": "Drug",
+      "label": "zasocitinib",
+      "attrs": {
+        "brand": "—",
+        "sub": "TYK2 allosteric inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "p90": 45,
+        "note": "next-gen oral TYK2 (TAK-279)",
+        "mod": "small_molecule",
+        "highest_phase": "phase3",
+        "phase_num": 3,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "TYK2 allosteric inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:takeda",
+      "type": "Company",
+      "label": "Takeda",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:esk-001",
+      "type": "Drug",
+      "label": "ESK-001",
+      "attrs": {
+        "brand": "—",
+        "sub": "TYK2 allosteric inhibitor",
+        "route": "PO",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "phase3",
+        "phase_num": 3,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "TYK2 allosteric inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:alumis",
+      "type": "Company",
+      "label": "Alumis",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:ropsacitinib",
+      "type": "Drug",
+      "label": "ropsacitinib",
+      "attrs": {
+        "brand": "—",
+        "sub": "TYK2 inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "PF-06826647",
+        "mod": "small_molecule",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "TYK2 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:pfizer",
+      "type": "Company",
+      "label": "Pfizer",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:brepocitinib",
+      "type": "Drug",
+      "label": "brepocitinib",
+      "attrs": {
+        "brand": "—",
+        "sub": "TYK2/JAK1 inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "dual TYK2/JAK1",
+        "mod": "small_molecule",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "TYK2/JAK1 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:priovant-pfizer",
+      "type": "Company",
+      "label": "Priovant / Pfizer",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:tofacitinib",
+      "type": "Drug",
+      "label": "tofacitinib",
+      "attrs": {
+        "brand": "Xeljanz",
+        "sub": "JAK inhibitor",
+        "route": "PO",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "note": "studied in Ph3; not approved for psoriasis (US)",
+        "mod": "small_molecule",
+        "highest_phase": "phase3",
+        "phase_num": 3,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "JAK inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "target:JAK3",
+      "type": "Target",
+      "label": "JAK3",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:peficitinib",
+      "type": "Drug",
+      "label": "peficitinib",
+      "attrs": {
+        "brand": "Smyraf",
+        "sub": "JAK inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "Ph3 (Japan)",
+        "mod": "small_molecule",
+        "highest_phase": "phase3",
+        "phase_num": 3,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "JAK inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:astellas",
+      "type": "Company",
+      "label": "Astellas",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:JAK1",
+      "type": "Target",
+      "label": "JAK1",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:ruxolitinib",
+      "type": "Drug",
+      "label": "ruxolitinib",
+      "attrs": {
+        "brand": "Opzelura",
+        "sub": "JAK inhibitor (topical)",
+        "route": "topical",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "small_molecule",
+        "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
+        "sub_class": "JAK inhibitor (topical)"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:incyte",
+      "type": "Company",
+      "label": "Incyte",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:apremilast",
+      "type": "Drug",
+      "label": "apremilast",
+      "attrs": {
+        "brand": "Otezla",
+        "sub": "Oral PDE4 inhibitor",
+        "route": "PO",
+        "dose": "BID",
+        "appr": 2014,
+        "sales": 2400,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "p75": 33,
+        "p90": 10,
+        "note": "FY2025 approx; selected for Medicare IRA price-setting",
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "PDE4 inhibitors",
+        "sub_class": "Oral PDE4 inhibitor",
+        "annual_sales_usd_m": 2400,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "amgen25"
+      ]
+    },
+    {
+      "id": "target:PDE4",
+      "type": "Target",
+      "label": "PDE4",
+      "attrs": {
+        "ot_association_score": 0.61
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:orismilast",
+      "type": "Drug",
+      "label": "orismilast",
+      "attrs": {
+        "brand": "—",
+        "sub": "Oral PDE4 inhibitor",
+        "route": "PO",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "note": "Ph2b positive in PsO; sponsor advancing Ph3 in atopic dermatitis",
+        "mod": "small_molecule",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "small_molecule",
+        "moa_family": "PDE4 inhibitors",
+        "sub_class": "Oral PDE4 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:union-therapeutics",
+      "type": "Company",
+      "label": "UNION therapeutics",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:roflumilast",
+      "type": "Drug",
+      "label": "roflumilast",
+      "attrs": {
+        "brand": "Zoryve",
+        "sub": "Topical PDE4 inhibitor",
+        "route": "topical",
+        "dose": "QD",
+        "appr": 2022,
+        "sales": 372,
+        "syr": 2025,
+        "combo": false,
+        "disc": false,
+        "note": "FY2025 franchise (PsO+seb derm+AD); scalp/body foam approved May 2025",
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "PDE4 inhibitors",
+        "sub_class": "Topical PDE4 inhibitor",
+        "annual_sales_usd_m": 372,
+        "sales_year": 2025
+      },
+      "sources": [
+        "ot",
+        "fda",
+        "arcutis25"
+      ]
+    },
+    {
+      "id": "company:arcutis-biotherapeutics",
+      "type": "Company",
+      "label": "Arcutis Biotherapeutics",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:crisaborole",
+      "type": "Drug",
+      "label": "crisaborole",
+      "attrs": {
+        "brand": "Eucrisa",
+        "sub": "Topical PDE4 inhibitor",
+        "route": "topical",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "note": "approved in atopic dermatitis",
+        "mod": "small_molecule",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "small_molecule",
+        "moa_family": "PDE4 inhibitors",
+        "sub_class": "Topical PDE4 inhibitor"
+      },
+      "sources": [
+        "ot"
       ]
     },
     {
@@ -947,18 +1453,21 @@
       "label": "tapinarof",
       "attrs": {
         "brand": "Vtama",
+        "sub": "AhR agonist (topical)",
+        "route": "topical",
+        "dose": "QD",
+        "appr": 2022,
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "small_molecule",
-        "route": "topical",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "atopic dermatitis"
-        ],
-        "moa_class": "AhR agonist"
+        "moa_family": "Topical non-steroidal",
+        "sub_class": "AhR agonist (topical)"
       },
       "sources": [
+        "ot",
         "fda"
       ]
     },
@@ -972,53 +1481,36 @@
       "sources": []
     },
     {
-      "id": "drug:roflumilast-topical",
-      "type": "Drug",
-      "label": "roflumilast (topical)",
+      "id": "target:AHR",
+      "type": "Target",
+      "label": "AHR",
       "attrs": {
-        "brand": "Zoryve",
-        "highest_phase": "approved",
-        "phase_num": 4,
-        "modality": "small_molecule",
-        "route": "topical",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis",
-          "seb derm",
-          "AD"
-        ],
-        "moa_class": "PDE4 inhibitor"
-      },
-      "sources": [
-        "fda"
-      ]
-    },
-    {
-      "id": "company:arcutis",
-      "type": "Company",
-      "label": "Arcutis",
-      "attrs": {
-        "type": "company"
+        "ot_association_score": 0.45
       },
       "sources": []
     },
     {
-      "id": "drug:calcipotriene-corticosteroid",
+      "id": "drug:calcipotriene",
       "type": "Drug",
-      "label": "calcipotriene / corticosteroid",
+      "label": "calcipotriene",
       "attrs": {
-        "brand": "Enstilar/Taclonex",
+        "brand": "Dovonex / Enstilar",
+        "sub": "Vitamin D analog (topical)",
+        "route": "topical",
+        "dose": "QD-BID",
+        "appr": 1993,
+        "combo": true,
+        "disc": false,
+        "note": "often co-formulated with a steroid",
+        "mod": "small_molecule",
         "highest_phase": "approved",
         "phase_num": 4,
         "modality": "small_molecule",
-        "route": "topical",
-        "mechanism": null,
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "moa_class": "Topical vitamin D + steroid"
+        "moa_family": "Topical non-steroidal",
+        "sub_class": "Vitamin D analog (topical)"
       },
       "sources": [
+        "ot",
         "fda"
       ]
     },
@@ -1032,246 +1524,875 @@
       "sources": []
     },
     {
-      "id": "drug:icotrokinra-jnj-2113",
-      "type": "Drug",
-      "label": "icotrokinra (JNJ-2113)",
+      "id": "target:VDR",
+      "type": "Target",
+      "label": "VDR",
       "attrs": {
-        "brand": "—",
-        "highest_phase": "phase3",
-        "phase_num": 3,
-        "modality": "peptide",
-        "route": "PO",
-        "mechanism": "oral peptide blocking IL-23 receptor",
-        "indications": [
-          "plaque psoriasis"
-        ],
-        "moa_class": "Oral IL-23R antagonist"
+        "ot_association_score": 0.6
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:calcitriol",
+      "type": "Drug",
+      "label": "calcitriol",
+      "attrs": {
+        "brand": "Vectical",
+        "sub": "Vitamin D analog (topical)",
+        "route": "topical",
+        "dose": "BID",
+        "appr": 2009,
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Topical non-steroidal",
+        "sub_class": "Vitamin D analog (topical)"
       },
       "sources": [
-        "ctgov"
+        "ot",
+        "fda"
       ]
     },
     {
-      "id": "modality:peptide",
-      "type": "Modality",
-      "label": "peptide",
+      "id": "company:leo-galderma",
+      "type": "Company",
+      "label": "LEO / Galderma",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:tazarotene",
+      "type": "Drug",
+      "label": "tazarotene",
+      "attrs": {
+        "brand": "Tazorac",
+        "sub": "Retinoid (topical)",
+        "route": "topical",
+        "dose": "QD",
+        "appr": 1997,
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Topical non-steroidal",
+        "sub_class": "Retinoid (topical)"
+      },
+      "sources": [
+        "ot",
+        "fda"
+      ]
+    },
+    {
+      "id": "company:allergan",
+      "type": "Company",
+      "label": "Allergan",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:RARB",
+      "type": "Target",
+      "label": "RARB",
       "attrs": {},
       "sources": []
     },
     {
-      "id": "drug:zasocitinib-tak-279",
+      "id": "drug:clobetasol-propionate",
       "type": "Drug",
-      "label": "zasocitinib (TAK-279)",
+      "label": "clobetasol propionate",
+      "attrs": {
+        "brand": "Temovate / Clobex",
+        "sub": "Topical corticosteroid",
+        "route": "topical",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "note": "super-high potency",
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Topical corticosteroids",
+        "sub_class": "Topical corticosteroid"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:generic",
+      "type": "Company",
+      "label": "generic",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:NR3C1",
+      "type": "Target",
+      "label": "NR3C1",
+      "attrs": {
+        "ot_association_score": 0.6
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:betamethasone-dipropionate",
+      "type": "Drug",
+      "label": "betamethasone dipropionate",
+      "attrs": {
+        "brand": "Diprolene",
+        "sub": "Topical corticosteroid",
+        "route": "topical",
+        "dose": "QD-BID",
+        "combo": true,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Topical corticosteroids",
+        "sub_class": "Topical corticosteroid"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "drug:halobetasol-propionate",
+      "type": "Drug",
+      "label": "halobetasol propionate",
+      "attrs": {
+        "brand": "Ultravate",
+        "sub": "Topical corticosteroid",
+        "route": "topical",
+        "dose": "QD",
+        "combo": true,
+        "disc": false,
+        "note": "also co-formulated with tazarotene (Duobrii)",
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Topical corticosteroids",
+        "sub_class": "Topical corticosteroid"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "drug:desoximetasone",
+      "type": "Drug",
+      "label": "desoximetasone",
+      "attrs": {
+        "brand": "Topicort",
+        "sub": "Topical corticosteroid",
+        "route": "topical",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Topical corticosteroids",
+        "sub_class": "Topical corticosteroid"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "drug:methotrexate",
+      "type": "Drug",
+      "label": "methotrexate",
       "attrs": {
         "brand": "—",
+        "sub": "Antimetabolite (DHFR)",
+        "route": "PO",
+        "dose": "weekly",
+        "combo": false,
+        "disc": false,
+        "p75": 38,
+        "p90": 16,
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Conventional systemics",
+        "sub_class": "Antimetabolite (DHFR)"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "target:DHFR",
+      "type": "Target",
+      "label": "DHFR",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:cyclosporine",
+      "type": "Drug",
+      "label": "cyclosporine",
+      "attrs": {
+        "brand": "Neoral",
+        "sub": "Calcineurin inhibitor",
+        "route": "PO",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "p75": 50,
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Conventional systemics",
+        "sub_class": "Calcineurin inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "target:PPIA",
+      "type": "Target",
+      "label": "PPIA",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:acitretin",
+      "type": "Drug",
+      "label": "acitretin",
+      "attrs": {
+        "brand": "Soriatane",
+        "sub": "Systemic retinoid",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "teratogenic; often combined with phototherapy",
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Conventional systemics",
+        "sub_class": "Systemic retinoid"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "target:RARA",
+      "type": "Target",
+      "label": "RARA",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:dimethyl-fumarate",
+      "type": "Drug",
+      "label": "dimethyl fumarate",
+      "attrs": {
+        "brand": "Skilarence",
+        "sub": "Fumaric acid ester",
+        "route": "PO",
+        "dose": "BID",
+        "appr": 2017,
+        "combo": false,
+        "disc": false,
+        "note": "approved in EU",
+        "mod": "small_molecule",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "small_molecule",
+        "moa_family": "Conventional systemics",
+        "sub_class": "Fumaric acid ester"
+      },
+      "sources": [
+        "ot",
+        "fda"
+      ]
+    },
+    {
+      "id": "company:almirall",
+      "type": "Company",
+      "label": "Almirall",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:NFE2L2",
+      "type": "Target",
+      "label": "NFE2L2",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:piclidenoson",
+      "type": "Drug",
+      "label": "piclidenoson",
+      "attrs": {
+        "brand": "—",
+        "sub": "A3 adenosine agonist",
+        "route": "PO",
+        "dose": "BID",
+        "combo": false,
+        "disc": false,
+        "note": "Ph3 COMFORT efficacy weak (PASI75 ~10%); stalled",
+        "mod": "small_molecule",
         "highest_phase": "phase3",
         "phase_num": 3,
         "modality": "small_molecule",
-        "route": "PO",
-        "mechanism": "next-gen oral allosteric TYK2",
-        "indications": [
-          "plaque psoriasis",
-          "PsA"
-        ],
-        "moa_class": "TYK2 inhibitor"
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "A3 adenosine agonist"
       },
       "sources": [
-        "ctgov"
+        "ot"
       ]
     },
     {
-      "id": "drug:sonelokimab",
+      "id": "company:can-fite-biopharma",
+      "type": "Company",
+      "label": "Can-Fite BioPharma",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:ADORA3",
+      "type": "Target",
+      "label": "ADORA3",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:fezakinumab",
       "type": "Drug",
-      "label": "sonelokimab",
+      "label": "fezakinumab",
       "attrs": {
         "brand": "—",
+        "sub": "IL-22 inhibitor",
+        "route": "SC",
+        "dose": "q2w",
+        "combo": false,
+        "disc": false,
+        "mod": "mAb",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "mAb",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "IL-22 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "target:IL22",
+      "type": "Target",
+      "label": "IL22",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:vixarelimab",
+      "type": "Drug",
+      "label": "vixarelimab",
+      "attrs": {
+        "brand": "—",
+        "sub": "OSMRβ inhibitor (IL-31/OSM)",
+        "route": "SC",
+        "dose": "q2w",
+        "combo": false,
+        "disc": false,
+        "mod": "mAb",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "mAb",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "OSMRβ inhibitor (IL-31/OSM)"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:genentech",
+      "type": "Company",
+      "label": "Genentech",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:OSMR",
+      "type": "Target",
+      "label": "OSMR",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:namilumab",
+      "type": "Drug",
+      "label": "namilumab",
+      "attrs": {
+        "brand": "—",
+        "sub": "GM-CSF inhibitor",
+        "route": "SC",
+        "dose": "q4w",
+        "combo": false,
+        "disc": false,
+        "mod": "mAb",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "mAb",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "GM-CSF inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:roivant",
+      "type": "Company",
+      "label": "Roivant",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:CSF2",
+      "type": "Target",
+      "label": "CSF2",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:spesolimab",
+      "type": "Drug",
+      "label": "spesolimab",
+      "attrs": {
+        "brand": "Spevigo",
+        "sub": "IL-36R inhibitor",
+        "route": "IV/SC",
+        "dose": "—",
+        "appr": 2022,
+        "combo": false,
+        "disc": false,
+        "note": "approved for generalized pustular psoriasis (adjacent)",
+        "mod": "mAb",
+        "highest_phase": "approved",
+        "phase_num": 4,
+        "modality": "mAb",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "IL-36R inhibitor"
+      },
+      "sources": [
+        "ot",
+        "fda"
+      ]
+    },
+    {
+      "id": "company:boehringer-ingelheim",
+      "type": "Company",
+      "label": "Boehringer Ingelheim",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:IL1RL2",
+      "type": "Target",
+      "label": "IL1RL2",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:imsidolimab",
+      "type": "Drug",
+      "label": "imsidolimab",
+      "attrs": {
+        "brand": "—",
+        "sub": "IL-36R inhibitor",
+        "route": "SC",
+        "dose": "—",
+        "combo": false,
+        "disc": false,
+        "note": "Ph3 in GPP (adjacent)",
+        "mod": "mAb",
         "highest_phase": "phase3",
         "phase_num": 3,
-        "modality": "protein",
+        "modality": "mAb",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "IL-36R inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:anaptysbio",
+      "type": "Company",
+      "label": "AnaptysBio",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "drug:gsk2982772",
+      "type": "Drug",
+      "label": "GSK2982772",
+      "attrs": {
+        "brand": "—",
+        "sub": "RIPK1 inhibitor",
+        "route": "PO",
+        "dose": "TID",
+        "combo": false,
+        "disc": false,
+        "mod": "small_molecule",
+        "highest_phase": "phase2",
+        "phase_num": 2,
+        "modality": "small_molecule",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "RIPK1 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:gsk",
+      "type": "Company",
+      "label": "GSK",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:RIPK1",
+      "type": "Target",
+      "label": "RIPK1",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:ponesimod",
+      "type": "Drug",
+      "label": "ponesimod",
+      "attrs": {
+        "brand": "Ponvory",
+        "sub": "S1P receptor modulator",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": true,
+        "note": "Ph2 for psoriasis discontinued; approved in MS",
+        "mod": "small_molecule",
+        "highest_phase": "discontinued",
+        "phase_num": -1,
+        "modality": "small_molecule",
+        "moa_family": "Novel / emerging mechanisms",
+        "sub_class": "S1P receptor modulator"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "target:S1PR1",
+      "type": "Target",
+      "label": "S1PR1",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:efalizumab",
+      "type": "Drug",
+      "label": "efalizumab",
+      "attrs": {
+        "brand": "Raptiva",
+        "sub": "Anti-CD11a (LFA-1)",
         "route": "SC",
-        "mechanism": "IL-17A/F trivalent nanobody",
-        "indications": [
-          "plaque psoriasis",
-          "HS",
-          "PsA"
-        ],
-        "moa_class": "IL-17A/F inhibitor"
+        "dose": "weekly",
+        "combo": false,
+        "disc": true,
+        "note": "withdrawn 2009 (PML risk)",
+        "mod": "mAb",
+        "highest_phase": "discontinued",
+        "phase_num": -1,
+        "modality": "mAb",
+        "moa_family": "Withdrawn / discontinued",
+        "sub_class": "Anti-CD11a (LFA-1)"
       },
       "sources": [
-        "ctgov"
+        "ot"
       ]
     },
     {
-      "id": "seg:mild-topical-managed",
-      "type": "MarketSegment",
-      "label": "Mild (topical-managed)",
+      "id": "company:genentech-merck",
+      "type": "Company",
+      "label": "Genentech / Merck",
       "attrs": {
-        "share_pct": 80,
-        "note": "limited body-surface area; managed with topicals ± phototherapy"
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "target:ITGAL",
+      "type": "Target",
+      "label": "ITGAL",
+      "attrs": {},
+      "sources": []
+    },
+    {
+      "id": "drug:alefacept",
+      "type": "Drug",
+      "label": "alefacept",
+      "attrs": {
+        "brand": "Amevive",
+        "sub": "Anti-CD2 (LFA-3 fusion)",
+        "route": "IM",
+        "dose": "weekly",
+        "combo": false,
+        "disc": true,
+        "note": "discontinued (commercial)",
+        "mod": "protein",
+        "highest_phase": "discontinued",
+        "phase_num": -1,
+        "modality": "protein",
+        "moa_family": "Withdrawn / discontinued",
+        "sub_class": "Anti-CD2 (LFA-3 fusion)"
       },
       "sources": [
-        "npf"
+        "ot"
       ]
     },
     {
-      "id": "seg:moderate-to-severe-systemic-eligible",
-      "type": "MarketSegment",
-      "label": "Moderate-to-severe (systemic-eligible)",
-      "attrs": {
-        "share_pct": 20,
-        "note": "the biologic/oral-systemic opportunity"
-      },
-      "sources": [
-        "npf"
-      ]
+      "id": "target:CD2",
+      "type": "Target",
+      "label": "CD2",
+      "attrs": {},
+      "sources": []
     },
     {
       "id": "catalyst:c1",
       "type": "Catalyst",
-      "label": "Stelara biosimilars enter US/EU",
+      "label": "Humira (adalimumab) biosimilars enter US",
       "attrs": {
-        "date": "2025",
+        "date": "2023-07",
         "kind": "patent_expiry",
-        "significance": "Accelerates share shift toward selective IL-23 and orals.",
-        "company": "Johnson & Johnson"
+        "significance": "First big psoriasis-biologic patent cliff; ~9 biosimilars in 2023.",
+        "company": "AbbVie"
       },
       "sources": [
-        "xtalks"
+        "ajmc_humira"
       ]
     },
     {
       "id": "catalyst:c2",
       "type": "Catalyst",
-      "label": "Icotrokinra (oral IL-23R) Phase 3 readouts",
+      "label": "Bimzelx (bimekizumab) approved for plaque psoriasis (US)",
       "attrs": {
-        "date": "2025-2026",
-        "kind": "readout",
-        "significance": "First oral targeting the best-validated pathway; could redefine the oral segment.",
-        "company": "Johnson & Johnson"
+        "date": "2023-10",
+        "kind": "approval",
+        "significance": "First IL-17A and IL-17F inhibitor; deepest skin-clearance benchmark.",
+        "company": "UCB"
       },
       "sources": [
-        "ctgov"
+        "fda"
       ]
     },
     {
       "id": "catalyst:c3",
       "type": "Catalyst",
-      "label": "Zasocitinib (oral TYK2) Phase 3 readouts",
+      "label": "Stelara (ustekinumab) US biosimilar cliff",
       "attrs": {
-        "date": "2025-2026",
-        "kind": "readout",
-        "significance": "Next-gen oral TYK2 vs Sotyktu benchmark.",
-        "company": "Takeda"
+        "date": "2025-01",
+        "kind": "patent_expiry",
+        "significance": "~7 biosimilars launch in 2025 at up to ~85% discount; Stelara ~$10.4B (2024).",
+        "company": "Johnson & Johnson"
       },
       "sources": [
-        "ctgov"
+        "cfb_stelara"
       ]
     },
     {
       "id": "catalyst:c4",
       "type": "Catalyst",
-      "label": "Sonelokimab Phase 3 (psoriasis / HS)",
+      "label": "Zoryve (roflumilast) foam approved for scalp & body",
       "attrs": {
-        "date": "2025-2026",
-        "kind": "readout",
-        "significance": "Differentiated IL-17A/F nanobody; key value inflection for a single-asset biotech.",
-        "company": "MoonLake"
+        "date": "2025-05",
+        "kind": "approval",
+        "significance": "Extends the topical PDE4 franchise into scalp.",
+        "company": "Arcutis Biotherapeutics"
       },
       "sources": [
-        "ctgov"
+        "arcutis_foam"
+      ]
+    },
+    {
+      "id": "catalyst:c5",
+      "type": "Catalyst",
+      "label": "Zasocitinib (TAK-279) positive Phase 3 topline",
+      "attrs": {
+        "date": "2025-12",
+        "kind": "readout",
+        "significance": ">50% PASI 90, ~30% PASI 100 at wk16; positions oral TYK2 as a 2026 filer.",
+        "company": "Takeda"
+      },
+      "sources": [
+        "takeda_zaso"
+      ]
+    },
+    {
+      "id": "catalyst:c6",
+      "type": "Catalyst",
+      "label": "Envudeucitinib (ESK-001) positive Phase 3 topline",
+      "attrs": {
+        "date": "2026-01",
+        "kind": "readout",
+        "significance": "~74% PASI 75; oral TYK2 competitor; NDA planned H2 2026.",
+        "company": "Alumis"
+      },
+      "sources": [
+        "alumis_esk"
+      ]
+    },
+    {
+      "id": "catalyst:c7",
+      "type": "Catalyst",
+      "label": "ICOTYDE (icotrokinra) FDA-approved",
+      "attrs": {
+        "date": "2026-03",
+        "kind": "approval",
+        "significance": "First targeted ORAL IL-23R peptide; category-defining first-line oral.",
+        "company": "Johnson & Johnson"
+      },
+      "sources": [
+        "jnj_icotyde"
+      ]
+    },
+    {
+      "id": "catalyst:c8",
+      "type": "Catalyst",
+      "label": "Otezla (apremilast) earliest generic entry (proj.)",
+      "attrs": {
+        "date": "2028",
+        "kind": "patent_expiry",
+        "significance": "Oral PDE4 loss of exclusivity.",
+        "company": "Amgen"
+      },
+      "sources": [
+        "dpw"
+      ]
+    },
+    {
+      "id": "catalyst:c9",
+      "type": "Catalyst",
+      "label": "Cosentyx (secukinumab) US patent expiry (proj.)",
+      "attrs": {
+        "date": "2029",
+        "kind": "patent_expiry",
+        "significance": "IL-17 biosimilars already in Phase 3.",
+        "company": "Novartis"
+      },
+      "sources": [
+        "dpw"
+      ]
+    },
+    {
+      "id": "catalyst:c10",
+      "type": "Catalyst",
+      "label": "Tremfya (guselkumab) US patent expiry (proj.)",
+      "attrs": {
+        "date": "2031",
+        "kind": "patent_expiry",
+        "significance": "IL-23 franchise exclusivity.",
+        "company": "Johnson & Johnson"
+      },
+      "sources": [
+        "dpw"
+      ]
+    },
+    {
+      "id": "catalyst:c11",
+      "type": "Catalyst",
+      "label": "Skyrizi (risankizumab) basic patent expiry (proj.)",
+      "attrs": {
+        "date": "2033",
+        "kind": "patent_expiry",
+        "significance": "Longest runway of the IL-23 class; AbbVie's post-Humira anchor.",
+        "company": "AbbVie"
+      },
+      "sources": [
+        "dpw"
       ]
     }
   ],
   "edges": [
     {
-      "type": "ACTS_ON",
-      "source": "moa:il-23-inhibitors-p19",
+      "type": "DEVELOPED_BY",
+      "source": "drug:guselkumab",
+      "target": "company:johnson-johnson",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:guselkumab",
+      "target": "moa:il23",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:guselkumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:guselkumab",
       "target": "target:IL23A",
       "attrs": {}
     },
     {
-      "type": "ACTS_ON",
-      "source": "moa:il-17-inhibitors-a-a-f-ra",
-      "target": "target:IL17A",
+      "type": "HAS_MODALITY",
+      "source": "drug:guselkumab",
+      "target": "modality:mab",
       "attrs": {}
     },
     {
-      "type": "ACTS_ON",
-      "source": "moa:il-17-inhibitors-a-a-f-ra",
-      "target": "target:IL17RA",
+      "type": "SERVES",
+      "source": "drug:guselkumab",
+      "target": "seg:modsev",
       "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:tyk2-inhibitors-oral",
-      "target": "target:TYK2",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:il-12-23-inhibitors-p40",
-      "target": "target:IL12B",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:tnf-inhibitors",
-      "target": "target:TNF",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:oral-il-23-receptor-antagonists",
-      "target": "target:IL23R",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:pde4-inhibitors-oral-topical",
-      "target": "target:PDE4",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:non-steroidal-topicals-ahr-vitamin-d",
-      "target": "target:AHR",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:non-steroidal-topicals-ahr-vitamin-d",
-      "target": "target:VDR",
-      "attrs": {}
-    },
-    {
-      "type": "ACTS_ON",
-      "source": "moa:conventional-oral-systemics",
-      "target": "target:multiple",
-      "attrs": {}
-    },
-    {
-      "type": "PARTY_TO",
-      "source": "company:johnson-johnson",
-      "target": "deal:johnson-johnson-acquisition",
-      "attrs": {
-        "role": "acquirer"
-      }
-    },
-    {
-      "type": "PARTY_TO",
-      "source": "company:takeda",
-      "target": "deal:takeda-acquisition",
-      "attrs": {
-        "role": "acquirer"
-      }
-    },
-    {
-      "type": "PARTY_TO",
-      "source": "company:amgen",
-      "target": "deal:amgen-acquisition",
-      "attrs": {
-        "role": "acquirer"
-      }
     },
     {
       "type": "DEVELOPED_BY",
@@ -1282,8 +2403,17 @@
     {
       "type": "HAS_MECHANISM",
       "source": "drug:risankizumab",
-      "target": "moa:il-23-inhibitors-p19",
+      "target": "moa:il23",
       "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:risankizumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
     },
     {
       "type": "HITS",
@@ -1298,46 +2428,10 @@
       "attrs": {}
     },
     {
-      "type": "DEVELOPED_IN",
+      "type": "SERVES",
       "source": "drug:risankizumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:guselkumab",
-      "target": "company:johnson-johnson",
+      "target": "seg:modsev",
       "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:guselkumab",
-      "target": "moa:il-23-inhibitors-p19",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:guselkumab",
-      "target": "target:IL23A",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:guselkumab",
-      "target": "modality:mab",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:guselkumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
     },
     {
       "type": "DEVELOPED_BY",
@@ -1348,19 +2442,7 @@
     {
       "type": "HAS_MECHANISM",
       "source": "drug:tildrakizumab",
-      "target": "moa:il-23-inhibitors-p19",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:tildrakizumab",
-      "target": "target:IL23A",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:tildrakizumab",
-      "target": "modality:mab",
+      "target": "moa:il23",
       "attrs": {}
     },
     {
@@ -1373,6 +2455,24 @@
       }
     },
     {
+      "type": "HITS",
+      "source": "drug:tildrakizumab",
+      "target": "target:IL23A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:tildrakizumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:tildrakizumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
       "type": "DEVELOPED_BY",
       "source": "drug:mirikizumab",
       "target": "company:eli-lilly",
@@ -1381,19 +2481,7 @@
     {
       "type": "HAS_MECHANISM",
       "source": "drug:mirikizumab",
-      "target": "moa:il-23-inhibitors-p19",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:mirikizumab",
-      "target": "target:IL23A",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:mirikizumab",
-      "target": "modality:mab",
+      "target": "moa:il23",
       "attrs": {}
     },
     {
@@ -1406,32 +2494,38 @@
       }
     },
     {
-      "type": "DEVELOPED_BY",
-      "source": "drug:secukinumab",
-      "target": "company:novartis",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:secukinumab",
-      "target": "moa:il-17-inhibitors-a-a-f-ra",
-      "attrs": {}
-    },
-    {
       "type": "HITS",
-      "source": "drug:secukinumab",
-      "target": "target:IL17A",
+      "source": "drug:mirikizumab",
+      "target": "target:IL23A",
       "attrs": {}
     },
     {
       "type": "HAS_MODALITY",
-      "source": "drug:secukinumab",
+      "source": "drug:mirikizumab",
       "target": "modality:mab",
       "attrs": {}
     },
     {
+      "type": "SERVES",
+      "source": "drug:mirikizumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:icotrokinra",
+      "target": "company:johnson-johnson",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:icotrokinra",
+      "target": "moa:il23",
+      "attrs": {}
+    },
+    {
       "type": "DEVELOPED_IN",
-      "source": "drug:secukinumab",
+      "source": "drug:icotrokinra",
       "target": "ind:plaque-psoriasis",
       "attrs": {
         "phase": "approved",
@@ -1439,103 +2533,22 @@
       }
     },
     {
-      "type": "DEVELOPED_BY",
-      "source": "drug:ixekizumab",
-      "target": "company:eli-lilly",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:ixekizumab",
-      "target": "moa:il-17-inhibitors-a-a-f-ra",
-      "attrs": {}
-    },
-    {
       "type": "HITS",
-      "source": "drug:ixekizumab",
-      "target": "target:IL17A",
+      "source": "drug:icotrokinra",
+      "target": "target:IL23R",
       "attrs": {}
     },
     {
       "type": "HAS_MODALITY",
-      "source": "drug:ixekizumab",
-      "target": "modality:mab",
+      "source": "drug:icotrokinra",
+      "target": "modality:peptide",
       "attrs": {}
     },
     {
-      "type": "DEVELOPED_IN",
-      "source": "drug:ixekizumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:brodalumab",
-      "target": "company:bausch-health",
+      "type": "SERVES",
+      "source": "drug:icotrokinra",
+      "target": "seg:modsev",
       "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:brodalumab",
-      "target": "moa:il-17-inhibitors-a-a-f-ra",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:brodalumab",
-      "target": "target:IL17RA",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:brodalumab",
-      "target": "modality:mab",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:brodalumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:bimekizumab",
-      "target": "company:ucb",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:bimekizumab",
-      "target": "moa:il-17-inhibitors-a-a-f-ra",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:bimekizumab",
-      "target": "target:IL17A",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:bimekizumab",
-      "target": "modality:mab",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:bimekizumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
     },
     {
       "type": "DEVELOPED_BY",
@@ -1546,8 +2559,17 @@
     {
       "type": "HAS_MECHANISM",
       "source": "drug:ustekinumab",
-      "target": "moa:il-12-23-inhibitors-p40",
+      "target": "moa:il23",
       "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:ustekinumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
     },
     {
       "type": "HITS",
@@ -1562,74 +2584,104 @@
       "attrs": {}
     },
     {
-      "type": "DEVELOPED_IN",
+      "type": "SERVES",
       "source": "drug:ustekinumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
+      "target": "seg:modsev",
+      "attrs": {}
     },
     {
       "type": "DEVELOPED_BY",
-      "source": "drug:adalimumab",
-      "target": "company:abbvie",
+      "source": "drug:briakinumab",
+      "target": "company:abbott",
       "attrs": {}
     },
     {
       "type": "HAS_MECHANISM",
-      "source": "drug:adalimumab",
-      "target": "moa:tnf-inhibitors",
+      "source": "drug:briakinumab",
+      "target": "moa:il23",
       "attrs": {}
     },
     {
+      "type": "DEVELOPED_IN",
+      "source": "drug:briakinumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "discontinued",
+        "approved": false
+      }
+    },
+    {
       "type": "HITS",
-      "source": "drug:adalimumab",
-      "target": "target:TNF",
+      "source": "drug:briakinumab",
+      "target": "target:IL12B",
       "attrs": {}
     },
     {
       "type": "HAS_MODALITY",
-      "source": "drug:adalimumab",
+      "source": "drug:briakinumab",
       "target": "modality:mab",
       "attrs": {}
     },
     {
-      "type": "DEVELOPED_IN",
-      "source": "drug:adalimumab",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
+      "type": "SERVES",
+      "source": "drug:briakinumab",
+      "target": "seg:modsev",
+      "attrs": {}
     },
     {
       "type": "DEVELOPED_BY",
-      "source": "drug:etanercept",
-      "target": "company:amgen",
+      "source": "drug:ebdarokimab",
+      "target": "company:akeso",
       "attrs": {}
     },
     {
       "type": "HAS_MECHANISM",
-      "source": "drug:etanercept",
-      "target": "moa:tnf-inhibitors",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:etanercept",
-      "target": "target:TNF",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:etanercept",
-      "target": "modality:protein",
+      "source": "drug:ebdarokimab",
+      "target": "moa:il23",
       "attrs": {}
     },
     {
       "type": "DEVELOPED_IN",
-      "source": "drug:etanercept",
+      "source": "drug:ebdarokimab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:ebdarokimab",
+      "target": "target:IL12B",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:ebdarokimab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:ebdarokimab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:secukinumab",
+      "target": "company:novartis",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:secukinumab",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:secukinumab",
       "target": "ind:plaque-psoriasis",
       "attrs": {
         "phase": "approved",
@@ -1637,268 +2689,139 @@
       }
     },
     {
+      "type": "HITS",
+      "source": "drug:secukinumab",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:secukinumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:secukinumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
       "type": "DEVELOPED_BY",
-      "source": "drug:certolizumab-pegol",
+      "source": "drug:ixekizumab",
+      "target": "company:eli-lilly",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:ixekizumab",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:ixekizumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:ixekizumab",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:ixekizumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:ixekizumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:vunakizumab",
+      "target": "company:jiangsu-hengrui",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:vunakizumab",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:vunakizumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:vunakizumab",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:vunakizumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:vunakizumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:bimekizumab",
       "target": "company:ucb",
       "attrs": {}
     },
     {
       "type": "HAS_MECHANISM",
-      "source": "drug:certolizumab-pegol",
-      "target": "moa:tnf-inhibitors",
+      "source": "drug:bimekizumab",
+      "target": "moa:il17",
       "attrs": {}
     },
     {
+      "type": "DEVELOPED_IN",
+      "source": "drug:bimekizumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
       "type": "HITS",
-      "source": "drug:certolizumab-pegol",
-      "target": "target:TNF",
+      "source": "drug:bimekizumab",
+      "target": "target:IL17A",
       "attrs": {}
     },
     {
       "type": "HAS_MODALITY",
-      "source": "drug:certolizumab-pegol",
+      "source": "drug:bimekizumab",
       "target": "modality:mab",
       "attrs": {}
     },
     {
-      "type": "DEVELOPED_IN",
-      "source": "drug:certolizumab-pegol",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:apremilast",
-      "target": "company:amgen",
+      "type": "SERVES",
+      "source": "drug:bimekizumab",
+      "target": "seg:modsev",
       "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:apremilast",
-      "target": "moa:pde4-inhibitors-oral-topical",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:apremilast",
-      "target": "target:PDE4",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:apremilast",
-      "target": "modality:small-molecule",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:apremilast",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:deucravacitinib",
-      "target": "company:bristol-myers-squibb",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:deucravacitinib",
-      "target": "moa:tyk2-inhibitors-oral",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:deucravacitinib",
-      "target": "target:TYK2",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:deucravacitinib",
-      "target": "modality:small-molecule",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:deucravacitinib",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:tapinarof",
-      "target": "company:organon-dermavant",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:tapinarof",
-      "target": "moa:non-steroidal-topicals-ahr-vitamin-d",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:tapinarof",
-      "target": "target:AHR",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:tapinarof",
-      "target": "modality:small-molecule",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:tapinarof",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:roflumilast-topical",
-      "target": "company:arcutis",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:roflumilast-topical",
-      "target": "moa:pde4-inhibitors-oral-topical",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:roflumilast-topical",
-      "target": "target:PDE4",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:roflumilast-topical",
-      "target": "modality:small-molecule",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:roflumilast-topical",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:calcipotriene-corticosteroid",
-      "target": "company:leo-pharma",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:calcipotriene-corticosteroid",
-      "target": "moa:non-steroidal-topicals-ahr-vitamin-d",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:calcipotriene-corticosteroid",
-      "target": "target:VDR",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:calcipotriene-corticosteroid",
-      "target": "modality:small-molecule",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:calcipotriene-corticosteroid",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "approved",
-        "approved": true
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:icotrokinra-jnj-2113",
-      "target": "company:johnson-johnson",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:icotrokinra-jnj-2113",
-      "target": "moa:oral-il-23-receptor-antagonists",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:icotrokinra-jnj-2113",
-      "target": "target:IL23R",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:icotrokinra-jnj-2113",
-      "target": "modality:peptide",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:icotrokinra-jnj-2113",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "phase3",
-        "approved": false
-      }
-    },
-    {
-      "type": "DEVELOPED_BY",
-      "source": "drug:zasocitinib-tak-279",
-      "target": "company:takeda",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MECHANISM",
-      "source": "drug:zasocitinib-tak-279",
-      "target": "moa:tyk2-inhibitors-oral",
-      "attrs": {}
-    },
-    {
-      "type": "HITS",
-      "source": "drug:zasocitinib-tak-279",
-      "target": "target:TYK2",
-      "attrs": {}
-    },
-    {
-      "type": "HAS_MODALITY",
-      "source": "drug:zasocitinib-tak-279",
-      "target": "modality:small-molecule",
-      "attrs": {}
-    },
-    {
-      "type": "DEVELOPED_IN",
-      "source": "drug:zasocitinib-tak-279",
-      "target": "ind:plaque-psoriasis",
-      "attrs": {
-        "phase": "phase3",
-        "approved": false
-      }
     },
     {
       "type": "DEVELOPED_BY",
@@ -1909,8 +2832,17 @@
     {
       "type": "HAS_MECHANISM",
       "source": "drug:sonelokimab",
-      "target": "moa:il-17-inhibitors-a-a-f-ra",
+      "target": "moa:il17",
       "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:sonelokimab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
     },
     {
       "type": "HITS",
@@ -1925,8 +2857,377 @@
       "attrs": {}
     },
     {
-      "type": "DEVELOPED_IN",
+      "type": "SERVES",
       "source": "drug:sonelokimab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:brodalumab",
+      "target": "company:bausch-health",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:brodalumab",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:brodalumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:brodalumab",
+      "target": "target:IL17RA",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:brodalumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:brodalumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:izokibep",
+      "target": "company:acelyrin-alumis",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:izokibep",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:izokibep",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:izokibep",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:izokibep",
+      "target": "modality:protein",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:izokibep",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:dc-806",
+      "target": "company:leo-pharma-dice",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:dc-806",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:dc-806",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase1",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:dc-806",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:dc-806",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:dc-806",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:cjm-112",
+      "target": "company:novartis",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:cjm-112",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:cjm-112",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase1",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:cjm-112",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:cjm-112",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:cjm-112",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:adalimumab",
+      "target": "company:abbvie",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:adalimumab",
+      "target": "moa:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:adalimumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:adalimumab",
+      "target": "target:TNF",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:adalimumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:adalimumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:etanercept",
+      "target": "company:amgen",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:etanercept",
+      "target": "moa:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:etanercept",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:etanercept",
+      "target": "target:TNF",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:etanercept",
+      "target": "modality:protein",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:etanercept",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:infliximab",
+      "target": "company:johnson-johnson",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:infliximab",
+      "target": "moa:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:infliximab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:infliximab",
+      "target": "target:TNF",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:infliximab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:infliximab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:certolizumab-pegol",
+      "target": "company:ucb",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:certolizumab-pegol",
+      "target": "moa:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:certolizumab-pegol",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:certolizumab-pegol",
+      "target": "target:TNF",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:certolizumab-pegol",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:certolizumab-pegol",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:deucravacitinib",
+      "target": "company:bristol-myers-squibb",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:deucravacitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:deucravacitinib",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:deucravacitinib",
+      "target": "target:TYK2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:deucravacitinib",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:deucravacitinib",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:zasocitinib",
+      "target": "company:takeda",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:zasocitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:zasocitinib",
       "target": "ind:plaque-psoriasis",
       "attrs": {
         "phase": "phase3",
@@ -1934,264 +3235,1529 @@
       }
     },
     {
-      "type": "SERVES",
-      "source": "drug:risankizumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "type": "HITS",
+      "source": "drug:zasocitinib",
+      "target": "target:TYK2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:zasocitinib",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:guselkumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:zasocitinib",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:esk-001",
+      "target": "company:alumis",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:esk-001",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:esk-001",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:esk-001",
+      "target": "target:TYK2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:esk-001",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:tildrakizumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:esk-001",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:ropsacitinib",
+      "target": "company:pfizer",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:ropsacitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:ropsacitinib",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:ropsacitinib",
+      "target": "target:TYK2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:ropsacitinib",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:mirikizumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:ropsacitinib",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:brepocitinib",
+      "target": "company:priovant-pfizer",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:brepocitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:brepocitinib",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:brepocitinib",
+      "target": "target:TYK2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:brepocitinib",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:secukinumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:brepocitinib",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:tofacitinib",
+      "target": "company:pfizer",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:tofacitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:tofacitinib",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:tofacitinib",
+      "target": "target:JAK3",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:tofacitinib",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:ixekizumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:tofacitinib",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:peficitinib",
+      "target": "company:astellas",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:peficitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:peficitinib",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:peficitinib",
+      "target": "target:JAK1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:peficitinib",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:brodalumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:peficitinib",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:ruxolitinib",
+      "target": "company:incyte",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:ruxolitinib",
+      "target": "moa:kinase",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:ruxolitinib",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:ruxolitinib",
+      "target": "target:JAK1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:ruxolitinib",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:bimekizumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:ruxolitinib",
+      "target": "seg:modsev",
       "attrs": {}
     },
     {
-      "type": "SERVES",
-      "source": "drug:ustekinumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "type": "DEVELOPED_BY",
+      "source": "drug:apremilast",
+      "target": "company:amgen",
       "attrs": {}
     },
     {
-      "type": "SERVES",
-      "source": "drug:adalimumab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "type": "HAS_MECHANISM",
+      "source": "drug:apremilast",
+      "target": "moa:pde4",
       "attrs": {}
     },
     {
-      "type": "SERVES",
-      "source": "drug:etanercept",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "type": "DEVELOPED_IN",
+      "source": "drug:apremilast",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:apremilast",
+      "target": "target:PDE4",
       "attrs": {}
     },
     {
-      "type": "SERVES",
-      "source": "drug:certolizumab-pegol",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "type": "HAS_MODALITY",
+      "source": "drug:apremilast",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
       "source": "drug:apremilast",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:orismilast",
+      "target": "company:union-therapeutics",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:orismilast",
+      "target": "moa:pde4",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:orismilast",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:orismilast",
+      "target": "target:PDE4",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:orismilast",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:deucravacitinib",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:orismilast",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:roflumilast",
+      "target": "company:arcutis-biotherapeutics",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:roflumilast",
+      "target": "moa:pde4",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:roflumilast",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:roflumilast",
+      "target": "target:PDE4",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:roflumilast",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:roflumilast",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:crisaborole",
+      "target": "company:pfizer",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:crisaborole",
+      "target": "moa:pde4",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:crisaborole",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:crisaborole",
+      "target": "target:PDE4",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:crisaborole",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:crisaborole",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:tapinarof",
+      "target": "company:organon-dermavant",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:tapinarof",
+      "target": "moa:topical",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:tapinarof",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:tapinarof",
+      "target": "target:AHR",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:tapinarof",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
       "source": "drug:tapinarof",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:calcipotriene",
+      "target": "company:leo-pharma",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:calcipotriene",
+      "target": "moa:topical",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:calcipotriene",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:calcipotriene",
+      "target": "target:VDR",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:calcipotriene",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:roflumilast-topical",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:calcipotriene",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:calcitriol",
+      "target": "company:leo-galderma",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:calcitriol",
+      "target": "moa:topical",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:calcitriol",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:calcitriol",
+      "target": "target:VDR",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:calcitriol",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:calcipotriene-corticosteroid",
-      "target": "seg:mild-topical-managed",
+      "source": "drug:calcitriol",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:tazarotene",
+      "target": "company:allergan",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:tazarotene",
+      "target": "moa:topical",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:tazarotene",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:tazarotene",
+      "target": "target:RARB",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:tazarotene",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:icotrokinra-jnj-2113",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:tazarotene",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:clobetasol-propionate",
+      "target": "company:generic",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:clobetasol-propionate",
+      "target": "moa:steroid",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:clobetasol-propionate",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:clobetasol-propionate",
+      "target": "target:NR3C1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:clobetasol-propionate",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:zasocitinib-tak-279",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:clobetasol-propionate",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:betamethasone-dipropionate",
+      "target": "company:generic",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:betamethasone-dipropionate",
+      "target": "moa:steroid",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:betamethasone-dipropionate",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:betamethasone-dipropionate",
+      "target": "target:NR3C1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:betamethasone-dipropionate",
+      "target": "modality:small-molecule",
       "attrs": {}
     },
     {
       "type": "SERVES",
-      "source": "drug:sonelokimab",
-      "target": "seg:moderate-to-severe-systemic-eligible",
+      "source": "drug:betamethasone-dipropionate",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:halobetasol-propionate",
+      "target": "company:bausch-health",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:halobetasol-propionate",
+      "target": "moa:steroid",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:halobetasol-propionate",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:halobetasol-propionate",
+      "target": "target:NR3C1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:halobetasol-propionate",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:halobetasol-propionate",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:desoximetasone",
+      "target": "company:generic",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:desoximetasone",
+      "target": "moa:steroid",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:desoximetasone",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:desoximetasone",
+      "target": "target:NR3C1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:desoximetasone",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:desoximetasone",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:methotrexate",
+      "target": "company:generic",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:methotrexate",
+      "target": "moa:conv",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:methotrexate",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:methotrexate",
+      "target": "target:DHFR",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:methotrexate",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:methotrexate",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:methotrexate",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:cyclosporine",
+      "target": "company:generic",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:cyclosporine",
+      "target": "moa:conv",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:cyclosporine",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:cyclosporine",
+      "target": "target:PPIA",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:cyclosporine",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:cyclosporine",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:cyclosporine",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:acitretin",
+      "target": "company:generic",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:acitretin",
+      "target": "moa:conv",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:acitretin",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:acitretin",
+      "target": "target:RARA",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:acitretin",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:acitretin",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:acitretin",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:dimethyl-fumarate",
+      "target": "company:almirall",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:dimethyl-fumarate",
+      "target": "moa:conv",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:dimethyl-fumarate",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:dimethyl-fumarate",
+      "target": "target:NFE2L2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:dimethyl-fumarate",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:dimethyl-fumarate",
+      "target": "seg:mild",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:dimethyl-fumarate",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:piclidenoson",
+      "target": "company:can-fite-biopharma",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:piclidenoson",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:piclidenoson",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:piclidenoson",
+      "target": "target:ADORA3",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:piclidenoson",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:piclidenoson",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:fezakinumab",
+      "target": "company:pfizer",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:fezakinumab",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:fezakinumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:fezakinumab",
+      "target": "target:IL22",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:fezakinumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:fezakinumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:vixarelimab",
+      "target": "company:genentech",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:vixarelimab",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:vixarelimab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:vixarelimab",
+      "target": "target:OSMR",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:vixarelimab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:vixarelimab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:namilumab",
+      "target": "company:roivant",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:namilumab",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:namilumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:namilumab",
+      "target": "target:CSF2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:namilumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:namilumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:spesolimab",
+      "target": "company:boehringer-ingelheim",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:spesolimab",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:spesolimab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "approved",
+        "approved": true
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:spesolimab",
+      "target": "target:IL1RL2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:spesolimab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:spesolimab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:imsidolimab",
+      "target": "company:anaptysbio",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:imsidolimab",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:imsidolimab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase3",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:imsidolimab",
+      "target": "target:IL1RL2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:imsidolimab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:imsidolimab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:gsk2982772",
+      "target": "company:gsk",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:gsk2982772",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:gsk2982772",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "phase2",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:gsk2982772",
+      "target": "target:RIPK1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:gsk2982772",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:gsk2982772",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:ponesimod",
+      "target": "company:johnson-johnson",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:ponesimod",
+      "target": "moa:novel",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:ponesimod",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "discontinued",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:ponesimod",
+      "target": "target:S1PR1",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:ponesimod",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:ponesimod",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:efalizumab",
+      "target": "company:genentech-merck",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:efalizumab",
+      "target": "moa:hist",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:efalizumab",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "discontinued",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:efalizumab",
+      "target": "target:ITGAL",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:efalizumab",
+      "target": "modality:mab",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:efalizumab",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:alefacept",
+      "target": "company:astellas",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:alefacept",
+      "target": "moa:hist",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:alefacept",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "discontinued",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:alefacept",
+      "target": "target:CD2",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:alefacept",
+      "target": "modality:protein",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:alefacept",
+      "target": "seg:modsev",
       "attrs": {}
     },
     {
       "type": "HAS_CATALYST",
-      "source": "drug:ustekinumab",
+      "source": "drug:adalimumab",
       "target": "catalyst:c1",
       "attrs": {}
     },
     {
       "type": "HAS_CATALYST",
-      "source": "drug:icotrokinra-jnj-2113",
+      "source": "drug:bimekizumab",
       "target": "catalyst:c2",
       "attrs": {}
     },
     {
       "type": "HAS_CATALYST",
-      "source": "drug:zasocitinib-tak-279",
+      "source": "drug:ustekinumab",
       "target": "catalyst:c3",
       "attrs": {}
     },
     {
       "type": "HAS_CATALYST",
-      "source": "drug:sonelokimab",
+      "source": "drug:roflumilast",
       "target": "catalyst:c4",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:zasocitinib",
+      "target": "catalyst:c5",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:esk-001",
+      "target": "catalyst:c6",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:icotrokinra",
+      "target": "catalyst:c7",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:apremilast",
+      "target": "catalyst:c8",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:secukinumab",
+      "target": "catalyst:c9",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:guselkumab",
+      "target": "catalyst:c10",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_CATALYST",
+      "source": "drug:risankizumab",
+      "target": "catalyst:c11",
       "attrs": {}
     }
   ],
   "sources": [
     {
-      "id": "npf",
-      "type": "web",
-      "name": "National Psoriasis Foundation",
-      "title": "Psoriasis statistics / prevalence",
-      "url": "https://www.psoriasis.org/psoriasis-statistics/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "gbd",
-      "type": "publication",
-      "name": "GBD 2019",
-      "title": "The Global, Regional, and National Burden of Psoriasis: GBD 2019 Study",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8716585/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "gpa",
-      "type": "web",
-      "name": "Global Psoriasis Atlas",
-      "title": "Explore the data",
-      "url": "https://www.globalpsoriasisatlas.org/en/explore",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "usprev",
-      "type": "publication",
-      "name": "JAMA Dermatol",
-      "title": "Psoriasis Prevalence in Adults in the United States",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8246333/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "fbi",
-      "type": "web",
-      "name": "Fortune Business Insights",
-      "title": "Psoriasis Treatment Market ($27.2B, 2024)",
-      "url": "https://www.fortunebusinessinsights.com/industry-reports/psoriasis-treatment-market-100600",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "smr",
-      "type": "web",
-      "name": "Strategic Market Research",
-      "title": "Psoriasis Treatment Market ($32.5B 2024 → $51.2B 2030, 8.1% CAGR)",
-      "url": "https://www.strategicmarketresearch.com/market-report/psoriasis-treatment-market",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "gvr",
-      "type": "web",
-      "name": "Grand View Research",
-      "title": "Psoriasis Drugs Market ($39.11B by 2030)",
-      "url": "https://www.grandviewresearch.com/press-release/global-psoriasis-drugs-market",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "xtalks",
-      "type": "web",
-      "name": "Xtalks",
-      "title": "Top 10 Best-Selling Immunology Drugs by Recent Sales Data",
-      "url": "https://xtalks.com/top-10-best-selling-immunology-drugs-by-recent-sales-data-4025/",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "ibj",
-      "type": "web",
-      "name": "Indianapolis Business Journal",
-      "title": "Lilly's Taltz approaching blockbuster status",
-      "url": "https://www.ibj.com/articles/lillys-hot-selling-taltz-approaching-blockbuster-status",
-      "accessed": "2026-07-23"
-    },
-    {
-      "id": "fierce",
-      "type": "web",
-      "name": "FiercePharma",
-      "title": "AAD: AbbVie's Skyrizi clears psoriasis where Cosentyx, Taltz couldn't",
-      "url": "https://www.fiercepharma.com/pharma/abbvies-skyrizi-clears-psoriasis-symptoms-where-novartis-cosentyx-lillys-taltz-couldnt",
+      "id": "ot",
+      "type": "api",
+      "name": "Open Targets Platform",
+      "title": "Psoriasis vulgaris (EFO_1001494) — targets & drug candidates",
+      "url": "https://platform.opentargets.org/disease/EFO_1001494",
       "accessed": "2026-07-23"
     },
     {
       "id": "ctgov",
       "type": "api",
       "name": "ClinicalTrials.gov",
-      "title": "Interventional trials in plaque psoriasis (live pull: 901 studies)",
+      "title": "Interventional psoriasis trials (901, live pull)",
       "url": "https://clinicaltrials.gov/",
-      "accessed": "2026-07-23",
-      "note": "live API pull 2026-07-23 via scripts/fetch_clinical_trials.py"
-    },
-    {
-      "id": "ot",
-      "type": "api",
-      "name": "Open Targets Platform",
-      "title": "Psoriasis vulgaris (EFO_1001494): 946 associated targets, 167 drug candidates",
-      "url": "https://platform.opentargets.org/disease/EFO_1001494",
-      "accessed": "2026-07-23",
-      "note": "live API pull 2026-07-23 via scripts/fetch_open_targets.py"
+      "accessed": "2026-07-23"
     },
     {
       "id": "fda",
       "type": "label",
-      "name": "openFDA / Drugs@FDA labels",
-      "title": "FDA approvals, classes & boxed warnings for psoriasis therapies",
+      "name": "openFDA / Drugs@FDA",
+      "title": "FDA approvals, classes & boxed warnings",
       "url": "https://www.accessdata.fda.gov/scripts/cder/daf/",
-      "accessed": "2026-07-23",
-      "note": "live openFDA label pull 2026-07-23"
+      "accessed": "2026-07-23"
     },
     {
-      "id": "epmc_secu",
+      "id": "xtalks",
+      "type": "web",
+      "name": "Xtalks",
+      "title": "Top-selling immunology drugs — sales",
+      "url": "https://xtalks.com/top-10-best-selling-immunology-drugs-by-recent-sales-data-4025/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "armstrong",
       "type": "publication",
-      "name": "NEJM (via Europe PMC)",
-      "title": "Secukinumab in plaque psoriasis — results of two phase 3 trials (ERASURE/FIXTURE)",
-      "url": "https://europepmc.org/article/MED/25007392",
+      "name": "Armstrong 2020 (JAMA Dermatol NMA)",
+      "title": "Comparative efficacy (PASI 90) network meta-analysis, 60 trials",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7042876/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "cochrane",
+      "type": "publication",
+      "name": "Cochrane NMA (Sbidian 2023)",
+      "title": "Systemic psoriasis therapies — efficacy & safety NMA",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37436070/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "jnj_icotyde",
+      "type": "web",
+      "name": "Johnson & Johnson",
+      "title": "FDA approval of ICOTYDE (icotrokinra), Mar 2026",
+      "url": "https://www.jnj.com/media-center/press-releases/fda-approval-of-icotyde-icotrokinra-ushers-in-new-era-for-first-line-systemic-treatment-of-plaque-psoriasis-with-a-targeted-oral-peptide",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "takeda_zaso",
+      "type": "web",
+      "name": "Takeda",
+      "title": "Zasocitinib positive Phase 3 topline (Dec 2025)",
+      "url": "https://www.takeda.com/newsroom/newsreleases/2025/takeda-zasocitinib-phase-3-plaque-psoriasis-data-once-daily-pill/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "alumis_esk",
+      "type": "web",
+      "name": "Alumis",
+      "title": "Envudeucitinib (ESK-001) positive Phase 3 (Jan 2026)",
+      "url": "https://investors.alumis.com/news-releases/news-release-details/alumis-envudeucitinib-delivers-leading-skin-clearance-among-next",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "cfb_stelara",
+      "type": "web",
+      "name": "Center for Biosimilars",
+      "title": "First Stelara biosimilar (Wezlana) launches, Jan 2025",
+      "url": "https://www.centerforbiosimilars.com/view/welcome-wezlana-the-first-stelara-biosimilar-to-launch-in-the-us",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "ajmc_humira",
+      "type": "web",
+      "name": "AJMC",
+      "title": "First Humira biosimilar (Amjevita) launches in the US",
+      "url": "https://www.ajmc.com/view/first-humira-biosimilar-amjevita-launches-in-the-united-states",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "arcutis_foam",
+      "type": "web",
+      "name": "Arcutis",
+      "title": "Zoryve foam 0.3% approved for scalp & body psoriasis (May 2025)",
+      "url": "https://www.arcutis.com/arcutis-zoryve-roflumilast-topical-foam-0-3-approved-by-u-s-fda-for-the-treatment-of-plaque-psoriasis-in-adults-and-adolescents-ages-12-and-older/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "dpw",
+      "type": "web",
+      "name": "DrugPatentWatch",
+      "title": "Biologic patent-expiry / loss-of-exclusivity projections",
+      "url": "https://www.drugpatentwatch.com/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "abbvie25",
+      "type": "filing",
+      "name": "AbbVie FY2025 results",
+      "title": "Skyrizi $17.56B, Humira $4.54B (all-indication)",
+      "url": "https://news.abbvie.com/2026-02-04-AbbVie-Reports-Full-Year-and-Fourth-Quarter-2025-Financial-Results",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "jnj25",
+      "type": "filing",
+      "name": "Johnson & Johnson FY2025 results",
+      "title": "Stelara $6.08B, Tremfya ~$5.2B, Remicade $1.77B",
+      "url": "https://www.investor.jnj.com/investor-news/news-details/2026/Johnson--Johnson-reports-Q4-and-Full-Year-2025-results/default.aspx",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "nvs25",
+      "type": "filing",
+      "name": "Novartis FY2025 results",
+      "title": "Cosentyx $6.7B",
+      "url": "https://www.novartis.com/news/media-releases/novartis-delivered-high-single-digit-sales-growth-achieved-40-core-margin-and-further-advanced-pipeline-2025",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "ucb25",
+      "type": "filing",
+      "name": "UCB FY2025 results",
+      "title": "Bimzelx >€2.2B, Cimzia €1.95B",
+      "url": "https://www.ucb.com/sites/default/files/2026-02/UCB-PR-2025-FY-Results-ENG.pdf",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "amgen25",
+      "type": "filing",
+      "name": "Amgen FY2025 results",
+      "title": "Otezla, Enbrel (Q4 absolutes; FY approximate)",
+      "url": "https://www.amgen.com/newsroom/press-releases/2026/02/amgen-reports-fourth-quarter-and-full-year-2025-financial-results",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "bms25",
+      "type": "filing",
+      "name": "Bristol Myers Squibb FY2025 results",
+      "title": "Sotyktu $291M",
+      "url": "https://www.bms.com/assets/bms/us/en-us/pdf/investor-info/doc_financials/quarterly_reports/2025/BMY-Q4-2025-Earnings-Press-Release.pdf",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "lilly_taltz",
+      "type": "web",
+      "name": "Eli Lilly / IBJ",
+      "title": "Taltz FY2024 $3.26B; FY2025 tracking ~$3.4B",
+      "url": "https://www.ibj.com/articles/lillys-hot-selling-taltz-approaching-blockbuster-status",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "arcutis25",
+      "type": "filing",
+      "name": "Arcutis FY2025 results",
+      "title": "Zoryve franchise $372.1M",
+      "url": "https://www.globenewswire.com/news-release/2026/02/25/3244953/0/en/Arcutis-Announces-Fourth-Quarter-and-Full-Year-2025-Financial-Results-and-Provides-Business-Update.html",
       "accessed": "2026-07-23"
     }
   ]
