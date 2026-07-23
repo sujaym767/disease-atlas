@@ -1,0 +1,1222 @@
+{
+ "meta": {
+  "subject": "Plaque psoriasis",
+  "subject_type": "therapeutic_area",
+  "indication_type": "Immunology / I&I (chronic, cross-indication assets)",
+  "scope": "Plaque psoriasis (psoriasis vulgaris). Commercial core = moderate-to-severe, systemic-eligible adults and adolescents aged 12+; all lines of systemic therapy, plus the branded topical segment where it competes for the same patient.",
+  "as_of": "2026-07",
+  "currency": "USD unless stated",
+  "region_focus": "Global, with US and EU5 depth",
+  "version": "full"
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "label": "Armstrong AW et al. Psoriasis Prevalence in Adults in the United States. JAMA Dermatology",
+   "url": "https://jamanetwork.com/journals/jamadermatology/fullarticle/2781378",
+   "tier": 1,
+   "date": "2021"
+  },
+  {
+   "id": "s2",
+   "label": "Psoriasis prevalence among adults in the United States (NHIS 2023 analysis). J Am Acad Dermatol",
+   "url": "https://www.jaad.org/article/S0190-9622(24)03365-6/fulltext",
+   "tier": 1,
+   "date": "2024-12"
+  },
+  {
+   "id": "s3",
+   "label": "Global Trends and Future Predictions of Psoriasis Burden: Insights from the GBD 2021 Study",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12744867/",
+   "tier": 1,
+   "date": "2025"
+  },
+  {
+   "id": "s4",
+   "label": "The Global, Regional, and National Burden of Psoriasis: GBD 2019 Study. Frontiers in Medicine",
+   "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2021.743180/full",
+   "tier": 1,
+   "date": "2021"
+  },
+  {
+   "id": "s5",
+   "label": "Johnson & Johnson — FDA approval of ICOTYDE (icotrokinra), 18 Mar 2026",
+   "url": "https://www.jnj.com/media-center/press-releases/fda-approval-of-icotyde-icotrokinra-ushers-in-new-era-for-first-line-systemic-treatment-of-plaque-psoriasis-with-a-targeted-oral-peptide",
+   "tier": 2,
+   "date": "2026-03-18"
+  },
+  {
+   "id": "s6",
+   "label": "ICONIC-ADVANCE 1 & 2: once-daily oral icotrokinra vs placebo and deucravacitinib. The Lancet",
+   "url": "https://www.sciencedirect.com/science/article/abs/pii/S0140673625015764",
+   "tier": 1,
+   "date": "2025"
+  },
+  {
+   "id": "s7",
+   "label": "Dermatology Times — Icotrokinra Phase 3 ICONIC-LEAD and ICONIC-ADVANCE",
+   "url": "https://www.dermatologytimes.com/view/icotrokinra-demonstrates-promise-in-phase-3-iconic-lead-and-iconic-advance-for-plaque-psoriasis",
+   "tier": 3,
+   "date": "2025"
+  },
+  {
+   "id": "s8",
+   "label": "Takeda — Phase 3 zasocitinib plaque psoriasis results",
+   "url": "https://www.takeda.com/newsroom/newsreleases/2026/zasocitinib-phase-3-psoriasis-skin-clearance/",
+   "tier": 2,
+   "date": "2026"
+  },
+  {
+   "id": "s9",
+   "label": "FierceBiotech — Takeda looks to 2026 FDA filing for zasocitinib after Phase 3 success",
+   "url": "https://www.fiercebiotech.com/biotech/takeda-looks-2026-fda-filing-its-sotyktu-rival-zasocitinib-after-phase-3-success",
+   "tier": 3,
+   "date": "2026"
+  },
+  {
+   "id": "s10",
+   "label": "Alumis — Envudeucitinib Phase 3 ONWARD1/ONWARD2 results (AAD late-breaker, 28 Mar 2026)",
+   "url": "https://investors.alumis.com/news-releases/news-release-details/alumis-envudeucitinib-delivers-leading-skin-clearance-among-next",
+   "tier": 2,
+   "date": "2026-03"
+  },
+  {
+   "id": "s11",
+   "label": "Alumis Inc. Form 8-K — Kaken collaboration and licence for ESK-001 in Japan",
+   "url": "https://www.sec.gov/Archives/edgar/data/1847367/000110465925027444/tm2510181d1_ex99-1.htm",
+   "tier": 1,
+   "date": "2025"
+  },
+  {
+   "id": "s12",
+   "label": "AbbVie — Full-Year and Fourth-Quarter 2025 Financial Results (4 Feb 2026)",
+   "url": "https://news.abbvie.com/2026-02-04-AbbVie-Reports-Full-Year-and-Fourth-Quarter-2025-Financial-Results",
+   "tier": 1,
+   "date": "2026-02-04"
+  },
+  {
+   "id": "s13",
+   "label": "Johnson & Johnson — Q4 and Full-Year 2025 results (21 Jan 2026)",
+   "url": "https://www.investor.jnj.com/investor-news/news-details/2026/Johnson--Johnson-reports-Q4-and-Full-Year-2025-results/default.aspx",
+   "tier": 1,
+   "date": "2026-01-21"
+  },
+  {
+   "id": "s14",
+   "label": "Novartis — FY2025 results media release",
+   "url": "https://www.novartis.com/news/media-releases/novartis-delivered-high-single-digit-sales-growth-achieved-40-core-margin-and-further-advanced-pipeline-2025",
+   "tier": 1,
+   "date": "2026"
+  },
+  {
+   "id": "s15",
+   "label": "FiercePharma — UCB's Bimzelx crosses blockbuster threshold (FY2025)",
+   "url": "https://www.fiercepharma.com/pharma/ucbs-fast-growing-powerhouse-bimzelx-crosses-blockbuster-sales-threshold-back-heavy-hitting",
+   "tier": 3,
+   "date": "2026-02"
+  },
+  {
+   "id": "s16",
+   "label": "Bristol Myers Squibb Form 10-Q, Q3 2025 (Sotyktu US revenue commentary)",
+   "url": "https://www.sec.gov/Archives/edgar/data/14272/000001427225000149/bmy-20250930.htm",
+   "tier": 1,
+   "date": "2025-11"
+  },
+  {
+   "id": "s17",
+   "label": "BMS — Patient Connect direct-to-patient platform offering Sotyktu (>80% below list, from Jan 2026)",
+   "url": "https://news.bms.com/news/corporate-financial/2025/Bristol-Myers-Squibb-Builds-on-Eliquis-apixaban-Direct-to-Patient-Program-Announces-New-BMS-Patient-Connect-Platform-Offering-Sotyktu-deucravacitinib/default.aspx",
+   "tier": 2,
+   "date": "2025"
+  },
+  {
+   "id": "s18",
+   "label": "BMS — FDA approves Sotyktu for active psoriatic arthritis",
+   "url": "https://news.bms.com/news/corporate-financial/2026/U-S--FDA-Approves-Bristol-Myers-Squibbs-Sotyktu-deucravacitinib-for-the-Treatment-of-Adults-with-Active-Psoriatic-Arthritis/default.aspx",
+   "tier": 2,
+   "date": "2026"
+  },
+  {
+   "id": "s19",
+   "label": "Center for Biosimilars / CMS — IRA maximum fair prices incl. Stelara and Enbrel, effective 1 Jan 2026",
+   "url": "https://www.centerforbiosimilars.com/view/cms-announces-new-drug-prices-under-the-ira-including-for-stelara-and-enbrel",
+   "tier": 1,
+   "date": "2024-2026"
+  },
+  {
+   "id": "s20",
+   "label": "Milliman — Medicare drug price negotiation: the next wave of maximum fair prices (Otezla, IPAY 2027)",
+   "url": "https://www.milliman.com/en/insight/medicare-drug-negotiation-next-maximum-fair-prices",
+   "tier": 3,
+   "date": "2025"
+  },
+  {
+   "id": "s21",
+   "label": "GaBI Online — Stelara biosimilars enter US market with up to 85% discount",
+   "url": "https://www.gabionline.net/biosimilars/general/stelara-biosimilars-enter-us-market-with-85-discount-in-2025",
+   "tier": 3,
+   "date": "2025"
+  },
+  {
+   "id": "s22",
+   "label": "Drug Channels — The Big Three PBMs' 2026 Formulary Exclusions",
+   "url": "https://www.drugchannels.net/2026/01/the-big-three-pbms-2026-formulary.html",
+   "tier": 3,
+   "date": "2026-01"
+  },
+  {
+   "id": "s23",
+   "label": "FiercePharma — Amgen Otezla patent win blocks Sandoz and Zydus generics to Feb 2028",
+   "url": "https://www.fiercepharma.com/pharma/amgen-scores-otezla-patent-win-protecting-its-blockbuster-against-sandoz-and-zydus-copycats",
+   "tier": 3,
+   "date": "2023"
+  },
+  {
+   "id": "s24",
+   "label": "AJMC — Undertreatment and biologic access gaps identified in psoriasis treatment (NPF survey 2020–2022; AAD 2025)",
+   "url": "https://www.ajmc.com/view/undertreatment-biologic-access-gaps-identified-in-psoriasis-treatment",
+   "tier": 2,
+   "date": "2025"
+  },
+  {
+   "id": "s25",
+   "label": "Cardiometabolic Comorbidities in Psoriasis and Psoriatic Arthritis (review)",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5796008/",
+   "tier": 1,
+   "date": "2018"
+  },
+  {
+   "id": "s26",
+   "label": "AJMC — Managed Care Aspects of Psoriasis and Psoriatic Arthritis (US cost burden)",
+   "url": "https://www.ajmc.com/view/managed-care-aspects-of-psoriasis-and-psoriatic-arthritis",
+   "tier": 3,
+   "date": "2023"
+  },
+  {
+   "id": "s27",
+   "label": "NHS Lancashire & South Cumbria / NICE-derived biologic treatment guideline for psoriasis (PASI/DLQI thresholds)",
+   "url": "https://www.lancashireandsouthcumbriaformulary.nhs.uk/docs/files/Psoriasis%20Biologic%20Treatment%20Guideline%20v%201.8%20FINAL.pdf",
+   "tier": 2,
+   "date": "2025"
+  },
+  {
+   "id": "s28",
+   "label": "ClinicalTrials.gov API v2 — plaque psoriasis interventional study pull",
+   "url": "https://clinicaltrials.gov/",
+   "tier": 1,
+   "date": "2026-07"
+  },
+  {
+   "id": "s29",
+   "label": "Organon & Co. Form 10-K, FY2025 (Vtama net sales)",
+   "url": "https://www.sec.gov/Archives/edgar/data/1821825/000162828026011125/ogn-20251231.htm",
+   "tier": 1,
+   "date": "2026"
+  },
+  {
+   "id": "s30",
+   "label": "Arcutis Biotherapeutics — ZORYVE foam 0.3% and cream 0.3% psoriasis approvals",
+   "url": "https://www.arcutis.com/arcutis-zoryve-roflumilast-topical-foam-0-3-approved-by-u-s-fda-for-the-treatment-of-plaque-psoriasis-in-adults-and-adolescents-ages-12-and-older/",
+   "tier": 2,
+   "date": "2025-2026"
+  },
+  {
+   "id": "s31",
+   "label": "FierceBiotech — Lilly axes DC-806, pivots to follow-up one year after $2.4B DICE buyout",
+   "url": "https://www.fiercebiotech.com/biotech/eli-lilly-rolls-dice-axing-psoriasis-prospect-and-pivoting-follow-1-year-after-24b-buyout",
+   "tier": 3,
+   "date": "2024"
+  },
+  {
+   "id": "s32",
+   "label": "Top-down market-research estimates for psoriasis therapeutics (Grand View, Coherent, GMI, iHealthcareAnalyst)",
+   "url": "https://www.grandviewresearch.com/industry-analysis/psoriasis-drugs-market",
+   "tier": 3,
+   "date": "2025-2026"
+  },
+  {
+   "id": "s33",
+   "label": "AJMC — FDA Approves Icotrokinra, First Oral IL-23 Inhibitor for Plaque Psoriasis",
+   "url": "https://www.ajmc.com/view/fda-approves-icotrokinra-first-oral-il-23-inhibitor-for-plaque-psoriasis",
+   "tier": 3,
+   "date": "2026-03"
+  },
+  {
+   "id": "s34",
+   "label": "Icotrokinra: First Approval. Drugs (PubMed 42243571)",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42243571/",
+   "tier": 1,
+   "date": "2026"
+  },
+  {
+   "id": "s35",
+   "label": "BioSpace — Takeda's $4B Nimbus bet pays off with Phase 3 plaque psoriasis data",
+   "url": "https://www.biospace.com/drug-development/takedas-4b-nimbus-bet-pays-off-with-best-in-class-phase-iii-plaque-psoriasis-data",
+   "tier": 3,
+   "date": "2025-12"
+  },
+  {
+   "id": "s36",
+   "label": "FiercePharma — J&J logs strong innovative drug sales despite Stelara's decline",
+   "url": "https://www.fiercepharma.com/pharma/jj-flexes-15b-quarter-innovative-drugs-biosimilars-continue-chip-away-stelara",
+   "tier": 3,
+   "date": "2025-2026"
+  },
+  {
+   "id": "s37",
+   "label": "Aganitha — Capability Profile (internal workspace document, 9 Jul 2026)",
+   "url": null,
+   "tier": 2,
+   "date": "2026-07-09"
+  },
+  {
+   "id": "s38",
+   "label": "Next-Generation Anti-IL-17 Agents for Psoriatic Disease: A Pipeline Review. Am J Clin Dermatol",
+   "url": "https://link.springer.com/article/10.1007/s40257-025-00928-w",
+   "tier": 1,
+   "date": "2025"
+  },
+  {
+   "id": "s39",
+   "label": "Emerging Oral Therapies for the Treatment of Psoriasis: A Review of Pipeline Agents",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10819460/",
+   "tier": 1,
+   "date": "2024"
+  }
+ ],
+ "snapshot": [
+  {
+   "field": "Indication (exact scope)",
+   "value": "Plaque psoriasis (psoriasis vulgaris). Commercial core: moderate-to-severe, systemic-eligible adults and adolescents 12+. Branded topicals included where they compete for the same patient."
+  },
+  {
+   "field": "Indication type",
+   "value": "Immunology / I&I — chronic, relapsing, lifelong; assets are cross-indication (PsA, HS, IBD, axSpA)"
+  },
+  {
+   "field": "Geography of report",
+   "value": "Global, with US and EU5 depth"
+  },
+  {
+   "field": "Global prevalence",
+   "value": "43.0M cases (GBD 2021), up 86% from 23.1M in 1990; projected ~60.3M by 2036. Widely quoted WHO-era figure of \"60M+ today\" is not supported by the GBD 2021 point estimate."
+  },
+  {
+   "field": "US prevalence",
+   "value": "~3.0% of adults ≈ 7.6M with psoriasis; ~6.5M with the plaque phenotype [Estimated]. Claims-based studies give 0.5–0.7% — a 4–6× divergence that is a definitional artefact, not a real disagreement."
+  },
+  {
+   "field": "Diagnosed / treated funnel (US)",
+   "value": "~1.6M systemic-eligible → ~1.1M diagnosed and in specialist care → ~510k on advanced therapy [Estimated; see Section 3]"
+  },
+  {
+   "field": "Current standard of care",
+   "value": "Topicals → phototherapy or conventional systemics (methotrexate, ciclosporin, acitretin) → advanced therapy. Advanced therapy is now led by IL-23 inhibitors (risankizumab, guselkumab, tildrakizumab), IL-17 inhibitors (secukinumab, ixekizumab, bimekizumab, brodalumab), with TNF inhibitors largely displaced to biosimilar economics, and an oral tier (apremilast, deucravacitinib, and from March 2026 icotrokinra)."
+  },
+  {
+   "field": "Primary unmet need",
+   "value": "Roughly half of diagnosed, systemic-eligible patients never reach advanced therapy. This is an access, route and step-edit failure, not an efficacy failure — the field already clears skin."
+  },
+  {
+   "field": "Market size (current)",
+   "value": "~$30B global (2025); ~$32B (2026) [Estimated: bottom-up brand build reconciled against published top-down envelopes of $28.9–34.2B]"
+  },
+  {
+   "field": "Forecast CAGR",
+   "value": "7.8% (2026→2031, base case); 5.3% (2026→2036) as injectable IL-23 loses exclusivity in the early 2030s"
+  },
+  {
+   "field": "Approved classes / key brands",
+   "value": "IL-23: Skyrizi ($17.56B FY25, all indications), Tremfya ($5.2B), Stelara (~$6.0B, collapsing), Ilumya. IL-17: Cosentyx ($6.7B), Taltz, Bimzelx (€2.22B), Siliq. TNF: Humira ($4.54B, −26%), Enbrel, plus biosimilars. Oral: Otezla, Sotyktu (~$0.3B), Icotyde (launched 2026). Topical: Zoryve, Vtama ($128M)."
+  },
+  {
+   "field": "Late-stage pipeline count",
+   "value": "3 next-generation oral systemics at or through filing — icotrokinra (approved Mar 2026), zasocitinib (NDA from FY2026), envudeucitinib (NDA 2H 2026) — plus ≥5 China-origin Phase 3 assets and a Lilly oral IL-17 in Phase 2"
+  },
+  {
+   "field": "Lead developers",
+   "value": "AbbVie, Johnson & Johnson, Novartis, UCB, Eli Lilly, Bristol Myers Squibb, Takeda, Alumis, Sun Pharma, Amgen"
+  }
+ ],
+ "years": [
+  2026,
+  2029,
+  2031,
+  2036
+ ],
+ "segments": [
+  {
+   "label": "Injectable IL-23 (risankizumab, guselkumab, tildrakizumab, ustekinumab originator)",
+   "short": "Injectable IL-23",
+   "key": "il23",
+   "vals": [
+    14.0,
+    16.0,
+    18.0,
+    12.0
+   ],
+   "cagr": "5.2%",
+   "note": "Volume growth continues to 2031; risankizumab and guselkumab LOE in the early 2030s drives the ten-year decline. [Estimated]"
+  },
+  {
+   "label": "IL-17 (secukinumab, ixekizumab, bimekizumab, brodalumab)",
+   "short": "IL-17",
+   "key": "il17",
+   "vals": [
+    8.5,
+    9.5,
+    9.5,
+    8.0
+   ],
+   "cagr": "2.2%",
+   "note": "Bimekizumab growth roughly offsets secukinumab and ixekizumab maturity; secukinumab LOE early 2030s. [Estimated]"
+  },
+  {
+   "label": "Oral targeted systemic (apremilast, deucravacitinib, icotrokinra, zasocitinib, envudeucitinib)",
+   "short": "Oral targeted",
+   "key": "oral",
+   "vals": [
+    3.0,
+    9.0,
+    14.0,
+    28.0
+   ],
+   "cagr": "36.1%",
+   "note": "Assumes icotrokinra reaches ~$4B and the TYK2 class ~$5B by 2031, and that orals expand the treated pool rather than only switching it. Apremilast generic from Feb 2028. [Estimated]"
+  },
+  {
+   "label": "TNF inhibitors and biosimilars (incl. ustekinumab biosimilars)",
+   "short": "TNF + biosimilars",
+   "key": "tnf",
+   "vals": [
+    4.5,
+    3.0,
+    2.0,
+    1.5
+   ],
+   "cagr": "−15.0%",
+   "note": "Private-label biosimilar economics compress the whole tier; PBM formulary displacement already underway. [Estimated]"
+  },
+  {
+   "label": "Topical and conventional (roflumilast, tapinarof, generic topicals, phototherapy, conventional systemics)",
+   "short": "Topical + conv.",
+   "key": "topical",
+   "vals": [
+    2.0,
+    2.5,
+    3.0,
+    4.0
+   ],
+   "cagr": "8.4%",
+   "note": "Branded non-steroidal topicals take share from generic steroids; paediatric label expansion. [Estimated]"
+  }
+ ],
+ "total": {
+  "label": "Total",
+  "short": "Total",
+  "key": "total",
+  "vals": [
+   32.0,
+   40.0,
+   46.5,
+   53.5
+  ],
+  "cagr": "7.8%",
+  "note": "Ten-year CAGR 5.3%. Base case."
+ },
+ "note": "[Estimated] throughout. Base year 2026 = $32.0B, derived as described above. CAGR computed as (end/start)^(1/years) − 1 over the stated horizon.",
+ "scenarios": [
+  {
+   "name": "Base",
+   "y2031": 46.5,
+   "cagr": "7.8%",
+   "swing": "(1) Advanced-therapy penetration in diagnosed systemic-eligible patients rises from ~45% to ~58%; (2) blended net price erodes ~3%/yr; (3) icotrokinra secures a genuine first-line payer position in year 2; (4) no major LOE inside the window."
+  },
+  {
+   "name": "Conservative",
+   "y2031": 38.0,
+   "cagr": "3.5%",
+   "swing": "(1) Orals cannibalise injectables rather than expanding the pool — penetration stalls near 48%; (2) payers position the oral tier behind conventional-systemic AND biologic failure, repeating the Sotyktu experience; (3) net price erodes 6%/yr as three orals compete for the same formulary slot; (4) IRA selection extends to an IL-23 franchise."
+  },
+  {
+   "name": "Aggressive",
+   "y2031": 56.0,
+   "cagr": "11.8%",
+   "swing": "(1) Penetration reaches ~70% as oral-first sequencing is adopted in guidelines; (2) adolescent and high-impact-site labels open new segments; (3) net price holds because efficacy tiering is defended on PASI 100 data; (4) a comorbidity-outcomes readout justifies earlier intervention."
+  }
+ ],
+ "geo": [
+  {
+   "region": "US",
+   "eligible": "~1.1M",
+   "penetration": "~45%",
+   "net_price": "~$38k",
+   "market": 19.0,
+   "market_str": "~19.0"
+  },
+  {
+   "region": "EU5",
+   "eligible": "~1.3M",
+   "penetration": "~40%",
+   "net_price": "~$12k",
+   "market": 6.2,
+   "market_str": "~6.2"
+  },
+  {
+   "region": "Japan",
+   "eligible": "~0.15M",
+   "penetration": "~45%",
+   "net_price": "~$16k",
+   "market": 1.1,
+   "market_str": "~1.1"
+  },
+  {
+   "region": "China",
+   "eligible": "~2.0M",
+   "penetration": "~8%",
+   "net_price": "~$6k",
+   "market": 1.0,
+   "market_str": "~1.0"
+  },
+  {
+   "region": "Rest of world",
+   "eligible": "~2.5M",
+   "penetration": "~8%",
+   "net_price": "~$5k",
+   "market": 1.0,
+   "market_str": "~1.0"
+  },
+  {
+   "region": "Total advanced therapy",
+   "eligible": "",
+   "penetration": "",
+   "net_price": "",
+   "market": 28.3,
+   "market_str": "~28.3"
+  },
+  {
+   "region": "Plus topical, conventional systemic, phototherapy",
+   "eligible": "",
+   "penetration": "",
+   "net_price": "",
+   "market": 3.7,
+   "market_str": "~3.7"
+  },
+  {
+   "region": "Total market",
+   "eligible": "",
+   "penetration": "",
+   "net_price": "",
+   "market": 32.0,
+   "market_str": "~32.0"
+  }
+ ],
+ "funnel": [
+  {
+   "stage": "US adults with psoriasis (any type)",
+   "population": "~7.6M",
+   "pop_num": 7.6,
+   "basis": "3.0% adult prevalence (NHANES 2011–14, Armstrong 2021) applied to ~255M US adults",
+   "note": "Survey-based. Claims-based ascertainment gives 0.5–0.7%, i.e. ~1.5–1.9M.",
+   "gap": false
+  },
+  {
+   "stage": "Plaque phenotype",
+   "population": "~6.5M",
+   "pop_num": 6.5,
+   "basis": "85% of psoriasis is plaque type",
+   "note": "[Estimated]",
+   "gap": false
+  },
+  {
+   "stage": "Moderate-to-severe / systemic-eligible",
+   "population": "~1.6M",
+   "pop_num": 1.6,
+   "basis": "25% of plaque patients (BSA >10%, PASI ≥10, or high-impact site)",
+   "note": "[Estimated]. This is the commercial denominator.",
+   "gap": false
+  },
+  {
+   "stage": "Diagnosed and in specialist care",
+   "population": "~1.1M",
+   "pop_num": 1.1,
+   "basis": "~70% of systemic-eligible",
+   "note": "[Estimated]. Attrition is dermatologist access and referral, not disease severity.",
+   "gap": false
+  },
+  {
+   "stage": "On advanced therapy (biologic or targeted oral)",
+   "population": "~510k",
+   "pop_num": 0.51,
+   "basis": "~45% of diagnosed systemic-eligible",
+   "note": "[Estimated]. Reconciles to ~$19B US market at ~$38k annual net cost per patient.",
+   "gap": false
+  },
+  {
+   "stage": "Systemic-eligible, diagnosed, NOT on advanced therapy",
+   "population": "~630k",
+   "pop_num": 0.63,
+   "basis": "Residual",
+   "note": "The core opportunity. 31.7% of moderate-to-severe patients report using only OTC, complementary or topical therapy.",
+   "gap": true
+  }
+ ],
+ "segmentation": [
+  {
+   "segment": "Biologic-naïve, systemic-naïve",
+   "share": "~40–50%",
+   "why": "The contested first-line segment. Highest lifetime value; the segment icotrokinra's label targets directly."
+  },
+  {
+   "segment": "Biologic-experienced, cycling",
+   "share": "~25–30%",
+   "why": "Annual switch rate of 15–20% keeps this liquid. Won on PASI 100 and durability, not on convenience."
+  },
+  {
+   "segment": "Concomitant psoriatic arthritis",
+   "share": "~30% of all psoriasis patients",
+   "why": "Drives choice toward assets with a PsA label — IL-17s, IL-23s, TNFs, and now deucravacitinib (approved for PsA in 2026). Removes the pure-derm orals from consideration unless they add PsA."
+  },
+  {
+   "segment": "High-impact site disease (scalp, genital, palmoplantar, nail)",
+   "share": "~40–50% have at least one",
+   "why": "Severe functional burden at low BSA; systematically excluded by BSA-threshold payer criteria. No dedicated approvals — a live label opportunity."
+  },
+  {
+   "segment": "Adolescent (12–17)",
+   "share": "Low tens of thousands (US)",
+   "why": "Small revenue, disproportionate strategic value: first-line habit formation in a lifelong disease. Icotrokinra approved from 12."
+  },
+  {
+   "segment": "Obese / metabolically comorbid",
+   "share": "~35–40%",
+   "why": "Weight-based dosing failure with older agents; worse response rates; the population where a cardiometabolic outcomes claim would be most valuable."
+  }
+ ],
+ "opportunity": [
+  {
+   "gap": "Diagnosed, systemic-eligible, not on advanced therapy",
+   "severity": "High",
+   "coverage": "Topicals, conventional systemics, nothing",
+   "the_gap": "Access, route aversion, step therapy — not efficacy",
+   "population": "~630k US; ~2.5M developed markets",
+   "size": "~$3.7B US / $7–8B global over 5y [Estimated: 170k US converts × $22k net]",
+   "size_b": 3.7
+  },
+  {
+   "gap": "Incomplete clearance on current therapy (not at PASI 100)",
+   "severity": "Medium",
+   "coverage": "Fully covered but suboptimal",
+   "the_gap": "Depth of response; drives 15–20% annual switching",
+   "population": "~200k US on advanced therapy",
+   "size": "Switching value, not new market. ~$1.5B of contested revenue annually [Estimated]",
+   "size_b": 1.5
+  },
+  {
+   "gap": "High-impact sites (scalp, genital, palmoplantar, nail)",
+   "severity": "High",
+   "coverage": "Off-label use of systemic agents",
+   "the_gap": "No dedicated indication or site-specific endpoint precedent",
+   "population": "~40–50% of moderate-to-severe",
+   "size": "Label differentiation rather than a separate market; supports premium positioning",
+   "size_b": null
+  },
+  {
+   "gap": "Durability / treatment-free remission",
+   "severity": "High",
+   "coverage": "None",
+   "the_gap": "No remission-inducing regimen or claim",
+   "population": "All treated patients",
+   "size": "Reframes the category; would reduce near-term revenue while capturing share. Strategic, not additive",
+   "size_b": null
+  },
+  {
+   "gap": "Psoriatic arthritis prevention",
+   "severity": "High",
+   "coverage": "None",
+   "the_gap": "No prognostic biomarker; no prevention indication",
+   "population": "~30% of psoriasis patients over a lifetime",
+   "size": "Would create a new, biomarker-defined segment. Unquantifiable until a biomarker validates",
+   "size_b": null
+  },
+  {
+   "gap": "Cardiometabolic risk reduction",
+   "severity": "High",
+   "coverage": "None",
+   "the_gap": "No outcomes trial or label claim",
+   "population": "~35–40% of patients with metabolic comorbidity",
+   "size": "Highest leverage on payer behaviour of any evidence in the indication",
+   "size_b": null
+  },
+  {
+   "gap": "Adolescent (12–17)",
+   "severity": "Medium",
+   "coverage": "Icotrokinra (from 12), roflumilast (from 2), limited biologic labels",
+   "the_gap": "Most agents defer paediatric data post-approval",
+   "population": "Low tens of thousands US",
+   "size": "Small direct revenue; disproportionate lifetime value through first-line habit formation",
+   "size_b": null
+  },
+  {
+   "gap": "China and emerging markets",
+   "severity": "Medium",
+   "coverage": "<10% advanced-therapy penetration",
+   "the_gap": "Price, not availability",
+   "population": "~2.0M diagnosed China; ~2.5M RoW",
+   "size": "~$2B combined today; volume-led growth at a sixth of US net price",
+   "size_b": 2.0
+  }
+ ],
+ "payers": [
+  {
+   "market": "US (commercial)",
+   "coverage": "Broad for IL-23 and IL-17 after step therapy; new agents face tighter PA in year 1",
+   "hta": "PBM formulary committees (CVS Caremark, Optum Rx, Express Scripts)",
+   "restriction": "Step therapy through phototherapy or a conventional systemic; incomplete step documentation is the leading PA denial reason",
+   "net_price": "Blended net ~$38k/yr [Est] and eroding; reference resetting to ~$20k as biosimilars and MFPs land"
+  },
+  {
+   "market": "US (Medicare Part D)",
+   "coverage": "Covered; MFPs now in force for selected agents",
+   "hta": "CMS (IRA negotiation)",
+   "restriction": "Stelara MFP $4,695 vs $13,836 list from Jan 2026; Otezla MFP from Jan 2027",
+   "net_price": "Public reference price −66% to −67% off list"
+  },
+  {
+   "market": "UK",
+   "coverage": "Covered for severe disease only",
+   "hta": "NICE",
+   "restriction": "PASI ≥10 AND DLQI >10 required; adequate response defined as 75% PASI reduction; formally excludes most moderate disease",
+   "net_price": "Confidential patient-access schemes; effective net well below list"
+  },
+  {
+   "market": "Germany",
+   "coverage": "Broad access at launch, then price-negotiated",
+   "hta": "G-BA / IQWiG",
+   "restriction": "Additional-benefit assessment determines reimbursed price; class-lumping is common where no head-to-head exists",
+   "net_price": "AMNOG-negotiated; head-to-head data is the main defence against class reference pricing"
+  },
+  {
+   "market": "France",
+   "coverage": "Reimbursed with severity criteria",
+   "hta": "HAS",
+   "restriction": "ASMR rating drives price; sequencing requirements apply",
+   "net_price": "Below German net"
+  },
+  {
+   "market": "Japan",
+   "coverage": "Covered; dermatology-led",
+   "hta": "Chuikyo / MHLW",
+   "restriction": "Biennial price revisions erode net systematically",
+   "net_price": "~$16k/yr [Est]; foreign price referencing"
+  },
+  {
+   "market": "China",
+   "coverage": "NRDL-listed agents only; <10% advanced-therapy penetration",
+   "hta": "NHSA (NRDL negotiation)",
+   "restriction": "Steep negotiated discounts required for listing",
+   "net_price": "~$6k/yr [Est] — roughly a sixth of US net"
+  }
+ ],
+ "attribution": [
+  {
+   "brand": "Skyrizi",
+   "inn": "risankizumab",
+   "company": "AbbVie",
+   "class_route": "IL-23p19 · SC",
+   "fy_rev": "$17.56B (+32.5% in Q4)",
+   "fy_val": 17.56,
+   "attr_str": "~$9B [Estimated]",
+   "attr_val": 9.0,
+   "attr_frac": 0.513,
+   "access": "Broad first-line coverage; the reference agent against which orals are stepped",
+   "exclusivity": "Early 2030s"
+  },
+  {
+   "brand": "Cosentyx",
+   "inn": "secukinumab",
+   "company": "Novartis",
+   "class_route": "IL-17A · SC / IV",
+   "fy_rev": "$6.7B (+9%)",
+   "fy_val": 6.7,
+   "attr_str": "~$2.8B [Estimated]",
+   "attr_val": 2.8,
+   "attr_frac": 0.418,
+   "access": "Mature; growth now from HS and the US IV formulation, not derm",
+   "exclusivity": "Early 2030s"
+  },
+  {
+   "brand": "Stelara",
+   "inn": "ustekinumab",
+   "company": "Johnson & Johnson",
+   "class_route": "IL-12/23p40 · SC / IV",
+   "fy_rev": "~$6.0B [Estimated], −42%; Q4 WW $1.23B (−48%)",
+   "fy_val": 6.0,
+   "attr_str": "~$2.2B and falling",
+   "attr_val": 2.2,
+   "attr_frac": 0.367,
+   "access": "IRA MFP $4,695 vs $13,836 list from Jan 2026; 7 US / 8 EU biosimilars at up to 85% discount",
+   "exclusivity": "LOE — biosimilars from Feb 2025"
+  },
+  {
+   "brand": "Tremfya",
+   "inn": "guselkumab",
+   "company": "Johnson & Johnson",
+   "class_route": "IL-23p19 · SC",
+   "fy_rev": "$5.2B (+40.5%)",
+   "fy_val": 5.2,
+   "attr_str": "~$3.3B [Estimated]",
+   "attr_val": 3.3,
+   "attr_frac": 0.635,
+   "access": "Fastest-growing IL-23; IBD indications launching",
+   "exclusivity": "Early 2030s"
+  },
+  {
+   "brand": "Humira",
+   "inn": "adalimumab",
+   "company": "AbbVie",
+   "class_route": "TNF · SC",
+   "fy_rev": "$4.54B (−26.1%)",
+   "fy_val": 4.54,
+   "attr_str": "~$0.7B [Estimated]",
+   "attr_val": 0.7,
+   "attr_frac": 0.154,
+   "access": "Removed from Big-3 PBM 2026 formularies in favour of private-label biosimilars",
+   "exclusivity": "LOE — biosimilars since 2023"
+  },
+  {
+   "brand": "Taltz",
+   "inn": "ixekizumab",
+   "company": "Eli Lilly",
+   "class_route": "IL-17A · SC",
+   "fy_rev": "Not separately disclosed in FY2025 release; guided flat-to-declining for 2026",
+   "fy_val": null,
+   "attr_str": "~$1.9B [Inferred from 2024 base]",
+   "attr_val": 1.9,
+   "attr_frac": null,
+   "access": "Price realisation declining per Lilly Q1 2026 commentary",
+   "exclusivity": "Early 2030s"
+  },
+  {
+   "brand": "Bimzelx",
+   "inn": "bimekizumab",
+   "company": "UCB",
+   "class_route": "IL-17A/F · SC",
+   "fy_rev": "€2.22B (~$2.6B), >200% growth",
+   "fy_val": 2.6,
+   "attr_str": "~$1.3B (53% of sales)",
+   "attr_val": 1.3,
+   "attr_frac": 0.5,
+   "access": ">116k patients, >50 countries; peak target ≥€4B",
+   "exclusivity": "2030s"
+  },
+  {
+   "brand": "Otezla",
+   "inn": "apremilast",
+   "company": "Amgen",
+   "class_route": "PDE4 · oral",
+   "fy_rev": "Not retrieved for FY2025; declining from ~$2.2B (2024)",
+   "fy_val": 2.2,
+   "attr_str": "~$1.8B [Estimated]",
+   "attr_val": 1.8,
+   "attr_frac": 0.818,
+   "access": "Selected for IRA IPAY 2027 — MFP effective 1 Jan 2027",
+   "exclusivity": "US generics from Feb 2028"
+  },
+  {
+   "brand": "Sotyktu",
+   "inn": "deucravacitinib",
+   "company": "Bristol Myers Squibb",
+   "class_route": "TYK2 · oral",
+   "fy_rev": "~$0.29B (+19%)",
+   "fy_val": 0.29,
+   "attr_str": "~$0.29B",
+   "attr_val": 0.29,
+   "attr_frac": 1.0,
+   "access": "Moved to BMS Patient Connect DTC at >80% below list from Jan 2026",
+   "exclusivity": "2030s"
+  },
+  {
+   "brand": "Icotyde",
+   "inn": "icotrokinra",
+   "company": "Johnson & Johnson",
+   "class_route": "IL-23R antagonist · oral peptide",
+   "fy_rev": "Launched Mar 2026",
+   "fy_val": null,
+   "attr_str": "n/a",
+   "attr_val": null,
+   "attr_frac": null,
+   "access": "First-line systemic label; new-agent PA restrictions expected through year 1",
+   "exclusivity": "2030s+"
+  },
+  {
+   "brand": "Ilumya",
+   "inn": "tildrakizumab",
+   "company": "Sun Pharma",
+   "class_route": "IL-23p19 · SC",
+   "fy_rev": "~$0.5B [Estimated]",
+   "fy_val": 0.5,
+   "attr_str": "~$0.5B",
+   "attr_val": 0.5,
+   "attr_frac": 1.0,
+   "access": "Price-positioned challenger in the IL-23 class",
+   "exclusivity": "Late 2020s–2030s"
+  },
+  {
+   "brand": "Zoryve",
+   "inn": "roflumilast",
+   "company": "Arcutis",
+   "class_route": "PDE4 · topical",
+   "fy_rev": "Not separately retrieved",
+   "fy_val": null,
+   "attr_str": "Material",
+   "attr_val": null,
+   "attr_frac": null,
+   "access": "#1 prescribed branded topical across AD, seb derm and psoriasis combined; cream to age 2, foam to age 12",
+   "exclusivity": "2030s"
+  },
+  {
+   "brand": "Vtama",
+   "inn": "tapinarof",
+   "company": "Organon",
+   "class_route": "AhR agonist · topical",
+   "fy_rev": "$128M",
+   "fy_val": 0.128,
+   "attr_str": "Partial (also AD)",
+   "attr_val": null,
+   "attr_frac": null,
+   "access": "Acquired with Dermavant Q4 2024; Canada psoriasis launch Q3 2025",
+   "exclusivity": "2030s"
+  }
+ ],
+ "loe": [
+  {
+   "asset": "Adalimumab",
+   "event": "US biosimilar entry",
+   "timing": "2023 (in force)",
+   "consequence": "Humira down 26.1% in FY2025 to $4.54B. Big-3 PBMs removed the reference product for 2026, favouring private-label biosimilars."
+  },
+  {
+   "asset": "Ustekinumab",
+   "event": "US biosimilar entry (7 approved US / 8 EU)",
+   "timing": "Feb 2025 (in force)",
+   "consequence": "Discounts up to 85%; Stelara down ~42% in 2025 and ~48% in Q4 alone. Sets the net-price floor for the whole IL-23 tier."
+  },
+  {
+   "asset": "Ustekinumab (Stelara)",
+   "event": "IRA maximum fair price",
+   "timing": "1 Jan 2026",
+   "consequence": "$4,695 vs $13,836 list (−66%). A public reference price for an IL-23 agent — the most consequential single number in the access landscape."
+  },
+  {
+   "asset": "Etanercept (Enbrel)",
+   "event": "IRA maximum fair price",
+   "timing": "1 Jan 2026",
+   "consequence": "$2,355 vs $7,106 (−67%). Largely rheumatology-relevant but reinforces the reference-pricing precedent."
+  },
+  {
+   "asset": "Apremilast (Otezla)",
+   "event": "IRA maximum fair price (IPAY 2027)",
+   "timing": "1 Jan 2027",
+   "consequence": "Sets the Medicare reference for the oral tier ahead of icotrokinra and TYK2 scale-up."
+  },
+  {
+   "asset": "Apremilast (Otezla)",
+   "event": "US generic entry",
+   "timing": "Feb 2028",
+   "consequence": "Amgen's patent win blocks Sandoz and Zydus until Feb 2028; one asserted patent runs to 2034. Post-2028 a generic oral becomes the cheapest mandatory step before any new oral."
+  },
+  {
+   "asset": "Risankizumab, guselkumab, secukinumab, ixekizumab",
+   "event": "Biologic LOE",
+   "timing": "Early 2030s",
+   "consequence": "The dominant driver of the ten-year forecast; the reason base-case CAGR decays from 7.8% (5y) to 5.3% (10y)."
+  }
+ ],
+ "competitive": [
+  {
+   "company": "AbbVie",
+   "position": "Leader. Skyrizi $17.56B all-indication; ~$9B psoriasis [Est]",
+   "depth": "Thin in psoriasis — no oral, no announced next-gen derm asset",
+   "posture": "Defend the IL-23 franchise; grow via IBD",
+   "strength": "Scale, prescriber entrenchment, rebate leverage; absorbed $16B of Humira erosion and still grew",
+   "vulnerability": "No oral answer to icotrokinra; LOE early 2030s; single-asset concentration"
+  },
+  {
+   "company": "Johnson & Johnson",
+   "position": "Co-leader and best-placed for the next cycle. Tremfya $5.2B (+40.5%); Icotyde launched Mar 2026",
+   "depth": "Deepest — owns both injectable and oral IL-23",
+   "posture": "Replace the biosimilarised Stelara franchise with an oral-plus-injectable IL-23 pair",
+   "strength": "Only approved oral with biologic-class efficacy; first-line label; adolescent coverage; head-to-head superiority data",
+   "vulnerability": "Stelara down ~42% in 2025 (−1,040bps on Immunology); launch execution risk against rebate-protected incumbents"
+  },
+  {
+   "company": "Novartis",
+   "position": "Mature IL-17 incumbent. Cosentyx $6.7B (+9%)",
+   "depth": "Limited in psoriasis; growth from HS and IV formulation",
+   "posture": "Harvest and extend via new indications and formulations",
+   "strength": "Broad label set; established prescriber base; IV option",
+   "vulnerability": "Derm growth has stalled; exposed to oral substitution; LOE early 2030s"
+  },
+  {
+   "company": "UCB",
+   "position": "Challenger with the best injectable efficacy. Bimzelx €2.22B (>200% growth)",
+   "depth": "Moderate — indication expansion rather than new molecules",
+   "posture": "Efficacy-led share capture across five indications",
+   "strength": "Highest PASI 100 among injectables; >116k patients; ≥€4B peak target",
+   "vulnerability": "IL-17 is the class most directly substitutable by an efficacious oral; candidiasis and IBD-caution signals"
+  },
+  {
+   "company": "Eli Lilly",
+   "position": "Mature IL-17 (Taltz) plus the only oral IL-17 programme",
+   "depth": "One Phase 2 oral IL-17 (LY4100511) after discontinuing DC-806",
+   "posture": "Manage Taltz decline; re-enter via oral IL-17",
+   "strength": "Only credible oral IL-17 mechanism; deep immunology capability",
+   "vulnerability": "Taltz guided flat-to-declining; wrote off the first DICE asset; a generation behind the oral leaders"
+  },
+  {
+   "company": "Bristol Myers Squibb",
+   "position": "Underperforming oral incumbent. Sotyktu ~$0.29B",
+   "depth": "Paediatric Phase 3 only (readout 2029)",
+   "posture": "Salvage volume via a direct-to-patient discount channel",
+   "strength": "First-in-class TYK2 with 5-year durability and a new PsA label",
+   "vulnerability": "Proof that efficacy without payer position yields no revenue; DTC pricing destroys the class's price reference"
+  },
+  {
+   "company": "Takeda",
+   "position": "Entrant. Zasocitinib NDA from FY2026",
+   "depth": "One late-stage oral plus PsA Phase 3 and IBD Phase 2",
+   "posture": "Buy into I&I at scale via the $4B Nimbus deal",
+   "strength": "Only PASI 100 head-to-head win over another oral; fastest onset in class; cross-indication optionality",
+   "vulnerability": "Second into the segment; class-lumped with cheaper deucravacitinib by payers"
+  },
+  {
+   "company": "Alumis",
+   "position": "Entrant, pure-play. Envudeucitinib NDA 2H 2026",
+   "depth": "Single asset",
+   "posture": "File and partner or sell",
+   "strength": "Competitive PASI 90/100 data; Kaken deal validates the asset",
+   "vulnerability": "No commercial infrastructure; no head-to-head against another oral; financing dependence"
+  },
+  {
+   "company": "Amgen",
+   "position": "Declining oral incumbent. Otezla",
+   "depth": "None material in psoriasis",
+   "posture": "Harvest to LOE",
+   "strength": "Entrenched step-therapy position",
+   "vulnerability": "IRA MFP 2027, generics Feb 2028; becomes a payer obstacle rather than an asset"
+  },
+  {
+   "company": "China cohort (Innovent, Junshi, Hansoh, InnoCare, BIOCAD)",
+   "position": "Domestic Phase 3 across IL-23, IL-17 and TYK2",
+   "depth": "Broad but on validated mechanisms",
+   "posture": "Serve a <10% penetrated domestic market; out-licence opportunistically",
+   "strength": "Cost base; adolescent programmes; completed pivotals",
+   "vulnerability": "No Western regulatory path yet; mechanisms already commoditised in the US and EU"
+  }
+ ],
+ "catalysts_watch": [
+  {
+   "catalyst": "Icotyde (icotrokinra) US launch trajectory — first two quarters of scripts and payer coverage",
+   "type": "Commercial / Access",
+   "expected": "H2 2026 – H1 2027",
+   "why": "The single cleanest test of whether an oral with biologic-class efficacy can win a first-line position against rebate-protected injectables. If it repeats Sotyktu's launch curve, the oral thesis is worth materially less."
+  },
+  {
+   "catalyst": "Zasocitinib NDA submission and FDA acceptance",
+   "type": "Regulatory",
+   "expected": "FY2026 (from Apr 2026)",
+   "why": "Second next-generation oral into the queue; LATITUDE Atlas showed statistical superiority over deucravacitinib on PASI 100 at week 16, making it the first oral to beat another oral head-to-head."
+  },
+  {
+   "catalyst": "Envudeucitinib (ESK-001) NDA submission",
+   "type": "Regulatory",
+   "expected": "2H 2026",
+   "why": "Third oral entrant; PASI 100 of ~40% at week 24 is competitive. Alumis is the only pure-play, making it the most likely acquisition target in the class."
+  },
+  {
+   "catalyst": "ICONIC-ASCEND readout — icotrokinra vs ustekinumab",
+   "type": "Clinical",
+   "expected": "2026",
+   "why": "First head-to-head of an oral against an injectable biologic in plaque psoriasis. A superiority win reframes guideline sequencing."
+  },
+  {
+   "catalyst": "Otezla maximum fair price under IRA IPAY 2027",
+   "type": "Policy",
+   "expected": "Effective 1 Jan 2027",
+   "why": "Sets the Medicare reference price for the oral tier and anchors commercial negotiation for icotrokinra and the TYK2s."
+  },
+  {
+   "catalyst": "Otezla US generic entry",
+   "type": "LOE",
+   "expected": "Feb 2028",
+   "why": "Removes the branded floor from the oral segment and creates a cheap step-therapy rung payers can require before any new oral."
+  },
+  {
+   "catalyst": "2027 PBM formulary decisions on Icotyde and the TYK2 class",
+   "type": "Access",
+   "expected": "Q3–Q4 2026",
+   "why": "Determines whether the oral tier is positioned first-line or behind biologic failure. This decision, not the clinical data, sets the segment's 2027–2031 revenue."
+  },
+  {
+   "catalyst": "Skyrizi and Cosentyx exclusivity erosion",
+   "type": "LOE",
+   "expected": "Early 2030s",
+   "why": "The single largest determinant of the ten-year forecast; the reason base-case CAGR decays from 7.8% (5y) to 5.3% (10y)."
+  }
+ ],
+ "thesis": [
+  {
+   "heading": "State of the field",
+   "text": "Plaque psoriasis is the most commercially mature autoimmune dermatology indication and, as of 2026, the one undergoing the sharpest structural change in a decade. Two things happened in parallel. First, the injectable ceiling was reached: IL-23 and IL-17 inhibitors deliver PASI 90 in 55–75% of patients and complete clearance in 40–60%, and the marginal gain from the next antibody is small enough that head-to-head superiority trials now turn on PASI 100 rather than PASI 75. Second, on 18 March 2026 the FDA approved icotrokinra (ICOTYDE, Johnson & Johnson) — the first targeted oral peptide antagonist of the IL-23 receptor — for moderate-to-severe plaque psoriasis in adults and patients 12 and over weighing at least 40 kg. For the first time an oral agent carries biologic-class efficacy rather than the compromised efficacy of apremilast or, in commercial practice, deucravacitinib. The consequence is that the competitive question has moved from \"which molecule clears skin best\" to \"which molecule gets to the patient first, at what net price\". That is a payer question, and the payer environment simultaneously hardened: ustekinumab biosimilars entered the US in February 2025 at discounts up to 85%; the Big Three PBMs removed Humira and Stelara reference products from 2026 formularies in favour of their own private-label biosimilars; and the Inflation Reduction Act set Stelara's maximum fair price at $4,695 versus a $13,836 list from 1 January 2026, with Otezla following in 2027."
+  },
+  {
+   "heading": "Market size and growth trajectory",
+   "text": "We size the global plaque psoriasis therapeutics market at approximately $30B in 2025 and $32B in 2026 [Estimated], built bottom-up from indication-attributable brand revenue and cross-checked against a top-down envelope of $28.9–34.2B from published market-research estimates. Base case takes the market to ~$40B by 2029 and ~$46.5B by 2031 — a 7.8% CAGR over five years — before growth decelerates to a 5.3% ten-year CAGR as risankizumab and secukinumab approach loss of exclusivity in the early 2030s. Growth is almost entirely a mix shift, not a price story: the oral targeted segment grows from ~$3B to ~$14B by 2031 (36% CAGR) while the TNF and biosimilar tier contracts at roughly −15% a year. The headline growth figures circulating in market-research reports — up to $80B by 2034 — are not reconcilable with observed brand revenue and appear to be built on list rather than net prices. Treat them as an upper bound on gross sales, not as a forecast of realisable revenue."
+  },
+  {
+   "heading": "Competitive landscape highlights",
+   "text": "AbbVie is the clear leader: Skyrizi reached $17.56B in FY2025 (+32.5% in Q4 alone) inside a $30.4B immunology portfolio, and did so in only the second full year after the Humira LOE. Johnson & Johnson holds the strongest strategic position for the next cycle — Tremfya grew 40.5% to $5.2B and icotrokinra gives it the first oral IL-23 franchise — but it is simultaneously absorbing a Stelara collapse of roughly 42% in 2025, a ~1,040 basis-point drag on Immunology segment growth. Novartis (Cosentyx, $6.7B) and Lilly (Taltz) are defending mature IL-17 franchises with lifecycle indications rather than new derm efficacy. UCB is the momentum story: Bimzelx reached €2.22B in FY2025, over 200% growth, with 53% of sales from psoriasis. Bristol Myers Squibb is the cautionary tale and the single most instructive data point in this report. Sotyktu, an oral with genuine efficacy and a clean safety profile, reached only ~$0.3B in FY2025 with US revenue flat as higher demand was offset by lower net selling price. BMS's response — routing Sotyktu through a direct-to-patient platform at more than 80% below list from January 2026 — is an admission that the rebate-gated channel would not give an oral a first-line position. Every oral entrant now faces that same wall."
+  },
+  {
+   "heading": "Key strategic risks and access barriers",
+   "text": "The dominant risk is not clinical. It is that the oral era expands the number of competitors without expanding the treated pool — in which case the new entrants cannibalise injectables at a lower net price and the market grows more slowly than the patient count. Step therapy through conventional systemics remains near-universal in the US, and incomplete step documentation is the leading cause of prior-authorisation denial. In Europe, NICE-derived thresholds (PASI ≥10 and DLQI >10) formally exclude most of the moderate segment from biologic access. Meanwhile PBM economics have inverted: private-label biosimilars from Cordavis, Nuvaila and Quallent are displacing both originators and third-party biosimilars, which compresses net price across the whole ustekinumab and adalimumab tier and resets the reference point against which any new oral is priced."
+  },
+  {
+   "heading": "Investment thesis",
+   "text": "Plaque psoriasis remains an attractive market on absolute size and durability but has become a poor market for undifferentiated entry. The value now sits in two places: (1) assets that credibly convert untreated systemic-eligible patients rather than switch already-treated ones — which means oral route, first-line label, adolescent coverage and site-specific data; and (2) capabilities that lower the cost of proving differentiation in an indication where the efficacy bar is already ~70% IGA 0/1 and trials must therefore be large, head-to-head and endpoint-aggressive. A ninth me-too IL-17 or IL-23 antibody has negative expected value. A tenth oral entrant without a payer strategy has the same problem Sotyktu had."
+  }
+ ],
+ "deals_report": [
+  {
+   "date": "2025–2026",
+   "type": "Licence",
+   "parties": "Alumis → Kaken (Japan)",
+   "asset": "ESK-001 / envudeucitinib, Phase 3",
+   "value": "$40M upfront + near-term; up to ~$140M milestones",
+   "read": "Development financing rather than a commercialisation partnership. Signals Alumis is positioning to be acquired, not to launch."
+  },
+  {
+   "date": "Q4 2024",
+   "type": "M&A",
+   "parties": "Organon acquires Dermavant",
+   "asset": "Tapinarof (Vtama), marketed topical",
+   "value": "Not disclosed in reviewed sources",
+   "read": "Produced $128M FY2025. Branded topicals support acquisition economics at modest scale."
+  },
+  {
+   "date": "2023",
+   "type": "M&A",
+   "parties": "Eli Lilly acquires DICE Therapeutics",
+   "asset": "Oral IL-17 antagonists (DC-806, DC-853), Phase 1/2",
+   "value": "$2.4B",
+   "read": "Lead asset DC-806 discontinued within a year; programme continues with LY4100511 in Phase 2. A cautionary precedent on paying Phase-1 prices for oral mechanism risk."
+  },
+  {
+   "date": "2022",
+   "type": "M&A",
+   "parties": "Takeda acquires Nimbus TYK2 programme",
+   "asset": "TAK-279 / zasocitinib, Phase 2",
+   "value": "~$4B (upfront + milestones)",
+   "read": "Vindicated by Phase 3 success in Dec 2025 and the PASI 100 head-to-head win over deucravacitinib. The benchmark for what an oral in this class is worth pre-Phase 3."
+  },
+  {
+   "date": "2019",
+   "type": "M&A",
+   "parties": "Amgen acquires Otezla from Celgene",
+   "asset": "Apremilast, marketed",
+   "value": "$13.4B",
+   "read": "Now facing an IRA maximum fair price in 2027 and generic entry in Feb 2028. Instructive on the durability of oral franchises in this indication."
+  },
+  {
+   "date": "2024–2026",
+   "type": "Payer vertical integration",
+   "parties": "CVS (Cordavis), Optum (Nuvaila), Cigna (Quallent)",
+   "asset": "Private-label ustekinumab and adalimumab biosimilars",
+   "value": "n/a",
+   "read": "Payers deploying capital into supply. The most consequential structural change in the indication's economics and the least discussed."
+  }
+ ],
+ "risks": [
+  {
+   "risk": "Orals cannibalise injectables instead of expanding the treated pool, so the market grows with price rather than volume",
+   "category": "Commercial/Access",
+   "prob": "M–H",
+   "impact": "H",
+   "horizon": "2026–2029",
+   "trigger": "Icotyde's first four quarters showing net new patient starts rather than switches from biologics; NBRx mix disclosed by J&J"
+  },
+  {
+   "risk": "Payers step the oral tier behind biologic failure, repeating the Sotyktu outcome",
+   "category": "Commercial/Access",
+   "prob": "M",
+   "impact": "H",
+   "horizon": "2026–2027",
+   "trigger": "Published 2027 formulary criteria placing icotrokinra at parity with or ahead of an IL-23 biologic on at least one Big-3 formulary"
+  },
+  {
+   "risk": "Net-price compression accelerates as three orals compete for one formulary slot",
+   "category": "Commercial/Access",
+   "prob": "H",
+   "impact": "M–H",
+   "horizon": "2027–2031",
+   "trigger": "Whether zasocitinib and envudeucitinib price to differentiate or to buy access; whether DTC channels proliferate beyond BMS"
+  },
+  {
+   "risk": "IRA selection extends to an IL-23 franchise (risankizumab or guselkumab)",
+   "category": "Policy",
+   "prob": "M",
+   "impact": "H",
+   "horizon": "2028–2031",
+   "trigger": "CMS selection lists in subsequent IPAY cycles; Part D spend rankings"
+  },
+  {
+   "risk": "PBM private-label biosimilar vertical integration further compresses the whole class reference price",
+   "category": "Policy/Access",
+   "prob": "H",
+   "impact": "M",
+   "horizon": "2026–2029",
+   "trigger": "Regulatory or legislative action on PBM ownership of supply; any rebate-reform proposal advancing"
+  },
+  {
+   "risk": "Class safety signal in oral TYK2 inhibitors (a JAK-adjacent finding at scale)",
+   "category": "Clinical",
+   "prob": "L–M",
+   "impact": "H",
+   "horizon": "2027–2031",
+   "trigger": "Post-marketing surveillance across deucravacitinib, zasocitinib and envudeucitinib; any FDA class labelling action"
+  },
+  {
+   "risk": "Icotrokinra real-world efficacy underperforms the ICONIC trial population",
+   "category": "Clinical",
+   "prob": "L–M",
+   "impact": "M–H",
+   "horizon": "2026–2028",
+   "trigger": "First registry and claims-based persistence data; 12-month drug-survival curves versus IL-23 biologics"
+  },
+  {
+   "risk": "Biosimilar entry to risankizumab and secukinumab arrives earlier than the early-2030s assumption",
+   "category": "Competitive",
+   "prob": "L–M",
+   "impact": "H",
+   "horizon": "2029–2032",
+   "trigger": "Patent litigation outcomes and biosimilar filing disclosures; any settlement dates becoming public"
+  },
+  {
+   "risk": "China-origin assets enter Western markets at disruptive price points via in-licensing",
+   "category": "Competitive",
+   "prob": "L–M",
+   "impact": "M",
+   "horizon": "2028–2032",
+   "trigger": "Any Western regulatory filing by Innovent, Junshi, Hansoh or InnoCare in this indication"
+  },
+  {
+   "risk": "Epidemiology overstated — the addressable pool is closer to claims-based than survey-based prevalence",
+   "category": "Scientific",
+   "prob": "M",
+   "impact": "M",
+   "horizon": "ongoing",
+   "trigger": "Prospective claims-linked prevalence work; whether icotrokinra's conversion of untreated patients matches the funnel's implied ~630k"
+  }
+ ]
+}

@@ -516,12 +516,24 @@ for fk,pos in ANCHOR.items():
     if "moa:"+fk in nodes and "bio:"+pos in nodes: edge("ACTS_ON","moa:"+fk,"bio:"+pos)
 EPI.update(EPI_DEEP)
 
+# ---- market-research layer ingested from the therapeutic-area research report ----
+# report_data.json is produced by ingest_report.py (the "ingest" seam of the two-skill split:
+# a research skill emits the report model; ingest_report.py normalizes it; the atlas renders it).
+try: REPORT=json.load(open(os.path.join(HERE,"report_data.json"),encoding="utf-8"))
+except Exception: REPORT={}
+# bind forecast segments to the atlas family palette so the same class reads the same colour everywhere
+SEG_COLOR={"il23":"--s1","il17":"--s2","oral":"--s3","tnf":"--s5","topical":"--s4","total":"--ink2","other":"--s6"}
+for _s in REPORT.get("segments",[]): _s["colorVar"]=SEG_COLOR.get(_s.get("key"),"--s6")
+if REPORT.get("total"): REPORT["total"]["colorVar"]="--ink"
+# psoriasis-attributed franchise total captured across dashboard brands (fixes the all-indication caveat)
+_ATTR_TOTAL=round(sum(a.get("attr_val") or 0 for a in REPORT.get("attribution",[])),1)
+
 graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026-07-23","as_of":"July 2026",
-    "one_liner":"Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market shifting to oral targeted therapy.",
-    "sales_note":"Product sales are most-recent full-year (FY2025) company-reported franchise totals across ALL indications — not psoriasis-only. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.",
+    "one_liner":"Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market — the competitive question has shifted from clearing skin to reaching the patient first, at what net price.",
+    "sales_note":"Franchise-sales donut is company-reported FY2025 totals across ALL indications. The dedicated attribution region below estimates the psoriasis-only split. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.",
     "headline_stats":[
-      {"label":"Worldwide prevalence","value":"~125M"},{"label":"US adults","value":"~7.5M"},
-      {"label":"Global market (2024)","value":"$27–33B"},{"label":"Assets mapped","value":str(len(ROSTER))}]},
+      {"label":"Global prevalence (GBD 2021)","value":"43M"},{"label":"US systemic-eligible","value":"~1.6M"},
+      {"label":"Global market (2026)","value":"~$32B"},{"label":"Forecast 2031 · base","value":"$46.5B"}]},
     "families":[{"key":k,"label":l,"colorVar":c,"order":o,"anchor":ANCHOR.get(k,"tcell")} for k,(l,c,o) in FAM.items()],
     "epi":EPI,
     "sites":[{"site":s,"prev":p,"note":n} for s,p,n in SITES],
@@ -537,6 +549,24 @@ graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026
     "pasi_kinetics":PASI_KINETICS,
     "signal_path":[{"from":"bio:"+f,"to":"bio:"+t,"label":l} for f,t,l in SIGNAL_PATH],
     "hierarchy":HIER,
+    # ---- ingested market-research layer (from report_data.json via ingest_report.py) ----
+    "forecast":{"years":REPORT.get("years",[]),"segments":REPORT.get("segments",[]),
+                "total":REPORT.get("total"),"note":REPORT.get("note","")},
+    "scenarios":REPORT.get("scenarios",[]),
+    "geo":REPORT.get("geo",[]),
+    "funnel":REPORT.get("funnel",[]),
+    "segmentation":REPORT.get("segmentation",[]),
+    "opportunity":REPORT.get("opportunity",[]),
+    "payers":REPORT.get("payers",[]),
+    "attribution":REPORT.get("attribution",[]),
+    "attribution_total":_ATTR_TOTAL,
+    "loe":REPORT.get("loe",[]),
+    "competitive":REPORT.get("competitive",[]),
+    "catalysts_watch":REPORT.get("catalysts_watch",[]),
+    "risks":REPORT.get("risks",[]),
+    "thesis":REPORT.get("thesis",[]),
+    "report_meta":REPORT.get("meta",{}),
+    "report_sources":REPORT.get("sources",[]),
     "nodes":list(nodes.values()),"edges":edges,"sources":SOURCES}
 
 # --- validate the mind-map covers every asset exactly once ---

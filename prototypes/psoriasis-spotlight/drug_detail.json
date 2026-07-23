@@ -65,6 +65,12 @@
    "chembl_id": "CHEMBL6068124",
    "mol_type": "Small molecule",
    "max_phase": "2.0"
+  },
+  "pubchem": {
+   "cid": 162462321,
+   "formula": "C90H120N20O22S2",
+   "mw": "1898.2",
+   "iupac": "(4S)-4-[[4-[[(2S)-2-[[(2S)-2-[[(4R,7S,10S,13S,16S,19R)-19-acetamido-7-(4-acetamidobutyl)-16-(2-amino-2-oxoethyl)-13-[(1R)-1-hydroxyethyl]-3,3,20,20-tetramethyl-10-[(7-methyl-1H-indol-3-yl)methyl]-6,9,12,15,18-pentaoxo-1,2-dithia-5,8,11,14,17-pentazacycloicosane-4-carbonyl]amino]-3-[4-(2-aminoethoxy)phenyl]propanoyl]amino]-3-naphthalen-2-ylpropanoyl]amino]oxane-4-carbonyl]amino]-5-[[(2S)-4-amino-1-[[(2S)-1-[(2-amino-2-oxoethyl)-methylamino]-1-oxo-3-pyridin-3-ylpropan-2-yl]amino]-1,4-dioxobutan-2-yl]amino]-5-oxopentanoic acid"
   }
  },
  "ustekinumab": {
@@ -198,6 +204,12 @@
    "mw": "426.38",
    "formula": "C21H14F4N6",
    "smiles": "Nc1cnc(-c2ccc(-c3ccc(C(F)(F)F)cc3-c3cnc(N)nc3)cc2F)cn1"
+  },
+  "pubchem": {
+   "cid": 169160620,
+   "formula": "C35H50FN7O5",
+   "mw": "667.8",
+   "iupac": "N-[(2S)-1,1-dicyclopropyl-3-[4-[(2S,3R)-4-[(3R)-3,4-dimethylpiperazin-1-yl]-3-[[(2S)-2-methoxypropanoyl]amino]-4-oxobutan-2-yl]-2-fluoroanilino]-3-oxopropan-2-yl]-2-ethylpyrazole-3-carboxamide"
   }
  },
  "cjm-112": {
@@ -293,6 +305,12 @@
    "smiles": "[2H]C([2H])([2H])NC(=O)c1nnc(NC(=O)C2CC2)cc1Nc1cccc(-c2ncn(C)n2)c1OC",
    "mech": "Tyrosine-protein kinase TYK2 negative allosteric modulator",
    "action": "NEGATIVE ALLOSTERIC MODULATOR"
+  },
+  "pubchem": {
+   "cid": 134821691,
+   "formula": "C20H22N8O3",
+   "mw": "425.5",
+   "iupac": "6-(cyclopropanecarbonylamino)-4-[2-methoxy-3-(1-methyl-1,2,4-triazol-3-yl)anilino]-N-(trideuteriomethyl)pyridazine-3-carboxamide"
   }
  },
  "zasocitinib": {
@@ -303,6 +321,12 @@
    "mw": "460.50",
    "formula": "C23H24N8O3",
    "smiles": "CNc1cc(Nc2cccn(-c3ccccn3)c2=O)nc2c(C(=O)N[C@@H]3CC[C@H]3OC)cnn12"
+  },
+  "pubchem": {
+   "cid": 137441492,
+   "formula": "C23H24N8O3",
+   "mw": "460.5",
+   "iupac": "N-[(1R,2R)-2-methoxycyclobutyl]-7-(methylamino)-5-[(2-oxo-1-pyridin-2-yl-3-pyridinyl)amino]pyrazolo[1,5-a]pyrimidine-3-carboxamide"
   }
  },
  "esk-001": {
@@ -312,6 +336,12 @@
    "mw": "548.64",
    "formula": "C33H32N4O4",
    "smiles": "O=C1[C@@H](Cc2ccc(O)cc2)N2C(=O)CCN(C(=O)NCc3ccccc3)[C@H]2CN1Cc1cccc2ccccc12"
+  },
+  "pubchem": {
+   "cid": 158715582,
+   "formula": "C22H24N6O3",
+   "mw": "426.5",
+   "iupac": "N-[4-[2-methoxy-3-[1-(trideuteriomethyl)-1,2,4-triazol-3-yl]anilino]-5-(3,3,3-trideuteriopropanoyl)-2-pyridinyl]cyclopropanecarboxamide"
   }
  },
  "ropsacitinib": {
@@ -324,6 +354,12 @@
    "smiles": "Cn1cc(-c2cn3nccc3c(-c3cnn([C@]4(CC#N)C[C@@H](C#N)C4)c3)n2)cn1",
    "mech": "Tyrosine-protein kinase TYK2 inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 130339268,
+   "formula": "C20H17N9",
+   "mw": "383.4",
+   "iupac": "3-(cyanomethyl)-3-[4-[6-(1-methylpyrazol-4-yl)pyrazolo[1,5-a]pyrazin-4-yl]pyrazol-1-yl]cyclobutane-1-carbonitrile"
   }
  },
  "brepocitinib": {
@@ -333,6 +369,12 @@
    "mw": "389.41",
    "formula": "C18H21F2N7O",
    "smiles": "Cn1cc(Nc2nccc(N3CC4CCC(C3)N4C(=O)[C@@H]3CC3(F)F)n2)cn1"
+  },
+  "pubchem": {
+   "cid": 118878093,
+   "formula": "C18H21F2N7O",
+   "mw": "389.4",
+   "iupac": "[(1S)-2,2-difluorocyclopropyl]-[(1R,5S)-3-[2-[(1-methylpyrazol-4-yl)amino]pyrimidin-4-yl]-3,8-diazabicyclo[3.2.1]octan-8-yl]methanone"
   }
  },
  "tofacitinib": {
@@ -351,6 +393,12 @@
    "smiles": "C[C@@H]1CCN(C(=O)CC#N)C[C@@H]1N(C)c1ncnc2[nH]ccc12.O=C(O)CC(O)(CC(=O)O)C(=O)O",
    "mech": "Janus Kinase (JAK) inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 9926791,
+   "formula": "C16H20N6O",
+   "mw": "312.37",
+   "iupac": "3-[(3R,4R)-4-methyl-3-[methyl(7H-pyrrolo[2,3-d]pyrimidin-4-yl)amino]piperidin-1-yl]-3-oxopropanenitrile"
   }
  },
  "peficitinib": {
@@ -363,6 +411,12 @@
    "smiles": "NC(=O)c1cnc2[nH]ccc2c1N[C@@H]1[C@@H]2CC3C[C@H]1C[C@@](O)(C3)C2",
    "mech": "Janus Kinase (JAK) inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 57928403,
+   "formula": "C18H22N4O2",
+   "mw": "326.4",
+   "iupac": "4-[[(1R,3S)-5-hydroxy-2-adamantyl]amino]-1H-pyrrolo[2,3-b]pyridine-5-carboxamide"
   }
  },
  "ruxolitinib": {
@@ -378,6 +432,12 @@
    "mw": "306.37",
    "formula": "C17H18N6",
    "smiles": "N#CC[C@@H](C1CCCC1)n1cc(-c2ncnc3[nH]ccc23)cn1"
+  },
+  "pubchem": {
+   "cid": 25126798,
+   "formula": "C17H18N6",
+   "mw": "306.4",
+   "iupac": "(3R)-3-cyclopentyl-3-[4-(7H-pyrrolo[2,3-d]pyrimidin-4-yl)pyrazol-1-yl]propanenitrile"
   }
  },
  "apremilast": {
@@ -395,6 +455,12 @@
    "smiles": "CCOc1cc([C@@H](CS(C)(=O)=O)N2C(=O)c3cccc(NC(C)=O)c3C2=O)ccc1OC",
    "mech": "Phosphodiesterase 4 inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 11561674,
+   "formula": "C22H24N2O7S",
+   "mw": "460.5",
+   "iupac": "N-[2-[(1S)-1-(3-ethoxy-4-methoxyphenyl)-2-methylsulfonylethyl]-1,3-dioxoisoindol-4-yl]acetamide"
   }
  },
  "orismilast": {
@@ -405,6 +471,12 @@
    "mw": "510.30",
    "formula": "C19H15Cl2F2NO7S",
    "smiles": "O=C(Cc1c(Cl)c[n+]([O-])cc1Cl)c1ccc(OC(F)F)c2c1OC1(CCS(=O)(=O)CC1)O2"
+  },
+  "pubchem": {
+   "cid": 54765967,
+   "formula": "C19H15Cl2F2NO7S",
+   "mw": "510.3",
+   "iupac": "2-(3,5-dichloro-1-oxidopyridin-1-ium-4-yl)-1-[7-(difluoromethoxy)-1',1'-dioxospiro[1,3-benzodioxole-2,4'-thiane]-4-yl]ethanone"
   }
  },
  "roflumilast": {
@@ -422,6 +494,12 @@
    "smiles": "O=C(Nc1c(Cl)cncc1Cl)c1ccc(OC(F)F)c(OCC2CC2)c1",
    "mech": "Phosphodiesterase 4 inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 449193,
+   "formula": "C17H14Cl2F2N2O3",
+   "mw": "403.2",
+   "iupac": "3-(cyclopropylmethoxy)-N-(3,5-dichloro-4-pyridinyl)-4-(difluoromethoxy)benzamide"
   }
  },
  "crisaborole": {
@@ -439,6 +517,12 @@
    "smiles": "N#Cc1ccc(Oc2ccc3c(c2)COB3O)cc1",
    "mech": "Phosphodiesterase 4 inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 44591583,
+   "formula": "C14H10BNO3",
+   "mw": "251.05",
+   "iupac": "4-[(1-hydroxy-3H-2,1-benzoxaborol-5-yl)oxy]benzonitrile"
   }
  },
  "tapinarof": {
@@ -456,6 +540,12 @@
    "smiles": "CC(C)c1c(O)cc(/C=C/c2ccccc2)cc1O",
    "mech": "Aryl hydrocarbon receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 6439522,
+   "formula": "C17H18O2",
+   "mw": "254.32",
+   "iupac": "5-[(E)-2-phenylethenyl]-2-propan-2-ylbenzene-1,3-diol"
   }
  },
  "calcipotriene": {
@@ -473,6 +563,12 @@
    "smiles": "C=C1/C(=C\\C=C2/CCC[C@]3(C)[C@@H]([C@H](C)/C=C/[C@@H](O)C4CC4)CC[C@@H]23)C[C@@H](O)C[C@@H]1O",
    "mech": "Vitamin D receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 5288783,
+   "formula": "C27H40O3",
+   "mw": "412.6",
+   "iupac": "trans-(1R,3S,5Z)-5-[(2E)-2-[(1R,3aS,7aR)-1-[(E,2R,5S)-5-cyclopropyl-5-hydroxypent-3-en-2-yl]-7a-methyl-2,3,3a,5,6,7-hexahydro-1H-inden-4-ylidene]ethylidene]-4-methylidenecyclohexane-1,3-diol"
   }
  },
  "calcitriol": {
@@ -487,6 +583,12 @@
    "mw": "416.65",
    "formula": "C27H44O3",
    "smiles": "C=C1/C(=C\\C=C2/CCC[C@]3(C)C(C(C)CCCC(C)(C)O)CC[C@@H]23)C[C@@H](O)C[C@@H]1O"
+  },
+  "pubchem": {
+   "cid": 5280453,
+   "formula": "C27H44O3",
+   "mw": "416.6",
+   "iupac": "trans-(1R,3S,5Z)-5-[(2E)-2-[(1R,3aS,7aR)-1-[(2R)-6-hydroxy-6-methylheptan-2-yl]-7a-methyl-2,3,3a,5,6,7-hexahydro-1H-inden-4-ylidene]ethylidene]-4-methylidenecyclohexane-1,3-diol"
   }
  },
  "tazarotene": {
@@ -504,6 +606,12 @@
    "smiles": "CCOC(=O)c1ccc(C#Cc2ccc3c(c2)C(C)(C)CCS3)nc1",
    "mech": "Retinoic acid receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 5381,
+   "formula": "C21H21NO2S",
+   "mw": "351.5",
+   "iupac": "ethyl 6-[2-(4,4-dimethyl-2,3-dihydrothiochromen-6-yl)ethynyl]pyridine-3-carboxylate"
   }
  },
  "clobetasol-propionate": {
@@ -520,6 +628,12 @@
    "smiles": "CCC(=O)O[C@]1(C(=O)CCl)[C@@H](C)C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]21C",
    "mech": "Glucocorticoid receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 32798,
+   "formula": "C25H32ClFO5",
+   "mw": "467.0",
+   "iupac": "[(8S,9R,10S,11S,13S,14S,16S,17R)-17-(2-chloroacetyl)-9-fluoro-11-hydroxy-10,13,16-trimethyl-3-oxo-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-17-yl] propanoate"
   }
  },
  "betamethasone-dipropionate": {
@@ -534,6 +648,12 @@
    "mw": "504.60",
    "formula": "C28H37FO7",
    "smiles": "CCC(=O)OCC(=O)[C@]1(OC(=O)CC)[C@H](C)C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]21C"
+  },
+  "pubchem": {
+   "cid": 21800,
+   "formula": "C28H37FO7",
+   "mw": "504.6",
+   "iupac": "[2-[(8S,9R,10S,11S,13S,14S,16S,17R)-9-fluoro-11-hydroxy-10,13,16-trimethyl-3-oxo-17-propanoyloxy-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-17-yl]-2-oxoethyl] propanoate"
   }
  },
  "halobetasol-propionate": {
@@ -551,6 +671,12 @@
    "smiles": "CCC(=O)O[C@]1(C(=O)CCl)[C@@H](C)C[C@H]2[C@@H]3C[C@H](F)C4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]21C",
    "mech": "Glucocorticoid receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 6918178,
+   "formula": "C25H31ClF2O5",
+   "mw": "485.0",
+   "iupac": "[(6S,8S,9R,10S,11S,13S,14S,16S,17R)-17-(2-chloroacetyl)-6,9-difluoro-11-hydroxy-10,13,16-trimethyl-3-oxo-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-17-yl] propanoate"
   }
  },
  "desoximetasone": {
@@ -567,6 +693,12 @@
    "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@H]1C(=O)CO",
    "mech": "Glucocorticoid receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 5311067,
+   "formula": "C22H29FO4",
+   "mw": "376.5",
+   "iupac": "(8S,9R,10S,11S,13S,14S,16R,17S)-9-fluoro-11-hydroxy-17-(2-hydroxyacetyl)-10,13,16-trimethyl-7,8,11,12,14,15,16,17-octahydro-6H-cyclopenta[a]phenanthren-3-one"
   }
  },
  "methotrexate": {
@@ -582,6 +714,12 @@
    "mw": "841.79",
    "formula": "C35H43N11O14",
    "smiles": "CN(Cc1cnc2nc(N)nc(N)c2n1)c1ccc(C(=O)N[C@@H](CCC(=O)N[C@@H](CCC(=O)N[C@@H](CCC(=O)N[C@@H](CCC(=O)O)C(=O)O)C(=O)O)C(=O)O)C(=O)O)cc1"
+  },
+  "pubchem": {
+   "cid": 126941,
+   "formula": "C20H22N8O5",
+   "mw": "454.4",
+   "iupac": "(2S)-2-[[4-[(2,4-diaminopteridin-6-yl)methyl-methylamino]benzoyl]amino]pentanedioic acid"
   }
  },
  "cyclosporine": {
@@ -596,6 +734,12 @@
    "mw": "1202.63",
    "formula": "C62H111N11O12",
    "smiles": "C/C=C/C[C@@H](C)[C@@H](O)C1C(=O)N[C@@H](CC)C(=O)N(C)CC(=O)N(C)[C@@H](CC(C)C)C(=O)N[C@@H](C(C)C)C(=O)N(C)[C@@H](CC(C)C)C(=O)N[C@@H](C)C(=O)N[C@H](C)C(=O)N(C)[C@@H](CC(C)C)C(=O)N(C)[C@@H](CC(C)C)C(=O)N(C)[C@@H](C(C)C)C(=O)N1C"
+  },
+  "pubchem": {
+   "cid": 5284373,
+   "formula": "C62H111N11O12",
+   "mw": "1202.6",
+   "iupac": "(3S,6S,9S,12R,15S,18S,21S,24S,30S,33S)-30-ethyl-33-[(E,1R,2R)-1-hydroxy-2-methylhex-4-enyl]-1,4,7,10,12,15,19,25,28-nonamethyl-6,9,18,24-tetrakis(2-methylpropyl)-3,21-di(propan-2-yl)-1,4,7,10,13,16,19,22,25,28,31-undecazacyclotritriacontane-2,5,8,11,14,17,20,23,26,29,32-undecone"
   }
  },
  "acitretin": {
@@ -613,6 +757,12 @@
    "smiles": "COc1cc(C)c(/C=C/C(C)=C/C=C/C(C)=C/C(=O)O)c(C)c1C",
    "mech": "Retinoid receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 5284513,
+   "formula": "C21H26O3",
+   "mw": "326.4",
+   "iupac": "(2E,4E,6E,8E)-9-(4-methoxy-2,3,6-trimethylphenyl)-3,7-dimethylnona-2,4,6,8-tetraenoic acid"
   }
  },
  "dimethyl-fumarate": {
@@ -630,6 +780,12 @@
    "smiles": "COC(=O)/C=C/C(=O)OC",
    "mech": "Kelch-like ECH-associated protein 1 inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 637568,
+   "formula": "C6H8O4",
+   "mw": "144.12",
+   "iupac": "dimethyl (E)-but-2-enedioate"
   }
  },
  "piclidenoson": {
@@ -642,6 +798,12 @@
    "smiles": "CNC(=O)[C@H]1O[C@@H](n2cnc3c(NCc4ccc(I)cc4)ncnc32)[C@H](O)[C@@H]1O",
    "mech": "Adenosine A3 receptor agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 123683,
+   "formula": "C18H19IN6O4",
+   "mw": "510.3",
+   "iupac": "(2S,3S,4R,5R)-3,4-dihydroxy-5-[6-[(3-iodophenyl)methylamino]purin-9-yl]-N-methyloxolane-2-carboxamide"
   }
  },
  "fezakinumab": {
@@ -704,6 +866,12 @@
    "smiles": "CN1C(=O)[C@@H](NC(=O)c2n[nH]c(Cc3ccccc3)n2)COc2ccccc21",
    "mech": "Receptor-interacting serine/threonine-protein kinase 1 inhibitor",
    "action": "INHIBITOR"
+  },
+  "pubchem": {
+   "cid": 77108121,
+   "formula": "C20H19N5O3",
+   "mw": "377.4",
+   "iupac": "5-benzyl-N-[(3S)-5-methyl-4-oxo-2,3-dihydro-1,5-benzoxazepin-3-yl]-1H-1,2,4-triazole-3-carboxamide"
   }
  },
  "ponesimod": {
@@ -721,6 +889,12 @@
    "smiles": "CCC/N=C1\\S/C(=C\\c2ccc(OC[C@H](O)CO)c(Cl)c2)C(=O)N1c1ccccc1C",
    "mech": "Sphingosine 1-phosphate receptor Edg-1 agonist",
    "action": "AGONIST"
+  },
+  "pubchem": {
+   "cid": 11363176,
+   "formula": "C23H25ClN2O4S",
+   "mw": "461.0",
+   "iupac": "(5Z)-5-[[3-chloro-4-[(2R)-2,3-dihydroxypropoxy]phenyl]methylidene]-3-(2-methylphenyl)-2-propylimino-1,3-thiazolidin-4-one"
   }
  },
  "efalizumab": {
