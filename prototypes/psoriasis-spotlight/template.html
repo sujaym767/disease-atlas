@@ -158,6 +158,29 @@ button{font-family:inherit;cursor:pointer}
 .devmx td.co{text-align:left;font-weight:600;color:var(--ink);padding:2px 5px;white-space:nowrap;border-left:0}
 .devmx .cc{display:inline-block;min-width:16px;padding:0 2px;border-radius:2px;color:#fff;font-family:var(--mono);font-weight:700;font-size:8px}
 .devmx tr:hover td{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+/* map heading + cluster labels */
+.maphead{position:absolute;text-align:center;transform:translateX(-50%)}
+.maphead .h1{font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:24px;color:var(--ink);line-height:1}
+.maphead .h2{font-size:12px;color:var(--accent);letter-spacing:.02em;margin-top:4px;font-weight:600}
+.maphead .h2 b{color:var(--ink2)}
+.clusterlabel{position:absolute;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.11em;font-size:13px;color:var(--accent);border-bottom:2px solid color-mix(in srgb,var(--accent) 45%,var(--rule2));padding-bottom:3px}
+.clusterlabel span{color:var(--muted);font-weight:600;letter-spacing:.04em;font-size:9px;text-transform:none}
+/* SoC improvements */
+.soctab .rl small{display:block;font-weight:400;color:var(--muted);font-size:7.5px}
+.soctab .pct{font-family:var(--cond);font-weight:700;font-size:13px;color:var(--ink);padding:2px 8px;display:flex;align-items:center;justify-content:center}
+.soctab .pill .ln{background:rgba(255,255,255,.35);border-radius:3px;padding:0 3px;margin-right:5px;font-size:7.5px}
+.soctab .goal{font-size:7.5px;color:var(--ink2);padding:3px 7px;line-height:1.2;align-items:flex-start}
+/* trial timeline */
+.tmline{position:relative}
+.tmyear{position:absolute;transform:translateX(-50%);font-family:var(--cond);font-weight:700;font-size:11px;color:var(--ink2)}
+.tmev{position:absolute;transform:translateX(-50%);cursor:pointer;width:158px}
+.tmev .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--panel);margin:0 auto;box-shadow:var(--shadowsm);position:relative;z-index:2}
+.tmev .stem{width:1.5px;margin:0 auto}
+.tmev .card{font-size:8px;text-align:center;line-height:1.18}
+.tmev .card .tn{font-weight:700;color:var(--ink)}
+.tmev .card .ta{color:var(--tc);font-weight:700}
+.tmev .card .tr{color:var(--ink2);margin-top:1px}
+.tmev:hover .dot{transform:scale(1.25)}
 /* schematic labels */
 .schlab{font-family:var(--sans);font-weight:700;font-size:11px;fill:var(--ink)}
 .schsub{font-size:8.5px;fill:var(--ink2)}
@@ -246,7 +269,7 @@ const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phas
 const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
-const CW=3400, CH=2680; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
+const CW=3400, CH=3120; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 
 /* ---------- schematic (IL-23 / IL-17 immune cascade) — a corner region, local coords ---------- */
 let SOX=1930, SOY=940; const SW=900, SH=560;   // schematic div origin (in the mid-right void) + size
@@ -423,6 +446,7 @@ function hbox(n,oc,ocv,tint){
 }
 /* ---------- panels ---------- */
 function panel(x,y,w,title,bodyFn){const p=el("div",{cls:"panel",style:`left:${x}px;top:${y}px;width:${w}px`});if(title)p.append(el("h4",{text:title}));const c=el("div",{cls:"pc"});bodyFn(c);p.append(c);CANVAS.append(p);return p;}
+function clabel(x,y,text,sub){CANVAS.append(el("div",{cls:"clusterlabel",style:`left:${x}px;top:${y}px`,html:esc(text)+(sub?` <span>${esc(sub)}</span>`:"")}));}
 function buildPanels(){
   const e=G.epi||{};
   // masthead
@@ -431,83 +455,106 @@ function buildPanels(){
   mast.append(el("div",{cls:"o",text:G.meta.one_liner||""}));
   const kb=el("div",{cls:"kb"}); (G.meta.headline_stats||[]).slice(0,4).forEach(s=>kb.append(el("div",{cls:"k"},[el("b",{text:s.value}),el("span",{text:s.label})]))); mast.append(kb);
   CANVAS.append(mast);
-  CANVAS.append(el("div",{cls:"bandlabel",style:"left:1140px;top:300px;font-size:11px;color:var(--rule2)",text:"THE STRATEGY MAP  ·  objective ▸ strategy ▸ approach ▸ mechanism ▸ asset  ·  click any asset"}));
-  // market (top-right)
-  const mkV=(G.meta.headline_stats.find(s=>/market/i.test(s.label))||{}).value||"$27–33B";
-  panel(3070,24,300,"Market",c=>{c.append(el("div",{cls:"mkt"},[el("div",{cls:"big",text:mkV}),
-    el("div",{cls:"r"},[el("span",{text:"Global treatment market"}),el("span",{text:"2024"})]),
-    el("div",{style:"font-size:9.5px;color:var(--ink2);margin-top:4px",text:"Biologics-led; IL-23 & IL-17 dominate; TNF & Stelara biosimilars reshaping economics. Forecast ~$39–51B by 2030."})]));});
-  // ---- LEFT MARGIN column ----
-  panel(30,338,520,"Patient burden",c=>{
+  // big map heading (context for the reader)
+  CANVAS.append(el("div",{cls:"maphead",style:`left:${CENTERX}px;top:238px`,html:'<div class="h1">The Strategy Map</div><div class="h2">Objective <b>▸</b> Strategy <b>▸</b> Approach <b>▸</b> Mechanism <b>▸</b> Asset&nbsp;&nbsp;·&nbsp;&nbsp;click any asset for its relationships</div>'}));
+  // ================= PATIENT & DISEASE (left margin) =================
+  clabel(30,314,"Patient & disease burden");
+  panel(30,340,520,"Patient burden",c=>{
     const st=el("div",{cls:"st"}); (e.stats||[]).forEach(([v,l])=>st.append(el("b",{text:v}),el("span",{text:l}))); c.append(st);
     if(e.comorbidities)c.append(el("div",{cls:"note",html:"<b>Comorbidity.</b> "+esc(e.comorbidities)}));
     if(e.unmet)c.append(el("div",{cls:"note",html:"<b>Unmet need.</b> "+esc(e.unmet)}));});
-  panel(30,556,520,"Efficacy — PASI 90 at wk 12–16 (NMA-anchored)",c=>{
-    const b=el("div",{cls:"bench"}); G.nodes.filter(n=>n.type=="Drug"&&n.attrs.p90!=null).sort((a,b)=>b.attrs.p90-a.attrs.p90).slice(0,14).forEach(d=>{
-      const m=oN(d.id,"HAS_MECHANISM")[0],col=css(m?FAM[m.attrs.family_key].colorVar:"--sN");
-      const r=el("div",{cls:"row","data-node":d.id},[el("div",{cls:"lab",text:d.label}),el("div",{cls:"tr"},el("div",{cls:"fi",style:`width:${d.attrs.p90}%;background:${col}`})),el("div",{cls:"vv tab",text:d.attrs.p90})]);
-      r.onclick=()=>openModal(d.id); b.append(r);}); c.append(b);});
-  panel(30,900,520,"Hard-to-treat sites & populations",c=>{c.classList.add("sites");
-    const t=el("table"); (G.sites||[]).forEach(s=>t.append(el("tr",{},[el("td",{text:s.site}),el("td",{text:s.prev}),el("td",{text:s.note})]))); c.append(t);});
-  panel(30,1188,520,"Catalysts & exclusivity",c=>{c.classList.add("cats");
-    G.nodes.filter(n=>n.type=="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
-      const r=el("div",{cls:"row","data-node":ev.id},[el("div",{},[el("div",{cls:"d",text:ev.attrs.date}),el("div",{cls:"k",text:(ev.attrs.kind||"").replace("_"," ")})]),el("div",{text:ev.label})]);
-      r.onclick=()=>openModal(ev.id); c.append(r);});});
-  panel(30,1640,520,"Legend",c=>{c.classList.add("legend");
-    c.append(el("div",{cls:"lr",html:'<b>Stage:</b> <code>M</code> marketed <code>III</code> Ph3 <code>II</code> Ph2 <code>I</code> Ph1 <code>P</code> preclin <code>✕</code> disc.'}));
-    c.append(el("div",{cls:"lr",html:'<span class="mk bio">B</span> biosimilar <span class="mk combo">+</span> combo <span class="mk warn">⚠</span> boxed warning'}));
-    c.append(el("div",{cls:"lr",html:'<b>Relationship view shapes:</b> '+shapeLegendHTML()}));
-    if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));});
-  // ---- RIGHT VOID (below the objective-2/3 branches) ----
-  panel(2880,338,490,"Market share & durability",c=>{const ms=el("div",{cls:"mshare"});
-    (G.market_share||[]).forEach(m=>ms.append(el("div",{cls:"row",style:`--mc:${css(m.colorVar)}`},[
-      el("i",{style:`background:${css(m.colorVar)}`}),el("span",{cls:"cl",text:m.cls}),el("span",{cls:"tr",text:m.trend})]))); c.append(ms);
-    if(G.market_note)c.append(el("div",{style:"font-size:8.5px;color:var(--muted);margin-top:7px;font-style:italic;line-height:1.3",text:G.market_note}));
-    if(e.drug_survival)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>Drug survival.</b> "+esc(e.drug_survival)}));});
-  panel(2880,620,490,"Comorbidity & QoL burden",c=>{
+  panel(30,560,520,"Comorbidity & QoL burden",c=>{
     const cb=el("div",{cls:"comorb"}); (e.comorbid||[]).forEach(row=>cb.append(el("span",{text:row[0]}),el("b",{text:row[1]}))); c.append(cb);
     if(e.dlqi)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>DLQI.</b> "+esc(e.dlqi)}));
     if(e.economic)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Economics.</b> "+esc(e.economic)}));
     if(e.mortality)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Mortality.</b> "+esc(e.mortality)}));});
-  panel(2880,900,490,"Deal flow",c=>{c.classList.add("deals");
+  panel(30,880,520,"Hard-to-treat sites & populations",c=>{c.classList.add("sites");
+    const t=el("table"); (G.sites||[]).forEach(s=>t.append(el("tr",{},[el("td",{text:s.site}),el("td",{text:s.prev}),el("td",{text:s.note})]))); c.append(t);});
+  panel(30,1168,520,"Efficacy — PASI 90 at wk 12–16 (NMA-anchored)",c=>{
+    const b=el("div",{cls:"bench"}); G.nodes.filter(n=>n.type=="Drug"&&n.attrs.p90!=null).sort((a,b)=>b.attrs.p90-a.attrs.p90).slice(0,14).forEach(d=>{
+      const m=oN(d.id,"HAS_MECHANISM")[0],col=css(m?FAM[m.attrs.family_key].colorVar:"--sN");
+      const r=el("div",{cls:"row","data-node":d.id},[el("div",{cls:"lab",text:d.label}),el("div",{cls:"tr"},el("div",{cls:"fi",style:`width:${d.attrs.p90}%;background:${col}`})),el("div",{cls:"vv tab",text:d.attrs.p90})]);
+      r.onclick=()=>openModal(d.id); b.append(r);}); c.append(b);});
+  // ================= MARKET & BUSINESS (far right) =================
+  clabel(2870,314,"Market & business");
+  const mkV=(G.meta.headline_stats.find(s=>/market/i.test(s.label))||{}).value||"$27–33B";
+  panel(2870,340,500,"Market size",c=>{c.append(el("div",{cls:"mkt"},[el("div",{cls:"big",text:mkV}),
+    el("div",{cls:"r"},[el("span",{text:"Global treatment market"}),el("span",{text:"2024"})]),
+    el("div",{style:"font-size:9.5px;color:var(--ink2);margin-top:4px",text:"Biologics-led; IL-23 & IL-17 dominate; TNF & Stelara biosimilars reshaping economics. Forecast ~$39–51B by 2030."})]));});
+  panel(2870,540,500,"Market share & durability",c=>{const ms=el("div",{cls:"mshare"});
+    (G.market_share||[]).forEach(m=>ms.append(el("div",{cls:"row",style:`--mc:${css(m.colorVar)}`},[
+      el("i",{style:`background:${css(m.colorVar)}`}),el("span",{cls:"cl",text:m.cls}),el("span",{cls:"tr",text:m.trend})]))); c.append(ms);
+    if(G.market_note)c.append(el("div",{style:"font-size:8.5px;color:var(--muted);margin-top:7px;font-style:italic;line-height:1.3",text:G.market_note}));
+    if(e.drug_survival)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>Drug survival.</b> "+esc(e.drug_survival)}));});
+  panel(2870,860,500,"Top products — 2025 franchise sales",c=>salesDonut(c));
+  panel(2870,1230,500,"Deal flow",c=>{c.classList.add("deals");
     (G.deals||[]).forEach(d=>{const dn=G.nodes.find(n=>n.type=="Deal"&&n.attrs.acquirer==d.acquirer&&(n.attrs.counterparty==d.counterparty));
       const r=el("div",{cls:"row"},[el("span",{html:`<b>${esc(d.acquirer)}</b> ← ${esc(d.counterparty)} · <span class="v">${esc(d.value)}</span> (${d.year})<br><span style="color:var(--muted)">${esc(d.asset)} · ${esc(d.kind)}</span>`})]);
       if(dn)r.onclick=()=>openModal(dn.id); c.append(r);});});
-  // schematic region title + signal inset sit in the mid-right void (schematic drawn by buildSchematic at SOX/SOY)
-  buildSignalInset(1900,1660,1470);
-  // ===================== BOTTOM: STANDARD OF CARE, EVIDENCE & TERMS =====================
-  CANVAS.append(el("div",{cls:"bandlabel",style:"left:40px;top:2262px",text:"— Standard of care · market · development · evidence · terms —"}));
-  panel(40,2300,1180,"Standard of care — by severity",c=>socTable(c));
-  panel(1250,2300,760,"2025 franchise sales",c=>salesDonut(c));
-  panel(2040,2300,1330,"Development matrix — company × mechanism",c=>devMatrix(c));
-  panel(40,2610,1600,"Landmark clinical-trial milestones",c=>{c.classList.add("trials");
-    const grid=el("div",{cls:"tgrid"});
-    (G.trials||[]).slice().sort((a,b)=>a.year-b.year).forEach(t=>{const col=css((FAM[t.family_key]||{}).colorVar||"--sN");
-      const row=el("div",{cls:"trow",style:`--tc:${col}`},[el("div",{cls:"yr",text:t.year}),
-        el("div",{},[el("div",{cls:"tn",html:esc(t.trial)+' <i>· '+esc(t.asset)+'</i>'}),el("div",{cls:"tr",text:t.result})])]);
-      const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)row.onclick=()=>openModal(dn.id); grid.append(row);});
-    c.append(grid);});
-  panel(1670,2610,1700,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
+  // ================= DISEASE MECHANISM (mid-right; schematic next to signalling) =================
+  clabel(1930,916,"Disease mechanism","IL-23 / IL-17 cascade → intracellular signalling");
+  buildSignalInset(1900,1560,940);   // schematic itself drawn by buildSchematic at SOX/SOY (just above)
+  // ================= BOTTOM BANDS =================
+  clabel(40,2070,"Standard of care");
+  panel(40,2100,1520,"By severity — presentation, goal & therapy",c=>socTable(c));
+  clabel(1600,2070,"Pipeline & development");
+  panel(1600,2100,1080,"Development matrix — company × mechanism",c=>devMatrix(c));
+  panel(2700,2100,670,"Catalysts & exclusivity",c=>{c.classList.add("cats");
+    G.nodes.filter(n=>n.type=="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
+      const r=el("div",{cls:"row","data-node":ev.id},[el("div",{},[el("div",{cls:"d",text:ev.attrs.date}),el("div",{cls:"k",text:(ev.attrs.kind||"").replace("_"," ")})]),el("div",{text:ev.label})]);
+      r.onclick=()=>openModal(ev.id); c.append(r);});});
+  panel(40,2470,3330,"Landmark clinical-trial milestones — timeline",c=>trialsTimeline(c,3330));
+  clabel(40,2790,"Reference");
+  panel(40,2820,900,"Legend",c=>{c.classList.add("legend");
+    c.append(el("div",{cls:"lr",html:'<b>Stage:</b> <code>M</code> marketed <code>III</code> Ph3 <code>II</code> Ph2 <code>I</code> Ph1 <code>P</code> preclin <code>✕</code> disc.'}));
+    c.append(el("div",{cls:"lr",html:'<span class="mk bio">B</span> biosimilar <span class="mk combo">+</span> combo <span class="mk warn">⚠</span> boxed warning'}));
+    c.append(el("div",{cls:"lr",html:'<b>Relationship shapes:</b> '+shapeLegendHTML()}));
+    if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));});
+  panel(970,2820,2400,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
     (G.glossary||[]).forEach(t=>g.append(el("div",{cls:"g",html:`<b>${esc(t.term)}</b> — <span>${esc(t.def)}</span>`}))); c.append(g);});
 }
-/* ---- SoC severity table ---- */
+/* ---- SoC severity table (presentation, goal, line-of-therapy bars) ---- */
 function socTable(c){
-  const stages=[["Mild","<3% BSA","--s6"],["Moderate","3–10% BSA","--s4"],["Severe",">10% BSA / special sites","--s8"]];
-  const cov={1:[0,1],2:[1,2],3:[1,2],4:[1,2],5:[1,2]};
-  const pres=["Localised plaques; scalp; nails","Wider involvement; QoL impact; PsA risk","Extensive; erythroderma / pustular; high systemic burden"];
+  const stages=[["Mild","<3% BSA","~60% of patients","--s6"],["Moderate","3–10% BSA","~25%","--s4"],["Severe",">10% BSA / special sites","~15%","--s8"]];
+  const cov={1:[0,1,"1st"],2:[1,2,"2nd"],3:[1,2,"2nd–3rd"],4:[1,2,"2nd–3rd"],5:[1,2,"advanced"]};
+  const pres=["Localised plaques; scalp; nails","Wider involvement; QoL impact; PsA risk","Extensive; erythroderma / pustular; high burden"];
+  const goal=["Clear with topicals","Clear / almost-clear (PASI 90); step to systemic","PASI 90–100 + durable control; treat comorbidity"];
   const g=el("div",{cls:"soctab"});
   g.append(el("div",{cls:"hd",style:"background:var(--ink2)",text:"Severity →"}));
-  stages.forEach(s=>g.append(el("div",{cls:"hd",style:`background:${css(s[2])}`,html:s[0]+" <span>"+s[1]+"</span>"})));
+  stages.forEach(s=>g.append(el("div",{cls:"hd",style:`background:${css(s[3])}`,html:s[0]+" <span>"+s[1]+" · "+s[2]+"</span>"})));
   g.append(el("div",{cls:"rl",text:"Presentation"}));
   pres.forEach(p=>g.append(el("div",{cls:"cell pres",text:p})));
+  g.append(el("div",{cls:"rl",text:"Treatment goal"}));
+  goal.forEach(p=>g.append(el("div",{cls:"cell goal",text:p})));
   (G.soc||[]).forEach(s=>{g.append(el("div",{cls:"rl",text:s.label}));
-    const[a,b]=cov[s.tier]||[0,2];
+    const cv=cov[s.tier]||[0,2,""],a=cv[0],b=cv[1];
     for(let col=0;col<3;col++){const cell=el("div",{cls:"cell"});
       if(col>=a&&col<=b){const pill=el("div",{cls:"pill",style:`background:${css(s.colorVar)}`});
-        if(col===a)pill.textContent=s.agents.split(" · ").slice(0,2).join(" · ");
+        if(col===a)pill.innerHTML=`<span class="ln">${esc(cv[2])}</span>`+esc(s.agents.split(" · ").slice(0,2).join(" · "));
         cell.style.borderLeft=col===a?"":"0";cell.append(pill);} g.append(cell);}});
   c.append(g);
   if(G.soc_note)c.append(el("div",{cls:"socnote",text:G.soc_note}));
+}
+/* ---- landmark clinical-trial timeline ---- */
+function trialsTimeline(c,w){
+  const ts=(G.trials||[]).slice().sort((a,b)=>a.year-b.year);
+  const y0=2013,y1=2026,IW=w-24,PAD=54,mid=126,H=252,xOf=y=>PAD+(y-y0)/(y1-y0)*(IW-2*PAD);
+  const box=el("div",{cls:"tmline",style:`height:${H}px;width:${IW}px`});
+  box.append(el("div",{style:`position:absolute;left:${PAD}px;width:${IW-2*PAD}px;top:${mid}px;height:2.5px;background:var(--rule2)`}));
+  for(let y=y0+1;y<y1;y++){const x=xOf(y);
+    box.append(el("div",{style:`position:absolute;left:${x}px;top:${mid-4}px;width:1px;height:9px;background:var(--rule2)`}));
+    box.append(el("div",{cls:"tmyear",style:`left:${x}px;top:${mid+10}px`,text:"’"+String(y).slice(2)}));}
+  let prevY=null,prevUp=false;
+  ts.forEach((t,i)=>{let up=i%2===0; if(t.year===prevY)up=!prevUp; prevY=t.year;prevUp=up;
+    const x=xOf(t.year),col=css((FAM[t.family_key]||{}).colorVar||"--sN"),sh=46;
+    box.append(el("div",{cls:"dot",style:`position:absolute;left:${x-6}px;top:${mid-6}px;background:${col};z-index:3`}));
+    box.append(el("div",{style:`position:absolute;left:${x-0.75}px;top:${up?mid-sh:mid}px;width:1.5px;height:${sh}px;background:${col};opacity:.55`}));
+    const res=t.result.length>66?t.result.slice(0,64)+"…":t.result;
+    const card=el("div",{cls:"tmev",style:`left:${x}px;top:${up?mid-sh-72:mid+sh+3}px;--tc:${col}`});
+    card.innerHTML=`<div class="card"><div class="tn">${esc(t.trial)}</div><div class="ta">${esc(t.asset)}</div><div class="tr">${esc(res)}</div></div>`;
+    const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)card.onclick=()=>openModal(dn.id);
+    box.append(card);});
+  c.append(box);
 }
 /* ---- 2025 franchise sales donut ---- */
 function salesDonut(c){
