@@ -98,7 +98,8 @@ signal-transduction inset and the network). Edge types: `PRODUCES`, `ACTS_ON`, `
 
 ## Other render sections
 
-- **`response_kinetics`**: `{ "metric":"PASI 90", "weeks":[0,4,8,12,16], "note":"…", "series":[ {"label":"IL-17","colorVar":"--s2","pts":[0,45,72,80,83]} ] }`
+- **`response_kinetics`**: `{ "metric":"PASI 90", "weeks":[0,4,8,12,16], "note":"…", "series":[ {"label":"IL-17","colorVar":"--s2","pts":[0,45,72,80,83]} ] }` — `metric` is the disease's registrational endpoint (PASI 90 / EASI-75 / ACR20 / …); it titles the kinetics panel.
+- **`meta.mechanism_label`** (e.g. `"IL-23 / IL-17 cascade → intracellular signalling"`) captions the mechanism region; **`meta.efficacy_label`** (e.g. `"PASI 90"` / `"EASI-75"`) titles the efficacy panel. The efficacy panel auto-uses `efficacy.p90` if any asset has it, else `efficacy.p75`. These keep the atlas labelled for its own indication rather than psoriasis.
 - **`trials_focus`**: `{ "trials":[ {"name","drug","fam","sponsor","phase","status","endpoints":[…],"readout","start","end","inclusion","sites","kols","significance"} ], "note":"…" }`
 - **`standard_of_care.lines[]`** carries `{ "tier":1,"label":"Topical therapy","agents":"… · …","note":"…","colorVar":"--s4" }` for the severity table.
 - **`sites`**: `[ {"site":"Scalp","prev":"~45–80%","note":"…"} ]` — hard-to-treat sites.

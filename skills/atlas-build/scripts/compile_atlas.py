@@ -184,6 +184,8 @@ def compile_atlas(atlas):
             "one_liner": meta_in.get("one_liner", ""),
             "sales_note": meta_in.get("sales_note", ""),
             "headline_stats": meta_in.get("headline_stats", []),
+            "mechanism_label": meta_in.get("mechanism_label"),
+            "efficacy_label": meta_in.get("efficacy_label"),
         },
         "families": [{"key": k, "label": f["label"], "colorVar": f["colorVar"],
                       "order": f["order"], "anchor": f.get("anchor") or "th17"} for k, f in FAM.items()],

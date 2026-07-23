@@ -8,6 +8,8 @@
   "generator": "graph_to_atlas bootstrap (from prototype graph.json)",
   "one_liner": "Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market — the competitive question has shifted from clearing skin to reaching the patient first, at what net price.",
   "sales_note": "Franchise-sales donut is company-reported FY2025 totals across ALL indications. The dedicated attribution region below estimates the psoriasis-only split. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.",
+  "mechanism_label": "IL-23 / IL-17 cascade → intracellular signalling",
+  "efficacy_label": "PASI 90",
   "headline_stats": [
    {
     "label": "Global prevalence (GBD 2021)",
@@ -3564,7 +3566,8 @@
      19
     ]
    }
-  ]
+  ],
+  "metric": "PASI 90"
  },
  "evidence": {
   "landmark_trials": [

@@ -156,6 +156,8 @@ atlas = {
         "generator": "graph_to_atlas bootstrap (from prototype graph.json)",
         "one_liner": G["meta"].get("one_liner"),
         "sales_note": G["meta"].get("sales_note"),
+        "mechanism_label": "IL-23 / IL-17 cascade → intracellular signalling",
+        "efficacy_label": "PASI 90",
         "headline_stats": G["meta"].get("headline_stats", []),
     },
     "epidemiology": G.get("epi", {}),
@@ -170,7 +172,8 @@ atlas = {
     "companies": companies,
     "biology_graph": biology_graph,
     "strategy_map": G.get("hierarchy", []),
-    "response_kinetics": G.get("pasi_kinetics"),
+    "response_kinetics": ({**G["pasi_kinetics"], "metric": G["pasi_kinetics"].get("metric", "PASI 90")}
+                          if G.get("pasi_kinetics") else None),
     "evidence": {"landmark_trials": G.get("trials", [])},
     "trials_focus": {"trials": G.get("trials_focus", []), "note": G.get("trials_focus_note")},
     "catalysts": catalysts,
