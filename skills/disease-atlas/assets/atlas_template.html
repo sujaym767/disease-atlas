@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__ATLAS_TITLE__</title>
+<style>
+:root{
+  --bg:#f7f8fa; --panel:#ffffff; --ink:#1a1f2b; --muted:#5b6472; --faint:#8b95a5;
+  --line:#e3e7ee; --accent:#2f6df6; --accent-soft:#e9f0ff;
+  --v-validated:#1f9d6b; --v-emerging:#c98a12; --v-unproven:#7a86f0; --v-failed:#c0504d;
+  --chip:#eef1f6; --shadow:0 1px 2px rgba(20,30,50,.06),0 3px 12px rgba(20,30,50,.05);
+  --radius:12px; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116; --panel:#161b22; --ink:#e7ecf3; --muted:#9aa4b2; --faint:#6b7688;
+  --line:#242c38; --accent:#4d84ff; --accent-soft:#16233f; --chip:#1d2430;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 3px 14px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1116; --panel:#161b22; --ink:#e7ecf3; --muted:#9aa4b2; --faint:#6b7688;
+  --line:#242c38; --accent:#4d84ff; --accent-soft:#16233f; --chip:#1d2430;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 3px 14px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;font-size:15px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.25;margin:0 0 .4em}
+h2{font-size:1.35rem;letter-spacing:-.01em}
+h3{font-size:1.05rem}
+code{font-family:var(--mono);font-size:.85em}
+.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:0;max-width:1280px;margin:0 auto}
+/* header */
+header.top{grid-column:1/-1;position:sticky;top:0;z-index:30;background:var(--panel);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:12px 20px}
+header.top .title{font-weight:700;font-size:1.05rem}
+header.top .sub{color:var(--muted);font-size:.82rem}
+header.top .spacer{flex:1}
+#search{background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:8px;
+  padding:7px 11px;font-size:.85rem;width:210px;font-family:var(--sans)}
+.btn{background:var(--bg);border:1px solid var(--line);color:var(--muted);border-radius:8px;
+  padding:7px 10px;cursor:pointer;font-size:.8rem}
+.btn:hover{color:var(--ink)}
+/* nav */
+nav.side{position:sticky;top:57px;align-self:start;height:calc(100vh - 57px);overflow:auto;
+  padding:16px 10px 40px;border-right:1px solid var(--line)}
+nav.side a{display:block;color:var(--muted);padding:7px 12px;border-radius:8px;font-size:.86rem;margin-bottom:1px}
+nav.side a:hover{background:var(--chip);text-decoration:none;color:var(--ink)}
+nav.side a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+main{padding:26px 30px 80px;min-width:0}
+section.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;margin-bottom:22px;box-shadow:var(--shadow);scroll-margin-top:70px}
+section.panel>.eyebrow{color:var(--faint);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.lead{color:var(--muted);font-size:.96rem}
+p{margin:.5em 0}
+.prose p:first-child{margin-top:0}
+/* headline stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+.stat .v{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.stat .l{color:var(--muted);font-size:.78rem;margin-top:2px}
+.stat .d{color:var(--faint);font-size:.72rem;margin-top:3px}
+/* chips & tags */
+.tag{display:inline-block;background:var(--chip);color:var(--muted);border-radius:999px;
+  padding:2px 9px;font-size:.72rem;margin:2px 4px 2px 0;white-space:nowrap}
+.tag.phase{font-weight:600}
+sup.cite{font-size:.65em;font-weight:700}
+sup.cite a{background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:0 4px;margin-left:2px}
+.est{color:var(--v-emerging);font-size:.7rem;font-weight:700;border:1px solid currentColor;border-radius:4px;padding:0 4px;margin-left:5px;vertical-align:middle}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:6px}
+.tbl th{text-align:left;color:var(--faint);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;
+  border-bottom:1px solid var(--line);padding:8px 10px;position:sticky;top:57px;background:var(--panel);cursor:pointer}
+.tbl td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+.tbl tr:hover td{background:var(--bg)}
+.scroll{overflow-x:auto;max-width:100%}
+.tall{max-height:520px;overflow:auto}
+/* moa cards */
+.moa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:8px}
+.moa{border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:14px 15px;background:var(--bg)}
+.moa.validated{border-left-color:var(--v-validated)} .moa.emerging{border-left-color:var(--v-emerging)}
+.moa.unproven{border-left-color:var(--v-unproven)} .moa.failed{border-left-color:var(--v-failed)}
+.moa h4{margin:0 0 2px;font-size:.98rem}
+.moa .vstatus{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.moa.validated .vstatus{color:var(--v-validated)} .moa.emerging .vstatus{color:var(--v-emerging)}
+.moa.unproven .vstatus{color:var(--v-unproven)} .moa.failed .vstatus{color:var(--v-failed)}
+.moa .mech{color:var(--muted);font-size:.82rem;margin:6px 0}
+.moa .pc{display:flex;gap:10px;font-size:.76rem;margin-top:6px}
+.moa .pc div{flex:1}
+.moa .pc b{color:var(--muted);font-weight:600}
+/* matrix */
+.matrix{border-collapse:collapse;font-size:.78rem;margin-top:8px}
+.matrix th,.matrix td{border:1px solid var(--line);padding:5px 8px;text-align:center;min-width:38px}
+.matrix th.rowh,.matrix td.rowh{text-align:left;font-weight:600;white-space:nowrap;position:sticky;left:0;background:var(--panel)}
+.matrix td .n{display:inline-block;min-width:20px;border-radius:5px;padding:1px 5px;font-weight:600}
+/* bars */
+.bar{display:flex;align-items:center;gap:10px;margin:5px 0;font-size:.83rem}
+.bar .lab{width:190px;flex:none;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .track{flex:1;background:var(--chip);border-radius:6px;height:16px;position:relative;overflow:hidden}
+.bar .fill{background:var(--accent);height:100%;border-radius:6px}
+.bar .val{width:90px;flex:none;text-align:right;font-variant-numeric:tabular-nums}
+/* timeline */
+.tl{border-left:2px solid var(--line);margin-left:8px;padding-left:16px}
+.tl .ev{position:relative;margin-bottom:14px}
+.tl .ev::before{content:"";position:absolute;left:-23px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.tl .ev .when{font-size:.74rem;color:var(--accent);font-weight:700}
+.tl .ev .what{font-weight:600;font-size:.9rem}
+.tl .ev .why{color:var(--muted);font-size:.82rem}
+/* swot */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.swot .q{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg)}
+.swot .q h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+.swot ul{margin:6px 0 0;padding-left:18px;font-size:.85rem;color:var(--muted)}
+.empty{color:var(--faint);font-style:italic;font-size:.86rem;padding:6px 0}
+ul.clean{margin:.4em 0;padding-left:20px}
+ul.clean li{margin:3px 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.filters select,.filters input{background:var(--bg);border:1px solid var(--line);color:var(--ink);
+  border-radius:8px;padding:6px 9px;font-size:.82rem;font-family:var(--sans)}
+.count{color:var(--faint);font-size:.78rem;margin-left:auto;align-self:center}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 20px;font-size:.8rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-family:var(--mono);font-size:.78rem}
+.srclist{font-size:.82rem}
+.srclist li{margin:5px 0;color:var(--muted)}
+.disc{color:var(--faint);font-size:.78rem;border-top:1px solid var(--line);margin-top:16px;padding-top:12px}
+.hl{background:rgba(255,220,80,.35);border-radius:3px}
+@media(max-width:820px){
+  .wrap{grid-template-columns:1fr}
+  nav.side{display:none}
+  main{padding:18px 14px 60px}
+  #search{width:130px}
+  .swot{grid-template-columns:1fr}
+}
+@media print{
+  nav.side,header.top .btn,header.top #search,.filters{display:none}
+  section.panel{break-inside:avoid;box-shadow:none}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="title" id="h-title">Disease Atlas</div>
+      <div class="sub" id="h-sub"></div>
+    </div>
+    <div class="spacer"></div>
+    <input id="search" type="search" placeholder="Search drugs, companies, MoA…" aria-label="Search">
+    <button class="btn" id="theme" title="Toggle light/dark">◐</button>
+  </header>
+  <nav class="side" id="nav" aria-label="Sections"></nav>
+  <main id="main"></main>
+</div>
+
+<script id="atlas-data" type="application/json">__ATLAS_DATA_JSON__</script>
+<script>
+"use strict";
+const ATLAS = JSON.parse(document.getElementById("atlas-data").textContent || "{}");
+const SRC = Object.fromEntries((ATLAS.sources||[]).map(s=>[s.id,s]));
+
+// ---------- tiny DOM helper ----------
+function el(tag, attrs, kids){
+  const n=document.createElement(tag);
+  if(attrs) for(const k in attrs){
+    if(k==="html") n.innerHTML=attrs[k];
+    else if(k==="text") n.textContent=attrs[k];
+    else if(k==="class") n.className=attrs[k];
+    else if(k.startsWith("on")&&typeof attrs[k]==="function") n.addEventListener(k.slice(2),attrs[k]);
+    else if(attrs[k]!=null) n.setAttribute(k,attrs[k]);
+  }
+  for(const c of [].concat(kids||[])){ if(c==null) continue; n.append(c.nodeType?c:document.createTextNode(c)); }
+  return n;
+}
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nonEmpty=v=>v!=null && !(Array.isArray(v)&&!v.length) && !(typeof v==="object"&&!Array.isArray(v)&&!Object.keys(v).length) && v!=="";
+
+// citation superscripts from a list of source ids
+function cites(refs){
+  if(!refs||!refs.length) return "";
+  const seen=[];
+  return "<sup class='cite'>"+refs.filter(r=>SRC[r]).map(r=>{
+    const i=(ATLAS.sources.findIndex(s=>s.id===r))+1;
+    return `<a href="#src-${esc(r)}" title="${esc(SRC[r].name||"")}: ${esc(SRC[r].title||"")}">${i}</a>`;
+  }).join("")+"</sup>";
+}
+const estTag=o=>o&&o.is_estimate?"<span class='est'>est</span>":"";
+
+// phase display
+const PHASE_LABEL={preclinical:"Preclin",phase1:"Ph1",phase1_2:"Ph1/2",phase2:"Ph2",phase2_3:"Ph2/3",phase3:"Ph3",filed:"Filed",approved:"Approved",discontinued:"Disc"};
+const PHASE_ORDER=["approved","filed","phase3","phase2_3","phase2","phase1_2","phase1","preclinical","discontinued"];
+
+// ---------- panel registry ----------
+const panels=[];
+function panel(id,title,fn){ panels.push({id,title,fn}); }
+
+function sectionEl(id,title,eyebrow){
+  const s=el("section",{class:"panel",id});
+  if(eyebrow) s.append(el("div",{class:"eyebrow",text:eyebrow}));
+  s.append(el("h2",{text:title}));
+  return s;
+}
+function prose(text,refs){ const p=el("div",{class:"prose"}); if(text) p.innerHTML=esc(text).replace(/\n\n+/g,"</p><p>").replace(/^/,"<p>").replace(/$/,"</p>")+(refs?cites(refs):""); return p; }
+function emptyNote(t){ return el("div",{class:"empty",text:t||"Insufficient public data for this section."}); }
+
+// ---- Overview ----
+panel("overview","Overview",()=>{
+  const o=ATLAS.overview||{}, stats=ATLAS.headline_stats||[];
+  if(!nonEmpty(o)&&!stats.length) return null;
+  const s=sectionEl("overview","Overview · the big picture","");
+  if(ATLAS.meta&&ATLAS.meta.one_liner) s.append(el("p",{class:"lead",html:esc(ATLAS.meta.one_liner)}));
+  if(stats.length){
+    const g=el("div",{class:"stats"});
+    stats.forEach(st=>g.append(el("div",{class:"stat"},[
+      el("div",{class:"v",html:esc(st.value)+estTag(st)+cites(st.sources)}),
+      el("div",{class:"l",text:st.label||""}),
+      st.detail?el("div",{class:"d",text:st.detail}):null
+    ])));
+    s.append(g);
+  }
+  if(o.definition) s.append(el("h3",{text:"Definition"}),prose(o.definition,o.sources));
+  if(o.pathophysiology) s.append(el("h3",{text:"Pathophysiology"}),prose(o.pathophysiology));
+  if(o.state_of_play) s.append(el("h3",{text:"State of play"}),prose(o.state_of_play));
+  return s;
+});
+
+// ---- Epidemiology ----
+panel("epidemiology","Patient burden",()=>{
+  const e=ATLAS.epidemiology; if(!nonEmpty(e)) return null;
+  const s=sectionEl("epidemiology","Patient burden & epidemiology","who & how many");
+  if(e.summary) s.append(prose(e.summary,e.sources));
+  if((e.measures||[]).length){
+    const t=el("table",{class:"tbl"});
+    t.append(el("thead",{},el("tr",{},["Measure","Value","Geography","Year",""].map(h=>el("th",{text:h})))));
+    const tb=el("tbody");
+    e.measures.forEach(m=>tb.append(el("tr",{},[
+      el("td",{text:m.label||""}),
+      el("td",{html:esc(m.value)+estTag(m)}),
+      el("td",{text:m.geography||"—"}),
+      el("td",{text:m.year||"—"}),
+      el("td",{html:cites(m.sources)})
+    ])));
+    t.append(tb); s.append(el("div",{class:"scroll"},t));
+  }
+  if((e.segments||[]).length){
+    s.append(el("h3",{text:"Segmentation"}));
+    e.segments.forEach(g=>s.append(el("div",{class:"bar"},[
+      el("div",{class:"lab",text:g.name}),
+      el("div",{class:"track"},el("div",{class:"fill",style:`width:${Math.min(100,g.share_pct||0)}%`})),
+      el("div",{class:"val",html:esc(g.share||(g.share_pct!=null?g.share_pct+"%":""))})
+    ])));
+  }
+  if(e.unmet_need){ s.append(el("h3",{text:"Unmet need"}),prose(e.unmet_need)); }
+  if((e.patient_journey||[]).length){
+    s.append(el("h3",{text:"Patient journey"}));
+    const ul=el("ul",{class:"clean"});
+    e.patient_journey.forEach(j=>ul.append(el("li",{html:"<b>"+esc(j.stage)+"</b> — "+esc(j.description)})));
+    s.append(ul);
+  }
+  return s;
+});
+
+// ---- Biology ----
+panel("biology","Disease biology",()=>{
+  const b=ATLAS.biology; if(!nonEmpty(b)) return null;
+  const s=sectionEl("biology","Disease biology","mechanism & targets");
+  if(b.summary) s.append(prose(b.summary,b.sources));
+  if((b.pathways||[]).length){ s.append(el("h3",{text:"Key pathways"}));
+    const ul=el("ul",{class:"clean"}); b.pathways.forEach(p=>ul.append(el("li",{html:"<b>"+esc(p.name)+"</b> — "+esc(p.role||"")+cites(p.sources)}))); s.append(ul);}
+  if((b.targets||[]).length){
+    s.append(el("h3",{text:"Druggable targets"}));
+    const t=el("table",{class:"tbl"});
+    t.append(el("thead",{},el("tr",{},["Target","Name","Rationale / tractability"].map(h=>el("th",{text:h})))));
+    const tb=el("tbody");
+    b.targets.slice(0,40).forEach(g=>tb.append(el("tr",{},[
+      el("td",{html:"<code>"+esc(g.symbol||"")+"</code>"}),
+      el("td",{text:g.name||""}),
+      el("td",{text:g.rationale||g.tractability||""})
+    ])));
+    t.append(tb); s.append(el("div",{class:"scroll tall"},t));
+  }
+  if((b.subtypes||[]).length){ s.append(el("h3",{text:"Subtypes & biomarkers"}));
+    const ul=el("ul",{class:"clean"}); b.subtypes.forEach(x=>ul.append(el("li",{html:"<b>"+esc(x.name)+"</b> — "+esc(x.description||"")+(x.biomarker?" <span class='tag'>"+esc(x.biomarker)+"</span>":"")}))); s.append(ul);}
+  return s;
+});
+
+// ---- Standard of care ----
+panel("soc","Standard of care",()=>{
+  const c=ATLAS.standard_of_care; if(!nonEmpty(c)) return null;
+  const s=sectionEl("soc","Standard of care","how it's treated today");
+  if(c.paradigm) s.append(prose(c.paradigm,c.sources));
+  if((c.lines||[]).length){ s.append(el("h3",{text:"Treatment paradigm"}));
+    const ul=el("ul",{class:"clean"}); c.lines.forEach(l=>ul.append(el("li",{html:"<b>"+esc(l.line)+"</b> — "+esc([].concat(l.options||[]).join(", "))+(l.note?" · "+esc(l.note):"")}))); s.append(ul);}
+  if((c.top_products||[]).length){
+    s.append(el("h3",{text:"Top marketed products"}));
+    const t=el("table",{class:"tbl"});
+    t.append(el("thead",{},el("tr",{},["Brand","Generic","Company","MoA class","Appr.","Sales","" ].map(h=>el("th",{text:h})))));
+    const tb=el("tbody");
+    c.top_products.forEach(p=>tb.append(el("tr",{},[
+      el("td",{html:"<b>"+esc(p.brand||"")+"</b>"}),
+      el("td",{text:p.generic||""}),
+      el("td",{text:p.company||""}),
+      el("td",{text:p.moa_class||""}),
+      el("td",{text:p.approval_year||"—"}),
+      el("td",{html:p.annual_sales_usd_m!=null?("$"+ (p.annual_sales_usd_m>=1000?(p.annual_sales_usd_m/1000).toFixed(1)+"B":p.annual_sales_usd_m+"M")):"—"}),
+      el("td",{html:cites(p.sources)})
+    ])));
+    t.append(tb); s.append(el("div",{class:"scroll"},t));
+  }
+  if((c.class_share||[]).length){
+    s.append(el("h3",{text:"Market share by class"}));
+    const mx=Math.max(...c.class_share.map(x=>x.share_pct||0),1);
+    c.class_share.forEach(g=>s.append(el("div",{class:"bar"},[
+      el("div",{class:"lab",text:g.class}),
+      el("div",{class:"track"},el("div",{class:"fill",style:`width:${(g.share_pct||0)/mx*100}%`})),
+      el("div",{class:"val",html:(g.share_pct!=null?g.share_pct+"%":"")+cites(g.sources)})
+    ])));
+  }
+  if((c.guidelines||[]).length){ s.append(el("h3",{text:"Guidelines"}));
+    const ul=el("ul",{class:"clean"}); c.guidelines.forEach(g=>ul.append(el("li",{html:(g.url?`<a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)}</a>`:esc(g.name))+(g.note?" — "+esc(g.note):"")}))); s.append(ul);}
+  return s;
+});
+
+// ---- MoA landscape ----
+panel("moa","MoA landscape",()=>{
+  const m=ATLAS.moa_landscape; if(!(m&&m.length)) return null;
+  const s=sectionEl("moa","Mechanism-of-action landscape","every approach");
+  s.append(el("p",{class:"lead",text:"The core map: all therapeutic approaches, grouped by clinical validation. Border colour marks status."}));
+  const order={validated:0,emerging:1,unproven:2,failed:3};
+  const grid=el("div",{class:"moa-grid",id:"moa-grid"});
+  m.slice().sort((a,b)=>(order[a.validation_status]??9)-(order[b.validation_status]??9)).forEach(c=>{
+    const vs=c.validation_status||"unproven";
+    const drugs=(c.drugs||[]).map(id=>ASSET_BY_ID[id]).filter(Boolean);
+    const card=el("div",{class:"moa "+vs,"data-search":((c.class||"")+" "+(c.mechanism||"")+" "+(c.target||"")+" "+(c.key_players||[]).join(" ")+" "+drugs.map(d=>d.name).join(" ")).toLowerCase()},[
+      el("div",{class:"vstatus",text:vs}),
+      el("h4",{html:esc(c.class)+cites(c.sources)}),
+      c.target?el("div",{class:"tag",text:c.target}):null,
+      c.modality?el("div",{class:"tag",text:c.modality}):null,
+      c.mechanism?el("div",{class:"mech",text:c.mechanism}):null,
+      c.rationale?el("div",{class:"mech",html:"<b>Rationale:</b> "+esc(c.rationale)}):null,
+    ]);
+    if((c.pros&&c.pros.length)||(c.cons&&c.cons.length)) card.append(el("div",{class:"pc"},[
+      el("div",{html:"<b>Pros</b><br>"+esc((c.pros||[]).join("; ")||"—")}),
+      el("div",{html:"<b>Cons</b><br>"+esc((c.cons||[]).join("; ")||"—")})
+    ]));
+    if((c.key_players||[]).length) card.append(el("div",{class:"mech",html:"<b>Players:</b> "+esc(c.key_players.join(", "))}));
+    if(drugs.length){ const wrap=el("div",{class:"mech"}); wrap.innerHTML="<b>Drugs:</b> ";
+      drugs.slice(0,12).forEach(d=>wrap.append(el("span",{class:"tag phase",text:(d.name||"?")+" · "+(PHASE_LABEL[d.phase]||d.phase||"")})));
+      card.append(wrap);}
+    grid.append(card);
+  });
+  s.append(grid);
+  return s;
+});
+
+// ---- Pipeline ----
+let ASSET_BY_ID={};
+panel("pipeline","Clinical pipeline",()=>{
+  const p=ATLAS.pipeline||{}, assets=p.assets||[];
+  if(!assets.length) return null;
+  const s=sectionEl("pipeline","Clinical pipeline","what's coming");
+  if(p.summary) s.append(prose(p.summary));
+  // filters
+  const modalities=[...new Set(assets.map(a=>a.modality).filter(Boolean))].sort();
+  const companies=[...new Set(assets.map(a=>a.company).filter(Boolean))].sort();
+  const bar=el("div",{class:"filters"});
+  const fPhase=el("select",{},[el("option",{value:"",text:"All phases"})].concat(PHASE_ORDER.map(p=>el("option",{value:p,text:PHASE_LABEL[p]}))));
+  const fMod=el("select",{},[el("option",{value:"",text:"All modalities"})].concat(modalities.map(m=>el("option",{value:m,text:m}))));
+  const fCo=el("select",{},[el("option",{value:"",text:"All companies"})].concat(companies.map(c=>el("option",{value:c,text:c}))));
+  const cnt=el("span",{class:"count"});
+  bar.append(fPhase,fMod,fCo,cnt); s.append(bar);
+  // matrix
+  s.append(buildMatrix(assets));
+  // table
+  const t=el("table",{class:"tbl"});
+  const cols=[["name","Drug"],["company","Company"],["moa_class","MoA class"],["modality","Modality"],["phase","Phase"],["route","Route"],["indications","Indications"]];
+  t.append(el("thead",{},el("tr",{},cols.map(c=>el("th",{text:c[1]})).concat(el("th",{text:""})))));
+  const tb=el("tbody"); t.append(tb);
+  function render(){
+    const fp=fPhase.value,fm=fMod.value,fc=fCo.value;
+    tb.innerHTML=""; let n=0;
+    assets.slice().sort((a,b)=>(b.phase_num||0)-(a.phase_num||0)).forEach(a=>{
+      if(fp&&a.phase!==fp) return; if(fm&&a.modality!==fm) return; if(fc&&a.company!==fc) return;
+      n++;
+      tb.append(el("tr",{"data-search":((a.name||"")+" "+(a.company||"")+" "+(a.moa_class||"")+" "+(a.target||"")).toLowerCase()},[
+        el("td",{html:"<b>"+esc(a.name)+"</b>"+(a.brand?" <span class='tag'>"+esc(a.brand)+"</span>":"")+cites(a.sources)}),
+        el("td",{text:a.company||""}),
+        el("td",{text:a.moa_class||""}),
+        el("td",{text:a.modality||""}),
+        el("td",{html:"<span class='tag phase'>"+esc(PHASE_LABEL[a.phase]||a.phase||"")+"</span>"}),
+        el("td",{text:a.route||""}),
+        el("td",{text:[].concat(a.indications||[]).slice(0,3).join(", ")})
+      ]));
+    });
+    cnt.textContent=n+" / "+assets.length+" assets";
+  }
+  [fPhase,fMod,fCo].forEach(x=>x.addEventListener("change",render));
+  render();
+  s.append(el("div",{class:"scroll tall"},t));
+  return s;
+});
+
+function buildMatrix(assets){
+  // classes x phase counts
+  const classes={};
+  assets.forEach(a=>{ const k=a.moa_class||"Other"; (classes[k]=classes[k]||{})[a.phase]=(classes[k][a.phase]||0)+1; });
+  const phs=PHASE_ORDER.filter(p=>assets.some(a=>a.phase===p));
+  const top=Object.entries(classes).map(([k,v])=>[k,Object.values(v).reduce((x,y)=>x+y,0)]).sort((a,b)=>b[1]-a[1]).slice(0,16);
+  const wrap=el("div",{class:"scroll"}); const t=el("table",{class:"matrix"});
+  t.append(el("thead",{},el("tr",{},[el("th",{class:"rowh",text:"MoA class ↓ / Phase →"})].concat(phs.map(p=>el("th",{text:PHASE_LABEL[p]}))))));
+  const tb=el("tbody");
+  const maxv=Math.max(1,...top.flatMap(([k])=>phs.map(p=>(classes[k][p]||0))));
+  top.forEach(([k])=>{
+    const tr=el("tr",{},[el("td",{class:"rowh",text:k})]);
+    phs.forEach(p=>{ const v=classes[k][p]||0; const alpha=v?(0.15+0.85*v/maxv):0;
+      tr.append(el("td",{},v?el("span",{class:"n",style:`background:rgba(47,109,246,${alpha.toFixed(2)});color:${alpha>0.55?"#fff":"var(--ink)"}`,text:v}):"·"));});
+    tb.append(tr);
+  });
+  t.append(tb); wrap.append(el("h3",{text:"Phase × MoA-class matrix"}),t); return wrap;
+}
+
+// ---- Companies ----
+panel("companies","Competitive landscape",()=>{
+  const co=ATLAS.companies; if(!(co&&co.length)) return null;
+  const s=sectionEl("companies","Competitive landscape","who owns what");
+  const t=el("table",{class:"tbl"});
+  t.append(el("thead",{},el("tr",{},["Company","Type","Positioning","MoA classes","Assets"].map(h=>el("th",{text:h})))));
+  const tb=el("tbody");
+  co.forEach(c=>tb.append(el("tr",{"data-search":((c.name||"")+" "+(c.moa_classes||[]).join(" ")).toLowerCase()},[
+    el("td",{html:"<b>"+esc(c.name)+"</b>"}),
+    el("td",{text:c.type||""}),
+    el("td",{text:c.positioning||""}),
+    el("td",{text:[].concat(c.moa_classes||[]).join(", ")}),
+    el("td",{text:(c.assets||[]).map(id=>(ASSET_BY_ID[id]||{}).name||id).filter(Boolean).join(", ")})
+  ])));
+  t.append(tb); s.append(el("div",{class:"scroll tall"},t));
+  const deals=co.flatMap(c=>(c.deals||[]).map(d=>({co:c.name,...d})));
+  if(deals.length){ s.append(el("h3",{text:"Notable deals"}));
+    const ul=el("ul",{class:"clean"}); deals.forEach(d=>ul.append(el("li",{html:"<b>"+esc(d.co)+"</b> — "+esc([d.type,d.counterparty,d.value,d.year].filter(Boolean).join(" · "))+(d.note?" — "+esc(d.note):"")+cites(d.sources)}))); s.append(ul);}
+  return s;
+});
+
+// ---- Market ----
+panel("market","Market & opportunity",()=>{
+  const m=ATLAS.market; if(!nonEmpty(m)) return null;
+  const s=sectionEl("market","Market & opportunity","how big is the prize");
+  if(m.summary) s.append(prose(m.summary,m.sources));
+  const g=el("div",{class:"stats"});
+  if(m.current_size&&nonEmpty(m.current_size)) g.append(el("div",{class:"stat"},[
+    el("div",{class:"v",html:esc(m.current_size.value||("$"+m.current_size.value_usd_m+"M"))+estTag(m.current_size)+cites(m.current_size.sources)}),
+    el("div",{class:"l",text:"Market size"+(m.current_size.year?" ("+m.current_size.year+")":"")}),
+    m.current_size.geography?el("div",{class:"d",text:m.current_size.geography}):null]));
+  if(m.cagr_pct!=null) g.append(el("div",{class:"stat"},[el("div",{class:"v",text:m.cagr_pct+"%"}),el("div",{class:"l",text:"CAGR"})]));
+  if(g.children.length) s.append(g);
+  if((m.forecast||[]).length){
+    s.append(el("h3",{text:"Forecast"}));
+    const all=[m.current_size,...m.forecast].filter(x=>x&&x.value_usd_m!=null);
+    const mx=Math.max(...all.map(x=>x.value_usd_m),1);
+    all.sort((a,b)=>(a.year||0)-(b.year||0)).forEach(f=>s.append(el("div",{class:"bar"},[
+      el("div",{class:"lab",text:f.year||""}),
+      el("div",{class:"track"},el("div",{class:"fill",style:`width:${f.value_usd_m/mx*100}%`})),
+      el("div",{class:"val",html:esc(f.value||("$"+(f.value_usd_m>=1000?(f.value_usd_m/1000).toFixed(1)+"B":f.value_usd_m+"M")))+estTag(f)})
+    ])));
+  }
+  if((m.drivers||[]).length){ s.append(el("h3",{text:"Growth drivers"})); const ul=el("ul",{class:"clean"}); m.drivers.forEach(d=>ul.append(el("li",{text:d}))); s.append(ul);}
+  if(m.pricing_access){ s.append(el("h3",{text:"Pricing & access"}),prose(m.pricing_access)); }
+  if((m.opportunity||[]).length){
+    s.append(el("h3",{text:"Opportunity & whitespace"}));
+    const ul=el("ul",{class:"clean"});
+    m.opportunity.forEach(o=>ul.append(el("li",{html:"<b>"+esc(o.title)+"</b>"+(o.segment?" <span class='tag'>"+esc(o.segment)+"</span>":"")+" — "+esc(o.rationale||"")+cites(o.sources)})));
+    s.append(ul);
+  }
+  return s;
+});
+
+// ---- Catalysts ----
+panel("catalysts","Catalysts",()=>{
+  const c=ATLAS.catalysts; if(!(c&&c.length)) return null;
+  const s=sectionEl("catalysts","Catalysts & milestones","what to watch");
+  const tl=el("div",{class:"tl"});
+  c.slice().sort((a,b)=>String(a.date||"").localeCompare(String(b.date||""))).forEach(ev=>tl.append(el("div",{class:"ev"},[
+    el("div",{class:"when",html:esc(ev.date||"")+(ev.type?" · "+esc(ev.type):"")}),
+    el("div",{class:"what",html:esc([ev.asset,ev.event].filter(Boolean).join(" — "))+(ev.company?" ("+esc(ev.company)+")":"")+cites(ev.sources)}),
+    ev.significance?el("div",{class:"why",text:ev.significance}):null
+  ])));
+  s.append(tl); return s;
+});
+
+// ---- Evidence ----
+panel("evidence","Evidence",()=>{
+  const e=ATLAS.evidence; if(!nonEmpty(e)) return null;
+  const s=sectionEl("evidence","Evidence","the hard data");
+  if(e.summary) s.append(prose(e.summary));
+  (e.benchmarks||[]).forEach(b=>{
+    s.append(el("h3",{html:esc(b.metric||"Benchmark")+cites(b.sources)}));
+    const mx=Math.max(...(b.by||[]).map(x=>x.value||0),1);
+    (b.by||[]).forEach(x=>s.append(el("div",{class:"bar"},[
+      el("div",{class:"lab",text:x.label}),
+      el("div",{class:"track"},el("div",{class:"fill",style:`width:${(x.value||0)/mx*100}%`})),
+      el("div",{class:"val",text:(x.value!=null?x.value+(b.unit||""):"")})
+    ])));
+  });
+  if((e.landmark_trials||[]).length){
+    s.append(el("h3",{text:"Landmark trials"}));
+    const t=el("table",{class:"tbl"});
+    t.append(el("thead",{},el("tr",{},["Trial","Intervention","Endpoint","Result",""].map(h=>el("th",{text:h})))));
+    const tb=el("tbody");
+    e.landmark_trials.forEach(x=>tb.append(el("tr",{},[
+      el("td",{html:x.nct_id?`<a href="https://clinicaltrials.gov/study/${esc(x.nct_id)}" target="_blank" rel="noopener">${esc(x.name||x.nct_id)}</a>`:esc(x.name||"")}),
+      el("td",{text:x.intervention||""}),
+      el("td",{text:x.endpoint||""}),
+      el("td",{text:x.result||""}),
+      el("td",{html:cites(x.sources)})
+    ])));
+    t.append(tb); s.append(el("div",{class:"scroll"},t));
+  }
+  return s;
+});
+
+// ---- SWOT ----
+panel("swot","Strategic SWOT",()=>{
+  const w=ATLAS.swot; if(!nonEmpty(w)) return null;
+  const s=sectionEl("swot","Strategic synthesis (SWOT)","go / no-go lens");
+  const grid=el("div",{class:"swot"});
+  [["Strengths","strengths"],["Weaknesses","weaknesses"],["Opportunities","opportunities"],["Threats","threats"]].forEach(([t,k])=>{
+    const q=el("div",{class:"q"},[el("h4",{text:t})]); const ul=el("ul");
+    (w[k]||[]).forEach(i=>ul.append(el("li",{text:i}))); q.append(ul); grid.append(q);
+  });
+  s.append(grid); return s;
+});
+
+// ---- Sources & methods (always) ----
+panel("sources","Sources & methods",()=>{
+  const s=sectionEl("sources","Sources & methods","provenance");
+  const m=ATLAS.meta||{};
+  if(m.coverage_note) s.append(prose(m.coverage_note));
+  s.append(el("p",{class:"lead",html:"Generated "+esc(m.generated||"")+(m.generator?" · "+esc(m.generator):"")+" · "+(ATLAS.sources||[]).length+" sources."}));
+  // legend
+  const lg=el("div",{class:"legend"});
+  PHASE_ORDER.forEach(p=>lg.append(el("div",{html:"<b>"+PHASE_LABEL[p]+"</b> "+({approved:"Approved / marketed",filed:"Filed",phase3:"Phase 3",phase2_3:"Phase 2/3",phase2:"Phase 2",phase1_2:"Phase 1/2",phase1:"Phase 1",preclinical:"Preclinical",discontinued:"Discontinued"}[p])})));
+  s.append(el("h3",{text:"Legend"}),lg);
+  if((ATLAS.sources||[]).length){
+    s.append(el("h3",{text:"Sources"}));
+    const ol=el("ol",{class:"srclist"});
+    ATLAS.sources.forEach(src=>ol.append(el("li",{id:"src-"+src.id,html:
+      (src.url?`<a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.title||src.name||src.url)}</a>`:esc(src.title||src.name||""))+
+      (src.name&&src.title?` — <i>${esc(src.name)}</i>`:"")+(src.type?` <span class="tag">${esc(src.type)}</span>`:"")+(src.accessed?` <span class="d" style="color:var(--faint)">accessed ${esc(src.accessed)}</span>`:"")})));
+    s.append(ol);
+  } else s.append(emptyNote("No sources recorded — this atlas is a stub."));
+  if((ATLAS.disclaimers||[]).length){ const d=el("div",{class:"disc"}); ATLAS.disclaimers.forEach(x=>d.append(el("div",{text:x}))); s.append(d);}
+  return s;
+});
+
+// ---------- build ----------
+ASSET_BY_ID=Object.fromEntries(((ATLAS.pipeline||{}).assets||[]).map(a=>[a.id,a]));
+const meta=ATLAS.meta||{};
+document.getElementById("h-title").textContent=(meta.disease||"Disease")+" — Atlas";
+document.getElementById("h-sub").textContent=[meta.scope==="therapeutic_area"?"Therapeutic area":"Indication",meta.generated&&("generated "+meta.generated)].filter(Boolean).join(" · ");
+const nav=document.getElementById("nav"), main=document.getElementById("main");
+panels.forEach(p=>{ const node=p.fn(); if(node){ main.append(node); nav.append(el("a",{href:"#"+p.id,text:p.title})); }});
+
+// scroll-spy
+const links=[...nav.querySelectorAll("a")];
+const spy=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id));}});},{rootMargin:"-30% 0px -60% 0px"});
+main.querySelectorAll("section.panel").forEach(s=>spy.observe(s));
+
+// theme toggle
+const root=document.documentElement;
+document.getElementById("theme").addEventListener("click",()=>{
+  const cur=root.getAttribute("data-theme")|| (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+  root.setAttribute("data-theme",cur==="dark"?"light":"dark");
+});
+
+// global search: highlight + filter rows/cards
+const search=document.getElementById("search");
+search.addEventListener("input",()=>{
+  const q=search.value.trim().toLowerCase();
+  document.querySelectorAll("[data-search]").forEach(n=>{
+    const hit=!q||n.getAttribute("data-search").includes(q);
+    n.style.display=hit?"":"none";
+  });
+});
+</script>
+</body>
+</html>
