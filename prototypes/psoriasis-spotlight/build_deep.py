@@ -128,6 +128,17 @@ SOURCES=[
  {"id":"bms25","type":"filing","name":"Bristol Myers Squibb FY2025 results","title":"Sotyktu $291M","url":"https://www.bms.com/assets/bms/us/en-us/pdf/investor-info/doc_financials/quarterly_reports/2025/BMY-Q4-2025-Earnings-Press-Release.pdf","accessed":"2026-07-23"},
  {"id":"lilly_taltz","type":"web","name":"Eli Lilly / IBJ","title":"Taltz FY2024 $3.26B; FY2025 tracking ~$3.4B","url":"https://www.ibj.com/articles/lillys-hot-selling-taltz-approaching-blockbuster-status","accessed":"2026-07-23"},
  {"id":"arcutis25","type":"filing","name":"Arcutis FY2025 results","title":"Zoryve franchise $372.1M","url":"https://www.globenewswire.com/news-release/2026/02/25/3244953/0/en/Arcutis-Announces-Fourth-Quarter-and-Full-Year-2025-Financial-Results-and-Provides-Business-Update.html","accessed":"2026-07-23"},
+ {"id":"aadnpf","type":"guideline","name":"AAD–NPF Guidelines","title":"Joint AAD–NPF guidelines of care for psoriasis (topicals, phototherapy, systemics, biologics)","url":"https://www.aad.org/member/clinical-quality/guidelines/psoriasis","accessed":"2026-07-23"},
+ {"id":"dlqi","type":"publication","name":"NPF / QoL literature","title":"DLQI, work productivity & economic burden of psoriasis","url":"https://www.psoriasis.org/psoriasis-statistics/","accessed":"2026-07-23"},
+ {"id":"drugsurv","type":"publication","name":"BADBIR / PsoBest registries","title":"Real-world biologic drug survival (persistence) in psoriasis","url":"https://pubmed.ncbi.nlm.nih.gov/33739452/","accessed":"2026-07-23"},
+ {"id":"voyage","type":"publication","name":"VOYAGE 1/2 (Blauvelt/Reich 2017, JAAD)","title":"Guselkumab pivotal Phase 3 vs adalimumab & placebo","url":"https://pubmed.ncbi.nlm.nih.gov/28057360/","accessed":"2026-07-23"},
+ {"id":"ultimma","type":"publication","name":"UltIMMa-1/2 (Gordon 2018, Lancet)","title":"Risankizumab vs ustekinumab & placebo","url":"https://pubmed.ncbi.nlm.nih.gov/30097359/","accessed":"2026-07-23"},
+ {"id":"eclipse","type":"publication","name":"ECLIPSE (Reich 2019, Lancet)","title":"Guselkumab vs secukinumab — head-to-head, week-48 superiority","url":"https://pubmed.ncbi.nlm.nih.gov/31543211/","accessed":"2026-07-23"},
+ {"id":"uncover","type":"publication","name":"UNCOVER-1/2/3 (Gordon 2016, NEJM)","title":"Ixekizumab pivotal Phase 3","url":"https://pubmed.ncbi.nlm.nih.gov/27299809/","accessed":"2026-07-23"},
+ {"id":"erasure","type":"publication","name":"ERASURE / FIXTURE (Langley 2014, NEJM)","title":"Secukinumab pivotal Phase 3 vs etanercept & placebo","url":"https://pubmed.ncbi.nlm.nih.gov/25007392/","accessed":"2026-07-23"},
+ {"id":"bevivid","type":"publication","name":"BE VIVID / BE READY / BE SURE (2021, Lancet/NEJM)","title":"Bimekizumab pivotal Phase 3 — deepest PASI 100","url":"https://pubmed.ncbi.nlm.nih.gov/33549193/","accessed":"2026-07-23"},
+ {"id":"poetyk","type":"publication","name":"POETYK PSO-1/PSO-2 (Armstrong 2023, JAAD)","title":"Deucravacitinib vs apremilast & placebo — first oral TYK2","url":"https://pubmed.ncbi.nlm.nih.gov/36191693/","accessed":"2026-07-23"},
+ {"id":"iconic","type":"web","name":"ICONIC-LEAD (Johnson & Johnson, 2025)","title":"Icotrokinra Phase 3 — first oral IL-23R peptide","url":"https://www.jnj.com/media-center/press-releases","accessed":"2026-07-23"},
 ]
 # which FY2025 source backs each company's reported sales
 COMP_SALES_SRC={"AbbVie":"abbvie25","Johnson & Johnson":"jnj25","Novartis":"nvs25","UCB":"ucb25",
@@ -213,8 +224,94 @@ CASCADE=[("PRODUCES","dc","il23"),("PRODUCES","dc","p40"),("PRODUCES","dc","tnf"
  ("PRODUCES","th17","il17"),("PRODUCES","th17","il22"),("PRODUCES","th17","tnf"),
  ("ACTS_ON","il17","kera"),("ACTS_ON","il22","kera"),("ACTS_ON","tnf","kera"),
  ("LEADS_TO","kera","plaque"),("FEEDBACK","kera","dc")]
+# --- intracellular signal-transduction depth (receptors + kinases + transcription factors) ---
+# rendered in a dedicated "signal transduction" inset; also first-class graph nodes for exploration.
+SIGNAL=[
+ ("il23r","IL-23 receptor","receptor","Cell-surface receptor complex (IL-23R + IL-12Rβ1) on Th17 cells. Engaged by IL-23; the target of the first oral IL-23R peptide antagonist (icotrokinra)."),
+ ("il17r","IL-17RA receptor","receptor","Keratinocyte receptor (IL-17RA/RC) for IL-17A/F. Neutralised directly by brodalumab; signals via Act1 to NF-κB."),
+ ("jak2","JAK2","intracellular","Janus kinase paired with TYK2 beneath the IL-23 receptor; together they phosphorylate STAT3 on cytokine binding."),
+ ("stat3","STAT3","intracellular","Transcription factor phosphorylated by TYK2/JAK2. It translocates to the nucleus and switches on the Th17 genetic programme."),
+ ("rorgt","RORγt","intracellular","Master transcription factor of Th17 identity, induced downstream of STAT3; it drives IL-17/IL-22 production and is an emerging small-molecule target."),
+ ("nfkb","NF-κB","intracellular","Central inflammatory transcription factor activated in keratinocytes by IL-17 and TNF, amplifying chemokine and cytokine output."),
+]
+# signalling edges (added to the cascade graph)
+SIGNAL_EDGES=[("BINDS","il23","il23r"),("SIGNALS_VIA","il23r","tyk2"),("SIGNALS_VIA","il23r","jak2"),
+ ("ACTIVATES","tyk2","stat3"),("ACTIVATES","jak2","stat3"),("INDUCES","stat3","rorgt"),("SUSTAINS","rorgt","th17"),
+ ("BINDS","il17","il17r"),("SIGNALS_VIA","il17r","nfkb"),("ACTS_ON","nfkb","kera"),("SIGNALS_VIA","tnf","nfkb")]
+# ordered pathway for the inset renderer: (from, to, label)
+SIGNAL_PATH=[("il23","il23r","IL-23 binds"),("il23r","tyk2","receptor-associated"),("il23r","jak2",""),
+ ("tyk2","stat3","phosphorylate"),("jak2","stat3",""),("stat3","rorgt","induces"),("rorgt","th17","Th17 programme"),
+ ("il17","il17r","IL-17 binds"),("il17r","nfkb","via Act1"),("nfkb","kera","inflammation")]
+
 # bridge target -> biology (lets drug->target->biology path-finding reach the cascade)
-TARGET_BIO={"IL23A":"il23","IL12B":"p40","IL17A":"il17","IL17RA":"il17","TNF":"tnf","TYK2":"tyk2","PDE4":"pde4"}
+TARGET_BIO={"IL23A":"il23","IL12B":"p40","IL17A":"il17","IL17RA":"il17r","TNF":"tnf","TYK2":"tyk2","PDE4":"pde4","IL23R":"il23r"}
+
+# --- standard-of-care treatment ladder (line of therapy; AAD-NPF) ---
+# (tier index, short label, typical agents, positioning, colorVar) — escalates left->right
+SOC=[
+ (1,"Topical therapy","Corticosteroids · vit-D analogs · tapinarof · roflumilast","First line for mild / localised disease (~80% of patients). Steroid-sparing non-steroidals now extend to face, folds and scalp.","--s4"),
+ (2,"Phototherapy","NB-UVB · excimer · PUVA","Moderate disease or topical-refractory; office- or home-based. Safe in pregnancy; limited by access and time burden.","--s6"),
+ (3,"Conventional systemics","Methotrexate · cyclosporine · acitretin","Moderate-to-severe; low-cost and widely used globally. Requires organ-toxicity monitoring; cyclosporine for short bursts.","--s8"),
+ (4,"Advanced oral","Apremilast (PDE4) · deucravacitinib (TYK2) · icotrokinra (IL-23R)","Oral targeted therapy — the fastest-growing tier; increasingly a first-line systemic choice for oral-preferring patients.","--s3"),
+ (5,"Biologics","IL-23 · IL-17 · IL-12/23 · TNF","Moderate-to-severe; the deepest, most durable clearance (PASI 90–100). IL-23 and IL-17 are the modern anchors.","--s1"),
+]
+SOC_NOTE="Escalation is not strictly stepwise — moderate-to-severe patients increasingly start advanced oral or biologic therapy directly. Basis: AAD-NPF guidelines of care."
+
+# --- glossary (key terms) ---
+GLOSSARY=[
+ ("PASI","Psoriasis Area and Severity Index — composite 0–72 score of erythema, induration and scaling weighted by body-region area."),
+ ("PASI 90 / 100","Share of patients reaching ≥90% / 100% improvement in PASI from baseline — the modern efficacy bar (PASI 75 was the older standard)."),
+ ("BSA","Body Surface Area involved (%); ≥10% (or special sites) marks moderate-to-severe disease."),
+ ("DLQI","Dermatology Life Quality Index (0–30) — patient-reported quality-of-life impact; 0/1 means no effect on life."),
+ ("IL-23","Dendritic-cell cytokine (p19 + p40 subunits) that sustains pathogenic Th17 cells — the most disease-specific target."),
+ ("IL-17A / IL-17F","Th17 effector cytokines acting on keratinocytes; blocking them gives the fastest, deepest skin clearance."),
+ ("Th17 cell","IL-23-dependent T-helper subset that produces IL-17 and IL-22."),
+ ("TYK2","Intracellular pseudokinase that transduces IL-23 signalling; oral allosteric inhibition (deucravacitinib) avoids the JAK boxed warning."),
+ ("JAK–STAT","Kinase→transcription-factor relay beneath cytokine receptors; STAT3 switches on the Th17 programme."),
+ ("RORγt","Master transcription factor of Th17 identity; an emerging small-molecule target."),
+ ("Biologic","Engineered protein (usually a monoclonal antibody) that neutralises a specific cytokine or receptor; injectable."),
+ ("Biosimilar","Highly similar copy of an off-patent biologic; launches drive steep price competition (Humira, Stelara)."),
+ ("p19 / p40","IL-23-specific (p19) vs IL-12/23-shared (p40) subunits; selective p19 blockade proved more effective than p40."),
+ ("NMA","Network meta-analysis — pools many trials to rank therapies never tested head-to-head (e.g. Armstrong 2020)."),
+ ("Drug survival","Real-world persistence: how long patients stay on a therapy before switching/stopping — a durability proxy."),
+ ("PsA","Psoriatic arthritis — inflammatory joint disease developing in ~30% of psoriasis patients."),
+ ("NB-UVB","Narrow-band ultraviolet-B phototherapy."),
+ ("Loss of exclusivity","Patent expiry that opens a product to generic or biosimilar competition."),
+]
+
+# --- landmark pivotal trials (milestones) ---
+# (trial, asset, family_key, year, phase, headline result, source_id)
+TRIALS=[
+ ("ERASURE / FIXTURE","secukinumab","il17",2014,"Ph3","First IL-17A pivotal; PASI 90 ~59%, superior to etanercept.","erasure"),
+ ("AMAGINE-1/2/3","brodalumab","il17",2015,"Ph3","IL-17RA blockade; very high clearance; a boxed warning later shaped uptake.","armstrong"),
+ ("UNCOVER-1/2/3","ixekizumab","il17",2016,"Ph3","PASI 90 ~68–71% — among the fastest, deepest responders of its era.","uncover"),
+ ("VOYAGE 1/2","guselkumab","il23",2017,"Ph3","IL-23 p19; PASI 90 ~73% at wk16, superior to adalimumab.","voyage"),
+ ("reSURFACE 1/2","tildrakizumab","il23",2017,"Ph3","IL-23 p19; established q12w dosing; PASI 90 ~35–39%.","armstrong"),
+ ("UltIMMa-1/2","risankizumab","il23",2018,"Ph3","PASI 90 ~75%, superior to ustekinumab — set the IL-23 benchmark.","ultimma"),
+ ("ECLIPSE","guselkumab","il23",2019,"Ph3","Head-to-head win: guselkumab beat secukinumab on wk-48 PASI 90 (durability).","eclipse"),
+ ("BE VIVID / BE READY / BE SURE","bimekizumab","il17",2021,"Ph3","Dual IL-17A/F; PASI 100 ~60% — the deepest-clearance benchmark to date.","bevivid"),
+ ("POETYK PSO-1/2","deucravacitinib","kinase",2022,"Ph3","First oral TYK2; PASI 75 ~58% vs apremilast ~35% — opened the oral-targeted era.","poetyk"),
+ ("Zasocitinib Ph3 (TAK-279)","zasocitinib","kinase",2025,"Ph3","Next-gen oral TYK2: >50% PASI 90 — raising the oral efficacy bar.","takeda_zaso"),
+ ("ICONIC-LEAD","icotrokinra","il23",2025,"Ph3","First oral IL-23R peptide; positioned as a first-line systemic.","iconic"),
+]
+
+# --- deeper burden / comorbidity / economics ---
+EPI_DEEP={
+ "dlqi":"Mean DLQI ~8–12 in moderate-to-severe disease — a large quality-of-life impact, comparable to that of cancer or heart disease.",
+ "economic":"US direct + indirect burden estimated >$100B/yr, roughly half from lost work productivity and comorbidity care.",
+ "drug_survival":"Real-world persistence is highest for IL-23 inhibitors (~1-yr drug survival ~85–90%) and lowest for TNF inhibitors — a key durability differentiator beyond trial PASI.",
+ "comorbid":[("Psoriatic arthritis","~30%"),("Metabolic syndrome","~40%"),("Cardiovascular / MACE","elevated"),("Depression / anxiety","~20%"),("IBD (Crohn's / UC)","elevated")],
+ "mortality":"Not directly fatal, but severe psoriasis carries excess cardiovascular mortality — the basis for treat-to-target inflammation control.",
+}
+# --- market share by mechanism class (directional; branded systemic/biologic market) ---
+MARKET_SHARE=[
+ ("IL-23 p19","Largest & growing","--s1"),
+ ("IL-17A / A-F","Large, stable","--s2"),
+ ("TNF (incl. biosimilar)","Large but eroding","--s5"),
+ ("IL-12/23 (p40)","Shrinking — biosimilars","--sN"),
+ ("Oral advanced (TYK2/PDE4/IL-23R)","Small, fastest-growing","--s3"),
+]
+MARKET_NOTE="Directional shares of the branded systemic/biologic market — illustrative, not audited. IL-23 & IL-17 lead; oral targeted therapy is the fastest-growing slice."
 
 nodes={}; edges=[]
 def node(nid,ntype,label,attrs=None,sources=None):
@@ -278,12 +375,15 @@ for i,(acq,cp,asset,val,yr,kind,note) in enumerate(DEALS,1):
 # biology of the cascade -> Biology nodes + cascade edges + bridges to targets/mechanisms
 for suf,label,kind,pos,desc in BIO:
     node("bio:"+suf,"Biology",label,{"kind":kind,"pos":pos,"description":desc})
-for et,a,b in CASCADE:
+for suf,label,kind,desc in SIGNAL:  # intracellular signalling depth (no schematic pos)
+    node("bio:"+suf,"Biology",label,{"kind":kind,"description":desc})
+for et,a,b in CASCADE+SIGNAL_EDGES:
     edge(et,"bio:"+a,"bio:"+b)
 for sym,bio in TARGET_BIO.items():
     if "target:"+sym in nodes: edge("PART_OF","target:"+sym,"bio:"+bio)
 for fk,pos in ANCHOR.items():
     if "moa:"+fk in nodes and "bio:"+pos in nodes: edge("ACTS_ON","moa:"+fk,"bio:"+pos)
+EPI.update(EPI_DEEP)
 
 graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026-07-23","as_of":"July 2026",
     "one_liner":"Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market shifting to oral targeted therapy.",
@@ -295,6 +395,13 @@ graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026
     "epi":EPI,
     "sites":[{"site":s,"prev":p,"note":n} for s,p,n in SITES],
     "deals":[{"acquirer":a,"counterparty":cp,"asset":asset,"value":v,"year":y,"kind":k,"note":nt} for a,cp,asset,v,y,k,nt in DEALS],
+    "soc":[{"tier":t,"label":l,"agents":a,"note":n,"colorVar":c} for t,l,a,n,c in SOC],
+    "soc_note":SOC_NOTE,
+    "glossary":[{"term":t,"def":d} for t,d in GLOSSARY],
+    "trials":[{"trial":tr,"asset":a,"family_key":fk,"year":y,"phase":ph,"result":r,"src":s} for tr,a,fk,y,ph,r,s in TRIALS],
+    "market_share":[{"cls":c,"trend":t,"colorVar":cv} for c,t,cv in MARKET_SHARE],
+    "market_note":MARKET_NOTE,
+    "signal_path":[{"from":"bio:"+f,"to":"bio:"+t,"label":l} for f,t,l in SIGNAL_PATH],
     "nodes":list(nodes.values()),"edges":edges,"sources":SOURCES}
 json.dump(graph,open(os.path.join(HERE,"graph.json"),"w",encoding="utf-8"),indent=2,ensure_ascii=False)
 from collections import Counter

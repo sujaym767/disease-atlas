@@ -10,11 +10,17 @@
   --s1:#2a78d6; --s2:#c25a1c; --s3:#1b8f68; --s4:#c98a12; --s5:#b0517f; --s6:#3f7a2e; --s7:#4a3aa7; --s8:#c0403f; --sN:#9a8f77;
   --accent:#8a2b1f; --kera:#e5c98f; --cell:#cdd8e6; --bio:#9c6b34;
   --sans:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif; --cond:"Arial Narrow",Arial,var(--sans); --mono:ui-monospace,Menlo,Consolas,monospace;
-  --shadowmodal:0 20px 60px rgba(40,30,15,.4);
+  --shadowmodal:0 24px 70px rgba(40,30,15,.45);
+  --shadow:0 1px 2px rgba(70,52,20,.09), 0 6px 20px rgba(70,52,20,.07);
+  --shadowsm:0 1px 3px rgba(70,52,20,.14);
+  --gloss:linear-gradient(180deg, color-mix(in srgb,var(--panel) 40%,#fff) 0%, var(--panel) 62%);
 }
 :root[data-theme="dark"]{
   --paper:#15130f; --block:#201c16; --panel:#1c1913; --ink:#efe9db; --ink2:#c3bbab; --muted:#8a8272; --rule:#332e26; --rule2:#453d30;
   --s1:#4f92e6; --s2:#e07a3f; --s3:#31a97e; --s4:#d7a02f; --s5:#d071a0; --s6:#5aa246; --s7:#9085e9; --s8:#e06463; --sN:#9a8f77; --accent:#e0885f; --kera:#6b5a34; --cell:#2f3a49; --bio:#c99a5f;
+  --shadow:0 1px 2px rgba(0,0,0,.30), 0 6px 20px rgba(0,0,0,.28);
+  --shadowsm:0 1px 3px rgba(0,0,0,.4);
+  --gloss:linear-gradient(180deg, color-mix(in srgb,var(--panel) 78%,#fff) 0%, var(--panel) 60%);
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:12px}
@@ -27,8 +33,8 @@ button{font-family:inherit;cursor:pointer}
 #wires{position:absolute;top:0;left:0;pointer-events:none;overflow:visible}
 .node{position:absolute;cursor:pointer}
 /* mechanism block */
-.block{position:absolute;width:300px;background:var(--block);border:1px solid var(--rule2);border-left:4px solid var(--fam)}
-.bhead{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:4px 8px;background:color-mix(in srgb,var(--fam) 14%,var(--block));border-bottom:1px solid var(--rule)}
+.block{position:absolute;width:300px;background:var(--block);border:1px solid var(--rule2);border-left:4px solid var(--fam);box-shadow:var(--shadow);border-radius:2px}
+.bhead{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:5px 8px;background:linear-gradient(180deg,color-mix(in srgb,var(--fam) 20%,var(--block)),color-mix(in srgb,var(--fam) 9%,var(--block)));border-bottom:1px solid var(--rule)}
 .bhead .bn{font-weight:700;font-size:12px;line-height:1.05;color:var(--ink)}
 .bhead .bc{font-size:9px;color:var(--muted);white-space:nowrap}
 .bdesc{font-size:9.5px;color:var(--ink2);padding:3px 8px;border-bottom:1px solid var(--rule);font-style:italic}
@@ -43,14 +49,17 @@ button{font-family:inherit;cursor:pointer}
 .mk.bio{color:#fff;background:var(--s1)}.mk.combo{color:#fff;background:var(--s3)}.mk.warn{color:var(--s8)}
 .disc .dn{text-decoration:line-through;color:var(--muted)}
 /* panels */
-.panel{position:absolute;background:var(--panel);border:1px solid var(--rule2)}
-.panel h4{margin:0;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:12.5px;color:var(--accent);padding:4px 8px;border-bottom:1px solid var(--rule)}
-.panel .pc{padding:6px 8px}
+.panel{position:absolute;background:var(--gloss);border:1px solid var(--rule2);box-shadow:var(--shadow);border-radius:3px}
+.panel h4{margin:0;display:flex;align-items:center;gap:6px;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:12.5px;color:var(--accent);padding:5px 9px;border-bottom:1px solid var(--rule);background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 8%,transparent),transparent)}
+.panel h4::before{content:"";width:4px;height:12px;background:var(--accent);border-radius:1px;flex:none;box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 30%,transparent)}
+.panel .pc{padding:7px 9px}
 .mast{position:absolute}
-.mast .t{font-family:var(--cond);font-weight:700;font-size:30px;line-height:.9;text-transform:uppercase;letter-spacing:-.01em}
-.mast .t small{display:block;font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-top:3px}
-.mast .o{font-size:11px;color:var(--ink2);max-width:520px;margin-top:6px}
-.mast .k{display:inline-block;margin:7px 14px 0 0}.mast .k b{font-family:var(--cond);font-size:19px}.mast .k span{font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block}
+.mast .t{font-family:var(--cond);font-weight:700;font-size:42px;line-height:.86;text-transform:uppercase;letter-spacing:-.015em;color:var(--ink);text-shadow:0 1px 0 color-mix(in srgb,var(--paper) 60%,#fff)}
+.mast .t small{display:block;font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-top:6px;padding-bottom:7px;border-bottom:2px solid var(--accent);width:max-content;max-width:100%}
+.mast .o{font-size:11.5px;line-height:1.4;color:var(--ink2);max-width:540px;margin-top:9px}
+.mast .kb{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.mast .k{border:1px solid var(--rule2);background:var(--gloss);box-shadow:var(--shadowsm);padding:5px 11px 4px;border-radius:3px;border-top:2px solid var(--accent)}
+.mast .k b{font-family:var(--cond);font-size:21px;font-weight:700;color:var(--ink);display:block;line-height:1}.mast .k span{font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-top:2px}
 .burden .st{display:grid;grid-template-columns:56px 1fr;gap:4px 9px;font-size:10px;align-items:baseline}
 .burden .st b{font-family:var(--cond);font-size:15px;text-align:right;color:var(--accent)}
 .burden .st span{color:var(--ink2)}
@@ -68,7 +77,41 @@ button{font-family:inherit;cursor:pointer}
 .deals .row{font-size:9.5px;margin:3px 0;cursor:pointer;border-bottom:1px dotted var(--rule);padding-bottom:2px}
 .deals b{font-weight:700}.deals .v{color:var(--accent);font-weight:700}
 .legend{font-size:9.5px;color:var(--ink2)}.legend code{font-family:var(--mono);font-weight:700;background:var(--paper);border:1px solid var(--rule);padding:0 3px}
-.legend .lr{margin:3px 0}.legend .fam{display:inline-flex;align-items:center;gap:3px;margin:1px 6px 1px 0}.legend .fam i{width:8px;height:8px;display:inline-block}
+.legend .lr{margin:3px 0}.legend .fam{display:inline-flex;align-items:center;gap:3px;margin:1px 6px 1px 0}.legend .fam i{width:8px;height:8px;display:inline-block;border-radius:2px}
+/* band label */
+.bandlabel{position:absolute;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--rule2);font-size:13px}
+/* standard-of-care ladder */
+.soc{display:flex;align-items:stretch}
+.soc .step{flex:1;position:relative;padding:8px 11px 9px 18px;border-left:1px solid var(--rule);min-width:0}
+.soc .step:first-child{border-left:0}
+.soc .step::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:5px;border-radius:3px;background:var(--sc);box-shadow:0 0 7px color-mix(in srgb,var(--sc) 55%,transparent)}
+.soc .step .tier{font-family:var(--cond);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.soc .step .nm{font-family:var(--cond);font-size:18px;font-weight:700;color:var(--sc);line-height:1;margin:2px 0 4px}
+.soc .step .ag{font-size:9.5px;color:var(--ink);font-weight:600;line-height:1.3}
+.soc .step .nt{font-size:9px;color:var(--ink2);line-height:1.32;margin-top:5px}
+.socbar{height:6px;display:flex;margin:2px 0 9px;border-radius:3px;overflow:hidden;box-shadow:var(--shadowsm)}.socbar i{flex:1}
+.socnote{font-size:9px;color:var(--muted);margin-top:8px;font-style:italic}
+/* trials timeline */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px 18px}
+.trow{display:grid;grid-template-columns:38px 1fr;gap:8px;font-size:9.5px;cursor:pointer;padding:4px 5px;border-bottom:1px dotted var(--rule);align-items:baseline}
+.trow:hover{background:color-mix(in srgb,var(--tc) 10%,transparent)}
+.trow .yr{font-family:var(--cond);font-weight:700;font-size:13px;color:var(--tc);text-align:right;position:relative}
+.trow .tn{font-weight:700;color:var(--ink)}.trow .tn i{font-weight:600;font-style:normal;color:var(--tc)}
+.trow .tr{color:var(--ink2);line-height:1.28;margin-top:1px}
+/* glossary */
+.gloss2{columns:5;column-gap:18px;font-size:9.5px}
+@media (max-width:1px){.gloss2{columns:2}}
+.gloss2 .g{break-inside:avoid;margin:0 0 6px;line-height:1.28}
+.gloss2 .g b{color:var(--accent);font-weight:700}
+.gloss2 .g span{color:var(--ink2)}
+/* comorbidity + market share */
+.comorb{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:9.5px;margin-top:4px}
+.comorb b{color:var(--accent);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.comorb span{color:var(--ink2)}
+.mshare .row{display:grid;grid-template-columns:11px 1fr auto;gap:7px;align-items:center;font-size:9.5px;margin:3px 0}
+.mshare .row i{width:10px;height:10px;border-radius:2px;box-shadow:0 0 5px color-mix(in srgb,var(--mc) 50%,transparent)}
+.mshare .row .cl{font-weight:600;color:var(--ink)}
+.mshare .row .tr{color:var(--ink2);font-style:italic;text-align:right;white-space:nowrap}
 /* schematic labels */
 .schlab{font-family:var(--sans);font-weight:700;font-size:11px;fill:var(--ink)}
 .schsub{font-size:8.5px;fill:var(--ink2)}
@@ -157,7 +200,7 @@ const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phas
 const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
-const CW=2760, CH=1480; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
+const CW=2760, CH=2280; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 
 /* ---------- schematic (IL-23 / IL-17 immune cascade) ---------- */
 const SOX=1050, SOY=330, SW=900, SH=560;   // schematic div origin + size on the canvas
@@ -170,10 +213,18 @@ function buildSchematic(){
   const g=el("div",{cls:"node",style:`left:${SOX}px;top:${SOY}px;width:${SW}px;height:${SH}px`});
   const s=svgEl("svg",{viewBox:`0 0 ${SW} ${SH}`,width:SW,height:SH}); g.append(s);
   const off=p=>[SCH[p][0]-SOX,SCH[p][1]-SOY];
-  s.append((()=>{const d=svgEl("defs");d.innerHTML=`<marker id="sah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${css('--ink2')}"/></marker>`;return d;})());
+  const cellC=css("--cell"), keraC=css("--kera"), accC=css("--accent");
+  s.append((()=>{const d=svgEl("defs");d.innerHTML=
+    `<marker id="sah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${css('--ink2')}"/></marker>`+
+    `<radialGradient id="gcell" cx="36%" cy="30%" r="82%"><stop offset="0%" stop-color="color-mix(in srgb,${cellC} 35%,#fff)"/><stop offset="100%" stop-color="${cellC}"/></radialGradient>`+
+    `<radialGradient id="gkera" cx="36%" cy="30%" r="82%"><stop offset="0%" stop-color="color-mix(in srgb,${keraC} 35%,#fff)"/><stop offset="100%" stop-color="${keraC}"/></radialGradient>`+
+    `<radialGradient id="gplaque" cx="40%" cy="28%" r="85%"><stop offset="0%" stop-color="color-mix(in srgb,${accC} 30%,#fff)"/><stop offset="100%" stop-color="${accC}"/></radialGradient>`+
+    `<filter id="schsh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#3a2a12" flood-opacity="0.34"/></filter>`+
+    `<filter id="schglow" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="1" stdDeviation="1.6" flood-color="#3a2a12" flood-opacity="0.30"/></filter>`;
+    return d;})());
   // faint skin-layer backdrop (epidermis where the keratinocyte sits; dermis where DC/T cells sit)
-  s.append(svgEl("rect",{x:520,y:60,width:360,height:440,fill:css("--kera"),opacity:.10}));
-  s.append(svgEl("rect",{x:20,y:60,width:500,height:440,fill:css("--cell"),opacity:.10}));
+  s.append(svgEl("rect",{x:520,y:60,width:360,height:440,fill:css("--kera"),opacity:.13,rx:10}));
+  s.append(svgEl("rect",{x:20,y:60,width:500,height:440,fill:css("--cell"),opacity:.13,rx:10}));
   const lyr=(x,t)=>{const e=svgEl("text",{x,y:78,"text-anchor":"middle","font-size":"9",fill:css("--muted"),"letter-spacing":".1em"});e.textContent=t;s.append(e);};
   lyr(270,"DERMIS"); lyr(700,"EPIDERMIS");
   function arrow(a,b,col,dash,w){const [x1,y1]=off(a),[x2,y2]=off(b);const l=svgEl("line",{x1,y1,x2,y2,stroke:col||css("--rule2"),"stroke-width":w||2.4,"marker-end":"url(#sah)"});if(dash)l.setAttribute("stroke-dasharray","4 3");s.append(l);return[(x1+x2)/2,(y1+y2)/2];}
@@ -188,28 +239,32 @@ function buildSchematic(){
   arrow("tnf","kera",css("--s5"),true); annot("tnf","kera","amplifies",14);
   arrow("kera","plaque",css("--accent"));
   arrow("kera","dc",css("--muted"),true); annot("kera","dc","self-amplifying feedback loop",-8);
-  // cells (clickable Biology)
-  function cell(k,r,fill){const [x,y]=off(k),b=schBio(k);const grp=svgEl("g",{class:"anchor"});grp.style.cursor="pointer";
-    grp.append(svgEl("ellipse",{cx:x,cy:y,rx:r*1.15,ry:r,fill,stroke:css("--rule2"),"stroke-width":1.5}));
-    grp.append(svgEl("circle",{cx:x-r*.3,cy:y-r*.2,r:r*.34,fill:css("--rule2"),opacity:.5})); // nucleus
-    const t=svgEl("text",{x,y:y-r-5,"text-anchor":"middle",class:"schlab"});t.textContent=(b&&b.label)||k;grp.append(t);
+  // cells (clickable Biology) — gradient-shaded with a soft drop shadow + membrane ring
+  function cell(k,r,grad){const [x,y]=off(k),b=schBio(k);const grp=svgEl("g",{class:"anchor"});grp.style.cursor="pointer";
+    grp.append(svgEl("ellipse",{cx:x,cy:y,rx:r*1.15,ry:r,fill:`url(#${grad})`,stroke:css("--rule2"),"stroke-width":1.5,filter:"url(#schsh)"}));
+    grp.append(svgEl("ellipse",{cx:x,cy:y,rx:r*1.15-3,ry:r-3,fill:"none",stroke:"#fff","stroke-width":.8,opacity:.35})); // inner membrane sheen
+    grp.append(svgEl("circle",{cx:x-r*.28,cy:y-r*.18,r:r*.34,fill:css("--ink2"),opacity:.45})); // nucleus
+    grp.append(svgEl("circle",{cx:x-r*.28-r*.1,cy:y-r*.18-r*.1,r:r*.12,fill:"#fff",opacity:.4})); // nucleolus highlight
+    const t=svgEl("text",{x,y:y-r-6,"text-anchor":"middle",class:"schlab"});t.textContent=(b&&b.label)||k;grp.append(t);
     if(b)grp.onclick=()=>openModal(b.id); s.append(grp);}
-  cell("dc",25,css("--cell")); cell("th17",25,css("--cell")); cell("kera",30,css("--kera"));
-  // plaque outcome
+  cell("dc",25,"gcell"); cell("th17",25,"gcell"); cell("kera",30,"gkera");
+  // plaque outcome — layered scaly block
   const [px,py]=off("plaque"),bp=schBio("plaque");const pg=svgEl("g",{class:"anchor"});pg.style.cursor="pointer";
-  pg.append(svgEl("rect",{x:px-15,y:py-17,width:30,height:34,rx:3,fill:css("--accent"),opacity:.85}));
-  pg.append(svgEl("rect",{x:px-15,y:py-17,width:30,height:5,fill:"#fff",opacity:.5}));
-  const ptl=svgEl("text",{x:px,y:py+32,"text-anchor":"middle",class:"schsub"});ptl.textContent="plaque";pg.append(ptl);
+  pg.append(svgEl("rect",{x:px-16,y:py-18,width:32,height:36,rx:3,fill:"url(#gplaque)",stroke:css("--accent"),"stroke-width":1,filter:"url(#schsh)"}));
+  [0,1,2].forEach(i=>pg.append(svgEl("rect",{x:px-16,y:py-18+i*7,width:32,height:2.4,fill:"#fff",opacity:.34}))); // scale lines
+  const ptl=svgEl("text",{x:px,y:py+33,"text-anchor":"middle",class:"schsub","font-weight":"700"});ptl.textContent="plaque";pg.append(ptl);
   if(bp)pg.onclick=()=>openModal(bp.id); s.append(pg);
   // cytokine / intracellular nodes (clickable Biology; ringed in the family colour that targets them)
   const RING={p40:"il23",il23:"il23",il17:"il17",tnf:"tnf",tyk2:"kinase",pde4:"pde4",il22:"il17"};
   ["p40","il23","il17","tnf","tyk2","pde4","il22"].forEach(k=>{const [x,y]=off(k),b=schBio(k);
-    const grp=svgEl("g",{class:"anchor"});grp.style.cursor="pointer";const r=k=="il22"?11:15;
-    grp.append(svgEl("circle",{cx:x,cy:y,r,fill:css("--paper"),stroke:css(FAM[RING[k]]?.colorVar||"--sN"),"stroke-width":2.2}));
-    const t=svgEl("text",{x,y:y+3,"text-anchor":"middle","font-size":k=="il22"?"7.5":"8.5","font-weight":"700",fill:css("--ink")});t.textContent=(b&&b.label.replace(" / IL-17F","").replace("IL-12/23 ",""))||k;grp.append(t);
+    const grp=svgEl("g",{class:"anchor"});grp.style.cursor="pointer";const r=k=="il22"?11:15,rc=css(FAM[RING[k]]?.colorVar||"--sN");
+    grp.append(svgEl("circle",{cx:x,cy:y,r,fill:"color-mix(in srgb,"+rc+" 12%,var(--block))",stroke:rc,"stroke-width":2.4,filter:"url(#schglow)"}));
+    grp.append(svgEl("circle",{cx:x-r*.32,cy:y-r*.32,r:r*.34,fill:"#fff",opacity:.35})); // specular
+    const t=svgEl("text",{x,y:y+3,"text-anchor":"middle","font-size":k=="il22"?"7.5":"8.5","font-weight":"800",fill:css("--ink")});t.textContent=(b&&b.label.replace(" / IL-17F","").replace("IL-12/23 ",""))||k;grp.append(t);
     if(b)grp.onclick=()=>openModal(b.id); s.append(grp);});
-  const tt=svgEl("text",{x:SW/2,y:26,"text-anchor":"middle",class:"schlab","font-size":"14","letter-spacing":".02em"});tt.textContent="THE IL-23 / IL-17 IMMUNE CASCADE";s.append(tt);
-  const hint=svgEl("text",{x:SW/2,y:42,"text-anchor":"middle","font-size":"9",fill:css("--muted")});hint.textContent="click any cell or cytokine for the science";s.append(hint);
+  const tt=svgEl("text",{x:SW/2,y:24,"text-anchor":"middle",class:"schlab","font-size":"15","letter-spacing":".03em"});tt.textContent="THE IL-23 / IL-17 IMMUNE CASCADE";s.append(tt);
+  s.append(svgEl("line",{x1:SW/2-150,y1:31,x2:SW/2+150,y2:31,stroke:css("--accent"),"stroke-width":1.4,opacity:.7}));
+  const hint=svgEl("text",{x:SW/2,y:44,"text-anchor":"middle","font-size":"9",fill:css("--muted"),"font-style":"italic"});hint.textContent="click any cell or cytokine for the science";s.append(hint);
   CANVAS.append(g);
 }
 
@@ -278,7 +333,7 @@ function buildPanels(){
   const mast=el("div",{cls:"mast",style:"left:30px;top:24px;width:560px"});
   mast.append(el("div",{cls:"t",html:esc(G.meta.focus)+"<small>DISEASE ATLAS · "+esc(G.meta.as_of||"")+" · "+G.nodes.filter(n=>n.type=="Drug").length+" ASSETS</small>"}));
   mast.append(el("div",{cls:"o",text:G.meta.one_liner||""}));
-  const kb=el("div"); (G.meta.headline_stats||[]).slice(0,3).forEach(s=>kb.append(el("span",{cls:"k"},[el("b",{text:s.value}),el("span",{text:s.label})]))); mast.append(kb);
+  const kb=el("div",{cls:"kb"}); (G.meta.headline_stats||[]).slice(0,4).forEach(s=>kb.append(el("div",{cls:"k"},[el("b",{text:s.value}),el("span",{text:s.label})]))); mast.append(kb);
   CANVAS.append(mast);
   // patient burden (top-left, under masthead)
   const e=G.epi||{};
@@ -319,6 +374,81 @@ function buildPanels(){
     c.append(el("div",{cls:"lr",html:'<b>Relationship view shapes:</b> '+shapeLegendHTML()}));
     if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));
   });
+  // ===================== DEEPER-DIVE bottom band =====================
+  CANVAS.append(el("div",{cls:"bandlabel",style:"left:30px;top:1344px",text:"— Deeper dive · mechanism, standard of care, evidence & terms —"}));
+  // Standard-of-care treatment ladder
+  panel(30,1382,1690,"Standard of care — line-of-therapy escalation",c=>{
+    const bar=el("div",{cls:"socbar"}); (G.soc||[]).forEach(s=>bar.append(el("i",{style:`background:${css(s.colorVar)}`}))); c.append(bar);
+    const lad=el("div",{cls:"soc"}); (G.soc||[]).forEach((s,i)=>{
+      lad.append(el("div",{cls:"step",style:`--sc:${css(s.colorVar)}`},[
+        el("div",{cls:"tier",text:"Line "+s.tier}),el("div",{cls:"nm",text:s.label}),
+        el("div",{cls:"ag",text:s.agents}),el("div",{cls:"nt",text:s.note})]));});
+    c.append(lad);
+    if(G.soc_note)c.append(el("div",{cls:"socnote",text:G.soc_note}));
+  });
+  // Intracellular signal-transduction inset
+  buildSignalInset(1750,1382,980);
+  // Landmark clinical-trial milestones
+  panel(30,1720,2700,"Landmark clinical-trial milestones",c=>{c.classList.add("trials");
+    const grid=el("div",{cls:"tgrid"});
+    (G.trials||[]).slice().sort((a,b)=>a.year-b.year).forEach(t=>{
+      const col=css((FAM[t.family_key]||{}).colorVar||"--sN");
+      const row=el("div",{cls:"trow",style:`--tc:${col}`},[
+        el("div",{cls:"yr",text:t.year}),
+        el("div",{},[el("div",{cls:"tn",html:esc(t.trial)+' <i>· '+esc(t.asset)+'</i>'}),el("div",{cls:"tr",text:t.result})])]);
+      const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)row.onclick=()=>openModal(dn.id);
+      grid.append(row);});
+    c.append(grid);
+  });
+  // Glossary
+  panel(30,1988,1690,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
+    (G.glossary||[]).forEach(t=>g.append(el("div",{cls:"g",html:`<b>${esc(t.term)}</b> — <span>${esc(t.def)}</span>`}))); c.append(g);});
+  // Comorbidity & QoL burden (deep)
+  panel(1750,1988,470,"Comorbidity & QoL burden",c=>{
+    const cb=el("div",{cls:"comorb"}); (e.comorbid||[]).forEach(row=>cb.append(el("span",{text:row[0]}),el("b",{text:row[1]}))); c.append(cb);
+    if(e.dlqi)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>DLQI.</b> "+esc(e.dlqi)}));
+    if(e.economic)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Economics.</b> "+esc(e.economic)}));
+    if(e.mortality)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Mortality.</b> "+esc(e.mortality)}));
+  });
+  // Market share by mechanism class + durability
+  panel(2250,1988,480,"Market share & durability",c=>{const ms=el("div",{cls:"mshare"});
+    (G.market_share||[]).forEach(m=>ms.append(el("div",{cls:"row",style:`--mc:${css(m.colorVar)}`},[
+      el("i",{style:`background:${css(m.colorVar)}`}),el("span",{cls:"cl",text:m.cls}),el("span",{cls:"tr",text:m.trend})]))); c.append(ms);
+    if(G.market_note)c.append(el("div",{style:"font-size:8.5px;color:var(--muted);margin-top:7px;font-style:italic;line-height:1.3",text:G.market_note}));
+    if(e.drug_survival)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>Drug survival.</b> "+esc(e.drug_survival)}));
+  });
+}
+/* intracellular signal-transduction inset (IL-23R→TYK2/JAK2→STAT3→RORγt; IL-17R→NF-κB) */
+function buildSignalInset(x,y,w){
+  const p=el("div",{cls:"panel signal",style:`left:${x}px;top:${y}px;width:${w}px`});
+  p.append(el("h4",{text:"Intracellular signal transduction"}));
+  const c=el("div",{cls:"pc"}); const IW=w-18, H=196;
+  const s=svgEl("svg",{viewBox:`0 0 ${IW} ${H}`,width:"100%",height:H});
+  const sx=IW/900;  // scale positions to inset width
+  const POS={"bio:il23":[70,58],"bio:il23r":[220,58],"bio:tyk2":[372,38],"bio:jak2":[372,80],"bio:stat3":[518,58],"bio:rorgt":[660,58],"bio:th17":[810,58],
+    "bio:il17":[70,160],"bio:il17r":[275,160],"bio:nfkb":[490,160],"bio:kera":[700,160]};
+  const P=id=>[POS[id][0]*sx,POS[id][1]];
+  const defs=svgEl("defs");defs.innerHTML=`<marker id="sig" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${css('--ink2')}"/></marker>`+
+    `<filter id="nodeshadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="1" stdDeviation="1.4" flood-color="#000" flood-opacity="0.28"/></filter>`;s.append(defs);
+  // track labels
+  [["IL-23 / Th17 differentiation",26],["IL-17 / TNF effector signalling",128]].forEach(([lab,yy])=>{const t=svgEl("text",{x:4,y:yy,"font-size":"8","font-weight":"700",fill:css("--muted"),"letter-spacing":".04em"});t.textContent=lab;s.append(t);});
+  (G.signal_path||[]).forEach(e=>{if(!POS[e.from]||!POS[e.to])return;const A=P(e.from),B=P(e.to);
+    const dx=B[0]-A[0],dy=B[1]-A[1],L=Math.hypot(dx,dy)||1,ux=dx/L,uy=dy/L;
+    const a=[A[0]+ux*17,A[1]+uy*13],b=[B[0]-ux*19,B[1]-uy*15];
+    s.append(svgEl("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:css("--ink2"),"stroke-width":1.4,opacity:.7,"marker-end":"url(#sig)"}));
+    if(e.label){const t=svgEl("text",{x:(a[0]+b[0])/2,y:(a[1]+b[1])/2-3,"text-anchor":"middle","font-size":"7.5",fill:css("--muted"),"paint-order":"stroke",stroke:css("--panel"),"stroke-width":"2.4"});t.textContent=e.label;s.append(t);}});
+  const SHORT={"bio:il23":"IL-23","bio:il23r":"IL-23R","bio:tyk2":"TYK2","bio:jak2":"JAK2","bio:stat3":"STAT3","bio:rorgt":"RORγt","bio:th17":"Th17","bio:il17":"IL-17","bio:il17r":"IL-17RA","bio:nfkb":"NF-κB","bio:kera":"kerat."};
+  Object.keys(POS).forEach(id=>{const n=N[id];if(!n)return;const [nx,ny]=P(id),kind=n.attrs.kind;
+    const col=kind=="receptor"?css("--s3"):(kind=="intracellular"?css("--s7"):css("--bio"));
+    const g=svgEl("g");g.style.cursor="pointer";g.onclick=()=>openModal(id);
+    let shp; if(kind=="receptor")shp=svgEl("rect",{x:nx-17,y:ny-12,width:34,height:24,rx:6});
+    else if(kind=="intracellular")shp=svgEl("rect",{x:nx-16,y:ny-12,width:32,height:24,rx:3});
+    else shp=svgEl("ellipse",{cx:nx,cy:ny,rx:17,ry:12});
+    shp.setAttribute("fill",col);shp.setAttribute("stroke",css("--paper"));shp.setAttribute("stroke-width","1.5");shp.setAttribute("filter","url(#nodeshadow)");g.append(shp);
+    const t=svgEl("text",{x:nx,y:ny+3,"text-anchor":"middle","font-size":"7.5","font-weight":"700",fill:"#fff"});t.textContent=SHORT[id]||n.label;g.append(t);s.append(g);});
+  c.append(s);
+  c.append(el("div",{cls:"lg",html:'IL-23 engages its receptor → <b>TYK2/JAK2</b> phosphorylate <b>STAT3</b> → <b>RORγt</b> locks in Th17 identity; IL-17 &amp; TNF drive <b>NF-κB</b> in keratinocytes. Click any node for the science.'}));
+  p.append(c);CANVAS.append(p);
 }
 
 /* ---------- entity shapes + ER popup (reused) ---------- */
@@ -533,6 +663,6 @@ function tracePath(){const rib=document.getElementById("ribbon");
 document.getElementById("ptrace").onclick=tracePath;
 document.getElementById("pin2").addEventListener("keydown",e=>{if(e.key==="Enter")tracePath();});
 
-function rebuild(){[...CANVAS.querySelectorAll(".block,.panel,.mast,.node")].forEach(n=>n.remove());buildSchematic();buildBlocks();buildPanels();requestAnimationFrame(drawConnectors);}
+function rebuild(){[...CANVAS.querySelectorAll(".block,.panel,.mast,.node,.bandlabel")].forEach(n=>n.remove());buildSchematic();buildBlocks();buildPanels();requestAnimationFrame(drawConnectors);}
 rebuild(); fit();
 </script></body></html>
