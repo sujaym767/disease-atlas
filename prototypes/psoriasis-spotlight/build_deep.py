@@ -48,8 +48,10 @@ ROSTER = [
  D("sonelokimab","—","MoonLake Immunotherapeutics","il17","IL-17A/F inhibitor","IL17A","protein","phase2","SC","q8w",note="IL-17A/F Nanobody (M-1095); Ph2 MIRA in PsO, sponsor prioritizing HS",p90=80),
  D("brodalumab","Siliq","Bausch Health","il17","IL-17RA inhibitor","IL17RA","mAb","approved","SC","q2w",2017,p75=86,p90=70,p100=44,note="boxed warning (suicidal ideation)"),
  D("izokibep","—","ACELYRIN / Alumis","il17","IL-17A (small protein)","IL17A","protein","phase2","SC","q2w",note="IL-17A affibody; derm development deprioritized (2024)"),
- D("DC-806","—","LEO Pharma (DICE)","il17","Oral IL-17 inhibitor","IL17A","small_molecule","phase1","PO","QD",note="oral IL-17A antagonist"),
+ D("DC-806","—","Eli Lilly (DICE)","il17","Oral IL-17 inhibitor","IL17A","small_molecule","phase1","PO","QD",note="oral IL-17A antagonist"),
+ D("DC-853","—","Eli Lilly (DICE)","il17","Oral IL-17 inhibitor","IL17A","small_molecule","preclinical","PO","QD",note="next-gen oral IL-17A"),
  D("CJM-112","—","Novartis","il17","IL-17A inhibitor","IL17A","mAb","phase1","SC","—"),
+ D("LEO-153339","—","LEO Pharma / UNION","il17","Oral IL-17 inhibitor","IL17A","small_molecule","preclinical","PO","QD",note="oral IL-17 program"),
  # ---- TNF ----
  D("adalimumab","Humira","AbbVie","tnf","TNF inhibitor","TNF","mAb","approved","SC","q2w",2008,sales=4540,syr=2025,bios="biosimilars from 2023 (US); sales collapsed from ~$21B peak",p75=71,p90=45,p100=17),
  D("etanercept","Enbrel","Amgen","tnf","TNF inhibitor","TNF","protein","approved","SC","weekly",2004,sales=2200,syr=2025,bios="biosimilars in EU; none in US (patents ~2029)",p75=44,p90=21,p100=4),
@@ -106,6 +108,9 @@ SOURCES=[
  {"id":"ctgov","type":"api","name":"ClinicalTrials.gov","title":"Interventional psoriasis trials (901, live pull)","url":"https://clinicaltrials.gov/","accessed":"2026-07-23"},
  {"id":"fda","type":"label","name":"openFDA / Drugs@FDA","title":"FDA approvals, classes & boxed warnings","url":"https://www.accessdata.fda.gov/scripts/cder/daf/","accessed":"2026-07-23"},
  {"id":"xtalks","type":"web","name":"Xtalks","title":"Top-selling immunology drugs — sales","url":"https://xtalks.com/top-10-best-selling-immunology-drugs-by-recent-sales-data-4025/","accessed":"2026-07-23"},
+ {"id":"npf","type":"web","name":"National Psoriasis Foundation","title":"Psoriasis statistics / prevalence","url":"https://www.psoriasis.org/psoriasis-statistics/","accessed":"2026-07-23"},
+ {"id":"gbd","type":"publication","name":"GBD 2019","title":"Global burden of psoriasis","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC8716585/","accessed":"2026-07-23"},
+ {"id":"usprev","type":"publication","name":"JAMA Dermatol","title":"Psoriasis prevalence in US adults","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC8246333/","accessed":"2026-07-23"},
  {"id":"armstrong","type":"publication","name":"Armstrong 2020 (JAMA Dermatol NMA)","title":"Comparative efficacy (PASI 90) network meta-analysis, 60 trials","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC7042876/","accessed":"2026-07-23"},
  {"id":"cochrane","type":"publication","name":"Cochrane NMA (Sbidian 2023)","title":"Systemic psoriasis therapies — efficacy & safety NMA","url":"https://pubmed.ncbi.nlm.nih.gov/37436070/","accessed":"2026-07-23"},
  {"id":"jnj_icotyde","type":"web","name":"Johnson & Johnson","title":"FDA approval of ICOTYDE (icotrokinra), Mar 2026","url":"https://www.jnj.com/media-center/press-releases/fda-approval-of-icotyde-icotrokinra-ushers-in-new-era-for-first-line-systemic-treatment-of-plaque-psoriasis-with-a-targeted-oral-peptide","accessed":"2026-07-23"},
@@ -154,6 +159,38 @@ CAT=[
  ("2031","Tremfya (guselkumab) US patent expiry (proj.)","patent_expiry","Johnson & Johnson","guselkumab","IL-23 franchise exclusivity.","dpw"),
  ("2033","Skyrizi (risankizumab) basic patent expiry (proj.)","patent_expiry","AbbVie","risankizumab","Longest runway of the IL-23 class; AbbVie's post-Humira anchor.","dpw"),
 ]
+
+# --- patient burden / epidemiology ---
+EPI={
+ "headline":"~125M worldwide · ~7.5M US adults · ~20% moderate-to-severe",
+ "stats":[("~125M","Worldwide (2–3% of population)","npf"),("~7.5M","US adults (3.0%)","npf"),
+   ("~20%","Moderate-to-severe (systemic-eligible)","npf"),("~30%","Develop psoriatic arthritis","gbd"),
+   ("~600k","US adults undiagnosed","npf"),("4.3%","Peak prevalence (age 50–59)","npf")],
+ "comorbidities":"Elevated cardiovascular, metabolic-syndrome, IBD and depression risk; psoriatic arthritis in ~30%.",
+ "journey":["Onset (bimodal ~20s & ~50s) → clinical diagnosis, often delayed","Topicals ± phototherapy for mild disease",
+   "Step-up to oral systemics / biologics for moderate-to-severe","Biologic maintenance; switching on loss of response / comorbidity"],
+ "unmet":"Large share of moderate-to-severe patients remain untreated or under-treated (cost, access, injection aversion). Durable drug-free remission and hard-to-treat sites remain the key gaps.",
+ "sources":["npf","gbd","usprev"] if False else ["npf","gbd"],
+}
+# --- hard-to-treat sites / special populations ---
+SITES=[
+ ("Scalp","~45–80% of patients","High-visibility, itch-driven; foams/solutions; a common driver of systemic step-up."),
+ ("Nails","~50% (lifetime)","Slow to respond; often needs systemic therapy; predicts psoriatic arthritis."),
+ ("Palmoplantar","~12–16%","Painful, disabling, frequently refractory to standard therapy."),
+ ("Genital / inverse","~30–60% (genital ever)","Major QoL impact; sensitive-site tolerability; historically understudied."),
+ ("Pediatric","~1% of children","Growing label set (etanercept, ustekinumab, ixekizumab, secukinumab, apremilast, icotrokinra ≥12)."),
+]
+# --- deal flow (Deal nodes + edges) ---
+DEALS=[
+ ("Takeda","Nimbus Therapeutics","zasocitinib","$4.0B upfront",2023,"acquisition","Oral TYK2 TAK-279 acquired from Nimbus."),
+ ("Amgen","Celgene / BMS","apremilast","$13.4B",2019,"acquisition","Otezla divested during the BMS–Celgene merger."),
+ ("Johnson & Johnson","Protagonist Therapeutics","icotrokinra","co-development",2017,"licensing","Oral IL-23R peptide JNJ-2113."),
+ ("Organon","Dermavant","tapinarof","~$1.2B",2024,"acquisition","Topical AhR agonist Vtama."),
+ ("Alumis","ACELYRIN","izokibep",  "all-stock merger",2025,"merger","Combined oral-immunology pipelines (ESK-001 + izokibep)."),
+ ("Eli Lilly","DICE Therapeutics","DC-806","$2.4B",2023,"acquisition","Oral IL-17 antagonist platform."),
+]
+# --- schematic anchor per mechanism family (IL-23/IL-17 cascade node) ---
+ANCHOR={"il23":"il23","il17":"il17","tnf":"tnf","kinase":"tyk2","pde4":"pde4","topical":"kera","steroid":"kera","conv":"tcell","novel":"tcell","hist":"tcell"}
 
 nodes={}; edges=[]
 def node(nid,ntype,label,attrs=None,sources=None):
@@ -206,13 +243,24 @@ for i,(date,event,kind,comp,asset,sig,src) in enumerate(CAT,1):
     did="drug:"+slug(asset)
     if did in nodes: edge("HAS_CATALYST",did,cid)
 
+# deals (deal-flow) -> Deal nodes + PARTY_TO (acquirer) + INVOLVES (asset)
+for i,(acq,cp,asset,val,yr,kind,note) in enumerate(DEALS,1):
+    dl=node(f"deal:d{i}","Deal",f"{acq} ← {cp}",{"value":val,"year":yr,"kind":kind,"note":note,"counterparty":cp,"acquirer":acq})
+    a=company(acq)
+    if a: edge("PARTY_TO",a,dl,{"role":"acquirer"})
+    dr="drug:"+slug(asset)
+    if dr in nodes: edge("INVOLVES",dl,dr)
+
 graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026-07-23","as_of":"July 2026",
     "one_liner":"Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market shifting to oral targeted therapy.",
     "sales_note":"Product sales are most-recent full-year (FY2025) company-reported franchise totals across ALL indications — not psoriasis-only. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.",
     "headline_stats":[
       {"label":"Worldwide prevalence","value":"~125M"},{"label":"US adults","value":"~7.5M"},
       {"label":"Global market (2024)","value":"$27–33B"},{"label":"Assets mapped","value":str(len(ROSTER))}]},
-    "families":[{"key":k,"label":l,"colorVar":c,"order":o} for k,(l,c,o) in FAM.items()],
+    "families":[{"key":k,"label":l,"colorVar":c,"order":o,"anchor":ANCHOR.get(k,"tcell")} for k,(l,c,o) in FAM.items()],
+    "epi":EPI,
+    "sites":[{"site":s,"prev":p,"note":n} for s,p,n in SITES],
+    "deals":[{"acquirer":a,"counterparty":cp,"asset":asset,"value":v,"year":y,"kind":k,"note":nt} for a,cp,asset,v,y,k,nt in DEALS],
     "nodes":list(nodes.values()),"edges":edges,"sources":SOURCES}
 json.dump(graph,open(os.path.join(HERE,"graph.json"),"w",encoding="utf-8"),indent=2,ensure_ascii=False)
 from collections import Counter

@@ -1,11 +1,11 @@
 # Spotlight Atlas — interactive prototype (plaque psoriasis)
 
-A **presentation prototype** in the visual language of an RA-Capital landscape *poster*, made interactive. The main canvas stays a clean, dense, printed-map view; all the entity-relationship complexity lives in a **large ER-diagram popup** that opens when you click any entity — so the map never turns into a hairball.
+A **presentation prototype** built as a single **wall-poster on a zoom/pan canvas** (in the spirit of the RA-Capital landscape maps), made interactive. The pipeline hangs off a **central biology schematic**; all entity-relationship complexity lives in a **large ER-diagram popup** on click — so the map stays a clean poster and never becomes a hairball.
 
-**Open [`index.html`](index.html)** (self-contained, offline). Previews: [poster](preview_poster.png) · [ER popup — drug](preview_er_drug.png) · [ER popup — mechanism](preview_er_mechanism.png).
+**Open [`index.html`](index.html)** (self-contained, offline). Drag to pan, scroll to zoom, click any entity. Previews: [poster](preview_poster.png) · [ER popup — drug](preview_er_drug.png) · [ER popup — deal](preview_er_deal.png).
 
-## The poster (main canvas)
-Cream paper, condensed masthead, and the pipeline organised into labelled **regions** (IL-23/IL-17 core → oral targeted → TNF & conventional → topical → novel/withdrawn). Each region holds flat **mechanism blocks**; each block lists its drugs as dense rows with a **clinical-stage code** gutter (`M` marketed · `III/II/I` phase · `✕` discontinued) and a compact meta line (company · route + dosing · PASI 90 · FY2025 sales), plus `B` biosimilar / `+` combo / `⚠` boxed-warning markers. A right rail carries RA-style annotations: **market**, a **PASI-90 benchmark**, a dated **catalysts & exclusivity** timeline, top companies, and the legend.
+## The poster (single canvas)
+A cream-paper canvas anchored by the **IL-23 / IL-17 immune cascade** schematic in the centre (dendritic cell → IL-23 → Th17 → IL-17A/F → keratinocyte → plaque, with clickable cytokine/target anchor nodes and intracellular TYK2). Each **mechanism block** sits at the edge and is joined to *its point of action on the schematic* by a colour-coded elbow connector — so you read the biology and the drugs that engage it together. Blocks list drugs as dense rows: a **clinical-stage-code** gutter (`M` marketed · `III/II/I` phase · `P` preclin · `✕` disc.) + a compact meta line (company · route+dosing · PASI 90 · FY2025 sales) + `B`/`+`/`⚠` markers. Data panels are tucked into the corners like the real thing: **patient burden**, **market**, a **PASI-90 benchmark**, **hard-to-treat sites & populations**, a dated **catalysts & exclusivity** timeline, **deal-flow**, and the **legend**.
 
 ## The ER popup (click anything)
 Click a drug, company, mechanism, or target → a large modal opens with, on the left, the entity's **brief description + key facts** (phase, sales, PASI, route/dose, class safety, sources) and, on the right, an **entity-relationship diagram**:
@@ -32,4 +32,4 @@ python build_deep.py && python build.py
 See [`docs/data-model.md`](../../docs/data-model.md) for the graph model and the therapeutic-area vs. indication distinction.
 
 ## Status
-Prototype for **ideation**. Rough edges: a few pipeline sales/PASI values are approximate; a mechanistic pathway schematic and site-level segmentation (scalp/nail/palmoplantar/genital) are not built yet; the therapeutic-area (multi-indication) view is a different poster layout, not built here.
+Prototype for **ideation**. Now on a single zoom/pan canvas with the central IL-23/IL-17 **schematic**, **hard-to-treat-site** segmentation, **deal-flow**, and a **patient-burden** panel; the ER popup gained deal relationships (★). Rough edges: connectors are smooth curves (not crisp orthogonal elbows) and the fixed layout is hand-tuned, so it isn't responsive; a few sales/PASI values are approximate; the therapeutic-area (multi-indication) view is a different poster layout, not built here.

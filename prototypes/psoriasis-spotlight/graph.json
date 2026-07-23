@@ -21,7 +21,7 @@
       },
       {
         "label": "Assets mapped",
-        "value": "55"
+        "value": "57"
       }
     ]
   },
@@ -30,61 +30,201 @@
       "key": "il23",
       "label": "IL-23 / Th17 axis",
       "colorVar": "--s1",
-      "order": 1
+      "order": 1,
+      "anchor": "il23"
     },
     {
       "key": "il17",
       "label": "IL-17 axis",
       "colorVar": "--s2",
-      "order": 2
+      "order": 2,
+      "anchor": "il17"
     },
     {
       "key": "tnf",
       "label": "TNF inhibitors",
       "colorVar": "--s5",
-      "order": 3
+      "order": 3,
+      "anchor": "tnf"
     },
     {
       "key": "kinase",
       "label": "Oral kinase inhibitors (TYK2 / JAK)",
       "colorVar": "--s3",
-      "order": 4
+      "order": 4,
+      "anchor": "tyk2"
     },
     {
       "key": "pde4",
       "label": "PDE4 inhibitors",
       "colorVar": "--s7",
-      "order": 5
+      "order": 5,
+      "anchor": "pde4"
     },
     {
       "key": "topical",
       "label": "Topical non-steroidal",
       "colorVar": "--s4",
-      "order": 6
+      "order": 6,
+      "anchor": "kera"
     },
     {
       "key": "steroid",
       "label": "Topical corticosteroids",
       "colorVar": "--sN",
-      "order": 7
+      "order": 7,
+      "anchor": "kera"
     },
     {
       "key": "conv",
       "label": "Conventional systemics",
       "colorVar": "--s8",
-      "order": 8
+      "order": 8,
+      "anchor": "tcell"
     },
     {
       "key": "novel",
       "label": "Novel / emerging mechanisms",
       "colorVar": "--s6",
-      "order": 9
+      "order": 9,
+      "anchor": "tcell"
     },
     {
       "key": "hist",
       "label": "Withdrawn / discontinued",
       "colorVar": "--sN",
-      "order": 10
+      "order": 10,
+      "anchor": "tcell"
+    }
+  ],
+  "epi": {
+    "headline": "~125M worldwide · ~7.5M US adults · ~20% moderate-to-severe",
+    "stats": [
+      [
+        "~125M",
+        "Worldwide (2–3% of population)",
+        "npf"
+      ],
+      [
+        "~7.5M",
+        "US adults (3.0%)",
+        "npf"
+      ],
+      [
+        "~20%",
+        "Moderate-to-severe (systemic-eligible)",
+        "npf"
+      ],
+      [
+        "~30%",
+        "Develop psoriatic arthritis",
+        "gbd"
+      ],
+      [
+        "~600k",
+        "US adults undiagnosed",
+        "npf"
+      ],
+      [
+        "4.3%",
+        "Peak prevalence (age 50–59)",
+        "npf"
+      ]
+    ],
+    "comorbidities": "Elevated cardiovascular, metabolic-syndrome, IBD and depression risk; psoriatic arthritis in ~30%.",
+    "journey": [
+      "Onset (bimodal ~20s & ~50s) → clinical diagnosis, often delayed",
+      "Topicals ± phototherapy for mild disease",
+      "Step-up to oral systemics / biologics for moderate-to-severe",
+      "Biologic maintenance; switching on loss of response / comorbidity"
+    ],
+    "unmet": "Large share of moderate-to-severe patients remain untreated or under-treated (cost, access, injection aversion). Durable drug-free remission and hard-to-treat sites remain the key gaps.",
+    "sources": [
+      "npf",
+      "gbd"
+    ]
+  },
+  "sites": [
+    {
+      "site": "Scalp",
+      "prev": "~45–80% of patients",
+      "note": "High-visibility, itch-driven; foams/solutions; a common driver of systemic step-up."
+    },
+    {
+      "site": "Nails",
+      "prev": "~50% (lifetime)",
+      "note": "Slow to respond; often needs systemic therapy; predicts psoriatic arthritis."
+    },
+    {
+      "site": "Palmoplantar",
+      "prev": "~12–16%",
+      "note": "Painful, disabling, frequently refractory to standard therapy."
+    },
+    {
+      "site": "Genital / inverse",
+      "prev": "~30–60% (genital ever)",
+      "note": "Major QoL impact; sensitive-site tolerability; historically understudied."
+    },
+    {
+      "site": "Pediatric",
+      "prev": "~1% of children",
+      "note": "Growing label set (etanercept, ustekinumab, ixekizumab, secukinumab, apremilast, icotrokinra ≥12)."
+    }
+  ],
+  "deals": [
+    {
+      "acquirer": "Takeda",
+      "counterparty": "Nimbus Therapeutics",
+      "asset": "zasocitinib",
+      "value": "$4.0B upfront",
+      "year": 2023,
+      "kind": "acquisition",
+      "note": "Oral TYK2 TAK-279 acquired from Nimbus."
+    },
+    {
+      "acquirer": "Amgen",
+      "counterparty": "Celgene / BMS",
+      "asset": "apremilast",
+      "value": "$13.4B",
+      "year": 2019,
+      "kind": "acquisition",
+      "note": "Otezla divested during the BMS–Celgene merger."
+    },
+    {
+      "acquirer": "Johnson & Johnson",
+      "counterparty": "Protagonist Therapeutics",
+      "asset": "icotrokinra",
+      "value": "co-development",
+      "year": 2017,
+      "kind": "licensing",
+      "note": "Oral IL-23R peptide JNJ-2113."
+    },
+    {
+      "acquirer": "Organon",
+      "counterparty": "Dermavant",
+      "asset": "tapinarof",
+      "value": "~$1.2B",
+      "year": 2024,
+      "kind": "acquisition",
+      "note": "Topical AhR agonist Vtama."
+    },
+    {
+      "acquirer": "Alumis",
+      "counterparty": "ACELYRIN",
+      "asset": "izokibep",
+      "value": "all-stock merger",
+      "year": 2025,
+      "kind": "merger",
+      "note": "Combined oral-immunology pipelines (ESK-001 + izokibep)."
+    },
+    {
+      "acquirer": "Eli Lilly",
+      "counterparty": "DICE Therapeutics",
+      "asset": "DC-806",
+      "value": "$2.4B",
+      "year": 2023,
+      "kind": "acquisition",
+      "note": "Oral IL-17 antagonist platform."
     }
   ],
   "nodes": [
@@ -848,9 +988,9 @@
       ]
     },
     {
-      "id": "company:leo-pharma-dice",
+      "id": "company:eli-lilly-dice",
       "type": "Company",
-      "label": "LEO Pharma (DICE)",
+      "label": "Eli Lilly (DICE)",
       "attrs": {
         "type": "company"
       },
@@ -862,6 +1002,29 @@
       "label": "small_molecule",
       "attrs": {},
       "sources": []
+    },
+    {
+      "id": "drug:dc-853",
+      "type": "Drug",
+      "label": "DC-853",
+      "attrs": {
+        "brand": "—",
+        "sub": "Oral IL-17 inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "next-gen oral IL-17A",
+        "mod": "small_molecule",
+        "highest_phase": "preclinical",
+        "phase_num": 0,
+        "modality": "small_molecule",
+        "moa_family": "IL-17 axis",
+        "sub_class": "Oral IL-17 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
     },
     {
       "id": "drug:cjm-112",
@@ -884,6 +1047,38 @@
       "sources": [
         "ot"
       ]
+    },
+    {
+      "id": "drug:leo-153339",
+      "type": "Drug",
+      "label": "LEO-153339",
+      "attrs": {
+        "brand": "—",
+        "sub": "Oral IL-17 inhibitor",
+        "route": "PO",
+        "dose": "QD",
+        "combo": false,
+        "disc": false,
+        "note": "oral IL-17 program",
+        "mod": "small_molecule",
+        "highest_phase": "preclinical",
+        "phase_num": 0,
+        "modality": "small_molecule",
+        "moa_family": "IL-17 axis",
+        "sub_class": "Oral IL-17 inhibitor"
+      },
+      "sources": [
+        "ot"
+      ]
+    },
+    {
+      "id": "company:leo-pharma-union",
+      "type": "Company",
+      "label": "LEO Pharma / UNION",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
     },
     {
       "id": "drug:adalimumab",
@@ -2352,6 +2547,99 @@
       "sources": [
         "dpw"
       ]
+    },
+    {
+      "id": "deal:d1",
+      "type": "Deal",
+      "label": "Takeda ← Nimbus Therapeutics",
+      "attrs": {
+        "value": "$4.0B upfront",
+        "year": 2023,
+        "kind": "acquisition",
+        "note": "Oral TYK2 TAK-279 acquired from Nimbus.",
+        "counterparty": "Nimbus Therapeutics",
+        "acquirer": "Takeda"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d2",
+      "type": "Deal",
+      "label": "Amgen ← Celgene / BMS",
+      "attrs": {
+        "value": "$13.4B",
+        "year": 2019,
+        "kind": "acquisition",
+        "note": "Otezla divested during the BMS–Celgene merger.",
+        "counterparty": "Celgene / BMS",
+        "acquirer": "Amgen"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d3",
+      "type": "Deal",
+      "label": "Johnson & Johnson ← Protagonist Therapeutics",
+      "attrs": {
+        "value": "co-development",
+        "year": 2017,
+        "kind": "licensing",
+        "note": "Oral IL-23R peptide JNJ-2113.",
+        "counterparty": "Protagonist Therapeutics",
+        "acquirer": "Johnson & Johnson"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d4",
+      "type": "Deal",
+      "label": "Organon ← Dermavant",
+      "attrs": {
+        "value": "~$1.2B",
+        "year": 2024,
+        "kind": "acquisition",
+        "note": "Topical AhR agonist Vtama.",
+        "counterparty": "Dermavant",
+        "acquirer": "Organon"
+      },
+      "sources": []
+    },
+    {
+      "id": "company:organon",
+      "type": "Company",
+      "label": "Organon",
+      "attrs": {
+        "type": "company"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d5",
+      "type": "Deal",
+      "label": "Alumis ← ACELYRIN",
+      "attrs": {
+        "value": "all-stock merger",
+        "year": 2025,
+        "kind": "merger",
+        "note": "Combined oral-immunology pipelines (ESK-001 + izokibep).",
+        "counterparty": "ACELYRIN",
+        "acquirer": "Alumis"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d6",
+      "type": "Deal",
+      "label": "Eli Lilly ← DICE Therapeutics",
+      "attrs": {
+        "value": "$2.4B",
+        "year": 2023,
+        "kind": "acquisition",
+        "note": "Oral IL-17 antagonist platform.",
+        "counterparty": "DICE Therapeutics",
+        "acquirer": "Eli Lilly"
+      },
+      "sources": []
     }
   ],
   "edges": [
@@ -2943,7 +3231,7 @@
     {
       "type": "DEVELOPED_BY",
       "source": "drug:dc-806",
-      "target": "company:leo-pharma-dice",
+      "target": "company:eli-lilly-dice",
       "attrs": {}
     },
     {
@@ -2976,6 +3264,45 @@
     {
       "type": "SERVES",
       "source": "drug:dc-806",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:dc-853",
+      "target": "company:eli-lilly-dice",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:dc-853",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:dc-853",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "preclinical",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:dc-853",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:dc-853",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:dc-853",
       "target": "seg:modsev",
       "attrs": {}
     },
@@ -3015,6 +3342,45 @@
     {
       "type": "SERVES",
       "source": "drug:cjm-112",
+      "target": "seg:modsev",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_BY",
+      "source": "drug:leo-153339",
+      "target": "company:leo-pharma-union",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MECHANISM",
+      "source": "drug:leo-153339",
+      "target": "moa:il17",
+      "attrs": {}
+    },
+    {
+      "type": "DEVELOPED_IN",
+      "source": "drug:leo-153339",
+      "target": "ind:plaque-psoriasis",
+      "attrs": {
+        "phase": "preclinical",
+        "approved": false
+      }
+    },
+    {
+      "type": "HITS",
+      "source": "drug:leo-153339",
+      "target": "target:IL17A",
+      "attrs": {}
+    },
+    {
+      "type": "HAS_MODALITY",
+      "source": "drug:leo-153339",
+      "target": "modality:small-molecule",
+      "attrs": {}
+    },
+    {
+      "type": "SERVES",
+      "source": "drug:leo-153339",
       "target": "seg:modsev",
       "attrs": {}
     },
@@ -4589,6 +4955,90 @@
       "source": "drug:risankizumab",
       "target": "catalyst:c11",
       "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:takeda",
+      "target": "deal:d1",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d1",
+      "target": "drug:zasocitinib",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:amgen",
+      "target": "deal:d2",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d2",
+      "target": "drug:apremilast",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:johnson-johnson",
+      "target": "deal:d3",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d3",
+      "target": "drug:icotrokinra",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:organon",
+      "target": "deal:d4",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d4",
+      "target": "drug:tapinarof",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:alumis",
+      "target": "deal:d5",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d5",
+      "target": "drug:izokibep",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:eli-lilly",
+      "target": "deal:d6",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d6",
+      "target": "drug:dc-806",
+      "attrs": {}
     }
   ],
   "sources": [
@@ -4622,6 +5072,30 @@
       "name": "Xtalks",
       "title": "Top-selling immunology drugs — sales",
       "url": "https://xtalks.com/top-10-best-selling-immunology-drugs-by-recent-sales-data-4025/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "npf",
+      "type": "web",
+      "name": "National Psoriasis Foundation",
+      "title": "Psoriasis statistics / prevalence",
+      "url": "https://www.psoriasis.org/psoriasis-statistics/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "gbd",
+      "type": "publication",
+      "name": "GBD 2019",
+      "title": "Global burden of psoriasis",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8716585/",
+      "accessed": "2026-07-23"
+    },
+    {
+      "id": "usprev",
+      "type": "publication",
+      "name": "JAMA Dermatol",
+      "title": "Psoriasis prevalence in US adults",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8246333/",
       "accessed": "2026-07-23"
     },
     {
