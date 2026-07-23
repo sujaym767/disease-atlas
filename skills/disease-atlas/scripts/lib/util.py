@@ -88,7 +88,7 @@ def ctgov_phase_to_schema(phases: list[str] | None) -> str:
 
 
 def opentargets_phase_to_schema(phase) -> str:
-    """Open Targets clinical `phase` (0-4, may be float) -> schema phase string."""
+    """Open Targets numeric clinical `phase` (0-4, may be float) -> schema phase string."""
     try:
         p = float(phase)
     except (TypeError, ValueError):
@@ -102,6 +102,26 @@ def opentargets_phase_to_schema(phase) -> str:
     if p >= 1:
         return "phase1"
     return "preclinical"
+
+
+# Open Targets `maxClinicalStage` enum (drugAndClinicalCandidates) -> schema phase string
+_OT_STAGE = {
+    "APPROVAL": "approved",
+    "PREAPPROVAL": "filed",
+    "PHASE_4": "approved",
+    "PHASE_3": "phase3",
+    "PHASE_2_3": "phase2_3",
+    "PHASE_2": "phase2",
+    "PHASE_1_2": "phase1_2",
+    "PHASE_1": "phase1",
+    "EARLY_PHASE_1": "phase1",
+    "PRECLINICAL": "preclinical",
+    "UNKNOWN": "preclinical",
+}
+
+
+def opentargets_stage_to_schema(stage) -> str:
+    return _OT_STAGE.get(str(stage or "").upper(), "preclinical")
 
 
 def phase_num(phase_str: str) -> float:

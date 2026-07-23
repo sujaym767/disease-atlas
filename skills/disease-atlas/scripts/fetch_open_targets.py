@@ -33,7 +33,7 @@ query Search($q: String!) {
 }"""
 
 DATA_Q = """
-query Atlas($efo: String!, $size: Int!) {
+query Atlas($efo: String!) {
   disease(efoId: $efo) {
     id
     name
@@ -42,13 +42,18 @@ query Atlas($efo: String!, $size: Int!) {
       count
       rows { score target { id approvedSymbol approvedName } }
     }
-    knownDrugs(size: $size) {
+    drugAndClinicalCandidates {
       count
       rows {
-        drugId prefName drugType mechanismOfAction phase status
-        targetId target { approvedSymbol }
-        ctIds
-        disease { id name }
+        maxClinicalStage
+        drug {
+          id
+          name
+          drugType
+          mechanismsOfAction {
+            rows { mechanismOfAction actionType targets { approvedSymbol } }
+          }
+        }
       }
     }
   }
@@ -68,52 +73,49 @@ def resolve(disease: str) -> list[dict]:
 
 
 def _roll_up_drugs(rows: list[dict]):
-    """Dedupe knownDrugs rows into drug-level assets and mechanism-of-action groups."""
+    """Dedupe drugAndClinicalCandidates rows into drug-level assets and MoA groups.
+
+    Each row = one drug with a disease-specific `maxClinicalStage`; the drug carries one
+    or more mechanisms of action (each with target symbols).
+    """
     drugs: dict[str, dict] = {}
     moa: dict[str, dict] = {}
     for r in rows:
-        did = r.get("drugId") or r.get("prefName")
+        drug = r.get("drug") or {}
+        did = drug.get("id") or drug.get("name")
         if not did:
             continue
-        phase_schema = util.opentargets_phase_to_schema(r.get("phase"))
-        mech = (r.get("mechanismOfAction") or "").strip() or "Unspecified mechanism"
-        tgt = (r.get("target") or {}).get("approvedSymbol")
+        phase_schema = util.opentargets_stage_to_schema(r.get("maxClinicalStage"))
+        moa_rows = ((drug.get("mechanismsOfAction") or {}).get("rows")) or []
+        mechanisms = [m.get("mechanismOfAction") for m in moa_rows if m.get("mechanismOfAction")]
+        targets = sorted({t.get("approvedSymbol") for m in moa_rows for t in (m.get("targets") or []) if t.get("approvedSymbol")})
 
         d = drugs.setdefault(did, {
-            "drug_id": did, "name": r.get("prefName"), "drug_type": r.get("drugType"),
-            "phase": "preclinical", "status": r.get("status"),
-            "mechanisms": set(), "targets": set(), "indications": set(), "ct_ids": set(),
+            "drug_id": did, "name": drug.get("name"), "drug_type": drug.get("drugType"),
+            "phase": "preclinical", "mechanisms": set(), "targets": set(),
         })
         d["phase"] = util.max_phase(d["phase"], phase_schema)
-        if r.get("mechanismOfAction"):
-            d["mechanisms"].add(r["mechanismOfAction"])
-        if tgt:
-            d["targets"].add(tgt)
-        ind = (r.get("disease") or {}).get("name")
-        if ind:
-            d["indications"].add(ind)
-        for c in (r.get("ctIds") or []):
-            d["ct_ids"].add(c)
+        d["mechanisms"].update(mechanisms)
+        d["targets"].update(targets)
 
-        m = moa.setdefault(mech, {
-            "mechanism": mech, "targets": set(), "drug_types": set(),
-            "phase": "preclinical", "drugs": set(),
-        })
-        m["phase"] = util.max_phase(m["phase"], phase_schema)
-        if tgt:
-            m["targets"].add(tgt)
-        if r.get("drugType"):
-            m["drug_types"].add(r["drugType"])
-        if r.get("prefName"):
-            m["drugs"].add(r["prefName"])
+        for mech in (mechanisms or ["Unspecified mechanism"]):
+            m = moa.setdefault(mech, {
+                "mechanism": mech, "targets": set(), "drug_types": set(),
+                "phase": "preclinical", "drugs": set(),
+            })
+            m["phase"] = util.max_phase(m["phase"], phase_schema)
+            m["targets"].update(targets)
+            if drug.get("drugType"):
+                m["drug_types"].add(drug["drugType"])
+            if drug.get("name"):
+                m["drugs"].add(drug["name"])
 
     drug_list = []
     for d in drugs.values():
         drug_list.append({
             "drug_id": d["drug_id"], "name": d["name"], "drug_type": d["drug_type"],
-            "phase": d["phase"], "phase_num": util.phase_num(d["phase"]), "status": d["status"],
+            "phase": d["phase"], "phase_num": util.phase_num(d["phase"]),
             "mechanisms": sorted(d["mechanisms"]), "targets": sorted(d["targets"]),
-            "indications": sorted(d["indications"])[:15], "ct_ids": sorted(d["ct_ids"])[:20],
         })
     drug_list.sort(key=lambda x: (-x["phase_num"], x["name"] or ""))
 
@@ -147,7 +149,7 @@ def fetch(disease: str | None, efo: str | None, size: int = 800) -> dict:
             efo = hits[0]["id"]
         result["efo_id"] = efo
 
-        data = _gql(DATA_Q, {"efo": efo, "size": size})
+        data = _gql(DATA_Q, {"efo": efo})
         dis = data.get("disease")
         if not dis:
             result["error"] = f"no Open Targets disease for {efo}"
@@ -157,6 +159,7 @@ def fetch(disease: str | None, efo: str | None, size: int = 800) -> dict:
         result["disease_name"] = dis.get("name")
         result["description"] = dis.get("description")
         at = dis.get("associatedTargets") or {}
+        result["targets_total"] = at.get("count")
         result["targets"] = [
             {"symbol": (row.get("target") or {}).get("approvedSymbol"),
              "name": (row.get("target") or {}).get("approvedName"),
@@ -164,9 +167,9 @@ def fetch(disease: str | None, efo: str | None, size: int = 800) -> dict:
              "association_score": round(row.get("score", 0), 4)}
             for row in at.get("rows", [])
         ]
-        kd = dis.get("knownDrugs") or {}
-        drugs, moa = _roll_up_drugs(kd.get("rows", []))
-        result["known_drugs_total"] = kd.get("count")
+        dac = dis.get("drugAndClinicalCandidates") or {}
+        drugs, moa = _roll_up_drugs(dac.get("rows", []))
+        result["drug_candidates_total"] = dac.get("count")
         result["drugs"] = drugs
         result["moa_groups"] = moa
         result["count"] = len(drugs)

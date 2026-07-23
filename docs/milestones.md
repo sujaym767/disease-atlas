@@ -13,10 +13,10 @@ Priorities will shift with what real atlases reveal — treat this as a living p
 - ✅ Repo structured as a project (`AGENTS.md`, `CLAUDE.md`, `docs/`, reference maps analyzed).
 - ✅ Vision and information model written (`docs/vision.md`).
 - ✅ `SKILL.md` + reference docs: blueprint (section spec), data-sources (public APIs), schema (`atlas.json`).
-- ✅ Core tooling: stdlib HTTP helper; fetchers for ClinicalTrials.gov, openFDA, Open Targets, PubMed/EuropePMC; `new_atlas.py`, `validate_atlas.py`, `render_atlas.py`; the HTML template. Fetcher transforms unit-tested against real-API-shaped payloads.
+- ✅ Core tooling: HTTP helper (curl-preferred, urllib fallback); fetchers for ClinicalTrials.gov, openFDA, Open Targets, PubMed/EuropePMC; `new_atlas.py`, `validate_atlas.py`, `render_atlas.py`; the HTML template. Transforms unit-tested against real-API-shaped payloads **and verified live against all four APIs**.
 - ✅ First atlas generated end-to-end (`examples/plaque-psoriasis/`), validated and rendered as a standalone HTML file — all 12 panels render, citations resolve, no JS errors.
 
-**Done when:** ✅ naming a disease produces a validated `atlas.json` and a self-contained `atlas_<disease>.html` that opens offline, with the overview, standard-of-care, MoA, and pipeline panels populated, every fact carrying a source. *(Demonstrated with psoriasis; note the example was built in an egress-restricted environment, so the live-API pull is exercised by unit tests + the fetchers themselves rather than a network run — re-run where the API hosts are allowlisted for a fully API-sourced snapshot.)*
+**Done when:** ✅ naming a disease produces a validated `atlas.json` and a self-contained `atlas_<disease>.html` that opens offline, with the overview, standard-of-care, MoA, and pipeline panels populated, every fact carrying a source. *(Demonstrated with psoriasis and corroborated by a live public-API pull — CT.gov 901 studies, Open Targets 946 targets / 167 drug candidates, openFDA labels — after allowlisting the API domains in the environment's network policy.)*
 
 ---
 

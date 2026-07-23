@@ -6,6 +6,22 @@ Each source below lists: base endpoint · what it's good for · which atlas pane
 
 > Environment: outbound HTTPS may go through a proxy (`HTTPS_PROXY`). `scripts/lib/http.py` respects proxy env vars and **verifies TLS** — never disable verification, never hardcode an API key (see the anti-patterns in `dbtips`; don't copy them).
 
+### Network requirements (important)
+
+The fetchers need outbound HTTPS to the API hosts below. On a locked-down environment (e.g. Claude Code on the web with **Trusted** network access, which only allows package registries + GitHub) these are **blocked with a 403 at the egress proxy** and the fetchers return empty with an `error`. The market/epidemiology path (Claude web search) still works because that traffic is Anthropic-side, not container egress.
+
+To enable the fetchers, set the environment's network access to **Full**, or to **Custom** with these **allowed domains** (keep the default package-manager list too):
+
+```
+clinicaltrials.gov
+api.fda.gov
+api.platform.opentargets.org
+www.ebi.ac.uk
+eutils.ncbi.nlm.nih.gov
+```
+
+**Transport note:** `lib/http.py` uses the system **`curl`** when present, falling back to `urllib`. This matters because ClinicalTrials.gov sits behind Akamai, which fingerprints and **403s the Python TLS client** even with browser-like headers, while accepting curl. curl is near-universal and already reads the proxy CA env vars; if it's absent, the other three APIs still work over urllib but CT.gov will 403.
+
 ## Table of contents
 - [Source → panel map](#source--panel-map)
 - [ClinicalTrials.gov API v2](#1-clinicaltrialsgov-api-v2) — pipeline, trials, sponsors
@@ -79,23 +95,24 @@ query ($efo: String!) {
 }
 ```
 
-**Step 3 — known drugs (drug × mechanism × phase):**
+**Step 3 — drugs & clinical candidates (drug × mechanism × stage):**
 ```graphql
 query ($efo: String!) {
   disease(efoId: $efo) {
-    knownDrugs(size: 500) {
+    drugAndClinicalCandidates {
+      count
       rows {
-        drugId prefName drugType phase status
-        mechanismOfAction
-        targetId  target { approvedSymbol }
-        disease { name }
-        ctIds
+        maxClinicalStage
+        drug {
+          id name drugType
+          mechanismsOfAction { rows { mechanismOfAction actionType targets { approvedSymbol } } }
+        }
       }
     }
   }
 }
 ```
-`drugType` → schema `modality`; `mechanismOfAction` + `target.approvedSymbol` → group into `moa_landscape` classes; `phase`/`status` → asset phase.
+> Schema note: Open Targets **removed the old `disease.knownDrugs` field**; the current field is `drugAndClinicalCandidates`, whose rows carry a disease-specific `maxClinicalStage` and a nested `drug` (with `mechanismsOfAction.rows[]`). `drugType` → schema `modality`; `mechanismOfAction` + `targets[].approvedSymbol` → group into `moa_landscape` classes; `maxClinicalStage` (`APPROVAL`/`PHASE_3`/…) → asset phase (see `util.opentargets_stage_to_schema`). Disease resolution returns EFO **and MONDO** ids — take the top disease hit and pass its id straight back in.
 
 ## 3. openFDA
 
