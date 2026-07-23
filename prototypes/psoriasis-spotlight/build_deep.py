@@ -191,14 +191,18 @@ SITES=[
  ("Genital / inverse","~30–60% (genital ever)","Major QoL impact; sensitive-site tolerability; historically understudied."),
  ("Pediatric","~1% of children","Growing label set (etanercept, ustekinumab, ixekizumab, secukinumab, apremilast, icotrokinra ≥12)."),
 ]
-# --- deal flow (Deal nodes + edges) ---
+# --- deal flow (Deal nodes + edges) ---  (acquirer, counterparty, asset, value, date, category, stage, note)
+# category ∈ {M&A, Licensing, Partnership}; stage = asset's development stage at deal time
 DEALS=[
- ("Takeda","Nimbus Therapeutics","zasocitinib","$4.0B upfront",2023,"acquisition","Oral TYK2 TAK-279 acquired from Nimbus."),
- ("Amgen","Celgene / BMS","apremilast","$13.4B",2019,"acquisition","Otezla divested during the BMS–Celgene merger."),
- ("Johnson & Johnson","Protagonist Therapeutics","icotrokinra","co-development",2017,"licensing","Oral IL-23R peptide JNJ-2113."),
- ("Organon","Dermavant","tapinarof","~$1.2B",2024,"acquisition","Topical AhR agonist Vtama."),
- ("Alumis","ACELYRIN","izokibep",  "all-stock merger",2025,"merger","Combined oral-immunology pipelines (ESK-001 + izokibep)."),
- ("Eli Lilly","DICE Therapeutics","DC-806","$2.4B",2023,"acquisition","Oral IL-17 antagonist platform."),
+ ("Bristol Myers Squibb","Celgene","deucravacitinib","$74B",  "2019-11","M&A","Clinical","Deucravacitinib (oral TYK2, then BMS-986165) entered BMS via the $74B Celgene acquisition."),
+ ("Amgen","Celgene / BMS","apremilast","$13.4B","2019-11","M&A","Marketed","Otezla (PDE4) was divested for antitrust clearance during the BMS–Celgene merger."),
+ ("Takeda","Nimbus Therapeutics","zasocitinib","$4.0B upfront +$2B milestones","2023-02","M&A","Clinical","Allosteric oral TYK2 TAK-279 acquired from Nimbus after strong Ph2b."),
+ ("Eli Lilly","DICE Therapeutics","DC-806","$2.4B","2023-08","M&A","Preclinical","Oral IL-17 antagonist platform (DELSCAPE) acquired for early oral biologics-alternatives."),
+ ("Organon","Dermavant","tapinarof","up to ~$1.2B","2024-10","M&A","Marketed","Topical AhR agonist Vtama acquired to build Organon's dermatology franchise."),
+ ("Alumis","ACELYRIN","ESK-001 / izokibep","all-stock merger","2025-02","M&A","Clinical","Merged next-gen oral-immunology pipelines (ESK-001 TYK2 + izokibep IL-17)."),
+ ("Johnson & Johnson","Protagonist Therapeutics","icotrokinra","co-development + royalties","2017-07","Licensing","Discovery","Oral IL-23R peptide (JNJ-2113) discovered by Protagonist, co-developed and commercialised by J&J."),
+ ("Sun Pharma","Merck (MSD)","tildrakizumab","$80M upfront + royalties","2014-09","Licensing","Clinical","Ex-license of the IL-23 p19 mAb (then MK-3222) to Sun for worldwide development."),
+ ("LEO Pharma","UNION therapeutics","orismilast","option / partnership","2021-01","Partnership","Clinical","Collaboration on next-gen PDE4 inhibition in inflammatory skin disease."),
 ]
 # --- schematic anchor per mechanism family (IL-23/IL-17 cascade node) ---
 ANCHOR={"il23":"il23","il17":"il17","tnf":"tnf","kinase":"tyk2","pde4":"pde4","topical":"kera","steroid":"kera","conv":"th17","novel":"th17","hist":"th17"}
@@ -364,6 +368,48 @@ TRIALS=[
  ("ICONIC-LEAD","icotrokinra","il23",2025,"Ph3","First oral IL-23R peptide; positioned as a first-line systemic.","iconic"),
 ]
 
+# --- trials in focus: the most strategically important programmes, with detail (CT.gov-style fields) ---
+# granular endpoint/eligibility/site data would be pulled live from ClinicalTrials.gov v2 by NCT id.
+TRIALS_FOCUS=[
+ {"name":"ICONIC-LEAD","drug":"icotrokinra","fam":"il23","sponsor":"Johnson & Johnson","phase":"Phase 3","status":"Reported → FDA-approved (2026)",
+  "endpoints":["IGA 0/1 at Week 16 vs placebo (co-primary)","PASI 90 at Week 16 vs placebo (co-primary)"],
+  "readout":"Positive topline (2025): ~65% IGA 0/1 and ~50–65% PASI 90 at Week 16 — first oral to approach injectable IL-23 efficacy.",
+  "start":"2023","end":"2025","inclusion":"Adults & adolescents ≥12 y; moderate-to-severe plaque psoriasis; candidate for systemic therapy or phototherapy.",
+  "sites":"Global, multi-country (part of the 6-study ICONIC Phase 3 programme)","kols":"Industry-sponsored; site investigators listed on ClinicalTrials.gov",
+  "significance":"Category-defining first-line ORAL IL-23R peptide — the pill that rivals a biologic."},
+ {"name":"Zasocitinib Phase 3 (TAK-279)","drug":"zasocitinib","fam":"kinase","sponsor":"Takeda","phase":"Phase 3","status":"Positive topline (Dec 2025); filing expected",
+  "endpoints":["PASI 90 at Week 16 vs placebo","sPGA 0/1 at Week 16 vs placebo"],
+  "readout":">50% PASI 90 and ~30% PASI 100 at Week 16 — best-in-class oral efficacy for a TYK2 inhibitor.",
+  "start":"2024","end":"2025","inclusion":"Adults ≥18 y; moderate-to-severe plaque psoriasis (BSA ≥10%, PASI ≥12, sPGA ≥3).",
+  "sites":"Global multi-country Phase 3 (two pivotal studies)","kols":"Industry-sponsored; site investigators on ClinicalTrials.gov",
+  "significance":"Next-gen oral TYK2 raising the oral bar toward biologic-level clearance."},
+ {"name":"ONWARD (ESK-001)","drug":"ESK-001","fam":"kinase","sponsor":"Alumis","phase":"Phase 3","status":"Positive topline (2026)",
+  "endpoints":["PASI 75 at Week 16","PASI 90 / sPGA 0/1 at Week 16"],
+  "readout":"~74% PASI 75 at Week 16; NDA planned H2 2026 — a competitive oral TYK2.",
+  "start":"2024","end":"2026","inclusion":"Adults ≥18 y; moderate-to-severe plaque psoriasis; systemic-therapy candidate.",
+  "sites":"Global Phase 3 (ONWARD programme)","kols":"Industry-sponsored; site investigators on ClinicalTrials.gov",
+  "significance":"BID oral TYK2 competing on depth and durability with deucravacitinib and zasocitinib."},
+ {"name":"BE VIVID / BE RADIANT (bimekizumab)","drug":"bimekizumab","fam":"il17","sponsor":"UCB","phase":"Phase 3 + long-term","status":"Approved; durability data maturing",
+  "endpoints":["PASI 100 at Week 16","Maintenance of PASI 100 through Week 48–144"],
+  "readout":"~60% PASI 100 at Week 16 with high maintenance — the deepest, most durable clearance to date.",
+  "start":"2018","end":"ongoing OLE","inclusion":"Adults ≥18 y; moderate-to-severe plaque psoriasis.",
+  "sites":"Global; BE-series pivotal trials + open-label extensions","kols":"Reich, Warren, Gordon (pivotal lead authors)",
+  "significance":"Sets the PASI 100 ceiling — the efficacy benchmark competitors are measured against."},
+ {"name":"Sonelokimab Phase 2 (M-1095 / MIRA)","drug":"sonelokimab","fam":"il17","sponsor":"MoonLake Immunotherapeutics","phase":"Phase 2","status":"PsO Ph2 positive; sponsor prioritising HS",
+  "endpoints":["PASI 90 at Week 12","IGA 0/1 at Week 12"],
+  "readout":"~80% PASI 90 in Ph2 with a small IL-17A/F Nanobody; PsO development deprioritised in favour of hidradenitis.",
+  "start":"2021","end":"2023","inclusion":"Adults; moderate-to-severe plaque psoriasis.",
+  "sites":"Multi-country Phase 2","kols":"Industry-sponsored; investigators on ClinicalTrials.gov",
+  "significance":"Nanobody format tests whether a small IL-17A/F protein can match mAbs — a platform bet."},
+ {"name":"POETYK PSO long-term extension","drug":"deucravacitinib","fam":"kinase","sponsor":"Bristol Myers Squibb","phase":"Phase 3 LTE","status":"Ongoing (≥4-year data)",
+  "endpoints":["Maintenance of PASI 75 / sPGA 0/1 over time","Long-term safety (no JAK-class signal)"],
+  "readout":"Durable response and a clean multi-year safety profile — supporting first-oral-TYK2 positioning.",
+  "start":"2019","end":"ongoing","inclusion":"POETYK PSO-1/-2 completers; moderate-to-severe plaque psoriasis.",
+  "sites":"Global long-term extension","kols":"Armstrong, Warren, Blauvelt (pivotal lead authors)",
+  "significance":"Durability + safety are the oral-TYK2 differentiator versus classic JAK inhibitors."},
+]
+TRIALS_FOCUS_NOTE="The most strategically important programmes. Endpoints, eligibility, sites and dates would be pulled live from ClinicalTrials.gov (API v2) by NCT id; figures here are curated from cited toplines. Named KOLs are pivotal-trial lead authors; industry site investigators are listed on ClinicalTrials.gov."
+
 # --- deeper burden / comorbidity / economics ---
 EPI_DEEP={
  "dlqi":"Mean DLQI ~8–12 in moderate-to-severe disease — a large quality-of-life impact, comparable to that of cancer or heart disease.",
@@ -434,8 +480,9 @@ for i,(date,event,kind,comp,asset,sig,src) in enumerate(CAT,1):
     if did in nodes: edge("HAS_CATALYST",did,cid)
 
 # deals (deal-flow) -> Deal nodes + PARTY_TO (acquirer) + INVOLVES (asset)
-for i,(acq,cp,asset,val,yr,kind,note) in enumerate(DEALS,1):
-    dl=node(f"deal:d{i}","Deal",f"{acq} ← {cp}",{"value":val,"year":yr,"kind":kind,"note":note,"counterparty":cp,"acquirer":acq})
+for i,(acq,cp,asset,val,date,cat,stg,note) in enumerate(DEALS,1):
+    yr=int(str(date)[:4])
+    dl=node(f"deal:d{i}","Deal",f"{acq} ← {cp}",{"value":val,"year":yr,"date":date,"category":cat,"stage":stg,"kind":cat,"note":note,"counterparty":cp,"acquirer":acq,"asset":asset})
     a=company(acq)
     if a: edge("PARTY_TO",a,dl,{"role":"acquirer"})
     dr="drug:"+slug(asset)
@@ -463,11 +510,13 @@ graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026
     "families":[{"key":k,"label":l,"colorVar":c,"order":o,"anchor":ANCHOR.get(k,"tcell")} for k,(l,c,o) in FAM.items()],
     "epi":EPI,
     "sites":[{"site":s,"prev":p,"note":n} for s,p,n in SITES],
-    "deals":[{"acquirer":a,"counterparty":cp,"asset":asset,"value":v,"year":y,"kind":k,"note":nt} for a,cp,asset,v,y,k,nt in DEALS],
+    "deals":[{"acquirer":a,"counterparty":cp,"asset":asset,"value":v,"date":dt,"year":int(str(dt)[:4]),"category":cat,"stage":stg,"note":nt} for a,cp,asset,v,dt,cat,stg,nt in DEALS],
     "soc":[{"tier":t,"label":l,"agents":a,"note":n,"colorVar":c} for t,l,a,n,c in SOC],
     "soc_note":SOC_NOTE,
     "glossary":[{"term":t,"def":d} for t,d in GLOSSARY],
     "trials":[{"trial":tr,"asset":a,"family_key":fk,"year":y,"phase":ph,"result":r,"src":s} for tr,a,fk,y,ph,r,s in TRIALS],
+    "trials_focus":TRIALS_FOCUS,
+    "trials_focus_note":TRIALS_FOCUS_NOTE,
     "market_share":[{"cls":c,"trend":t,"colorVar":cv} for c,t,cv in MARKET_SHARE],
     "market_note":MARKET_NOTE,
     "signal_path":[{"from":"bio:"+f,"to":"bio:"+t,"label":l} for f,t,l in SIGNAL_PATH],

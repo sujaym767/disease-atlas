@@ -181,6 +181,44 @@ button{font-family:inherit;cursor:pointer}
 .tmev .card .ta{color:var(--tc);font-weight:700}
 .tmev .card .tr{color:var(--ink2);margin-top:1px}
 .tmev:hover .dot{transform:scale(1.25)}
+/* compact date timeline (catalysts / cliffs) */
+.mtl{position:relative}
+.mtl .yr{position:absolute;transform:translateX(-50%);font-family:var(--cond);font-weight:700;font-size:10px;color:var(--muted)}
+.mtl .ev{position:absolute;transform:translateX(-50%);width:132px;cursor:pointer}
+.mtl .ev .d{font-family:var(--cond);font-weight:700;font-size:10.5px;color:var(--tc)}
+.mtl .ev .l{font-size:8px;color:var(--ink);line-height:1.16;font-weight:600}
+.mtl .ev:hover .l{color:var(--tc)}
+.mtl .dot{position:absolute;width:9px;height:9px;border-radius:50%;border:2px solid var(--panel);z-index:2;box-shadow:var(--shadowsm)}
+/* richer deal flow */
+.deals .dl{border-bottom:1px dotted var(--rule);padding:5px 0;cursor:pointer}
+.deals .dl:last-child{border-bottom:0}.deals .dl:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+.deals .dh{font-size:9.5px}.deals .dh b{font-weight:700}
+.deals .dm{font-size:8.5px;color:var(--ink2);margin-top:1px}.deals .dm .v{color:var(--accent);font-weight:700}
+.dtag{display:inline-block;font-size:7px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:1px 4px;border-radius:3px;margin-right:4px;vertical-align:1px;color:#fff}
+.dtag.mna{background:var(--s8)}.dtag.lic{background:var(--s1)}.dtag.part{background:var(--s3)}
+.dstage{font-size:7.5px;color:var(--muted);border:1px solid var(--rule2);border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap}
+/* trials in focus */
+.tfocus .row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:4px 5px;border-bottom:1px dotted var(--rule);cursor:pointer;align-items:center}
+.tfocus .row:last-of-type{border-bottom:0}.tfocus .row:hover{background:color-mix(in srgb,var(--tc) 11%,transparent)}
+.tfocus .nm{font-weight:700;color:var(--ink);font-size:10px;line-height:1.05}.tfocus .sp{font-size:8px;color:var(--muted);margin-top:1px}
+.tfocus .ph{font-family:var(--cond);font-weight:700;font-size:11px;color:var(--tc);white-space:nowrap;text-align:right}
+.tfocus .ph small{display:block;font-family:var(--sans);font-weight:600;font-size:7px;color:var(--muted);text-transform:uppercase}
+/* trial detail modal */
+.trialbody{overflow:auto;padding:15px 20px}
+.trialbody h3{margin:13px 0 4px;font-family:var(--cond);text-transform:uppercase;font-size:12px;color:var(--mc,var(--accent));letter-spacing:.05em}
+.trialbody .lead{font-size:13.5px;color:var(--ink);line-height:1.4;font-weight:600}
+.trialbody ul{margin:3px 0;padding-left:18px;font-size:12.5px;color:var(--ink2)}.trialbody li{margin:2px 0}
+.trialbody .rd{font-size:12.5px;color:var(--ink2);line-height:1.4}
+.trialgrid{display:grid;grid-template-columns:130px 1fr;gap:5px 14px;font-size:12px;margin-top:3px}
+.trialgrid b{color:var(--ink);font-weight:600}.trialgrid span{color:var(--ink2)}
+.tfacts{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 2px}
+.tfacts .f{border:1px solid var(--rule2);background:var(--block);padding:5px 11px;border-top:2px solid var(--mc,var(--accent))}
+.tfacts .f b{font-family:var(--cond);font-size:14px;font-weight:700;display:block;line-height:1}.tfacts .f span{font-size:8px;text-transform:uppercase;color:var(--muted)}
+/* external links (drug + trial) */
+.xlinks{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.xlinks a{color:var(--s1);text-decoration:none;border:1px solid var(--rule2);border-radius:4px;padding:2px 8px;font-size:10.5px;font-weight:600}
+.xlinks a:hover{background:var(--block)}
+.xnote{font-size:9px;color:var(--muted);margin-top:6px;font-style:italic}
 /* schematic labels */
 .schlab{font-family:var(--sans);font-weight:700;font-size:11px;fill:var(--ink)}
 .schsub{font-size:8.5px;fill:var(--ink2)}
@@ -269,7 +307,7 @@ const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phas
 const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
-const CW=3400, CH=3120; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
+const CW=3400, CH=3380; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 
 /* ---------- schematic (IL-23 / IL-17 immune cascade) — a corner region, local coords ---------- */
 let SOX=1930, SOY=940; const SW=900, SH=560;   // schematic div origin (in the mid-right void) + size
@@ -487,10 +525,14 @@ function buildPanels(){
     if(G.market_note)c.append(el("div",{style:"font-size:8.5px;color:var(--muted);margin-top:7px;font-style:italic;line-height:1.3",text:G.market_note}));
     if(e.drug_survival)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>Drug survival.</b> "+esc(e.drug_survival)}));});
   panel(2870,860,500,"Top products — 2025 franchise sales",c=>salesDonut(c));
-  panel(2870,1230,500,"Deal flow",c=>{c.classList.add("deals");
-    (G.deals||[]).forEach(d=>{const dn=G.nodes.find(n=>n.type=="Deal"&&n.attrs.acquirer==d.acquirer&&(n.attrs.counterparty==d.counterparty));
-      const r=el("div",{cls:"row"},[el("span",{html:`<b>${esc(d.acquirer)}</b> ← ${esc(d.counterparty)} · <span class="v">${esc(d.value)}</span> (${d.year})<br><span style="color:var(--muted)">${esc(d.asset)} · ${esc(d.kind)}</span>`})]);
-      if(dn)r.onclick=()=>openModal(dn.id); c.append(r);});});
+  panel(2870,1230,500,"Deal flow — M&A · licensing · partnerships",c=>{c.classList.add("deals");
+    const CT={"M&A":"mna","Licensing":"lic","Partnership":"part"};
+    (G.deals||[]).slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).forEach(d=>{
+      const dn=G.nodes.find(n=>n.type=="Deal"&&n.attrs.acquirer==d.acquirer&&n.attrs.counterparty==d.counterparty);
+      const row=el("div",{cls:"dl"},[
+        el("div",{cls:"dh",html:`<span class="dtag ${CT[d.category]||'part'}">${esc(d.category)}</span><b>${esc(d.acquirer)}</b> ← ${esc(d.counterparty)}<span class="dstage">${esc(d.stage)}</span>`}),
+        el("div",{cls:"dm",html:`<span class="v">${esc(d.value)}</span> · ${esc(d.asset)} · ${esc(String(d.date))}`})]);
+      if(dn)row.onclick=()=>openModal(dn.id); c.append(row);});});
   // ================= DISEASE MECHANISM (mid-right; schematic next to signalling) =================
   clabel(1930,916,"Disease mechanism","IL-23 / IL-17 cascade → intracellular signalling");
   buildSignalInset(1900,1560,940);   // schematic itself drawn by buildSchematic at SOX/SOY (just above)
@@ -498,19 +540,21 @@ function buildPanels(){
   clabel(40,2070,"Standard of care");
   panel(40,2100,1520,"By severity — presentation, goal & therapy",c=>socTable(c));
   clabel(1600,2070,"Pipeline & development");
-  panel(1600,2100,1080,"Development matrix — company × mechanism",c=>devMatrix(c));
-  panel(2700,2100,670,"Catalysts & exclusivity",c=>{c.classList.add("cats");
-    G.nodes.filter(n=>n.type=="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
-      const r=el("div",{cls:"row","data-node":ev.id},[el("div",{},[el("div",{cls:"d",text:ev.attrs.date}),el("div",{cls:"k",text:(ev.attrs.kind||"").replace("_"," ")})]),el("div",{text:ev.label})]);
-      r.onclick=()=>openModal(ev.id); c.append(r);});});
-  panel(40,2470,3330,"Landmark clinical-trial milestones — timeline",c=>trialsTimeline(c,3330));
-  clabel(40,2790,"Reference");
-  panel(40,2820,900,"Legend",c=>{c.classList.add("legend");
+  panel(1600,2100,910,"Development matrix — company × mechanism",c=>devMatrix(c));
+  panel(2530,2100,840,"Clinical trials in focus — click a trial for full detail",c=>trialsFocus(c));
+  // catalysts vs patent cliffs — two separate timelines
+  clabel(40,2470,"Catalysts & patent cliffs","approvals & readouts (left) · exclusivity losses (right)");
+  panel(40,2500,1650,"Catalysts — approvals, readouts & filings",c=>dateTL(c,1632,catEvents(["approval","readout","filing"])));
+  panel(1720,2500,1650,"Patent cliffs & loss of exclusivity",c=>dateTL(c,1632,catEvents(["patent_expiry"])));
+  clabel(40,2710,"Landmark trials");
+  panel(40,2740,3330,"Milestone trials — timeline",c=>trialsTimeline(c,3330));
+  clabel(40,3060,"Reference");
+  panel(40,3090,900,"Legend",c=>{c.classList.add("legend");
     c.append(el("div",{cls:"lr",html:'<b>Stage:</b> <code>M</code> marketed <code>III</code> Ph3 <code>II</code> Ph2 <code>I</code> Ph1 <code>P</code> preclin <code>✕</code> disc.'}));
     c.append(el("div",{cls:"lr",html:'<span class="mk bio">B</span> biosimilar <span class="mk combo">+</span> combo <span class="mk warn">⚠</span> boxed warning'}));
     c.append(el("div",{cls:"lr",html:'<b>Relationship shapes:</b> '+shapeLegendHTML()}));
     if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));});
-  panel(970,2820,2400,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
+  panel(970,3090,2400,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
     (G.glossary||[]).forEach(t=>g.append(el("div",{cls:"g",html:`<b>${esc(t.term)}</b> — <span>${esc(t.def)}</span>`}))); c.append(g);});
 }
 /* ---- SoC severity table (presentation, goal, line-of-therapy bars) ---- */
@@ -549,12 +593,66 @@ function trialsTimeline(c,w){
     const x=xOf(t.year),col=css((FAM[t.family_key]||{}).colorVar||"--sN"),sh=46;
     box.append(el("div",{cls:"dot",style:`position:absolute;left:${x-6}px;top:${mid-6}px;background:${col};z-index:3`}));
     box.append(el("div",{style:`position:absolute;left:${x-0.75}px;top:${up?mid-sh:mid}px;width:1.5px;height:${sh}px;background:${col};opacity:.55`}));
-    const res=t.result.length>66?t.result.slice(0,64)+"…":t.result;
-    const card=el("div",{cls:"tmev",style:`left:${x}px;top:${up?mid-sh-72:mid+sh+3}px;--tc:${col}`});
+    const res0=(t.result.split(/[;—]/)[0]||"").trim(),res=res0.length>42?res0.slice(0,40)+"…":res0;
+    const card=el("div",{cls:"tmev",style:`left:${x}px;top:${up?mid-sh-58:mid+sh+3}px;--tc:${col}`});
     card.innerHTML=`<div class="card"><div class="tn">${esc(t.trial)}</div><div class="ta">${esc(t.asset)}</div><div class="tr">${esc(res)}</div></div>`;
     const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)card.onclick=()=>openModal(dn.id);
     box.append(card);});
   c.append(box);
+}
+/* ---- compact date timeline (catalysts / patent cliffs) ---- */
+function dateTL(c,w,events){
+  if(!events.length)return; const yrs=events.map(e=>e.year),y0=Math.min(...yrs),y1=Math.max(...yrs);
+  const IW=w,PAD=42,mid=70,H=158,span=Math.max(1,y1-y0),xOf=y=>PAD+(y-y0)/span*(IW-2*PAD);
+  const box=el("div",{cls:"mtl",style:`height:${H}px;width:${IW}px`});
+  box.append(el("div",{style:`position:absolute;left:${PAD}px;width:${IW-2*PAD}px;top:${mid}px;height:2px;background:var(--rule2)`}));
+  for(let y=y0;y<=y1;y++){const x=xOf(y);box.append(el("div",{cls:"yr",style:`left:${x}px;top:${mid+6}px`,text:"’"+String(y).slice(2)}));}
+  let prevY=null,prevUp=false;
+  events.slice().sort((a,b)=>a.year-b.year).forEach((e,i)=>{let up=i%2===0; if(e.year===prevY)up=!prevUp; prevY=e.year;prevUp=up;
+    const x=xOf(e.year),col=css(e.color||"--accent"),sh=up?26:14;
+    box.append(el("div",{cls:"dot",style:`left:${x-4.5}px;top:${mid-4.5}px;background:${col}`}));
+    box.append(el("div",{style:`position:absolute;left:${x-0.5}px;top:${up?mid-sh:mid}px;width:1px;height:${sh}px;background:${col};opacity:.5`}));
+    const lab=e.label.length>52?e.label.slice(0,50)+"…":e.label;
+    const ev=el("div",{cls:"ev",style:`left:${x}px;top:${up?mid-sh-40:mid+sh+7}px;--tc:${col}`});
+    ev.innerHTML=`<div class="d">${esc(e.date)}</div><div class="l">${esc(lab)}</div>`;
+    if(e.nodeId)ev.onclick=()=>openModal(e.nodeId); box.append(ev);});
+  c.append(box);
+}
+function catEvents(kinds){const KC={approval:"--s6",readout:"--s1",filing:"--s4",patent_expiry:"--s8"};
+  return G.nodes.filter(n=>n.type=="Catalyst"&&kinds.includes(n.attrs.kind)).map(n=>({
+    year:parseInt(String(n.attrs.date).slice(0,4)),date:n.attrs.date,label:n.label,color:KC[n.attrs.kind]||"--accent",nodeId:n.id}));
+}
+/* ---- clinical trials in focus (list -> detail modal) ---- */
+function trialsFocus(c){c.classList.add("tfocus");
+  (G.trials_focus||[]).forEach((t,i)=>{const col=css((FAM[t.fam]||{}).colorVar||"--sN");
+    const row=el("div",{cls:"row",style:`--tc:${col}`},[
+      el("div",{},[el("div",{cls:"nm",text:t.name}),el("div",{cls:"sp",text:t.sponsor+" · "+t.drug})]),
+      el("div",{cls:"ph",html:esc(t.phase.replace("Phase","Ph"))+"<small>details ▸</small>"})]);
+    row.onclick=()=>openTrialModal(i); c.append(row);});
+  if(G.trials_focus_note)c.append(el("div",{cls:"xnote",text:G.trials_focus_note}));
+}
+function openTrialModal(i){const t=(G.trials_focus||[])[i]; if(!t)return; const col=css((FAM[t.fam]||{}).colorVar||"--accent");
+  modal.style.setProperty("--mc",col); modal.innerHTML="";
+  const hd=el("div",{cls:"mhead"});
+  hd.append(el("div",{},[el("div",{cls:"tt",text:"Clinical trial · "+t.phase}),el("h2",{text:t.name}),el("div",{cls:"sub",text:t.sponsor+" · "+t.drug})]));
+  hd.append(el("button",{cls:"x",text:"×",onclick:()=>backdrop.classList.remove("on")}));
+  const body=el("div",{cls:"trialbody"});
+  const facts=el("div",{cls:"tfacts"});
+  [["phase",t.phase],["timeline",t.start+" → "+t.end],["status",t.status.split(";")[0]]].forEach(([l,v])=>facts.append(el("div",{cls:"f"},[el("b",{text:v}),el("span",{text:l})])));
+  body.append(facts);
+  body.append(el("div",{cls:"lead",text:t.significance}));
+  body.append(el("h3",{text:"Latest readout"})); body.append(el("div",{cls:"rd",text:t.readout}));
+  body.append(el("h3",{text:"Primary endpoints"})); const ul=el("ul"); (t.endpoints||[]).forEach(ep=>ul.append(el("li",{text:ep}))); body.append(ul);
+  body.append(el("h3",{text:"Trial details"}));
+  const gr=el("div",{cls:"trialgrid"});
+  [["Status",t.status],["Timeline",t.start+" → "+t.end],["Key inclusion",t.inclusion],["Sites",t.sites],["Investigators / KOLs",t.kols]].forEach(([l,v])=>{gr.append(el("b",{text:l}),el("span",{text:v}));});
+  body.append(gr);
+  const dr=DBYN[(t.drug||"").toLowerCase()],links=el("div",{cls:"xlinks"});
+  if(dr)links.append(el("a",{href:"#",text:"→ "+t.drug+" drug details",onclick:e=>{e.preventDefault();openModal(dr.id);}}));
+  links.append(el("a",{href:"https://clinicaltrials.gov/search?cond=Plaque+Psoriasis&intr="+encodeURIComponent(t.drug),target:"_blank",rel:"noopener",text:"ClinicalTrials.gov ↗"}));
+  body.append(links);
+  if(G.trials_focus_note)body.append(el("div",{cls:"xnote",text:G.trials_focus_note}));
+  modal.append(hd,body); backdrop.classList.add("on");
 }
 /* ---- 2025 franchise sales donut ---- */
 function salesDonut(c){
@@ -680,7 +778,13 @@ function fillInfo(info,n){const a=n.attrs,kp=el("div",{cls:"kpis"}),K=(v,l)=>{if
   const d=describe(n); if(d)info.append(el("div",{cls:"desc",html:d}));
   if(n.type=="Drug"){const m=oN(n.id,"HAS_MECHANISM")[0];if(m&&m.attrs.safety)info.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(m.attrs.safety)}));}
   if(n.type=="MoAClass"&&a.safety)info.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(a.safety)}));
-  if(n.sources&&n.sources.length)info.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")}));}
+  if(n.sources&&n.sources.length)info.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")}));
+  if(n.type=="Drug"){const q=encodeURIComponent(n.label);
+    info.append(el("div",{cls:"xlinks"},[
+      el("a",{href:"https://go.drugbank.com/unearth/q?query="+q+"&searcher=drugs",target:"_blank",rel:"noopener",text:"DrugBank ↗"}),
+      el("a",{href:"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query="+q,target:"_blank",rel:"noopener",text:"FDA label (DailyMed) ↗"}),
+      el("a",{href:"https://clinicaltrials.gov/search?cond=Plaque+Psoriasis&intr="+q,target:"_blank",rel:"noopener",text:"ClinicalTrials.gov ↗"})]));
+    info.append(el("div",{cls:"xnote",text:"Deep drug data (PK, targets, structure, interactions) would be pulled on demand from openFDA / ChEMBL; DrugBank's full dataset needs a commercial licence."}));}}
 function describe(n){const a=n.attrs;
   if(n.type=="Drug"){let s=a.note?esc(a.note):"";const m=oN(n.id,"HAS_MECHANISM")[0];if(m)s=`<b>${esc(m.label)}</b>${a.mechanism?" — "+esc(a.mechanism):""}. `+s;if(a.bios)s+=` <b>Biosimilars:</b> ${esc(a.bios)}.`;return s;}
   if(n.type=="Company")return a.positioning?esc(a.positioning):`Develops ${iN(n.id,"DEVELOPED_BY").length} psoriasis asset(s).`;

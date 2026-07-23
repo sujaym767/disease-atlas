@@ -199,58 +199,103 @@
   ],
   "deals": [
     {
-      "acquirer": "Takeda",
-      "counterparty": "Nimbus Therapeutics",
-      "asset": "zasocitinib",
-      "value": "$4.0B upfront",
-      "year": 2023,
-      "kind": "acquisition",
-      "note": "Oral TYK2 TAK-279 acquired from Nimbus."
+      "acquirer": "Bristol Myers Squibb",
+      "counterparty": "Celgene",
+      "asset": "deucravacitinib",
+      "value": "$74B",
+      "date": "2019-11",
+      "year": 2019,
+      "category": "M&A",
+      "stage": "Clinical",
+      "note": "Deucravacitinib (oral TYK2, then BMS-986165) entered BMS via the $74B Celgene acquisition."
     },
     {
       "acquirer": "Amgen",
       "counterparty": "Celgene / BMS",
       "asset": "apremilast",
       "value": "$13.4B",
+      "date": "2019-11",
       "year": 2019,
-      "kind": "acquisition",
-      "note": "Otezla divested during the BMS–Celgene merger."
+      "category": "M&A",
+      "stage": "Marketed",
+      "note": "Otezla (PDE4) was divested for antitrust clearance during the BMS–Celgene merger."
     },
     {
-      "acquirer": "Johnson & Johnson",
-      "counterparty": "Protagonist Therapeutics",
-      "asset": "icotrokinra",
-      "value": "co-development",
-      "year": 2017,
-      "kind": "licensing",
-      "note": "Oral IL-23R peptide JNJ-2113."
-    },
-    {
-      "acquirer": "Organon",
-      "counterparty": "Dermavant",
-      "asset": "tapinarof",
-      "value": "~$1.2B",
-      "year": 2024,
-      "kind": "acquisition",
-      "note": "Topical AhR agonist Vtama."
-    },
-    {
-      "acquirer": "Alumis",
-      "counterparty": "ACELYRIN",
-      "asset": "izokibep",
-      "value": "all-stock merger",
-      "year": 2025,
-      "kind": "merger",
-      "note": "Combined oral-immunology pipelines (ESK-001 + izokibep)."
+      "acquirer": "Takeda",
+      "counterparty": "Nimbus Therapeutics",
+      "asset": "zasocitinib",
+      "value": "$4.0B upfront +$2B milestones",
+      "date": "2023-02",
+      "year": 2023,
+      "category": "M&A",
+      "stage": "Clinical",
+      "note": "Allosteric oral TYK2 TAK-279 acquired from Nimbus after strong Ph2b."
     },
     {
       "acquirer": "Eli Lilly",
       "counterparty": "DICE Therapeutics",
       "asset": "DC-806",
       "value": "$2.4B",
+      "date": "2023-08",
       "year": 2023,
-      "kind": "acquisition",
-      "note": "Oral IL-17 antagonist platform."
+      "category": "M&A",
+      "stage": "Preclinical",
+      "note": "Oral IL-17 antagonist platform (DELSCAPE) acquired for early oral biologics-alternatives."
+    },
+    {
+      "acquirer": "Organon",
+      "counterparty": "Dermavant",
+      "asset": "tapinarof",
+      "value": "up to ~$1.2B",
+      "date": "2024-10",
+      "year": 2024,
+      "category": "M&A",
+      "stage": "Marketed",
+      "note": "Topical AhR agonist Vtama acquired to build Organon's dermatology franchise."
+    },
+    {
+      "acquirer": "Alumis",
+      "counterparty": "ACELYRIN",
+      "asset": "ESK-001 / izokibep",
+      "value": "all-stock merger",
+      "date": "2025-02",
+      "year": 2025,
+      "category": "M&A",
+      "stage": "Clinical",
+      "note": "Merged next-gen oral-immunology pipelines (ESK-001 TYK2 + izokibep IL-17)."
+    },
+    {
+      "acquirer": "Johnson & Johnson",
+      "counterparty": "Protagonist Therapeutics",
+      "asset": "icotrokinra",
+      "value": "co-development + royalties",
+      "date": "2017-07",
+      "year": 2017,
+      "category": "Licensing",
+      "stage": "Discovery",
+      "note": "Oral IL-23R peptide (JNJ-2113) discovered by Protagonist, co-developed and commercialised by J&J."
+    },
+    {
+      "acquirer": "Sun Pharma",
+      "counterparty": "Merck (MSD)",
+      "asset": "tildrakizumab",
+      "value": "$80M upfront + royalties",
+      "date": "2014-09",
+      "year": 2014,
+      "category": "Licensing",
+      "stage": "Clinical",
+      "note": "Ex-license of the IL-23 p19 mAb (then MK-3222) to Sun for worldwide development."
+    },
+    {
+      "acquirer": "LEO Pharma",
+      "counterparty": "UNION therapeutics",
+      "asset": "orismilast",
+      "value": "option / partnership",
+      "date": "2021-01",
+      "year": 2021,
+      "category": "Partnership",
+      "stage": "Clinical",
+      "note": "Collaboration on next-gen PDE4 inhibition in inflammatory skin disease."
     }
   ],
   "soc": [
@@ -466,6 +511,123 @@
       "src": "iconic"
     }
   ],
+  "trials_focus": [
+    {
+      "name": "ICONIC-LEAD",
+      "drug": "icotrokinra",
+      "fam": "il23",
+      "sponsor": "Johnson & Johnson",
+      "phase": "Phase 3",
+      "status": "Reported → FDA-approved (2026)",
+      "endpoints": [
+        "IGA 0/1 at Week 16 vs placebo (co-primary)",
+        "PASI 90 at Week 16 vs placebo (co-primary)"
+      ],
+      "readout": "Positive topline (2025): ~65% IGA 0/1 and ~50–65% PASI 90 at Week 16 — first oral to approach injectable IL-23 efficacy.",
+      "start": "2023",
+      "end": "2025",
+      "inclusion": "Adults & adolescents ≥12 y; moderate-to-severe plaque psoriasis; candidate for systemic therapy or phototherapy.",
+      "sites": "Global, multi-country (part of the 6-study ICONIC Phase 3 programme)",
+      "kols": "Industry-sponsored; site investigators listed on ClinicalTrials.gov",
+      "significance": "Category-defining first-line ORAL IL-23R peptide — the pill that rivals a biologic."
+    },
+    {
+      "name": "Zasocitinib Phase 3 (TAK-279)",
+      "drug": "zasocitinib",
+      "fam": "kinase",
+      "sponsor": "Takeda",
+      "phase": "Phase 3",
+      "status": "Positive topline (Dec 2025); filing expected",
+      "endpoints": [
+        "PASI 90 at Week 16 vs placebo",
+        "sPGA 0/1 at Week 16 vs placebo"
+      ],
+      "readout": ">50% PASI 90 and ~30% PASI 100 at Week 16 — best-in-class oral efficacy for a TYK2 inhibitor.",
+      "start": "2024",
+      "end": "2025",
+      "inclusion": "Adults ≥18 y; moderate-to-severe plaque psoriasis (BSA ≥10%, PASI ≥12, sPGA ≥3).",
+      "sites": "Global multi-country Phase 3 (two pivotal studies)",
+      "kols": "Industry-sponsored; site investigators on ClinicalTrials.gov",
+      "significance": "Next-gen oral TYK2 raising the oral bar toward biologic-level clearance."
+    },
+    {
+      "name": "ONWARD (ESK-001)",
+      "drug": "ESK-001",
+      "fam": "kinase",
+      "sponsor": "Alumis",
+      "phase": "Phase 3",
+      "status": "Positive topline (2026)",
+      "endpoints": [
+        "PASI 75 at Week 16",
+        "PASI 90 / sPGA 0/1 at Week 16"
+      ],
+      "readout": "~74% PASI 75 at Week 16; NDA planned H2 2026 — a competitive oral TYK2.",
+      "start": "2024",
+      "end": "2026",
+      "inclusion": "Adults ≥18 y; moderate-to-severe plaque psoriasis; systemic-therapy candidate.",
+      "sites": "Global Phase 3 (ONWARD programme)",
+      "kols": "Industry-sponsored; site investigators on ClinicalTrials.gov",
+      "significance": "BID oral TYK2 competing on depth and durability with deucravacitinib and zasocitinib."
+    },
+    {
+      "name": "BE VIVID / BE RADIANT (bimekizumab)",
+      "drug": "bimekizumab",
+      "fam": "il17",
+      "sponsor": "UCB",
+      "phase": "Phase 3 + long-term",
+      "status": "Approved; durability data maturing",
+      "endpoints": [
+        "PASI 100 at Week 16",
+        "Maintenance of PASI 100 through Week 48–144"
+      ],
+      "readout": "~60% PASI 100 at Week 16 with high maintenance — the deepest, most durable clearance to date.",
+      "start": "2018",
+      "end": "ongoing OLE",
+      "inclusion": "Adults ≥18 y; moderate-to-severe plaque psoriasis.",
+      "sites": "Global; BE-series pivotal trials + open-label extensions",
+      "kols": "Reich, Warren, Gordon (pivotal lead authors)",
+      "significance": "Sets the PASI 100 ceiling — the efficacy benchmark competitors are measured against."
+    },
+    {
+      "name": "Sonelokimab Phase 2 (M-1095 / MIRA)",
+      "drug": "sonelokimab",
+      "fam": "il17",
+      "sponsor": "MoonLake Immunotherapeutics",
+      "phase": "Phase 2",
+      "status": "PsO Ph2 positive; sponsor prioritising HS",
+      "endpoints": [
+        "PASI 90 at Week 12",
+        "IGA 0/1 at Week 12"
+      ],
+      "readout": "~80% PASI 90 in Ph2 with a small IL-17A/F Nanobody; PsO development deprioritised in favour of hidradenitis.",
+      "start": "2021",
+      "end": "2023",
+      "inclusion": "Adults; moderate-to-severe plaque psoriasis.",
+      "sites": "Multi-country Phase 2",
+      "kols": "Industry-sponsored; investigators on ClinicalTrials.gov",
+      "significance": "Nanobody format tests whether a small IL-17A/F protein can match mAbs — a platform bet."
+    },
+    {
+      "name": "POETYK PSO long-term extension",
+      "drug": "deucravacitinib",
+      "fam": "kinase",
+      "sponsor": "Bristol Myers Squibb",
+      "phase": "Phase 3 LTE",
+      "status": "Ongoing (≥4-year data)",
+      "endpoints": [
+        "Maintenance of PASI 75 / sPGA 0/1 over time",
+        "Long-term safety (no JAK-class signal)"
+      ],
+      "readout": "Durable response and a clean multi-year safety profile — supporting first-oral-TYK2 positioning.",
+      "start": "2019",
+      "end": "ongoing",
+      "inclusion": "POETYK PSO-1/-2 completers; moderate-to-severe plaque psoriasis.",
+      "sites": "Global long-term extension",
+      "kols": "Armstrong, Warren, Blauvelt (pivotal lead authors)",
+      "significance": "Durability + safety are the oral-TYK2 differentiator versus classic JAK inhibitors."
+    }
+  ],
+  "trials_focus_note": "The most strategically important programmes. Endpoints, eligibility, sites and dates would be pulled live from ClinicalTrials.gov (API v2) by NCT id; figures here are curated from cited toplines. Named KOLs are pivotal-trial lead authors; industry site investigators are listed on ClinicalTrials.gov.",
   "market_share": [
     {
       "cls": "IL-23 p19",
@@ -3177,14 +3339,18 @@
     {
       "id": "deal:d1",
       "type": "Deal",
-      "label": "Takeda ← Nimbus Therapeutics",
+      "label": "Bristol Myers Squibb ← Celgene",
       "attrs": {
-        "value": "$4.0B upfront",
-        "year": 2023,
-        "kind": "acquisition",
-        "note": "Oral TYK2 TAK-279 acquired from Nimbus.",
-        "counterparty": "Nimbus Therapeutics",
-        "acquirer": "Takeda"
+        "value": "$74B",
+        "year": 2019,
+        "date": "2019-11",
+        "category": "M&A",
+        "stage": "Clinical",
+        "kind": "M&A",
+        "note": "Deucravacitinib (oral TYK2, then BMS-986165) entered BMS via the $74B Celgene acquisition.",
+        "counterparty": "Celgene",
+        "acquirer": "Bristol Myers Squibb",
+        "asset": "deucravacitinib"
       },
       "sources": []
     },
@@ -3195,38 +3361,68 @@
       "attrs": {
         "value": "$13.4B",
         "year": 2019,
-        "kind": "acquisition",
-        "note": "Otezla divested during the BMS–Celgene merger.",
+        "date": "2019-11",
+        "category": "M&A",
+        "stage": "Marketed",
+        "kind": "M&A",
+        "note": "Otezla (PDE4) was divested for antitrust clearance during the BMS–Celgene merger.",
         "counterparty": "Celgene / BMS",
-        "acquirer": "Amgen"
+        "acquirer": "Amgen",
+        "asset": "apremilast"
       },
       "sources": []
     },
     {
       "id": "deal:d3",
       "type": "Deal",
-      "label": "Johnson & Johnson ← Protagonist Therapeutics",
+      "label": "Takeda ← Nimbus Therapeutics",
       "attrs": {
-        "value": "co-development",
-        "year": 2017,
-        "kind": "licensing",
-        "note": "Oral IL-23R peptide JNJ-2113.",
-        "counterparty": "Protagonist Therapeutics",
-        "acquirer": "Johnson & Johnson"
+        "value": "$4.0B upfront +$2B milestones",
+        "year": 2023,
+        "date": "2023-02",
+        "category": "M&A",
+        "stage": "Clinical",
+        "kind": "M&A",
+        "note": "Allosteric oral TYK2 TAK-279 acquired from Nimbus after strong Ph2b.",
+        "counterparty": "Nimbus Therapeutics",
+        "acquirer": "Takeda",
+        "asset": "zasocitinib"
       },
       "sources": []
     },
     {
       "id": "deal:d4",
       "type": "Deal",
+      "label": "Eli Lilly ← DICE Therapeutics",
+      "attrs": {
+        "value": "$2.4B",
+        "year": 2023,
+        "date": "2023-08",
+        "category": "M&A",
+        "stage": "Preclinical",
+        "kind": "M&A",
+        "note": "Oral IL-17 antagonist platform (DELSCAPE) acquired for early oral biologics-alternatives.",
+        "counterparty": "DICE Therapeutics",
+        "acquirer": "Eli Lilly",
+        "asset": "DC-806"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d5",
+      "type": "Deal",
       "label": "Organon ← Dermavant",
       "attrs": {
-        "value": "~$1.2B",
+        "value": "up to ~$1.2B",
         "year": 2024,
-        "kind": "acquisition",
-        "note": "Topical AhR agonist Vtama.",
+        "date": "2024-10",
+        "category": "M&A",
+        "stage": "Marketed",
+        "kind": "M&A",
+        "note": "Topical AhR agonist Vtama acquired to build Organon's dermatology franchise.",
         "counterparty": "Dermavant",
-        "acquirer": "Organon"
+        "acquirer": "Organon",
+        "asset": "tapinarof"
       },
       "sources": []
     },
@@ -3240,30 +3436,74 @@
       "sources": []
     },
     {
-      "id": "deal:d5",
+      "id": "deal:d6",
       "type": "Deal",
       "label": "Alumis ← ACELYRIN",
       "attrs": {
         "value": "all-stock merger",
         "year": 2025,
-        "kind": "merger",
-        "note": "Combined oral-immunology pipelines (ESK-001 + izokibep).",
+        "date": "2025-02",
+        "category": "M&A",
+        "stage": "Clinical",
+        "kind": "M&A",
+        "note": "Merged next-gen oral-immunology pipelines (ESK-001 TYK2 + izokibep IL-17).",
         "counterparty": "ACELYRIN",
-        "acquirer": "Alumis"
+        "acquirer": "Alumis",
+        "asset": "ESK-001 / izokibep"
       },
       "sources": []
     },
     {
-      "id": "deal:d6",
+      "id": "deal:d7",
       "type": "Deal",
-      "label": "Eli Lilly ← DICE Therapeutics",
+      "label": "Johnson & Johnson ← Protagonist Therapeutics",
       "attrs": {
-        "value": "$2.4B",
-        "year": 2023,
-        "kind": "acquisition",
-        "note": "Oral IL-17 antagonist platform.",
-        "counterparty": "DICE Therapeutics",
-        "acquirer": "Eli Lilly"
+        "value": "co-development + royalties",
+        "year": 2017,
+        "date": "2017-07",
+        "category": "Licensing",
+        "stage": "Discovery",
+        "kind": "Licensing",
+        "note": "Oral IL-23R peptide (JNJ-2113) discovered by Protagonist, co-developed and commercialised by J&J.",
+        "counterparty": "Protagonist Therapeutics",
+        "acquirer": "Johnson & Johnson",
+        "asset": "icotrokinra"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d8",
+      "type": "Deal",
+      "label": "Sun Pharma ← Merck (MSD)",
+      "attrs": {
+        "value": "$80M upfront + royalties",
+        "year": 2014,
+        "date": "2014-09",
+        "category": "Licensing",
+        "stage": "Clinical",
+        "kind": "Licensing",
+        "note": "Ex-license of the IL-23 p19 mAb (then MK-3222) to Sun for worldwide development.",
+        "counterparty": "Merck (MSD)",
+        "acquirer": "Sun Pharma",
+        "asset": "tildrakizumab"
+      },
+      "sources": []
+    },
+    {
+      "id": "deal:d9",
+      "type": "Deal",
+      "label": "LEO Pharma ← UNION therapeutics",
+      "attrs": {
+        "value": "option / partnership",
+        "year": 2021,
+        "date": "2021-01",
+        "category": "Partnership",
+        "stage": "Clinical",
+        "kind": "Partnership",
+        "note": "Collaboration on next-gen PDE4 inhibition in inflammatory skin disease.",
+        "counterparty": "UNION therapeutics",
+        "acquirer": "LEO Pharma",
+        "asset": "orismilast"
       },
       "sources": []
     },
@@ -5765,7 +6005,7 @@
     },
     {
       "type": "PARTY_TO",
-      "source": "company:takeda",
+      "source": "company:bristol-myers-squibb",
       "target": "deal:d1",
       "attrs": {
         "role": "acquirer"
@@ -5774,7 +6014,7 @@
     {
       "type": "INVOLVES",
       "source": "deal:d1",
-      "target": "drug:zasocitinib",
+      "target": "drug:deucravacitinib",
       "attrs": {}
     },
     {
@@ -5793,7 +6033,7 @@
     },
     {
       "type": "PARTY_TO",
-      "source": "company:johnson-johnson",
+      "source": "company:takeda",
       "target": "deal:d3",
       "attrs": {
         "role": "acquirer"
@@ -5802,12 +6042,12 @@
     {
       "type": "INVOLVES",
       "source": "deal:d3",
-      "target": "drug:icotrokinra",
+      "target": "drug:zasocitinib",
       "attrs": {}
     },
     {
       "type": "PARTY_TO",
-      "source": "company:organon",
+      "source": "company:eli-lilly",
       "target": "deal:d4",
       "attrs": {
         "role": "acquirer"
@@ -5816,12 +6056,12 @@
     {
       "type": "INVOLVES",
       "source": "deal:d4",
-      "target": "drug:tapinarof",
+      "target": "drug:dc-806",
       "attrs": {}
     },
     {
       "type": "PARTY_TO",
-      "source": "company:alumis",
+      "source": "company:organon",
       "target": "deal:d5",
       "attrs": {
         "role": "acquirer"
@@ -5830,21 +6070,57 @@
     {
       "type": "INVOLVES",
       "source": "deal:d5",
-      "target": "drug:izokibep",
+      "target": "drug:tapinarof",
       "attrs": {}
     },
     {
       "type": "PARTY_TO",
-      "source": "company:eli-lilly",
+      "source": "company:alumis",
       "target": "deal:d6",
       "attrs": {
         "role": "acquirer"
       }
     },
     {
+      "type": "PARTY_TO",
+      "source": "company:johnson-johnson",
+      "target": "deal:d7",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
       "type": "INVOLVES",
-      "source": "deal:d6",
-      "target": "drug:dc-806",
+      "source": "deal:d7",
+      "target": "drug:icotrokinra",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:sun-pharma",
+      "target": "deal:d8",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d8",
+      "target": "drug:tildrakizumab",
+      "attrs": {}
+    },
+    {
+      "type": "PARTY_TO",
+      "source": "company:leo-pharma",
+      "target": "deal:d9",
+      "attrs": {
+        "role": "acquirer"
+      }
+    },
+    {
+      "type": "INVOLVES",
+      "source": "deal:d9",
+      "target": "drug:orismilast",
       "attrs": {}
     },
     {
