@@ -80,21 +80,21 @@
       "label": "Conventional systemics",
       "colorVar": "--s8",
       "order": 8,
-      "anchor": "tcell"
+      "anchor": "th17"
     },
     {
       "key": "novel",
       "label": "Novel / emerging mechanisms",
       "colorVar": "--s6",
       "order": 9,
-      "anchor": "tcell"
+      "anchor": "th17"
     },
     {
       "key": "hist",
       "label": "Withdrawn / discontinued",
       "colorVar": "--sN",
       "order": 10,
-      "anchor": "tcell"
+      "anchor": "th17"
     }
   ],
   "epi": {
@@ -2640,6 +2640,127 @@
         "acquirer": "Eli Lilly"
       },
       "sources": []
+    },
+    {
+      "id": "bio:dc",
+      "type": "Biology",
+      "label": "Dendritic cell",
+      "attrs": {
+        "kind": "cell",
+        "pos": "dc",
+        "description": "Dermal antigen-presenting cell. On activation it secretes IL-23, IL-12 and TNF, initiating and sustaining the pathogenic T-cell response that drives psoriatic plaques."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:th17",
+      "type": "Biology",
+      "label": "Th17 cell",
+      "attrs": {
+        "kind": "cell",
+        "pos": "th17",
+        "description": "IL-23-dependent effector T cell. It signals intracellularly through TYK2 / JAK-STAT and secretes the effector cytokines IL-17A, IL-17F and IL-22."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:kera",
+      "type": "Biology",
+      "label": "Keratinocyte",
+      "attrs": {
+        "kind": "cell",
+        "pos": "kera",
+        "description": "Epidermal cell. Under IL-17 and TNF it hyperproliferates and releases further chemokines and cytokines, closing a self-amplifying inflammatory loop that forms the scaly plaque."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:plaque",
+      "type": "Biology",
+      "label": "Psoriatic plaque",
+      "attrs": {
+        "kind": "outcome",
+        "pos": "plaque",
+        "description": "The clinical lesion — a well-demarcated, thickened, scaly erythematous plaque produced by keratinocyte hyperproliferation and immune infiltration."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:il23",
+      "type": "Biology",
+      "label": "IL-23",
+      "attrs": {
+        "kind": "cytokine",
+        "pos": "il23",
+        "description": "Dendritic-cell cytokine (p19 + p40) that maintains pathogenic Th17 cells — the most disease-specific and best-validated target in psoriasis."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:p40",
+      "type": "Biology",
+      "label": "IL-12/23 p40",
+      "attrs": {
+        "kind": "cytokine",
+        "pos": "p40",
+        "description": "Shared subunit of IL-12 and IL-23. Blocking p40 (ustekinumab) inhibits both; selective p19 blockade has since proven more effective."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:il17",
+      "type": "Biology",
+      "label": "IL-17A / IL-17F",
+      "attrs": {
+        "kind": "cytokine",
+        "pos": "il17",
+        "description": "The effector cytokines acting on keratinocytes. Neutralising them delivers the fastest, deepest skin clearance of any class."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:il22",
+      "type": "Biology",
+      "label": "IL-22",
+      "attrs": {
+        "kind": "cytokine",
+        "pos": "il22",
+        "description": "Th17-derived cytokine promoting keratinocyte proliferation and epidermal acanthosis."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:tnf",
+      "type": "Biology",
+      "label": "TNF-α",
+      "attrs": {
+        "kind": "cytokine",
+        "pos": "tnf",
+        "description": "Pleiotropic pro-inflammatory cytokine that amplifies the cascade at multiple points; the first successful biologic target in psoriasis."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:tyk2",
+      "type": "Biology",
+      "label": "TYK2",
+      "attrs": {
+        "kind": "intracellular",
+        "pos": "tyk2",
+        "description": "Intracellular pseudokinase that transduces IL-23 (and type-I interferon) signalling — the basis of oral allosteric TYK2 inhibition."
+      },
+      "sources": []
+    },
+    {
+      "id": "bio:pde4",
+      "type": "Biology",
+      "label": "PDE4 / cAMP",
+      "attrs": {
+        "kind": "intracellular",
+        "pos": "pde4",
+        "description": "Phosphodiesterase-4 regulates intracellular cAMP in immune cells; inhibiting it dampens pro-inflammatory cytokine output (apremilast, roflumilast)."
+      },
+      "sources": []
     }
   ],
   "edges": [
@@ -5038,6 +5159,186 @@
       "type": "INVOLVES",
       "source": "deal:d6",
       "target": "drug:dc-806",
+      "attrs": {}
+    },
+    {
+      "type": "PRODUCES",
+      "source": "bio:dc",
+      "target": "bio:il23",
+      "attrs": {}
+    },
+    {
+      "type": "PRODUCES",
+      "source": "bio:dc",
+      "target": "bio:p40",
+      "attrs": {}
+    },
+    {
+      "type": "PRODUCES",
+      "source": "bio:dc",
+      "target": "bio:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "bio:il23",
+      "target": "bio:th17",
+      "attrs": {}
+    },
+    {
+      "type": "SIGNALS_VIA",
+      "source": "bio:il23",
+      "target": "bio:tyk2",
+      "attrs": {}
+    },
+    {
+      "type": "PRODUCES",
+      "source": "bio:th17",
+      "target": "bio:il17",
+      "attrs": {}
+    },
+    {
+      "type": "PRODUCES",
+      "source": "bio:th17",
+      "target": "bio:il22",
+      "attrs": {}
+    },
+    {
+      "type": "PRODUCES",
+      "source": "bio:th17",
+      "target": "bio:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "bio:il17",
+      "target": "bio:kera",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "bio:il22",
+      "target": "bio:kera",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "bio:tnf",
+      "target": "bio:kera",
+      "attrs": {}
+    },
+    {
+      "type": "LEADS_TO",
+      "source": "bio:kera",
+      "target": "bio:plaque",
+      "attrs": {}
+    },
+    {
+      "type": "FEEDBACK",
+      "source": "bio:kera",
+      "target": "bio:dc",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:IL23A",
+      "target": "bio:il23",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:IL12B",
+      "target": "bio:p40",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:IL17A",
+      "target": "bio:il17",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:IL17RA",
+      "target": "bio:il17",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:TNF",
+      "target": "bio:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:TYK2",
+      "target": "bio:tyk2",
+      "attrs": {}
+    },
+    {
+      "type": "PART_OF",
+      "source": "target:PDE4",
+      "target": "bio:pde4",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:il23",
+      "target": "bio:il23",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:il17",
+      "target": "bio:il17",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:tnf",
+      "target": "bio:tnf",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:kinase",
+      "target": "bio:tyk2",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:pde4",
+      "target": "bio:pde4",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:topical",
+      "target": "bio:kera",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:steroid",
+      "target": "bio:kera",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:conv",
+      "target": "bio:th17",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:novel",
+      "target": "bio:th17",
+      "attrs": {}
+    },
+    {
+      "type": "ACTS_ON",
+      "source": "moa:hist",
+      "target": "bio:th17",
       "attrs": {}
     }
   ],

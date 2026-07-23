@@ -190,7 +190,31 @@ DEALS=[
  ("Eli Lilly","DICE Therapeutics","DC-806","$2.4B",2023,"acquisition","Oral IL-17 antagonist platform."),
 ]
 # --- schematic anchor per mechanism family (IL-23/IL-17 cascade node) ---
-ANCHOR={"il23":"il23","il17":"il17","tnf":"tnf","kinase":"tyk2","pde4":"pde4","topical":"kera","steroid":"kera","conv":"tcell","novel":"tcell","hist":"tcell"}
+ANCHOR={"il23":"il23","il17":"il17","tnf":"tnf","kinase":"tyk2","pde4":"pde4","topical":"kera","steroid":"kera","conv":"th17","novel":"th17","hist":"th17"}
+
+# --- biology of the cascade: cells / cytokines / intracellular nodes (Biology node type) ---
+# (pos = key in the template's SCH geometry map; description = original scientific summary)
+BIO=[
+ ("dc","Dendritic cell","cell","dc","Dermal antigen-presenting cell. On activation it secretes IL-23, IL-12 and TNF, initiating and sustaining the pathogenic T-cell response that drives psoriatic plaques."),
+ ("th17","Th17 cell","cell","th17","IL-23-dependent effector T cell. It signals intracellularly through TYK2 / JAK-STAT and secretes the effector cytokines IL-17A, IL-17F and IL-22."),
+ ("kera","Keratinocyte","cell","kera","Epidermal cell. Under IL-17 and TNF it hyperproliferates and releases further chemokines and cytokines, closing a self-amplifying inflammatory loop that forms the scaly plaque."),
+ ("plaque","Psoriatic plaque","outcome","plaque","The clinical lesion — a well-demarcated, thickened, scaly erythematous plaque produced by keratinocyte hyperproliferation and immune infiltration."),
+ ("il23","IL-23","cytokine","il23","Dendritic-cell cytokine (p19 + p40) that maintains pathogenic Th17 cells — the most disease-specific and best-validated target in psoriasis."),
+ ("p40","IL-12/23 p40","cytokine","p40","Shared subunit of IL-12 and IL-23. Blocking p40 (ustekinumab) inhibits both; selective p19 blockade has since proven more effective."),
+ ("il17","IL-17A / IL-17F","cytokine","il17","The effector cytokines acting on keratinocytes. Neutralising them delivers the fastest, deepest skin clearance of any class."),
+ ("il22","IL-22","cytokine","il22","Th17-derived cytokine promoting keratinocyte proliferation and epidermal acanthosis."),
+ ("tnf","TNF-α","cytokine","tnf","Pleiotropic pro-inflammatory cytokine that amplifies the cascade at multiple points; the first successful biologic target in psoriasis."),
+ ("tyk2","TYK2","intracellular","tyk2","Intracellular pseudokinase that transduces IL-23 (and type-I interferon) signalling — the basis of oral allosteric TYK2 inhibition."),
+ ("pde4","PDE4 / cAMP","intracellular","pde4","Phosphodiesterase-4 regulates intracellular cAMP in immune cells; inhibiting it dampens pro-inflammatory cytokine output (apremilast, roflumilast)."),
+]
+# cascade edges among biology nodes: (type, from_suffix, to_suffix)
+CASCADE=[("PRODUCES","dc","il23"),("PRODUCES","dc","p40"),("PRODUCES","dc","tnf"),
+ ("ACTS_ON","il23","th17"),("SIGNALS_VIA","il23","tyk2"),
+ ("PRODUCES","th17","il17"),("PRODUCES","th17","il22"),("PRODUCES","th17","tnf"),
+ ("ACTS_ON","il17","kera"),("ACTS_ON","il22","kera"),("ACTS_ON","tnf","kera"),
+ ("LEADS_TO","kera","plaque"),("FEEDBACK","kera","dc")]
+# bridge target -> biology (lets drug->target->biology path-finding reach the cascade)
+TARGET_BIO={"IL23A":"il23","IL12B":"p40","IL17A":"il17","IL17RA":"il17","TNF":"tnf","TYK2":"tyk2","PDE4":"pde4"}
 
 nodes={}; edges=[]
 def node(nid,ntype,label,attrs=None,sources=None):
@@ -250,6 +274,16 @@ for i,(acq,cp,asset,val,yr,kind,note) in enumerate(DEALS,1):
     if a: edge("PARTY_TO",a,dl,{"role":"acquirer"})
     dr="drug:"+slug(asset)
     if dr in nodes: edge("INVOLVES",dl,dr)
+
+# biology of the cascade -> Biology nodes + cascade edges + bridges to targets/mechanisms
+for suf,label,kind,pos,desc in BIO:
+    node("bio:"+suf,"Biology",label,{"kind":kind,"pos":pos,"description":desc})
+for et,a,b in CASCADE:
+    edge(et,"bio:"+a,"bio:"+b)
+for sym,bio in TARGET_BIO.items():
+    if "target:"+sym in nodes: edge("PART_OF","target:"+sym,"bio:"+bio)
+for fk,pos in ANCHOR.items():
+    if "moa:"+fk in nodes and "bio:"+pos in nodes: edge("ACTS_ON","moa:"+fk,"bio:"+pos)
 
 graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026-07-23","as_of":"July 2026",
     "one_liner":"Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market shifting to oral targeted therapy.",
