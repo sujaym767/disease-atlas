@@ -7,165 +7,125 @@
 <style>
 :root{
   color-scheme:light;
-  --plane:#f4f3ee; --surface:#fcfcfb; --panel:#ffffff;
-  --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --line:#e1e0d9; --ring:rgba(11,11,11,.12);
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --sN:#9a978f;
-  --good:#0ca30c; --warn:#c98500; --crit:#d03b3b;
-  --shadow:0 1px 2px rgba(20,25,40,.06),0 6px 20px rgba(20,25,40,.06);
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --paper:#f3eee1; --block:#fbf8f0; --panel:#fbf8f0; --ink:#231f18; --ink2:#5c564a; --muted:#8a8272; --rule:#d8d0bd; --rule2:#c7bda6;
+  --s1:#2a78d6; --s2:#c25a1c; --s3:#1b8f68; --s4:#c98a12; --s5:#b0517f; --s6:#3f7a2e; --s7:#4a3aa7; --s8:#c0403f; --sN:#9a8f77;
+  --accent:#8a2b1f; --shadowmodal:0 20px 60px rgba(40,30,15,.35);
+  --sans:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif; --cond:"Arial Narrow",Arial,var(--sans);
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
-  --plane:#0d0d0d; --surface:#1a1a19; --panel:#20201e; --ink:#fff; --ink2:#c3c2b7; --muted:#898781; --line:#2c2c2a; --ring:rgba(255,255,255,.14);
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --sN:#7d7a72;
-  --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);
+  --paper:#171512; --block:#211d18; --panel:#211d18; --ink:#efe9db; --ink2:#c3bbab; --muted:#8a8272; --rule:#332e26; --rule2:#433c30;
+  --s1:#4f92e6; --s2:#e07a3f; --s3:#31a97e; --s4:#d7a02f; --s5:#d071a0; --s6:#5aa246; --s7:#9085e9; --s8:#e06463; --sN:#9a8f77; --accent:#e0885f;
 }}
 :root[data-theme="dark"]{
-  --plane:#0d0d0d; --surface:#1a1a19; --panel:#20201e; --ink:#fff; --ink2:#c3c2b7; --muted:#898781; --line:#2c2c2a; --ring:rgba(255,255,255,.14);
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --sN:#7d7a72;
-  --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);
+  --paper:#171512; --block:#211d18; --panel:#211d18; --ink:#efe9db; --ink2:#c3bbab; --muted:#8a8272; --rule:#332e26; --rule2:#433c30;
+  --s1:#4f92e6; --s2:#e07a3f; --s3:#31a97e; --s4:#d7a02f; --s5:#d071a0; --s6:#5aa246; --s7:#9085e9; --s8:#e06463; --sN:#9a8f77; --accent:#e0885f;
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
-body{background:var(--plane);color:var(--ink);font-family:var(--sans);font-size:13.5px;line-height:1.42;overflow:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:12.5px;line-height:1.32}
 button{font-family:inherit;cursor:pointer}
 .tab{font-variant-numeric:tabular-nums}
-.app{display:grid;grid-template-rows:auto auto 1fr;height:100vh}
-header.top{display:flex;align-items:center;gap:12px;padding:9px 15px;background:var(--surface);border-bottom:1px solid var(--line);z-index:6}
-.brand{font-weight:750;font-size:14.5px;letter-spacing:-.01em;white-space:nowrap}
-.brand small{display:block;color:var(--muted);font-weight:500;font-size:10px;letter-spacing:.02em}
-.stats{display:flex;gap:8px;margin-left:4px;flex-wrap:nowrap;overflow:hidden}
-.kpi{background:var(--plane);border:1px solid var(--line);border-radius:8px;padding:4px 9px;white-space:nowrap}
-.kpi b{font-size:14px;letter-spacing:-.02em}.kpi span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
-.sp{flex:1}
-.search{background:var(--plane);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:12.5px;width:180px}
-.ghost{background:var(--plane);border:1px solid var(--line);color:var(--ink2);border-radius:8px;padding:6px 9px;font-size:11.5px}
-.ghost:hover{color:var(--ink)}
-.lensbar{display:flex;align-items:center;gap:10px;padding:6px 15px;background:var(--surface);border-bottom:1px solid var(--line);flex-wrap:wrap}
-.seg{display:inline-flex;background:var(--plane);border:1px solid var(--line);border-radius:8px;padding:2px;gap:2px}
-.seg button{border:0;background:transparent;color:var(--ink2);border-radius:6px;padding:4px 9px;font-size:11.5px}
-.seg button.on{background:var(--panel);color:var(--ink);box-shadow:var(--shadow);font-weight:650}
-.legend{display:flex;gap:4px 10px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--ink2)}
-.legend .sw{display:inline-flex;align-items:center;gap:4px}
-.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
-.hint{color:var(--muted);font-size:11px;margin-left:auto}
-.stage{position:relative;overflow:auto;padding:12px 15px 20px}
-.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}
-.wires path{fill:none;stroke-linecap:round;opacity:0;transition:opacity .25s}.wires.show path{opacity:.85}
-/* landscape */
-.land{display:grid;gap:6px;position:relative;z-index:1;min-width:max-content}
-.phlab{position:sticky;left:0;z-index:2;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;
-  font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
-  background:linear-gradient(90deg,var(--plane) 72%,transparent);white-space:nowrap}
-.lane-head{padding:5px 8px;border-radius:8px 8px 0 0;cursor:pointer;border:1px solid var(--line);
-  border-bottom:2px solid var(--laneColor,var(--sN));background:var(--surface);position:sticky;top:0;z-index:2}
-.lane-head .nm{font-weight:700;font-size:11px;line-height:1.12}
-.lane-head .mt{color:var(--muted);font-size:9px}
-.cell{display:flex;flex-direction:column;gap:5px;padding:2px;border-left:1px dashed var(--line);min-height:12px}
-.cell.empty{min-height:6px;border-left-style:dotted;opacity:.45}
-/* dense drug card */
-.card{position:relative;border:1px solid var(--line);border-left:3px solid var(--laneColor,var(--sN));border-radius:7px;
-  background:color-mix(in srgb,var(--laneColor,var(--sN)) 8%,var(--surface));padding:5px 7px;cursor:pointer;transition:transform .1s,box-shadow .1s,opacity .2s;width:172px}
-.card:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-.card.disc{border-style:dashed;opacity:.7}.card.disc .dn{text-decoration:line-through}
-.card .dn{font-weight:680;font-size:11.5px;line-height:1.08}
-.card .co{color:var(--ink2);font-size:10px;margin-top:1px}
-.card .sub{color:var(--muted);font-size:9px;margin-top:1px}
-.card .badges{display:flex;flex-wrap:wrap;gap:3px;margin-top:3px}
-.bdg{font-size:8.5px;padding:0 4px;border-radius:4px;background:var(--plane);border:1px solid var(--line);color:var(--ink2);white-space:nowrap;line-height:1.5}
-.bdg.p{font-weight:700}
-.mk{font-size:9px;font-weight:800;padding:0 3px;border-radius:4px}
-.mk.bio{background:color-mix(in srgb,var(--s1) 16%,var(--surface));color:var(--s1)}
-.mk.combo{background:color-mix(in srgb,var(--s3) 16%,var(--surface));color:var(--s3)}
-.mk.warn{color:var(--crit)}
-.card .pasi{margin-top:3px;font-size:9px;color:var(--muted);display:flex;align-items:center;gap:4px}
-.card .pbar{flex:1;height:3px;border-radius:2px;background:var(--line);overflow:hidden}
-.card .pbar i{display:block;height:100%;background:var(--laneColor,var(--sN))}
-.card .sales{margin-top:3px;font-size:9.5px;color:var(--muted);font-weight:600}
-/* panels */
-.panels{display:grid;grid-template-columns:1.5fr 1fr;gap:11px;margin-top:14px}
-.panels2{display:grid;grid-template-columns:1.1fr 1fr 1.2fr;gap:11px;margin-top:11px}
-.pane{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
-.pane h4{margin:0 0 8px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-/* matrix */
-.mx{border-collapse:separate;border-spacing:0;font-size:10px;width:100%}
-.mx th{color:var(--muted);font-weight:600;font-size:9px;padding:3px 2px;text-align:center;cursor:pointer;vertical-align:bottom}
-.mx th.rh{text-align:left}
-.mx td{text-align:center;padding:2px}
-.mx td.rh{text-align:left;font-size:10px;font-weight:600;white-space:nowrap;cursor:pointer;padding-right:6px}
-.mx .cellv{display:inline-block;width:20px;height:18px;line-height:18px;border-radius:4px;font-weight:700;font-size:9.5px}
-/* bars */
-.bar{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;cursor:pointer}
-.bar .lab{width:120px;flex:none;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar .track{flex:1;background:var(--plane);border-radius:5px;height:13px;overflow:hidden}
-.bar .fill{height:100%;border-radius:5px}
-.bar .val{width:34px;flex:none;text-align:right;color:var(--muted);font-weight:600}
-.chips{display:flex;flex-wrap:wrap;gap:5px}
-.chip{border:1px solid var(--line);background:var(--plane);border-radius:999px;padding:3px 9px;font-size:11px;cursor:pointer;display:inline-flex;gap:5px;align-items:center}
-.chip:hover{border-color:var(--ring)}.chip .dot{width:7px;height:7px;border-radius:50%;flex:none}.chip .ct{color:var(--muted);font-size:9.5px}
-.tl{display:flex;flex-direction:column;gap:6px}
-.tl .ev{display:flex;gap:7px;font-size:11px;cursor:pointer;align-items:baseline}
-.tl .ev .dt{color:var(--s1);font-weight:700;font-size:10px;white-space:nowrap;min-width:52px}
-.tl .ev .kd{font-size:8px;font-weight:800;text-transform:uppercase;padding:0 4px;border-radius:4px;background:var(--plane);border:1px solid var(--line);color:var(--muted)}
-/* focus */
-.dimmed .card:not(.hi):not(.focus),.dimmed .chip:not(.hi):not(.focus),.dimmed .lane-head:not(.hi):not(.focus),.dimmed .bar:not(.hi),.dimmed .tl .ev:not(.hi){opacity:.14;filter:saturate(.4)}
-.card.hi,.chip.hi,.lane-head.hi{outline:2px solid var(--laneColor,var(--s1));outline-offset:1px}
-.card.focus,.chip.focus,.lane-head.focus{outline:2.5px solid var(--ink);outline-offset:2px}
-/* rail */
-.rail{position:fixed;top:0;right:0;height:100vh;width:370px;max-width:92vw;background:var(--panel);border-left:1px solid var(--line);box-shadow:-8px 0 30px rgba(0,0,0,.1);transform:translateX(102%);transition:transform .26s cubic-bezier(.4,0,.2,1);z-index:20;display:flex;flex-direction:column}
-.rail.open{transform:translateX(0)}
-.rail header{display:flex;align-items:flex-start;gap:9px;padding:13px 15px;border-bottom:1px solid var(--line)}
-.rail .typetag{font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:5px;color:#fff}
-.rail h2{margin:2px 0 0;font-size:17px;letter-spacing:-.01em;line-height:1.14}
-.rail .sub{color:var(--muted);font-size:11.5px}
-.rail .x{margin-left:auto;background:transparent;border:0;color:var(--muted);font-size:19px;line-height:1}
-.rail .body{overflow:auto;padding:11px 15px 30px}
-.kpis{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}
-.kpis .k{background:var(--plane);border:1px solid var(--line);border-radius:8px;padding:6px 9px}
-.kpis .k b{font-size:14px}.kpis .k span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
-.prose{font-size:12px;color:var(--ink2);margin:5px 0}
-.safety{font-size:11.5px;border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;padding:7px 9px;background:color-mix(in srgb,var(--warn) 6%,var(--surface));margin:8px 0}
-.egograph{width:100%;height:200px;margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:9px}
-.egograph text{font-family:var(--sans);fill:var(--ink)}
-.rel{margin-top:11px}.rel h5{margin:0 0 4px;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.rel .chip{font-size:11px;padding:2px 8px}
-.srcs{font-size:10.5px;color:var(--muted);margin-top:9px}.srcs a{color:var(--s1);text-decoration:none}
-.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.001);z-index:15;display:none}.backdrop.on{display:block}
-@media(max-width:1000px){.panels,.panels2{grid-template-columns:1fr} .stats{display:none}}
+/* masthead — RA-Capital poster header */
+.mast{display:flex;align-items:flex-end;gap:20px;padding:14px 20px 12px;border-bottom:2px solid var(--ink)}
+.mast .ttl{font-family:var(--cond);font-weight:700;font-size:30px;letter-spacing:-.01em;line-height:.95;text-transform:uppercase}
+.mast .ttl small{display:block;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-top:3px}
+.mast .one{max-width:440px;font-size:12px;color:var(--ink2);border-left:1px solid var(--rule2);padding-left:14px;align-self:stretch;display:flex;align-items:center}
+.mast .kpis{display:flex;gap:16px;margin-left:auto;align-items:flex-end}
+.kpi{text-align:right}.kpi b{font-family:var(--cond);font-size:22px;font-weight:700;letter-spacing:-.01em}.kpi span{display:block;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tools{display:flex;gap:6px;align-items:center;margin-left:8px}
+.search{background:var(--block);border:1px solid var(--rule2);color:var(--ink);border-radius:2px;padding:6px 9px;font-size:12px;width:150px}
+.gh{background:var(--block);border:1px solid var(--rule2);color:var(--ink2);border-radius:2px;padding:6px 8px;font-size:11px}
+/* body: map + annotations */
+.wrap{display:grid;grid-template-columns:1fr 288px;height:calc(100vh - 63px)}
+.map{overflow:auto;padding:12px 16px 40px}
+.side{overflow:auto;border-left:2px solid var(--ink);background:var(--block);padding:12px 13px 40px}
+/* regions & blocks */
+.region{margin-bottom:14px}
+.rlabel{font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:14px;color:var(--accent);border-bottom:1px solid var(--rule2);padding-bottom:2px;margin-bottom:8px}
+.blocks{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+.block{border:1px solid var(--rule2);border-top:3px solid var(--fam,var(--sN));background:var(--block);width:250px;flex:0 0 auto}
+.bhead{display:flex;justify-content:space-between;align-items:baseline;gap:6px;padding:5px 8px 4px;border-bottom:1px solid var(--rule)}
+.bhead .bname{font-weight:700;font-size:11.5px;line-height:1.1;cursor:pointer}
+.bhead .bname:hover{color:var(--accent)}
+.bhead .bn{font-size:9px;color:var(--muted);white-space:nowrap}
+.brows{padding:2px 0}
+.drow{display:grid;grid-template-columns:22px 1fr;gap:5px;padding:3px 8px;border-bottom:1px dotted var(--rule);cursor:pointer}
+.drow:last-child{border-bottom:0}
+.drow:hover{background:color-mix(in srgb,var(--fam,var(--sN)) 9%,var(--block))}
+.stage{font-family:var(--mono);font-size:9.5px;font-weight:700;text-align:center;padding-top:1px;letter-spacing:-.02em}
+.dname{font-weight:650;font-size:11.5px;line-height:1.12}
+.dmeta{font-size:9.5px;color:var(--ink2);line-height:1.15;margin-top:1px}
+.dmeta b{color:var(--ink);font-weight:600}
+.mk{font-size:8.5px;font-weight:800;padding:0 2px;border-radius:2px;margin-left:3px;vertical-align:1px}
+.mk.bio{color:#fff;background:var(--s1)}.mk.combo{color:#fff;background:var(--s3)}.mk.warn{color:var(--s8)}
+.disc .dname{text-decoration:line-through;color:var(--muted)}
+/* annotation boxes */
+.abox{border:1px solid var(--rule2);background:var(--panel);margin-bottom:12px}
+.abox h4{margin:0;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:12.5px;padding:5px 9px;border-bottom:1px solid var(--rule);color:var(--accent)}
+.abox .ac{padding:8px 9px}
+.mkt b{font-family:var(--cond);font-size:26px;font-weight:700}
+.mkt .mrow{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink2);margin-top:3px}
+.bench .brow{display:grid;grid-template-columns:76px 1fr 22px;gap:5px;align-items:center;font-size:10px;margin:2px 0;cursor:pointer}
+.bench .lab{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)}
+.bench .tr{height:9px;background:var(--paper);border:1px solid var(--rule)}
+.bench .fi{height:100%}
+.bench .vv{text-align:right;color:var(--muted);font-weight:700}
+.cats .crow{display:grid;grid-template-columns:44px 1fr;gap:6px;font-size:10px;margin:3px 0;cursor:pointer}
+.cats .cd{font-weight:700;color:var(--accent);font-size:9.5px}
+.cats .ck{font-size:7.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+.legend{font-size:10px;color:var(--ink2)}
+.legend .lr{display:flex;gap:6px;flex-wrap:wrap;margin:3px 0}
+.legend code{font-family:var(--mono);font-weight:700;background:var(--paper);border:1px solid var(--rule);padding:0 3px;border-radius:2px}
+.legend .fam{display:inline-flex;align-items:center;gap:4px;margin:2px 6px 2px 0}
+.legend .fam i{width:9px;height:9px;display:inline-block}
+.companies{display:flex;flex-wrap:wrap;gap:4px}
+.cchip{border:1px solid var(--rule2);background:var(--paper);border-radius:2px;padding:2px 7px;font-size:10px;cursor:pointer}
+.cchip:hover{border-color:var(--accent)}.cchip .n{color:var(--muted);font-size:8.5px}
+/* modal ER popup */
+.backdrop{position:fixed;inset:0;background:rgba(20,15,8,.55);backdrop-filter:blur(2px);z-index:40;display:none;align-items:center;justify-content:center;padding:24px}
+.backdrop.on{display:flex}
+.modal{background:var(--paper);border:1px solid var(--rule2);border-top:4px solid var(--mc,var(--accent));width:min(980px,96vw);height:min(660px,92vh);box-shadow:var(--shadowmodal);display:grid;grid-template-rows:auto 1fr;overflow:hidden}
+.mhead{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--rule2)}
+.mhead .shape{width:26px;height:26px;flex:none}
+.mhead .tt{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mc,var(--accent))}
+.mhead h2{margin:0;font-family:var(--cond);font-size:23px;font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.mhead .sub{font-size:11px;color:var(--muted);margin-top:1px}
+.mhead .x{margin-left:auto;background:transparent;border:0;color:var(--muted);font-size:24px;line-height:1}
+.mbody{display:grid;grid-template-columns:340px 1fr;min-height:0}
+.minfo{overflow:auto;padding:13px 15px;border-right:1px solid var(--rule2)}
+.kpis{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+.kpis .k{border:1px solid var(--rule2);background:var(--block);padding:5px 9px;min-width:0}
+.kpis .k b{font-family:var(--cond);font-size:17px;font-weight:700}.kpis .k span{display:block;font-size:8.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.desc{font-size:12.5px;color:var(--ink2);margin:6px 0}
+.desc b{color:var(--ink)}
+.safety{font-size:11.5px;border:1px solid var(--rule2);border-left:3px solid var(--s4);background:color-mix(in srgb,var(--s4) 7%,var(--block));padding:7px 9px;margin:8px 0}
+.srcs{font-size:10.5px;color:var(--muted);margin-top:10px}.srcs a{color:var(--s1);text-decoration:none}
+.mgraph{position:relative;min-width:0;display:flex;flex-direction:column}
+.mgraph svg{flex:1;width:100%;height:100%}
+.mgraph .glegend{position:absolute;bottom:8px;left:10px;right:10px;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:9.5px;color:var(--muted);background:color-mix(in srgb,var(--paper) 80%,transparent);padding:4px 6px}
+.mgraph .glegend span{display:inline-flex;align-items:center;gap:4px}
+.enode{cursor:pointer}
+.elabel{font-family:var(--sans);font-size:10px;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round}
+.ecenter-label{font-family:var(--cond);font-weight:700;font-size:12px;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3.5px}
+.erel{font-family:var(--sans);font-size:8.5px;fill:var(--muted);paint-order:stroke;stroke:var(--paper);stroke-width:2.6px;text-transform:lowercase}
+@media(max-width:1050px){.wrap{grid-template-columns:1fr}.side{display:none}.mbody{grid-template-columns:1fr;grid-template-rows:auto 1fr}.minfo{border-right:0;border-bottom:1px solid var(--rule2);max-height:40%}}
 </style></head>
 <body>
-<div class="app">
-  <header class="top">
-    <div class="brand" id="brand">Atlas</div>
-    <div class="stats" id="kpis"></div>
-    <div class="sp"></div>
-    <input class="search" id="search" placeholder="Search…" list="allnodes"><datalist id="allnodes"></datalist>
-    <button class="ghost" id="reset">Reset ⎋</button><button class="ghost" id="theme">◐</button>
-  </header>
-  <div class="lensbar">
-    <span style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">Color by</span>
-    <div class="seg" id="lens">
-      <button data-lens="moa" class="on">Mechanism</button><button data-lens="modality">Modality</button>
-      <button data-lens="phase">Phase</button></div>
-    <div class="legend" id="legend"></div>
-    <span class="hint" id="hint">Click any drug · company · mechanism · target to spotlight</span>
-  </div>
-  <div class="stage" id="stage">
-    <svg class="wires" id="wires"></svg>
-    <div class="land" id="land"></div>
-    <div class="panels">
-      <div class="pane"><h4>Competitive matrix — company × mechanism (asset count)</h4><div style="overflow:auto"><table class="mx" id="matrix"></table></div></div>
-      <div class="pane"><h4>Efficacy benchmark — PASI 90 at wk 12–16 (cross-trial, NMA-anchored)</h4><div id="benchmark"></div></div>
-    </div>
-    <div class="panels2">
-      <div class="pane"><h4>Companies — click to see the mechanisms they're pursuing</h4><div class="chips" id="companies"></div></div>
-      <div class="pane"><h4>Targets &amp; biology (Open Targets association)</h4><div class="chips" id="targets"></div></div>
-      <div class="pane"><h4>Catalysts &amp; exclusivity — 2023→2033</h4><div class="tl" id="catalysts"></div></div>
-    </div>
+<div class="mast">
+  <div class="ttl" id="ttl">Atlas<small id="ttlsub"></small></div>
+  <div class="one" id="one"></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="tools">
+    <input class="search" id="search" placeholder="Find…" list="allnodes"><datalist id="allnodes"></datalist>
+    <button class="gh" id="theme">◐</button>
   </div>
 </div>
-<div class="backdrop" id="backdrop"></div>
-<aside class="rail" id="rail"><header><div><div class="typetag" id="r-type">—</div><h2 id="r-name">—</h2><div class="sub" id="r-sub"></div></div><button class="x" id="r-close">×</button></header><div class="body" id="r-body"></div></aside>
+<div class="wrap">
+  <div class="map" id="map"></div>
+  <div class="side" id="side"></div>
+</div>
+<div class="backdrop" id="backdrop"><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
 
 <script id="graph" type="application/json">{"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026-07-23","as_of":"July 2026","one_liner":"Chronic IL-23/IL-17-driven skin disease; a mature, biologics-led market shifting to oral targeted therapy.","sales_note":"Product sales are most-recent full-year (FY2025) company-reported franchise totals across ALL indications — not psoriasis-only. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.","headline_stats":[{"label":"Worldwide prevalence","value":"~125M"},{"label":"US adults","value":"~7.5M"},{"label":"Global market (2024)","value":"$27–33B"},{"label":"Assets mapped","value":"55"}]},"families":[{"key":"il23","label":"IL-23 / Th17 axis","colorVar":"--s1","order":1},{"key":"il17","label":"IL-17 axis","colorVar":"--s2","order":2},{"key":"tnf","label":"TNF inhibitors","colorVar":"--s5","order":3},{"key":"kinase","label":"Oral kinase inhibitors (TYK2 / JAK)","colorVar":"--s3","order":4},{"key":"pde4","label":"PDE4 inhibitors","colorVar":"--s7","order":5},{"key":"topical","label":"Topical non-steroidal","colorVar":"--s4","order":6},{"key":"steroid","label":"Topical corticosteroids","colorVar":"--sN","order":7},{"key":"conv","label":"Conventional systemics","colorVar":"--s8","order":8},{"key":"novel","label":"Novel / emerging mechanisms","colorVar":"--s6","order":9},{"key":"hist","label":"Withdrawn / discontinued","colorVar":"--sN","order":10}],"nodes":[{"id":"ind:plaque-psoriasis","type":"Indication","label":"Plaque psoriasis","attrs":{"area":"Immuno-dermatology"},"sources":[]},{"id":"moa:il23","type":"MoAClass","label":"IL-23 / Th17 axis","attrs":{"family_key":"il23","colorVar":"--s1","order":1,"safety":"Cleanest profile — no increased candidiasis or IBD signal (may be IBD-protective), low serious-infection rates, no boxed warnings."},"sources":[]},{"id":"moa:il17","type":"MoAClass","label":"IL-17 axis","attrs":{"family_key":"il17","colorVar":"--s2","order":2,"safety":"Mucocutaneous Candida (highest with bimekizumab); caution/avoid in IBD; brodalumab carries a boxed warning for suicidal ideation. No consistent MACE/malignancy signal."},"sources":[]},{"id":"moa:tnf","type":"MoAClass","label":"TNF inhibitors","attrs":{"family_key":"tnf","colorVar":"--s5","order":3,"safety":"Boxed warnings: serious infections (incl. TB reactivation — screen first) and malignancy (lymphoma). HBV reactivation, demyelination, CHF worsening; highest herpes-zoster rate."},"sources":[]},{"id":"moa:kinase","type":"MoAClass","label":"Oral kinase inhibitors (TYK2 / JAK)","attrs":{"family_key":"kinase","colorVar":"--s3","order":4,"safety":"Selective TYK2 (deucravacitinib) does NOT carry the JAK boxed warning; 5-yr data show no MACE/VTE/malignancy signal. Classic JAK inhibitors carry the class boxed warning (infection, MACE, thrombosis, malignancy)."},"sources":[]},{"id":"moa:pde4","type":"MoAClass","label":"PDE4 inhibitors","attrs":{"family_key":"pde4","colorVar":"--s7","order":5,"safety":"No boxed warning, no lab monitoring. GI (diarrhea/nausea), weight loss, and a depression/mood warning (apremilast)."},"sources":[]},{"id":"moa:topical","type":"MoAClass","label":"Topical non-steroidal","attrs":{"family_key":"topical","colorVar":"--s4","order":6,"safety":"Local, well-tolerated; steroid-sparing. Suitable for chronic use and sensitive sites."},"sources":[]},{"id":"moa:steroid","type":"MoAClass","label":"Topical corticosteroids","attrs":{"family_key":"steroid","colorVar":"--sN","order":7,"safety":"Skin atrophy, striae, tachyphylaxis and HPA-axis suppression with chronic/high-potency use."},"sources":[]},{"id":"moa:conv","type":"MoAClass","label":"Conventional systemics","attrs":{"family_key":"conv","colorVar":"--s8","order":8,"safety":"Organ toxicity and monitoring: MTX (hepatotoxicity, cytopenia, teratogenic), cyclosporine (nephrotoxicity, hypertension), acitretin (teratogenic, hyperlipidemia)."},"sources":[]},{"id":"moa:novel","type":"MoAClass","label":"Novel / emerging mechanisms","attrs":{"family_key":"novel","colorVar":"--s6","order":9,"safety":null},"sources":[]},{"id":"moa:hist","type":"MoAClass","label":"Withdrawn / discontinued","attrs":{"family_key":"hist","colorVar":"--sN","order":10,"safety":null},"sources":[]},{"id":"seg:mild","type":"MarketSegment","label":"Mild (topical-managed)","attrs":{"share_pct":80},"sources":[]},{"id":"seg:modsev","type":"MarketSegment","label":"Moderate-to-severe (systemic-eligible)","attrs":{"share_pct":20},"sources":[]},{"id":"drug:guselkumab","type":"Drug","label":"guselkumab","attrs":{"brand":"Tremfya","sub":"IL-23 p19 inhibitor","route":"SC","dose":"q8w","appr":2017,"sales":5200,"syr":2025,"combo":false,"disc":false,"p75":91,"p90":73,"p100":37,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-23 p19 inhibitor","annual_sales_usd_m":5200,"sales_year":2025},"sources":["ot","fda","jnj25"]},{"id":"company:johnson-johnson","type":"Company","label":"Johnson & Johnson","attrs":{"type":"company"},"sources":[]},{"id":"target:IL23A","type":"Target","label":"IL23A","attrs":{"ot_association_score":0.64},"sources":[]},{"id":"modality:mab","type":"Modality","label":"mAb","attrs":{},"sources":[]},{"id":"drug:risankizumab","type":"Drug","label":"risankizumab","attrs":{"brand":"Skyrizi","sub":"IL-23 p19 inhibitor","route":"SC","dose":"q12w","appr":2019,"sales":17562,"syr":2025,"combo":false,"disc":false,"p75":88,"p90":75,"p100":36,"note":"FY2025 sales all-indication (PsO+PsA+IBD); AbbVie's top product","mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-23 p19 inhibitor","annual_sales_usd_m":17562,"sales_year":2025},"sources":["ot","fda","abbvie25"]},{"id":"company:abbvie","type":"Company","label":"AbbVie","attrs":{"type":"company"},"sources":[]},{"id":"drug:tildrakizumab","type":"Drug","label":"tildrakizumab","attrs":{"brand":"Ilumya","sub":"IL-23 p19 inhibitor","route":"SC","dose":"q12w","appr":2018,"combo":false,"disc":false,"p75":64,"p90":35,"p100":14,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-23 p19 inhibitor"},"sources":["ot","fda"]},{"id":"company:sun-pharma","type":"Company","label":"Sun Pharma","attrs":{"type":"company"},"sources":[]},{"id":"drug:mirikizumab","type":"Drug","label":"mirikizumab","attrs":{"brand":"Omvoh","sub":"IL-23 p19 inhibitor","route":"SC","dose":"q8w","combo":false,"disc":false,"p90":74,"note":"approved in UC; Ph3 in psoriasis","mod":"mAb","highest_phase":"phase3","phase_num":3,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-23 p19 inhibitor"},"sources":["ot"]},{"id":"company:eli-lilly","type":"Company","label":"Eli Lilly","attrs":{"type":"company"},"sources":[]},{"id":"drug:icotrokinra","type":"Drug","label":"icotrokinra","attrs":{"brand":"Icotyde","sub":"Oral IL-23R antagonist","route":"PO","dose":"QD","appr":2026,"combo":false,"disc":false,"note":"first oral IL-23R peptide; FDA-approved Mar 2026 (JNJ-2113)","mod":"peptide","highest_phase":"approved","phase_num":4,"modality":"peptide","moa_family":"IL-23 / Th17 axis","sub_class":"Oral IL-23R antagonist"},"sources":["ot","fda"]},{"id":"target:IL23R","type":"Target","label":"IL23R","attrs":{"ot_association_score":0.55},"sources":[]},{"id":"modality:peptide","type":"Modality","label":"peptide","attrs":{},"sources":[]},{"id":"drug:ustekinumab","type":"Drug","label":"ustekinumab","attrs":{"brand":"Stelara","sub":"IL-12/23 p40 inhibitor","route":"SC","dose":"q12w","appr":2009,"sales":6080,"syr":2025,"bios":"biosimilars from Jan 2025 (Wezlana, Steqeyma…); sales −41% YoY","combo":false,"disc":false,"p75":67,"p90":42,"p100":20,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-12/23 p40 inhibitor","annual_sales_usd_m":6080,"sales_year":2025},"sources":["ot","fda","jnj25"]},{"id":"target:IL12B","type":"Target","label":"IL12B","attrs":{"ot_association_score":0.74},"sources":[]},{"id":"drug:briakinumab","type":"Drug","label":"briakinumab","attrs":{"brand":"—","sub":"IL-12/23 p40 inhibitor","route":"SC","dose":"q4w","combo":false,"disc":true,"note":"Ph3; withdrawn (cardiovascular signal)","mod":"mAb","highest_phase":"discontinued","phase_num":-1,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-12/23 p40 inhibitor"},"sources":["ot"]},{"id":"company:abbott","type":"Company","label":"Abbott","attrs":{"type":"company"},"sources":[]},{"id":"drug:ebdarokimab","type":"Drug","label":"ebdarokimab","attrs":{"brand":"—","sub":"IL-12/23 p40 inhibitor","route":"SC","dose":"q12w","combo":false,"disc":false,"note":"Ph3 in China","mod":"mAb","highest_phase":"phase3","phase_num":3,"modality":"mAb","moa_family":"IL-23 / Th17 axis","sub_class":"IL-12/23 p40 inhibitor"},"sources":["ot"]},{"id":"company:akeso","type":"Company","label":"Akeso","attrs":{"type":"company"},"sources":[]},{"id":"drug:secukinumab","type":"Drug","label":"secukinumab","attrs":{"brand":"Cosentyx","sub":"IL-17A inhibitor","route":"SC","dose":"q4w","appr":2015,"sales":6700,"syr":2025,"combo":false,"disc":false,"p75":82,"p90":59,"p100":29,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-17 axis","sub_class":"IL-17A inhibitor","annual_sales_usd_m":6700,"sales_year":2025},"sources":["ot","fda","nvs25"]},{"id":"company:novartis","type":"Company","label":"Novartis","attrs":{"type":"company"},"sources":[]},{"id":"target:IL17A","type":"Target","label":"IL17A","attrs":{"ot_association_score":0.6},"sources":[]},{"id":"drug:ixekizumab","type":"Drug","label":"ixekizumab","attrs":{"brand":"Taltz","sub":"IL-17A inhibitor","route":"SC","dose":"q4w","appr":2016,"sales":3260,"syr":2024,"combo":false,"disc":false,"p75":89,"p90":71,"p100":40,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-17 axis","sub_class":"IL-17A inhibitor","annual_sales_usd_m":3260,"sales_year":2024},"sources":["ot","fda","lilly_taltz"]},{"id":"drug:vunakizumab","type":"Drug","label":"vunakizumab","attrs":{"brand":"—","sub":"IL-17A inhibitor","route":"SC","dose":"q8w","combo":false,"disc":false,"note":"Ph3 in China","mod":"mAb","highest_phase":"phase3","phase_num":3,"modality":"mAb","moa_family":"IL-17 axis","sub_class":"IL-17A inhibitor"},"sources":["ot"]},{"id":"company:jiangsu-hengrui","type":"Company","label":"Jiangsu Hengrui","attrs":{"type":"company"},"sources":[]},{"id":"drug:bimekizumab","type":"Drug","label":"bimekizumab","attrs":{"brand":"Bimzelx","sub":"IL-17A/F inhibitor","route":"SC","dose":"q8w","appr":2023,"sales":2400,"syr":2025,"combo":false,"disc":false,"p75":93,"p90":85,"p100":61,"note":"dual IL-17A and IL-17F; highest PASI 100; sales +>200% YoY","mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-17 axis","sub_class":"IL-17A/F inhibitor","annual_sales_usd_m":2400,"sales_year":2025},"sources":["ot","fda","ucb25"]},{"id":"company:ucb","type":"Company","label":"UCB","attrs":{"type":"company"},"sources":[]},{"id":"drug:sonelokimab","type":"Drug","label":"sonelokimab","attrs":{"brand":"—","sub":"IL-17A/F inhibitor","route":"SC","dose":"q8w","combo":false,"disc":false,"p90":80,"note":"IL-17A/F Nanobody (M-1095); Ph2 MIRA in PsO, sponsor prioritizing HS","mod":"protein","highest_phase":"phase2","phase_num":2,"modality":"protein","moa_family":"IL-17 axis","sub_class":"IL-17A/F inhibitor"},"sources":["ot"]},{"id":"company:moonlake-immunotherapeutics","type":"Company","label":"MoonLake Immunotherapeutics","attrs":{"type":"company"},"sources":[]},{"id":"modality:protein","type":"Modality","label":"protein","attrs":{},"sources":[]},{"id":"drug:brodalumab","type":"Drug","label":"brodalumab","attrs":{"brand":"Siliq","sub":"IL-17RA inhibitor","route":"SC","dose":"q2w","appr":2017,"combo":false,"disc":false,"p75":86,"p90":70,"p100":44,"note":"boxed warning (suicidal ideation)","mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"IL-17 axis","sub_class":"IL-17RA inhibitor"},"sources":["ot","fda"]},{"id":"company:bausch-health","type":"Company","label":"Bausch Health","attrs":{"type":"company"},"sources":[]},{"id":"target:IL17RA","type":"Target","label":"IL17RA","attrs":{"ot_association_score":0.58},"sources":[]},{"id":"drug:izokibep","type":"Drug","label":"izokibep","attrs":{"brand":"—","sub":"IL-17A (small protein)","route":"SC","dose":"q2w","combo":false,"disc":false,"note":"IL-17A affibody; derm development deprioritized (2024)","mod":"protein","highest_phase":"phase2","phase_num":2,"modality":"protein","moa_family":"IL-17 axis","sub_class":"IL-17A (small protein)"},"sources":["ot"]},{"id":"company:acelyrin-alumis","type":"Company","label":"ACELYRIN / Alumis","attrs":{"type":"company"},"sources":[]},{"id":"drug:dc-806","type":"Drug","label":"DC-806","attrs":{"brand":"—","sub":"Oral IL-17 inhibitor","route":"PO","dose":"QD","combo":false,"disc":false,"note":"oral IL-17A antagonist","mod":"small_molecule","highest_phase":"phase1","phase_num":1,"modality":"small_molecule","moa_family":"IL-17 axis","sub_class":"Oral IL-17 inhibitor"},"sources":["ot"]},{"id":"company:leo-pharma-dice","type":"Company","label":"LEO Pharma (DICE)","attrs":{"type":"company"},"sources":[]},{"id":"modality:small-molecule","type":"Modality","label":"small_molecule","attrs":{},"sources":[]},{"id":"drug:cjm-112","type":"Drug","label":"CJM-112","attrs":{"brand":"—","sub":"IL-17A inhibitor","route":"SC","dose":"—","combo":false,"disc":false,"mod":"mAb","highest_phase":"phase1","phase_num":1,"modality":"mAb","moa_family":"IL-17 axis","sub_class":"IL-17A inhibitor"},"sources":["ot"]},{"id":"drug:adalimumab","type":"Drug","label":"adalimumab","attrs":{"brand":"Humira","sub":"TNF inhibitor","route":"SC","dose":"q2w","appr":2008,"sales":4540,"syr":2025,"bios":"biosimilars from 2023 (US); sales collapsed from ~$21B peak","combo":false,"disc":false,"p75":71,"p90":45,"p100":17,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"TNF inhibitors","sub_class":"TNF inhibitor","annual_sales_usd_m":4540,"sales_year":2025},"sources":["ot","fda","abbvie25"]},{"id":"target:TNF","type":"Target","label":"TNF","attrs":{"ot_association_score":0.61},"sources":[]},{"id":"drug:etanercept","type":"Drug","label":"etanercept","attrs":{"brand":"Enbrel","sub":"TNF inhibitor","route":"SC","dose":"weekly","appr":2004,"sales":2200,"syr":2025,"bios":"biosimilars in EU; none in US (patents ~2029)","combo":false,"disc":false,"p75":44,"p90":21,"p100":4,"mod":"protein","highest_phase":"approved","phase_num":4,"modality":"protein","moa_family":"TNF inhibitors","sub_class":"TNF inhibitor","annual_sales_usd_m":2200,"sales_year":2025},"sources":["ot","fda","amgen25"]},{"id":"company:amgen","type":"Company","label":"Amgen","attrs":{"type":"company"},"sources":[]},{"id":"drug:infliximab","type":"Drug","label":"infliximab","attrs":{"brand":"Remicade","sub":"TNF inhibitor","route":"IV","dose":"q8w","appr":2006,"sales":1768,"syr":2025,"bios":"biosimilars since 2016 (Inflectra, Renflexis, Avsola)","combo":false,"disc":false,"p75":80,"p90":57,"mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"TNF inhibitors","sub_class":"TNF inhibitor","annual_sales_usd_m":1768,"sales_year":2025},"sources":["ot","fda","jnj25"]},{"id":"drug:certolizumab-pegol","type":"Drug","label":"certolizumab pegol","attrs":{"brand":"Cimzia","sub":"TNF inhibitor","route":"SC","dose":"q2w","appr":2018,"sales":2100,"syr":2025,"combo":false,"disc":false,"p75":83,"p90":60,"note":"PEGylated Fab' (no Fc); used more in arthritis than PsO","mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"TNF inhibitors","sub_class":"TNF inhibitor","annual_sales_usd_m":2100,"sales_year":2025},"sources":["ot","fda","ucb25"]},{"id":"drug:deucravacitinib","type":"Drug","label":"deucravacitinib","attrs":{"brand":"Sotyktu","sub":"TYK2 allosteric inhibitor","route":"PO","dose":"QD","appr":2022,"sales":291,"syr":2025,"combo":false,"disc":false,"p75":58,"p90":35,"p100":17,"note":"first oral TYK2; FY2025 sales $291M","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"TYK2 allosteric inhibitor","annual_sales_usd_m":291,"sales_year":2025},"sources":["ot","fda","bms25"]},{"id":"company:bristol-myers-squibb","type":"Company","label":"Bristol Myers Squibb","attrs":{"type":"company"},"sources":[]},{"id":"target:TYK2","type":"Target","label":"TYK2","attrs":{"ot_association_score":0.71},"sources":[]},{"id":"drug:zasocitinib","type":"Drug","label":"zasocitinib","attrs":{"brand":"—","sub":"TYK2 allosteric inhibitor","route":"PO","dose":"QD","combo":false,"disc":false,"p90":45,"note":"next-gen oral TYK2 (TAK-279)","mod":"small_molecule","highest_phase":"phase3","phase_num":3,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"TYK2 allosteric inhibitor"},"sources":["ot"]},{"id":"company:takeda","type":"Company","label":"Takeda","attrs":{"type":"company"},"sources":[]},{"id":"drug:esk-001","type":"Drug","label":"ESK-001","attrs":{"brand":"—","sub":"TYK2 allosteric inhibitor","route":"PO","dose":"BID","combo":false,"disc":false,"mod":"small_molecule","highest_phase":"phase3","phase_num":3,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"TYK2 allosteric inhibitor"},"sources":["ot"]},{"id":"company:alumis","type":"Company","label":"Alumis","attrs":{"type":"company"},"sources":[]},{"id":"drug:ropsacitinib","type":"Drug","label":"ropsacitinib","attrs":{"brand":"—","sub":"TYK2 inhibitor","route":"PO","dose":"QD","combo":false,"disc":false,"note":"PF-06826647","mod":"small_molecule","highest_phase":"phase2","phase_num":2,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"TYK2 inhibitor"},"sources":["ot"]},{"id":"company:pfizer","type":"Company","label":"Pfizer","attrs":{"type":"company"},"sources":[]},{"id":"drug:brepocitinib","type":"Drug","label":"brepocitinib","attrs":{"brand":"—","sub":"TYK2/JAK1 inhibitor","route":"PO","dose":"QD","combo":false,"disc":false,"note":"dual TYK2/JAK1","mod":"small_molecule","highest_phase":"phase2","phase_num":2,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"TYK2/JAK1 inhibitor"},"sources":["ot"]},{"id":"company:priovant-pfizer","type":"Company","label":"Priovant / Pfizer","attrs":{"type":"company"},"sources":[]},{"id":"drug:tofacitinib","type":"Drug","label":"tofacitinib","attrs":{"brand":"Xeljanz","sub":"JAK inhibitor","route":"PO","dose":"BID","combo":false,"disc":false,"note":"studied in Ph3; not approved for psoriasis (US)","mod":"small_molecule","highest_phase":"phase3","phase_num":3,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"JAK inhibitor"},"sources":["ot"]},{"id":"target:JAK3","type":"Target","label":"JAK3","attrs":{},"sources":[]},{"id":"drug:peficitinib","type":"Drug","label":"peficitinib","attrs":{"brand":"Smyraf","sub":"JAK inhibitor","route":"PO","dose":"QD","combo":false,"disc":false,"note":"Ph3 (Japan)","mod":"small_molecule","highest_phase":"phase3","phase_num":3,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"JAK inhibitor"},"sources":["ot"]},{"id":"company:astellas","type":"Company","label":"Astellas","attrs":{"type":"company"},"sources":[]},{"id":"target:JAK1","type":"Target","label":"JAK1","attrs":{},"sources":[]},{"id":"drug:ruxolitinib","type":"Drug","label":"ruxolitinib","attrs":{"brand":"Opzelura","sub":"JAK inhibitor (topical)","route":"topical","dose":"BID","combo":false,"disc":false,"mod":"small_molecule","highest_phase":"phase2","phase_num":2,"modality":"small_molecule","moa_family":"Oral kinase inhibitors (TYK2 / JAK)","sub_class":"JAK inhibitor (topical)"},"sources":["ot"]},{"id":"company:incyte","type":"Company","label":"Incyte","attrs":{"type":"company"},"sources":[]},{"id":"drug:apremilast","type":"Drug","label":"apremilast","attrs":{"brand":"Otezla","sub":"Oral PDE4 inhibitor","route":"PO","dose":"BID","appr":2014,"sales":2400,"syr":2025,"combo":false,"disc":false,"p75":33,"p90":10,"note":"FY2025 approx; selected for Medicare IRA price-setting","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"PDE4 inhibitors","sub_class":"Oral PDE4 inhibitor","annual_sales_usd_m":2400,"sales_year":2025},"sources":["ot","fda","amgen25"]},{"id":"target:PDE4","type":"Target","label":"PDE4","attrs":{"ot_association_score":0.61},"sources":[]},{"id":"drug:orismilast","type":"Drug","label":"orismilast","attrs":{"brand":"—","sub":"Oral PDE4 inhibitor","route":"PO","dose":"BID","combo":false,"disc":false,"note":"Ph2b positive in PsO; sponsor advancing Ph3 in atopic dermatitis","mod":"small_molecule","highest_phase":"phase2","phase_num":2,"modality":"small_molecule","moa_family":"PDE4 inhibitors","sub_class":"Oral PDE4 inhibitor"},"sources":["ot"]},{"id":"company:union-therapeutics","type":"Company","label":"UNION therapeutics","attrs":{"type":"company"},"sources":[]},{"id":"drug:roflumilast","type":"Drug","label":"roflumilast","attrs":{"brand":"Zoryve","sub":"Topical PDE4 inhibitor","route":"topical","dose":"QD","appr":2022,"sales":372,"syr":2025,"combo":false,"disc":false,"note":"FY2025 franchise (PsO+seb derm+AD); scalp/body foam approved May 2025","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"PDE4 inhibitors","sub_class":"Topical PDE4 inhibitor","annual_sales_usd_m":372,"sales_year":2025},"sources":["ot","fda","arcutis25"]},{"id":"company:arcutis-biotherapeutics","type":"Company","label":"Arcutis Biotherapeutics","attrs":{"type":"company"},"sources":[]},{"id":"drug:crisaborole","type":"Drug","label":"crisaborole","attrs":{"brand":"Eucrisa","sub":"Topical PDE4 inhibitor","route":"topical","dose":"BID","combo":false,"disc":false,"note":"approved in atopic dermatitis","mod":"small_molecule","highest_phase":"phase2","phase_num":2,"modality":"small_molecule","moa_family":"PDE4 inhibitors","sub_class":"Topical PDE4 inhibitor"},"sources":["ot"]},{"id":"drug:tapinarof","type":"Drug","label":"tapinarof","attrs":{"brand":"Vtama","sub":"AhR agonist (topical)","route":"topical","dose":"QD","appr":2022,"combo":false,"disc":false,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical non-steroidal","sub_class":"AhR agonist (topical)"},"sources":["ot","fda"]},{"id":"company:organon-dermavant","type":"Company","label":"Organon (Dermavant)","attrs":{"type":"company"},"sources":[]},{"id":"target:AHR","type":"Target","label":"AHR","attrs":{"ot_association_score":0.45},"sources":[]},{"id":"drug:calcipotriene","type":"Drug","label":"calcipotriene","attrs":{"brand":"Dovonex / Enstilar","sub":"Vitamin D analog (topical)","route":"topical","dose":"QD-BID","appr":1993,"combo":true,"disc":false,"note":"often co-formulated with a steroid","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical non-steroidal","sub_class":"Vitamin D analog (topical)"},"sources":["ot","fda"]},{"id":"company:leo-pharma","type":"Company","label":"LEO Pharma","attrs":{"type":"company"},"sources":[]},{"id":"target:VDR","type":"Target","label":"VDR","attrs":{"ot_association_score":0.6},"sources":[]},{"id":"drug:calcitriol","type":"Drug","label":"calcitriol","attrs":{"brand":"Vectical","sub":"Vitamin D analog (topical)","route":"topical","dose":"BID","appr":2009,"combo":false,"disc":false,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical non-steroidal","sub_class":"Vitamin D analog (topical)"},"sources":["ot","fda"]},{"id":"company:leo-galderma","type":"Company","label":"LEO / Galderma","attrs":{"type":"company"},"sources":[]},{"id":"drug:tazarotene","type":"Drug","label":"tazarotene","attrs":{"brand":"Tazorac","sub":"Retinoid (topical)","route":"topical","dose":"QD","appr":1997,"combo":false,"disc":false,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical non-steroidal","sub_class":"Retinoid (topical)"},"sources":["ot","fda"]},{"id":"company:allergan","type":"Company","label":"Allergan","attrs":{"type":"company"},"sources":[]},{"id":"target:RARB","type":"Target","label":"RARB","attrs":{},"sources":[]},{"id":"drug:clobetasol-propionate","type":"Drug","label":"clobetasol propionate","attrs":{"brand":"Temovate / Clobex","sub":"Topical corticosteroid","route":"topical","dose":"BID","combo":false,"disc":false,"note":"super-high potency","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical corticosteroids","sub_class":"Topical corticosteroid"},"sources":["ot"]},{"id":"company:generic","type":"Company","label":"generic","attrs":{"type":"company"},"sources":[]},{"id":"target:NR3C1","type":"Target","label":"NR3C1","attrs":{"ot_association_score":0.6},"sources":[]},{"id":"drug:betamethasone-dipropionate","type":"Drug","label":"betamethasone dipropionate","attrs":{"brand":"Diprolene","sub":"Topical corticosteroid","route":"topical","dose":"QD-BID","combo":true,"disc":false,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical corticosteroids","sub_class":"Topical corticosteroid"},"sources":["ot"]},{"id":"drug:halobetasol-propionate","type":"Drug","label":"halobetasol propionate","attrs":{"brand":"Ultravate","sub":"Topical corticosteroid","route":"topical","dose":"QD","combo":true,"disc":false,"note":"also co-formulated with tazarotene (Duobrii)","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical corticosteroids","sub_class":"Topical corticosteroid"},"sources":["ot"]},{"id":"drug:desoximetasone","type":"Drug","label":"desoximetasone","attrs":{"brand":"Topicort","sub":"Topical corticosteroid","route":"topical","dose":"BID","combo":false,"disc":false,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Topical corticosteroids","sub_class":"Topical corticosteroid"},"sources":["ot"]},{"id":"drug:methotrexate","type":"Drug","label":"methotrexate","attrs":{"brand":"—","sub":"Antimetabolite (DHFR)","route":"PO","dose":"weekly","combo":false,"disc":false,"p75":38,"p90":16,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Conventional systemics","sub_class":"Antimetabolite (DHFR)"},"sources":["ot"]},{"id":"target:DHFR","type":"Target","label":"DHFR","attrs":{},"sources":[]},{"id":"drug:cyclosporine","type":"Drug","label":"cyclosporine","attrs":{"brand":"Neoral","sub":"Calcineurin inhibitor","route":"PO","dose":"BID","combo":false,"disc":false,"p75":50,"mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Conventional systemics","sub_class":"Calcineurin inhibitor"},"sources":["ot"]},{"id":"target:PPIA","type":"Target","label":"PPIA","attrs":{},"sources":[]},{"id":"drug:acitretin","type":"Drug","label":"acitretin","attrs":{"brand":"Soriatane","sub":"Systemic retinoid","route":"PO","dose":"QD","combo":false,"disc":false,"note":"teratogenic; often combined with phototherapy","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Conventional systemics","sub_class":"Systemic retinoid"},"sources":["ot"]},{"id":"target:RARA","type":"Target","label":"RARA","attrs":{},"sources":[]},{"id":"drug:dimethyl-fumarate","type":"Drug","label":"dimethyl fumarate","attrs":{"brand":"Skilarence","sub":"Fumaric acid ester","route":"PO","dose":"BID","appr":2017,"combo":false,"disc":false,"note":"approved in EU","mod":"small_molecule","highest_phase":"approved","phase_num":4,"modality":"small_molecule","moa_family":"Conventional systemics","sub_class":"Fumaric acid ester"},"sources":["ot","fda"]},{"id":"company:almirall","type":"Company","label":"Almirall","attrs":{"type":"company"},"sources":[]},{"id":"target:NFE2L2","type":"Target","label":"NFE2L2","attrs":{},"sources":[]},{"id":"drug:piclidenoson","type":"Drug","label":"piclidenoson","attrs":{"brand":"—","sub":"A3 adenosine agonist","route":"PO","dose":"BID","combo":false,"disc":false,"note":"Ph3 COMFORT efficacy weak (PASI75 ~10%); stalled","mod":"small_molecule","highest_phase":"phase3","phase_num":3,"modality":"small_molecule","moa_family":"Novel / emerging mechanisms","sub_class":"A3 adenosine agonist"},"sources":["ot"]},{"id":"company:can-fite-biopharma","type":"Company","label":"Can-Fite BioPharma","attrs":{"type":"company"},"sources":[]},{"id":"target:ADORA3","type":"Target","label":"ADORA3","attrs":{},"sources":[]},{"id":"drug:fezakinumab","type":"Drug","label":"fezakinumab","attrs":{"brand":"—","sub":"IL-22 inhibitor","route":"SC","dose":"q2w","combo":false,"disc":false,"mod":"mAb","highest_phase":"phase2","phase_num":2,"modality":"mAb","moa_family":"Novel / emerging mechanisms","sub_class":"IL-22 inhibitor"},"sources":["ot"]},{"id":"target:IL22","type":"Target","label":"IL22","attrs":{},"sources":[]},{"id":"drug:vixarelimab","type":"Drug","label":"vixarelimab","attrs":{"brand":"—","sub":"OSMRβ inhibitor (IL-31/OSM)","route":"SC","dose":"q2w","combo":false,"disc":false,"mod":"mAb","highest_phase":"phase2","phase_num":2,"modality":"mAb","moa_family":"Novel / emerging mechanisms","sub_class":"OSMRβ inhibitor (IL-31/OSM)"},"sources":["ot"]},{"id":"company:genentech","type":"Company","label":"Genentech","attrs":{"type":"company"},"sources":[]},{"id":"target:OSMR","type":"Target","label":"OSMR","attrs":{},"sources":[]},{"id":"drug:namilumab","type":"Drug","label":"namilumab","attrs":{"brand":"—","sub":"GM-CSF inhibitor","route":"SC","dose":"q4w","combo":false,"disc":false,"mod":"mAb","highest_phase":"phase2","phase_num":2,"modality":"mAb","moa_family":"Novel / emerging mechanisms","sub_class":"GM-CSF inhibitor"},"sources":["ot"]},{"id":"company:roivant","type":"Company","label":"Roivant","attrs":{"type":"company"},"sources":[]},{"id":"target:CSF2","type":"Target","label":"CSF2","attrs":{},"sources":[]},{"id":"drug:spesolimab","type":"Drug","label":"spesolimab","attrs":{"brand":"Spevigo","sub":"IL-36R inhibitor","route":"IV/SC","dose":"—","appr":2022,"combo":false,"disc":false,"note":"approved for generalized pustular psoriasis (adjacent)","mod":"mAb","highest_phase":"approved","phase_num":4,"modality":"mAb","moa_family":"Novel / emerging mechanisms","sub_class":"IL-36R inhibitor"},"sources":["ot","fda"]},{"id":"company:boehringer-ingelheim","type":"Company","label":"Boehringer Ingelheim","attrs":{"type":"company"},"sources":[]},{"id":"target:IL1RL2","type":"Target","label":"IL1RL2","attrs":{},"sources":[]},{"id":"drug:imsidolimab","type":"Drug","label":"imsidolimab","attrs":{"brand":"—","sub":"IL-36R inhibitor","route":"SC","dose":"—","combo":false,"disc":false,"note":"Ph3 in GPP (adjacent)","mod":"mAb","highest_phase":"phase3","phase_num":3,"modality":"mAb","moa_family":"Novel / emerging mechanisms","sub_class":"IL-36R inhibitor"},"sources":["ot"]},{"id":"company:anaptysbio","type":"Company","label":"AnaptysBio","attrs":{"type":"company"},"sources":[]},{"id":"drug:gsk2982772","type":"Drug","label":"GSK2982772","attrs":{"brand":"—","sub":"RIPK1 inhibitor","route":"PO","dose":"TID","combo":false,"disc":false,"mod":"small_molecule","highest_phase":"phase2","phase_num":2,"modality":"small_molecule","moa_family":"Novel / emerging mechanisms","sub_class":"RIPK1 inhibitor"},"sources":["ot"]},{"id":"company:gsk","type":"Company","label":"GSK","attrs":{"type":"company"},"sources":[]},{"id":"target:RIPK1","type":"Target","label":"RIPK1","attrs":{},"sources":[]},{"id":"drug:ponesimod","type":"Drug","label":"ponesimod","attrs":{"brand":"Ponvory","sub":"S1P receptor modulator","route":"PO","dose":"QD","combo":false,"disc":true,"note":"Ph2 for psoriasis discontinued; approved in MS","mod":"small_molecule","highest_phase":"discontinued","phase_num":-1,"modality":"small_molecule","moa_family":"Novel / emerging mechanisms","sub_class":"S1P receptor modulator"},"sources":["ot"]},{"id":"target:S1PR1","type":"Target","label":"S1PR1","attrs":{},"sources":[]},{"id":"drug:efalizumab","type":"Drug","label":"efalizumab","attrs":{"brand":"Raptiva","sub":"Anti-CD11a (LFA-1)","route":"SC","dose":"weekly","combo":false,"disc":true,"note":"withdrawn 2009 (PML risk)","mod":"mAb","highest_phase":"discontinued","phase_num":-1,"modality":"mAb","moa_family":"Withdrawn / discontinued","sub_class":"Anti-CD11a (LFA-1)"},"sources":["ot"]},{"id":"company:genentech-merck","type":"Company","label":"Genentech / Merck","attrs":{"type":"company"},"sources":[]},{"id":"target:ITGAL","type":"Target","label":"ITGAL","attrs":{},"sources":[]},{"id":"drug:alefacept","type":"Drug","label":"alefacept","attrs":{"brand":"Amevive","sub":"Anti-CD2 (LFA-3 fusion)","route":"IM","dose":"weekly","combo":false,"disc":true,"note":"discontinued (commercial)","mod":"protein","highest_phase":"discontinued","phase_num":-1,"modality":"protein","moa_family":"Withdrawn / discontinued","sub_class":"Anti-CD2 (LFA-3 fusion)"},"sources":["ot"]},{"id":"target:CD2","type":"Target","label":"CD2","attrs":{},"sources":[]},{"id":"catalyst:c1","type":"Catalyst","label":"Humira (adalimumab) biosimilars enter US","attrs":{"date":"2023-07","kind":"patent_expiry","significance":"First big psoriasis-biologic patent cliff; ~9 biosimilars in 2023.","company":"AbbVie"},"sources":["ajmc_humira"]},{"id":"catalyst:c2","type":"Catalyst","label":"Bimzelx (bimekizumab) approved for plaque psoriasis (US)","attrs":{"date":"2023-10","kind":"approval","significance":"First IL-17A and IL-17F inhibitor; deepest skin-clearance benchmark.","company":"UCB"},"sources":["fda"]},{"id":"catalyst:c3","type":"Catalyst","label":"Stelara (ustekinumab) US biosimilar cliff","attrs":{"date":"2025-01","kind":"patent_expiry","significance":"~7 biosimilars launch in 2025 at up to ~85% discount; Stelara ~$10.4B (2024).","company":"Johnson & Johnson"},"sources":["cfb_stelara"]},{"id":"catalyst:c4","type":"Catalyst","label":"Zoryve (roflumilast) foam approved for scalp & body","attrs":{"date":"2025-05","kind":"approval","significance":"Extends the topical PDE4 franchise into scalp.","company":"Arcutis Biotherapeutics"},"sources":["arcutis_foam"]},{"id":"catalyst:c5","type":"Catalyst","label":"Zasocitinib (TAK-279) positive Phase 3 topline","attrs":{"date":"2025-12","kind":"readout","significance":">50% PASI 90, ~30% PASI 100 at wk16; positions oral TYK2 as a 2026 filer.","company":"Takeda"},"sources":["takeda_zaso"]},{"id":"catalyst:c6","type":"Catalyst","label":"Envudeucitinib (ESK-001) positive Phase 3 topline","attrs":{"date":"2026-01","kind":"readout","significance":"~74% PASI 75; oral TYK2 competitor; NDA planned H2 2026.","company":"Alumis"},"sources":["alumis_esk"]},{"id":"catalyst:c7","type":"Catalyst","label":"ICOTYDE (icotrokinra) FDA-approved","attrs":{"date":"2026-03","kind":"approval","significance":"First targeted ORAL IL-23R peptide; category-defining first-line oral.","company":"Johnson & Johnson"},"sources":["jnj_icotyde"]},{"id":"catalyst:c8","type":"Catalyst","label":"Otezla (apremilast) earliest generic entry (proj.)","attrs":{"date":"2028","kind":"patent_expiry","significance":"Oral PDE4 loss of exclusivity.","company":"Amgen"},"sources":["dpw"]},{"id":"catalyst:c9","type":"Catalyst","label":"Cosentyx (secukinumab) US patent expiry (proj.)","attrs":{"date":"2029","kind":"patent_expiry","significance":"IL-17 biosimilars already in Phase 3.","company":"Novartis"},"sources":["dpw"]},{"id":"catalyst:c10","type":"Catalyst","label":"Tremfya (guselkumab) US patent expiry (proj.)","attrs":{"date":"2031","kind":"patent_expiry","significance":"IL-23 franchise exclusivity.","company":"Johnson & Johnson"},"sources":["dpw"]},{"id":"catalyst:c11","type":"Catalyst","label":"Skyrizi (risankizumab) basic patent expiry (proj.)","attrs":{"date":"2033","kind":"patent_expiry","significance":"Longest runway of the IL-23 class; AbbVie's post-Humira anchor.","company":"AbbVie"},"sources":["dpw"]}],"edges":[{"type":"DEVELOPED_BY","source":"drug:guselkumab","target":"company:johnson-johnson","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:guselkumab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:guselkumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:guselkumab","target":"target:IL23A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:guselkumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:guselkumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:risankizumab","target":"company:abbvie","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:risankizumab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:risankizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:risankizumab","target":"target:IL23A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:risankizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:risankizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:tildrakizumab","target":"company:sun-pharma","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:tildrakizumab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:tildrakizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:tildrakizumab","target":"target:IL23A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:tildrakizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:tildrakizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:mirikizumab","target":"company:eli-lilly","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:mirikizumab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:mirikizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:mirikizumab","target":"target:IL23A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:mirikizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:mirikizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:icotrokinra","target":"company:johnson-johnson","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:icotrokinra","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:icotrokinra","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:icotrokinra","target":"target:IL23R","attrs":{}},{"type":"HAS_MODALITY","source":"drug:icotrokinra","target":"modality:peptide","attrs":{}},{"type":"SERVES","source":"drug:icotrokinra","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:ustekinumab","target":"company:johnson-johnson","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:ustekinumab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:ustekinumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:ustekinumab","target":"target:IL12B","attrs":{}},{"type":"HAS_MODALITY","source":"drug:ustekinumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:ustekinumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:briakinumab","target":"company:abbott","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:briakinumab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:briakinumab","target":"ind:plaque-psoriasis","attrs":{"phase":"discontinued","approved":false}},{"type":"HITS","source":"drug:briakinumab","target":"target:IL12B","attrs":{}},{"type":"HAS_MODALITY","source":"drug:briakinumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:briakinumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:ebdarokimab","target":"company:akeso","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:ebdarokimab","target":"moa:il23","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:ebdarokimab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:ebdarokimab","target":"target:IL12B","attrs":{}},{"type":"HAS_MODALITY","source":"drug:ebdarokimab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:ebdarokimab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:secukinumab","target":"company:novartis","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:secukinumab","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:secukinumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:secukinumab","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:secukinumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:secukinumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:ixekizumab","target":"company:eli-lilly","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:ixekizumab","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:ixekizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:ixekizumab","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:ixekizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:ixekizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:vunakizumab","target":"company:jiangsu-hengrui","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:vunakizumab","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:vunakizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:vunakizumab","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:vunakizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:vunakizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:bimekizumab","target":"company:ucb","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:bimekizumab","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:bimekizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:bimekizumab","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:bimekizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:bimekizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:sonelokimab","target":"company:moonlake-immunotherapeutics","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:sonelokimab","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:sonelokimab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:sonelokimab","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:sonelokimab","target":"modality:protein","attrs":{}},{"type":"SERVES","source":"drug:sonelokimab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:brodalumab","target":"company:bausch-health","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:brodalumab","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:brodalumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:brodalumab","target":"target:IL17RA","attrs":{}},{"type":"HAS_MODALITY","source":"drug:brodalumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:brodalumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:izokibep","target":"company:acelyrin-alumis","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:izokibep","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:izokibep","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:izokibep","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:izokibep","target":"modality:protein","attrs":{}},{"type":"SERVES","source":"drug:izokibep","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:dc-806","target":"company:leo-pharma-dice","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:dc-806","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:dc-806","target":"ind:plaque-psoriasis","attrs":{"phase":"phase1","approved":false}},{"type":"HITS","source":"drug:dc-806","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:dc-806","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:dc-806","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:cjm-112","target":"company:novartis","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:cjm-112","target":"moa:il17","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:cjm-112","target":"ind:plaque-psoriasis","attrs":{"phase":"phase1","approved":false}},{"type":"HITS","source":"drug:cjm-112","target":"target:IL17A","attrs":{}},{"type":"HAS_MODALITY","source":"drug:cjm-112","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:cjm-112","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:adalimumab","target":"company:abbvie","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:adalimumab","target":"moa:tnf","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:adalimumab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:adalimumab","target":"target:TNF","attrs":{}},{"type":"HAS_MODALITY","source":"drug:adalimumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:adalimumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:etanercept","target":"company:amgen","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:etanercept","target":"moa:tnf","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:etanercept","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:etanercept","target":"target:TNF","attrs":{}},{"type":"HAS_MODALITY","source":"drug:etanercept","target":"modality:protein","attrs":{}},{"type":"SERVES","source":"drug:etanercept","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:infliximab","target":"company:johnson-johnson","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:infliximab","target":"moa:tnf","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:infliximab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:infliximab","target":"target:TNF","attrs":{}},{"type":"HAS_MODALITY","source":"drug:infliximab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:infliximab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:certolizumab-pegol","target":"company:ucb","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:certolizumab-pegol","target":"moa:tnf","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:certolizumab-pegol","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:certolizumab-pegol","target":"target:TNF","attrs":{}},{"type":"HAS_MODALITY","source":"drug:certolizumab-pegol","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:certolizumab-pegol","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:deucravacitinib","target":"company:bristol-myers-squibb","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:deucravacitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:deucravacitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:deucravacitinib","target":"target:TYK2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:deucravacitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:deucravacitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:zasocitinib","target":"company:takeda","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:zasocitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:zasocitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:zasocitinib","target":"target:TYK2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:zasocitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:zasocitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:esk-001","target":"company:alumis","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:esk-001","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:esk-001","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:esk-001","target":"target:TYK2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:esk-001","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:esk-001","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:ropsacitinib","target":"company:pfizer","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:ropsacitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:ropsacitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:ropsacitinib","target":"target:TYK2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:ropsacitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:ropsacitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:brepocitinib","target":"company:priovant-pfizer","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:brepocitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:brepocitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:brepocitinib","target":"target:TYK2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:brepocitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:brepocitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:tofacitinib","target":"company:pfizer","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:tofacitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:tofacitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:tofacitinib","target":"target:JAK3","attrs":{}},{"type":"HAS_MODALITY","source":"drug:tofacitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:tofacitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:peficitinib","target":"company:astellas","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:peficitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:peficitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:peficitinib","target":"target:JAK1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:peficitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:peficitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:ruxolitinib","target":"company:incyte","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:ruxolitinib","target":"moa:kinase","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:ruxolitinib","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:ruxolitinib","target":"target:JAK1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:ruxolitinib","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:ruxolitinib","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:apremilast","target":"company:amgen","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:apremilast","target":"moa:pde4","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:apremilast","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:apremilast","target":"target:PDE4","attrs":{}},{"type":"HAS_MODALITY","source":"drug:apremilast","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:apremilast","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:orismilast","target":"company:union-therapeutics","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:orismilast","target":"moa:pde4","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:orismilast","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:orismilast","target":"target:PDE4","attrs":{}},{"type":"HAS_MODALITY","source":"drug:orismilast","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:orismilast","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:roflumilast","target":"company:arcutis-biotherapeutics","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:roflumilast","target":"moa:pde4","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:roflumilast","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:roflumilast","target":"target:PDE4","attrs":{}},{"type":"HAS_MODALITY","source":"drug:roflumilast","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:roflumilast","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:crisaborole","target":"company:pfizer","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:crisaborole","target":"moa:pde4","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:crisaborole","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:crisaborole","target":"target:PDE4","attrs":{}},{"type":"HAS_MODALITY","source":"drug:crisaborole","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:crisaborole","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:tapinarof","target":"company:organon-dermavant","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:tapinarof","target":"moa:topical","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:tapinarof","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:tapinarof","target":"target:AHR","attrs":{}},{"type":"HAS_MODALITY","source":"drug:tapinarof","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:tapinarof","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:calcipotriene","target":"company:leo-pharma","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:calcipotriene","target":"moa:topical","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:calcipotriene","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:calcipotriene","target":"target:VDR","attrs":{}},{"type":"HAS_MODALITY","source":"drug:calcipotriene","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:calcipotriene","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:calcitriol","target":"company:leo-galderma","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:calcitriol","target":"moa:topical","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:calcitriol","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:calcitriol","target":"target:VDR","attrs":{}},{"type":"HAS_MODALITY","source":"drug:calcitriol","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:calcitriol","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:tazarotene","target":"company:allergan","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:tazarotene","target":"moa:topical","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:tazarotene","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:tazarotene","target":"target:RARB","attrs":{}},{"type":"HAS_MODALITY","source":"drug:tazarotene","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:tazarotene","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:clobetasol-propionate","target":"company:generic","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:clobetasol-propionate","target":"moa:steroid","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:clobetasol-propionate","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:clobetasol-propionate","target":"target:NR3C1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:clobetasol-propionate","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:clobetasol-propionate","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:betamethasone-dipropionate","target":"company:generic","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:betamethasone-dipropionate","target":"moa:steroid","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:betamethasone-dipropionate","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:betamethasone-dipropionate","target":"target:NR3C1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:betamethasone-dipropionate","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:betamethasone-dipropionate","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:halobetasol-propionate","target":"company:bausch-health","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:halobetasol-propionate","target":"moa:steroid","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:halobetasol-propionate","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:halobetasol-propionate","target":"target:NR3C1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:halobetasol-propionate","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:halobetasol-propionate","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:desoximetasone","target":"company:generic","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:desoximetasone","target":"moa:steroid","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:desoximetasone","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:desoximetasone","target":"target:NR3C1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:desoximetasone","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:desoximetasone","target":"seg:mild","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:methotrexate","target":"company:generic","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:methotrexate","target":"moa:conv","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:methotrexate","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:methotrexate","target":"target:DHFR","attrs":{}},{"type":"HAS_MODALITY","source":"drug:methotrexate","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:methotrexate","target":"seg:mild","attrs":{}},{"type":"SERVES","source":"drug:methotrexate","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:cyclosporine","target":"company:generic","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:cyclosporine","target":"moa:conv","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:cyclosporine","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:cyclosporine","target":"target:PPIA","attrs":{}},{"type":"HAS_MODALITY","source":"drug:cyclosporine","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:cyclosporine","target":"seg:mild","attrs":{}},{"type":"SERVES","source":"drug:cyclosporine","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:acitretin","target":"company:generic","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:acitretin","target":"moa:conv","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:acitretin","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:acitretin","target":"target:RARA","attrs":{}},{"type":"HAS_MODALITY","source":"drug:acitretin","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:acitretin","target":"seg:mild","attrs":{}},{"type":"SERVES","source":"drug:acitretin","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:dimethyl-fumarate","target":"company:almirall","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:dimethyl-fumarate","target":"moa:conv","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:dimethyl-fumarate","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:dimethyl-fumarate","target":"target:NFE2L2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:dimethyl-fumarate","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:dimethyl-fumarate","target":"seg:mild","attrs":{}},{"type":"SERVES","source":"drug:dimethyl-fumarate","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:piclidenoson","target":"company:can-fite-biopharma","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:piclidenoson","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:piclidenoson","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:piclidenoson","target":"target:ADORA3","attrs":{}},{"type":"HAS_MODALITY","source":"drug:piclidenoson","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:piclidenoson","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:fezakinumab","target":"company:pfizer","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:fezakinumab","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:fezakinumab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:fezakinumab","target":"target:IL22","attrs":{}},{"type":"HAS_MODALITY","source":"drug:fezakinumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:fezakinumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:vixarelimab","target":"company:genentech","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:vixarelimab","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:vixarelimab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:vixarelimab","target":"target:OSMR","attrs":{}},{"type":"HAS_MODALITY","source":"drug:vixarelimab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:vixarelimab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:namilumab","target":"company:roivant","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:namilumab","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:namilumab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:namilumab","target":"target:CSF2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:namilumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:namilumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:spesolimab","target":"company:boehringer-ingelheim","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:spesolimab","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:spesolimab","target":"ind:plaque-psoriasis","attrs":{"phase":"approved","approved":true}},{"type":"HITS","source":"drug:spesolimab","target":"target:IL1RL2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:spesolimab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:spesolimab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:imsidolimab","target":"company:anaptysbio","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:imsidolimab","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:imsidolimab","target":"ind:plaque-psoriasis","attrs":{"phase":"phase3","approved":false}},{"type":"HITS","source":"drug:imsidolimab","target":"target:IL1RL2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:imsidolimab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:imsidolimab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:gsk2982772","target":"company:gsk","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:gsk2982772","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:gsk2982772","target":"ind:plaque-psoriasis","attrs":{"phase":"phase2","approved":false}},{"type":"HITS","source":"drug:gsk2982772","target":"target:RIPK1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:gsk2982772","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:gsk2982772","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:ponesimod","target":"company:johnson-johnson","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:ponesimod","target":"moa:novel","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:ponesimod","target":"ind:plaque-psoriasis","attrs":{"phase":"discontinued","approved":false}},{"type":"HITS","source":"drug:ponesimod","target":"target:S1PR1","attrs":{}},{"type":"HAS_MODALITY","source":"drug:ponesimod","target":"modality:small-molecule","attrs":{}},{"type":"SERVES","source":"drug:ponesimod","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:efalizumab","target":"company:genentech-merck","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:efalizumab","target":"moa:hist","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:efalizumab","target":"ind:plaque-psoriasis","attrs":{"phase":"discontinued","approved":false}},{"type":"HITS","source":"drug:efalizumab","target":"target:ITGAL","attrs":{}},{"type":"HAS_MODALITY","source":"drug:efalizumab","target":"modality:mab","attrs":{}},{"type":"SERVES","source":"drug:efalizumab","target":"seg:modsev","attrs":{}},{"type":"DEVELOPED_BY","source":"drug:alefacept","target":"company:astellas","attrs":{}},{"type":"HAS_MECHANISM","source":"drug:alefacept","target":"moa:hist","attrs":{}},{"type":"DEVELOPED_IN","source":"drug:alefacept","target":"ind:plaque-psoriasis","attrs":{"phase":"discontinued","approved":false}},{"type":"HITS","source":"drug:alefacept","target":"target:CD2","attrs":{}},{"type":"HAS_MODALITY","source":"drug:alefacept","target":"modality:protein","attrs":{}},{"type":"SERVES","source":"drug:alefacept","target":"seg:modsev","attrs":{}},{"type":"HAS_CATALYST","source":"drug:adalimumab","target":"catalyst:c1","attrs":{}},{"type":"HAS_CATALYST","source":"drug:bimekizumab","target":"catalyst:c2","attrs":{}},{"type":"HAS_CATALYST","source":"drug:ustekinumab","target":"catalyst:c3","attrs":{}},{"type":"HAS_CATALYST","source":"drug:roflumilast","target":"catalyst:c4","attrs":{}},{"type":"HAS_CATALYST","source":"drug:zasocitinib","target":"catalyst:c5","attrs":{}},{"type":"HAS_CATALYST","source":"drug:esk-001","target":"catalyst:c6","attrs":{}},{"type":"HAS_CATALYST","source":"drug:icotrokinra","target":"catalyst:c7","attrs":{}},{"type":"HAS_CATALYST","source":"drug:apremilast","target":"catalyst:c8","attrs":{}},{"type":"HAS_CATALYST","source":"drug:secukinumab","target":"catalyst:c9","attrs":{}},{"type":"HAS_CATALYST","source":"drug:guselkumab","target":"catalyst:c10","attrs":{}},{"type":"HAS_CATALYST","source":"drug:risankizumab","target":"catalyst:c11","attrs":{}}],"sources":[{"id":"ot","type":"api","name":"Open Targets Platform","title":"Psoriasis vulgaris (EFO_1001494) — targets & drug candidates","url":"https://platform.opentargets.org/disease/EFO_1001494","accessed":"2026-07-23"},{"id":"ctgov","type":"api","name":"ClinicalTrials.gov","title":"Interventional psoriasis trials (901, live pull)","url":"https://clinicaltrials.gov/","accessed":"2026-07-23"},{"id":"fda","type":"label","name":"openFDA / Drugs@FDA","title":"FDA approvals, classes & boxed warnings","url":"https://www.accessdata.fda.gov/scripts/cder/daf/","accessed":"2026-07-23"},{"id":"xtalks","type":"web","name":"Xtalks","title":"Top-selling immunology drugs — sales","url":"https://xtalks.com/top-10-best-selling-immunology-drugs-by-recent-sales-data-4025/","accessed":"2026-07-23"},{"id":"armstrong","type":"publication","name":"Armstrong 2020 (JAMA Dermatol NMA)","title":"Comparative efficacy (PASI 90) network meta-analysis, 60 trials","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC7042876/","accessed":"2026-07-23"},{"id":"cochrane","type":"publication","name":"Cochrane NMA (Sbidian 2023)","title":"Systemic psoriasis therapies — efficacy & safety NMA","url":"https://pubmed.ncbi.nlm.nih.gov/37436070/","accessed":"2026-07-23"},{"id":"jnj_icotyde","type":"web","name":"Johnson & Johnson","title":"FDA approval of ICOTYDE (icotrokinra), Mar 2026","url":"https://www.jnj.com/media-center/press-releases/fda-approval-of-icotyde-icotrokinra-ushers-in-new-era-for-first-line-systemic-treatment-of-plaque-psoriasis-with-a-targeted-oral-peptide","accessed":"2026-07-23"},{"id":"takeda_zaso","type":"web","name":"Takeda","title":"Zasocitinib positive Phase 3 topline (Dec 2025)","url":"https://www.takeda.com/newsroom/newsreleases/2025/takeda-zasocitinib-phase-3-plaque-psoriasis-data-once-daily-pill/","accessed":"2026-07-23"},{"id":"alumis_esk","type":"web","name":"Alumis","title":"Envudeucitinib (ESK-001) positive Phase 3 (Jan 2026)","url":"https://investors.alumis.com/news-releases/news-release-details/alumis-envudeucitinib-delivers-leading-skin-clearance-among-next","accessed":"2026-07-23"},{"id":"cfb_stelara","type":"web","name":"Center for Biosimilars","title":"First Stelara biosimilar (Wezlana) launches, Jan 2025","url":"https://www.centerforbiosimilars.com/view/welcome-wezlana-the-first-stelara-biosimilar-to-launch-in-the-us","accessed":"2026-07-23"},{"id":"ajmc_humira","type":"web","name":"AJMC","title":"First Humira biosimilar (Amjevita) launches in the US","url":"https://www.ajmc.com/view/first-humira-biosimilar-amjevita-launches-in-the-united-states","accessed":"2026-07-23"},{"id":"arcutis_foam","type":"web","name":"Arcutis","title":"Zoryve foam 0.3% approved for scalp & body psoriasis (May 2025)","url":"https://www.arcutis.com/arcutis-zoryve-roflumilast-topical-foam-0-3-approved-by-u-s-fda-for-the-treatment-of-plaque-psoriasis-in-adults-and-adolescents-ages-12-and-older/","accessed":"2026-07-23"},{"id":"dpw","type":"web","name":"DrugPatentWatch","title":"Biologic patent-expiry / loss-of-exclusivity projections","url":"https://www.drugpatentwatch.com/","accessed":"2026-07-23"},{"id":"abbvie25","type":"filing","name":"AbbVie FY2025 results","title":"Skyrizi $17.56B, Humira $4.54B (all-indication)","url":"https://news.abbvie.com/2026-02-04-AbbVie-Reports-Full-Year-and-Fourth-Quarter-2025-Financial-Results","accessed":"2026-07-23"},{"id":"jnj25","type":"filing","name":"Johnson & Johnson FY2025 results","title":"Stelara $6.08B, Tremfya ~$5.2B, Remicade $1.77B","url":"https://www.investor.jnj.com/investor-news/news-details/2026/Johnson--Johnson-reports-Q4-and-Full-Year-2025-results/default.aspx","accessed":"2026-07-23"},{"id":"nvs25","type":"filing","name":"Novartis FY2025 results","title":"Cosentyx $6.7B","url":"https://www.novartis.com/news/media-releases/novartis-delivered-high-single-digit-sales-growth-achieved-40-core-margin-and-further-advanced-pipeline-2025","accessed":"2026-07-23"},{"id":"ucb25","type":"filing","name":"UCB FY2025 results","title":"Bimzelx >€2.2B, Cimzia €1.95B","url":"https://www.ucb.com/sites/default/files/2026-02/UCB-PR-2025-FY-Results-ENG.pdf","accessed":"2026-07-23"},{"id":"amgen25","type":"filing","name":"Amgen FY2025 results","title":"Otezla, Enbrel (Q4 absolutes; FY approximate)","url":"https://www.amgen.com/newsroom/press-releases/2026/02/amgen-reports-fourth-quarter-and-full-year-2025-financial-results","accessed":"2026-07-23"},{"id":"bms25","type":"filing","name":"Bristol Myers Squibb FY2025 results","title":"Sotyktu $291M","url":"https://www.bms.com/assets/bms/us/en-us/pdf/investor-info/doc_financials/quarterly_reports/2025/BMY-Q4-2025-Earnings-Press-Release.pdf","accessed":"2026-07-23"},{"id":"lilly_taltz","type":"web","name":"Eli Lilly / IBJ","title":"Taltz FY2024 $3.26B; FY2025 tracking ~$3.4B","url":"https://www.ibj.com/articles/lillys-hot-selling-taltz-approaching-blockbuster-status","accessed":"2026-07-23"},{"id":"arcutis25","type":"filing","name":"Arcutis FY2025 results","title":"Zoryve franchise $372.1M","url":"https://www.globenewswire.com/news-release/2026/02/25/3244953/0/en/Arcutis-Announces-Fourth-Quarter-and-Full-Year-2025-Financial-Results-and-Provides-Business-Update.html","accessed":"2026-07-23"}]}</script>
 <script>
@@ -176,206 +136,216 @@ const OUT={},INC={}; G.edges.forEach(e=>{(OUT[e.source]=OUT[e.source]||[]).push(
 const oN=(id,t)=>(OUT[id]||[]).filter(e=>!t||e.type===t).map(e=>N[e.target]);
 const iN=(id,t)=>(INC[id]||[]).filter(e=>!t||e.type===t).map(e=>N[e.source]);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function el(t,a,k){const n=document.createElement(t);if(a)for(const x in a){if(x==="html")n.innerHTML=a[x];else if(x==="text")n.textContent=a[x];else if(x==="cls")n.className=a[x];else if(x[0]=="o"&&x[1]=="n")n.addEventListener(x.slice(2),a[x]);else if(a[x]!=null)n.setAttribute(x,a[x]);}for(const c of[].concat(k||[])){if(c==null)continue;n.append(c.nodeType?c:document.createTextNode(c));}return n;}
+function el(t,a,k){const n=document.createElement(t);if(a)for(const x in a){if(x=="html")n.innerHTML=a[x];else if(x=="text")n.textContent=a[x];else if(x=="cls")n.className=a[x];else if(x[0]=="o"&&x[1]=="n")n.addEventListener(x.slice(2),a[x]);else if(a[x]!=null)n.setAttribute(x,a[x]);}for(const c of[].concat(k||[])){if(c==null)continue;n.append(c.nodeType?c:document.createTextNode(c));}return n;}
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const FAM=G.families||[]; const famColor={}; FAM.forEach(f=>famColor["moa:"+f.key]=f.colorVar);
-const PLABEL={approved:"Approved",filed:"Filed",phase3:"Ph 3",phase2_3:"Ph 2/3",phase2:"Ph 2",phase1_2:"Ph 1/2",phase1:"Ph 1",preclinical:"Preclin",discontinued:"Disc."};
-const PORDER=["approved","filed","phase3","phase2_3","phase2","phase1_2","phase1","preclinical","discontinued"];
-const PHCOLOR={preclinical:"#cde2fb",phase1:"#9ec5f4",phase1_2:"#86b6ef",phase2:"#6da7ec",phase2_3:"#5598e7",phase3:"#3987e5",filed:"#256abf",approved:"#184f95",discontinued:"#b9b6ad"};
-const MODC={}; [...new Set(G.nodes.filter(n=>n.type=="Drug").map(d=>d.attrs.modality).filter(Boolean))].forEach((m,i)=>MODC[m]=["--s1","--s2","--s3","--s4","--s7","--s8"][i]||"--sN");
-const MOAS=G.nodes.filter(n=>n.type=="MoAClass").sort((a,b)=>(a.attrs.order||9)-(b.attrs.order||9));
-MOAS.forEach(m=>m._drugs=iN(m.id,"HAS_MECHANISM"));
-const subIndex={}; G.nodes.filter(n=>n.type=="Drug").forEach(d=>{const s=d.attrs.sub_class;if(s)(subIndex[s]=subIndex[s]||[]).push(d.id);});
-const salesMax=Math.max(1,...G.nodes.filter(n=>n.type=="Drug").map(d=>d.attrs.annual_sales_usd_m||0));
+const FAM=G.families||[], famColor={}; FAM.forEach(f=>famColor["moa:"+f.key]=f.colorVar);
+const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phase2_3:["II/III","--s1"],phase2:["II","--s4"],phase1_2:["I/II","--s4"],phase1:["I","--s2"],preclinical:["P","--muted"],discontinued:["✕","--s8"]};
+const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
+const PLABEL={approved:"Approved / marketed",filed:"Filed",phase3:"Phase 3",phase2:"Phase 2",phase1:"Phase 1",preclinical:"Preclinical",discontinued:"Discontinued"};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
-let LENS="moa";
-function laneColorVar(m){return famColor[m.id]||"--sN";}
-function drugColor(d){
-  if(LENS=="modality")return css(MODC[d.attrs.modality]||"--sN");
-  if(LENS=="phase")return PHCOLOR[d.attrs.highest_phase]||css("--sN");
-  const m=oN(d.id,"HAS_MECHANISM")[0]; return css(m?laneColorVar(m):"--sN");
+const REGIONS=[
+ {label:"IL-23 / IL-17 axis — the pathogenic core",fams:["il23","il17"]},
+ {label:"Oral targeted therapy — the frontier",fams:["kinase","pde4"]},
+ {label:"TNF & conventional systemics — the legacy tier",fams:["tnf","conv"]},
+ {label:"Topical",fams:["topical","steroid"]},
+ {label:"Novel mechanisms & withdrawn",fams:["novel","hist"]},
+];
+const MOA=Object.fromEntries(G.nodes.filter(n=>n.type=="MoAClass").map(m=>[m.attrs.family_key,m]));
+
+// ---- POSTER MAP ----
+function buildMap(){
+  const map=document.getElementById("map"); map.innerHTML="";
+  REGIONS.forEach(reg=>{
+    const blocks=el("div",{cls:"blocks"});
+    reg.fams.forEach(fk=>{
+      const m=MOA[fk]; if(!m)return; const col=css(famColor[m.id]||"--sN");
+      const drugs=iN(m.id,"HAS_MECHANISM").sort((a,b)=>(PORD[a.attrs.highest_phase]-PORD[b.attrs.highest_phase])||((b.attrs.annual_sales_usd_m||0)-(a.attrs.annual_sales_usd_m||0)));
+      const blk=el("div",{cls:"block",style:`--fam:${col}`});
+      const bh=el("div",{cls:"bhead"},[el("span",{cls:"bname",text:m.label,onclick:()=>openModal(m.id)}),el("span",{cls:"bn",text:drugs.length+" assets"})]);
+      const rows=el("div",{cls:"brows"});
+      drugs.forEach(d=>rows.append(drow(d,col)));
+      blk.append(bh,rows); blocks.append(blk);
+    });
+    map.append(el("div",{cls:"region"},[el("div",{cls:"rlabel",text:reg.label}),blocks]));
+  });
+}
+function drow(d,col){
+  const a=d.attrs, st=STAGE[a.highest_phase]||["?","--muted"], comp=oN(d.id,"DEVELOPED_BY")[0];
+  const meta=[]; if(comp)meta.push("<b>"+esc(comp.label)+"</b>");
+  if(a.route)meta.push(esc(a.route)+(a.dose?" "+esc(a.dose):""));
+  if(a.p90!=null)meta.push("P90 "+a.p90);
+  if(a.annual_sales_usd_m)meta.push(fmt$(a.annual_sales_usd_m));
+  let mk=""; if(a.bios)mk+=`<span class="mk bio" title="${esc(a.bios)}">B</span>`; if(a.combo)mk+='<span class="mk combo">+</span>'; if((a.note||"").toLowerCase().includes("boxed warning"))mk+='<span class="mk warn" title="boxed warning">⚠</span>';
+  const row=el("div",{cls:"drow"+(a.highest_phase=="discontinued"?" disc":""),"data-node":d.id,style:`--fam:${col}`},[
+    el("span",{cls:"stage",style:`color:${css(st[1])}`,text:st[0]}),
+    el("div",{},[el("div",{cls:"dname",html:esc(d.label)+mk}),el("div",{cls:"dmeta",html:meta.join(" · ")})])]);
+  row.onclick=()=>openModal(d.id); return row;
 }
 
-// ---- landscape ----
-const land=document.getElementById("land");
-function buildLandscape(){
-  land.innerHTML="";
-  const phases=PORDER.filter(p=>G.nodes.some(n=>n.type=="Drug"&&n.attrs.highest_phase==p));
-  land.style.gridTemplateColumns=`70px repeat(${MOAS.length},max-content)`;
-  land.append(el("div",{cls:"phlab",style:"border:0;background:transparent"}));
-  MOAS.forEach(m=>{
-    const cv=css(laneColorVar(m));
-    const h=el("div",{cls:"lane-head",style:`--laneColor:${cv}`,"data-node":m.id},[
-      el("div",{cls:"nm",text:m.label}),el("div",{cls:"mt",text:m._drugs.length+" assets"})]);
-    h.onclick=()=>focusNode(m.id); land.append(h);
-  });
-  phases.forEach(p=>{
-    land.append(el("div",{cls:"phlab",text:PLABEL[p]}));
-    MOAS.forEach(m=>{
-      const cards=m._drugs.filter(d=>d.attrs.highest_phase==p).sort((a,b)=>(b.attrs.annual_sales_usd_m||0)-(a.attrs.annual_sales_usd_m||0)||(a.attrs.sub_class||"").localeCompare(b.attrs.sub_class||""));
-      const cell=el("div",{cls:"cell"+(cards.length?"":" empty")});
-      cards.forEach(d=>cell.append(drugCard(d))); land.append(cell);
-    });
-  });
-}
-function drugCard(d){
-  const a=d.attrs, c=drugColor(d), comp=oN(d.id,"DEVELOPED_BY")[0];
-  const badges=el("div",{cls:"badges"});
-  if(a.route)badges.append(el("span",{cls:"bdg",text:a.route}));
-  if(a.dose)badges.append(el("span",{cls:"bdg",text:a.dose}));
-  badges.append(el("span",{cls:"bdg p",text:PLABEL[a.highest_phase]}));
-  if(a.bios)badges.append(el("span",{cls:"mk bio",title:a.bios,text:"◆ biosim"}));
-  if(a.combo)badges.append(el("span",{cls:"mk combo",text:"+ combo"}));
-  if((a.note||"").toLowerCase().includes("boxed warning"))badges.append(el("span",{cls:"mk warn",title:a.note,text:"⚠"}));
-  const card=el("div",{cls:"card"+(a.highest_phase=="discontinued"?" disc":""),style:`--laneColor:${c}`,"data-node":d.id},[
-    el("div",{cls:"dn",text:d.label}),
-    comp?el("div",{cls:"co",text:comp.label}):null,
-    a.sub_class?el("div",{cls:"sub",text:a.sub_class}):null,
-    badges]);
-  if(a.p90!=null)card.append(el("div",{cls:"pasi"},[el("span",{cls:"tab",text:"P90 "+a.p90}),el("div",{cls:"pbar"},el("i",{style:`width:${a.p90}%`}))]));
-  if(a.annual_sales_usd_m)card.append(el("div",{cls:"sales tab",text:fmt$(a.annual_sales_usd_m)+(a.sales_year?" ("+a.sales_year+")":"")}));
-  card.onclick=()=>focusNode(d.id); return card;
-}
-
-// ---- competitive matrix ----
-function buildMatrix(){
-  const comps=G.nodes.filter(n=>n.type=="Company").map(c=>({c,n:iN(c.id,"DEVELOPED_BY").length})).filter(x=>x.n>=2).sort((a,b)=>b.n-a.n).slice(0,14);
-  const t=document.getElementById("matrix"); t.innerHTML="";
-  const head=el("tr",{},[el("th",{cls:"rh",text:""})]);
-  MOAS.forEach(m=>{const th=el("th",{"data-node":m.id,title:m.label},[el("span",{text:(m.label.match(/[A-Z0-9/]+/)||[m.label])[0].slice(0,7)})]);th.onclick=()=>focusNode(m.id);head.append(th);});
-  t.append(head);
-  const maxc=3;
-  comps.forEach(({c})=>{
-    const drugs=iN(c.id,"DEVELOPED_BY");
-    const tr=el("tr"); const rh=el("td",{cls:"rh","data-node":c.id,text:c.label}); rh.onclick=()=>focusNode(c.id); tr.append(rh);
-    MOAS.forEach(m=>{
-      const k=drugs.filter(d=>(oN(d.id,"HAS_MECHANISM")[0]||{}).id==m.id).length;
-      const td=el("td"); if(k){const al=(0.2+0.8*Math.min(k,maxc)/maxc);td.append(el("span",{cls:"cellv",style:`background:color-mix(in srgb,${css(laneColorVar(m))} ${Math.round(al*100)}%,var(--surface));color:${al>.6?"#fff":"var(--ink)"}`,text:k}));}else td.textContent="·";
-      tr.append(td);
-    });
-    t.append(tr);
-  });
-}
-// ---- PASI benchmark ----
-function buildBenchmark(){
-  const b=document.getElementById("benchmark"); b.innerHTML="";
-  const ds=G.nodes.filter(n=>n.type=="Drug"&&n.attrs.p90!=null).sort((a,b)=>b.attrs.p90-a.attrs.p90).slice(0,16);
-  ds.forEach(d=>{const row=el("div",{cls:"bar","data-node":d.id},[
-    el("div",{cls:"lab",text:d.label}),
-    el("div",{cls:"track"},el("div",{cls:"fill",style:`width:${d.attrs.p90}%;background:${drugColor(d)}`})),
-    el("div",{cls:"val tab",text:d.attrs.p90})]);
-    row.onclick=()=>focusNode(d.id); b.append(row);});
-}
-// ---- strips ----
-function buildStrips(){
-  const cc=document.getElementById("companies"); cc.innerHTML="";
-  G.nodes.filter(n=>n.type=="Company").map(c=>({c,n:iN(c.id,"DEVELOPED_BY").length})).filter(x=>x.n>0).sort((a,b)=>b.n-a.n).slice(0,20)
-    .forEach(({c,n})=>{const chip=el("div",{cls:"chip","data-node":c.id},[el("span",{text:c.label}),el("span",{cls:"ct",text:n})]);chip.onclick=()=>focusNode(c.id);cc.append(chip);});
-  const tt=document.getElementById("targets"); tt.innerHTML="";
-  G.nodes.filter(n=>n.type=="Target").map(t=>({t,n:iN(t.id,"HITS").length})).sort((a,b)=>(b.t.attrs.ot_association_score||0)-(a.t.attrs.ot_association_score||0)||b.n-a.n).slice(0,16)
-    .forEach(({t})=>{const chip=el("div",{cls:"chip","data-node":t.id},[el("span",{style:"font-family:var(--mono);font-size:10.5px",text:t.label}),t.attrs.ot_association_score?el("span",{cls:"ct",text:t.attrs.ot_association_score.toFixed(2)}):null]);chip.onclick=()=>focusNode(t.id);tt.append(chip);});
-  const cat=document.getElementById("catalysts"); cat.innerHTML="";
+// ---- ANNOTATIONS ----
+function buildSide(){
+  const side=document.getElementById("side"); side.innerHTML="";
+  // market
+  const mk=G.meta.market||{}; const cs=mk.current_size||{};
+  const market=el("div",{cls:"abox mkt"},[el("h4",{text:"Market"}),el("div",{cls:"ac"},[
+    el("div",{},el("b",{text:(G.meta.headline_stats.find(s=>/market/i.test(s.label))||{}).value||"$27–33B"})),
+    el("div",{cls:"mrow"},[el("span",{text:"Global treatment market"}),el("span",{text:"2024"})]),
+    el("div",{cls:"mrow",style:"margin-top:5px;color:var(--ink2)",text:mk.summary?"":"Biologics-led; IL-23 & IL-17 franchises dominate; TNF & Stelara biosimilars reshaping economics."})])]);
+  side.append(market);
+  // benchmark
+  const ds=G.nodes.filter(n=>n.type=="Drug"&&n.attrs.p90!=null).sort((a,b)=>b.attrs.p90-a.attrs.p90).slice(0,14);
+  const bc=el("div",{cls:"ac bench"});
+  ds.forEach(d=>{const m=oN(d.id,"HAS_MECHANISM")[0];const col=css(m?famColor[m.id]:"--sN");
+    const r=el("div",{cls:"brow","data-node":d.id},[el("div",{cls:"lab",text:d.label}),el("div",{cls:"tr"},el("div",{cls:"fi",style:`width:${d.attrs.p90}%;background:${col}`})),el("div",{cls:"vv tab",text:d.attrs.p90})]);
+    r.onclick=()=>openModal(d.id); bc.append(r);});
+  side.append(el("div",{cls:"abox"},[el("h4",{text:"PASI 90 · wk 12–16 (NMA)"}),bc]));
+  // catalysts
+  const cats=el("div",{cls:"ac cats"});
   G.nodes.filter(n=>n.type=="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
-    const row=el("div",{cls:"ev","data-node":ev.id},[el("span",{cls:"dt",text:ev.attrs.date}),el("span",{cls:"kd",text:(ev.attrs.kind||"").replace("_"," ")}),el("span",{text:ev.label})]);
-    row.onclick=()=>focusNode(ev.id); cat.append(row);});
-}
-// ---- legend ----
-function buildLegend(){
-  const L=document.getElementById("legend"); L.innerHTML=""; let items=[];
-  if(LENS=="moa")items=MOAS.map(m=>[css(laneColorVar(m)),m.label]);
-  else if(LENS=="modality")items=Object.entries(MODC).map(([m,v])=>[css(v),m]);
-  else items=["approved","phase3","phase2","phase1","discontinued"].map(p=>[PHCOLOR[p],PLABEL[p]]);
-  items.forEach(([c,l])=>L.append(el("span",{cls:"sw"},[el("i",{style:`background:${c}`}),el("span",{text:l})])));
-  L.append(el("span",{cls:"sw",style:"color:var(--muted)",html:"<span class='mk bio'>◆</span> biosimilar &nbsp; <span class='mk combo'>+</span> combo &nbsp; ⚠ boxed warning"}));
+    const r=el("div",{cls:"crow","data-node":ev.id},[el("div",{},[el("div",{cls:"cd",text:ev.attrs.date}),el("div",{cls:"ck",text:(ev.attrs.kind||"").replace("_"," ")})]),el("div",{text:ev.label})]);
+    r.onclick=()=>openModal(ev.id); cats.append(r);});
+  side.append(el("div",{cls:"abox"},[el("h4",{text:"Catalysts & exclusivity"}),cats]));
+  // companies
+  const cc=el("div",{cls:"ac companies"});
+  G.nodes.filter(n=>n.type=="Company").map(c=>({c,n:iN(c.id,"DEVELOPED_BY").length})).filter(x=>x.n>=2).sort((a,b)=>b.n-a.n).slice(0,16)
+    .forEach(({c,n})=>{const ch=el("div",{cls:"cchip","data-node":c.id},[el("span",{text:c.label}),el("span",{cls:"n",text:" "+n})]);ch.onclick=()=>openModal(c.id);cc.append(ch);});
+  side.append(el("div",{cls:"abox"},[el("h4",{text:"Companies — click for portfolio"}),cc]));
+  // legend
+  const lg=el("div",{cls:"ac legend"});
+  lg.append(el("div",{style:"margin-bottom:5px"},"Clinical stage:"));
+  lg.append(el("div",{cls:"lr",html:'<code>M</code> marketed <code>III</code> Ph 3 <code>II</code> Ph 2 <code>I</code> Ph 1 <code>✕</code> disc.'}));
+  lg.append(el("div",{cls:"lr",html:'<span class="mk bio">B</span> biosimilar &nbsp; <span class="mk combo">+</span> combo &nbsp; <span class="mk warn">⚠</span> boxed warning'}));
+  lg.append(el("div",{style:"margin:7px 0 4px"},"Mechanism families:"));
+  const fr=el("div",{}); FAM.forEach(f=>fr.append(el("span",{cls:"fam"},[el("i",{style:`background:${css(f.colorVar)}`}),el("span",{text:f.label})]))); lg.append(fr);
+  lg.append(el("div",{style:"margin:8px 0 4px"},"Entity shapes (in the relationship view):"));
+  lg.append(el("div",{cls:"lr",html:shapeLegendHTML()}));
+  side.append(el("div",{cls:"abox"},[el("h4",{text:"Legend"}),lg]));
 }
 
-// ---- focus ----
-const stage=document.getElementById("stage"),wires=document.getElementById("wires"),rail=document.getElementById("rail"),backdrop=document.getElementById("backdrop");
-let FOCUS=null;
-function clearFocus(){FOCUS=null;stage.classList.remove("dimmed");wires.classList.remove("show");wires.innerHTML="";document.querySelectorAll(".hi,.focus").forEach(n=>n.classList.remove("hi","focus"));rail.classList.remove("open");backdrop.classList.remove("on");}
-function elsFor(id){return[...stage.querySelectorAll(`[data-node="${CSS.escape(id)}"]`)];}
-function markHi(ids){ids.forEach(id=>elsFor(id).forEach(e=>e.classList.add("hi")));}
-const dedupe=arr=>{const s=new Set(),o=[];arr.forEach(n=>{if(n&&!s.has(n.id)){s.add(n.id);o.push(n);}});return o;};
-function relatedFor(id){
-  const n=N[id],H=new Set([id]),W=[],groups=[];
-  const push=(l,arr)=>{arr=dedupe(arr);if(arr.length)groups.push({label:l,nodes:arr});arr.forEach(x=>H.add(x.id));};
-  if(n.type=="Drug"){
-    const moa=oN(id,"HAS_MECHANISM"),comp=oN(id,"DEVELOPED_BY"),tg=oN(id,"HITS"),seg=oN(id,"SERVES"),cat=oN(id,"HAS_CATALYST");
-    const compet=(subIndex[n.attrs.sub_class]||[]).map(x=>N[x]).filter(x=>x.id!=id);
-    push("Mechanism",moa);push("Developer",comp);push("Targets",tg);push("Serves",seg);push("Catalysts",cat);push("Competitors (same sub-class)",compet);
-    comp.forEach(c=>W.push([id,c.id]));tg.forEach(t=>W.push([id,t.id]));moa.forEach(m=>W.push([id,m.id]));cat.forEach(c=>W.push([id,c.id]));
-  }else if(n.type=="Company"){
-    const dr=iN(id,"DEVELOPED_BY"),moas=dedupe(dr.flatMap(d=>oN(d.id,"HAS_MECHANISM"))),deals=oN(id,"PARTY_TO");
-    push("Mechanisms pursued",moas);push("Portfolio",dr);if(deals.length)push("Deals",deals);
-    dr.forEach(d=>W.push([id,d.id]));
-  }else if(n.type=="MoAClass"){
-    const dr=iN(id,"HAS_MECHANISM"),tg=oN(id,"ACTS_ON"),players=dedupe(dr.flatMap(d=>oN(d.id,"DEVELOPED_BY")));
-    push("Drugs",dr);push("Players",players);
-    dr.forEach(d=>W.push([id,d.id]));
-  }else if(n.type=="Target"){
-    const dr=iN(id,"HITS");push("Drugs hitting it",dr);dr.forEach(d=>W.push([id,d.id]));
-  }else if(n.type=="MarketSegment"){const dr=iN(id,"SERVES");push("Drugs serving it",dr);dr.forEach(d=>W.push([id,d.id]));}
-  else if(n.type=="Catalyst"){const dr=iN(id,"HAS_CATALYST");push("Affects",dr);dr.forEach(d=>W.push([id,d.id]));}
-  return{H,W,groups};
+// ---- ENTITY SHAPES ----
+const TYPE={Drug:{c:"--s1",s:"circle"},Company:{c:"--s2",s:"rect"},MoAClass:{c:"--s7",s:"diamond"},Target:{c:"--s3",s:"triangle"},MarketSegment:{c:"--s4",s:"hexagon"},Catalyst:{c:"--s5",s:"pentagon"},Modality:{c:"--s6",s:"square"},Indication:{c:"--ink2",s:"rrect"}};
+const NS="http://www.w3.org/2000/svg";
+function shapePts(shape,x,y,s){
+  if(shape=="diamond")return `${x},${y-s} ${x+s},${y} ${x},${y+s} ${x-s},${y}`;
+  if(shape=="triangle")return `${x},${y-s} ${x+s*0.92},${y+s*0.62} ${x-s*0.92},${y+s*0.62}`;
+  if(shape=="hexagon"){let p=[];for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3;p.push(`${(x+s*Math.cos(a)).toFixed(1)},${(y+s*Math.sin(a)).toFixed(1)}`);}return p.join(" ");}
+  if(shape=="pentagon"){let p=[];for(let i=0;i<5;i++){const a=-Math.PI/2+i*2*Math.PI/5;p.push(`${(x+s*Math.cos(a)).toFixed(1)},${(y+s*Math.sin(a)).toFixed(1)}`);}return p.join(" ");}
+  return "";
 }
-function focusNode(id){const n=N[id];if(!n)return;clearFocus();FOCUS=id;stage.classList.add("dimmed");
-  const{H,W,groups}=relatedFor(id);markHi([...H]);elsFor(id).forEach(e=>{e.classList.remove("hi");e.classList.add("focus");});
-  drawWires(id,W);openRail(n,groups);}
-function drawWires(fromId,pairs){
-  wires.innerHTML="";const sr=stage.getBoundingClientRect(),ox=stage.scrollLeft,oy=stage.scrollTop;
-  const ctr=e=>{const r=e.getBoundingClientRect();return{x:r.left-sr.left+ox+r.width/2,y:r.top-sr.top+oy+r.height/2};};
-  const a=stage.querySelector(`.focus[data-node="${CSS.escape(fromId)}"]`)||elsFor(fromId)[0];if(!a)return;const A=ctr(a);
-  const col=css(N[fromId].type=="Drug"?(famColor[(oN(fromId,"HAS_MECHANISM")[0]||{}).id]||"--s1"):(famColor[fromId]||"--s1"));
-  const seen=new Set();
-  pairs.forEach(([f,t])=>{if(seen.has(t))return;seen.add(t);const be=elsFor(t)[0];if(!be)return;const B=ctr(be);const mx=(A.x+B.x)/2;
-    const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d",`M${A.x},${A.y} C${mx},${A.y} ${mx},${B.y} ${B.x},${B.y}`);p.setAttribute("stroke",col);p.setAttribute("stroke-width","1.5");wires.append(p);});
-  wires.classList.add("show");
+function drawShape(shape,x,y,s,fill,stroke){
+  let e;
+  if(shape=="circle"){e=document.createElementNS(NS,"circle");e.setAttribute("cx",x);e.setAttribute("cy",y);e.setAttribute("r",s);}
+  else if(shape=="rect"||shape=="rrect"){e=document.createElementNS(NS,"rect");e.setAttribute("x",x-s*1.25);e.setAttribute("y",y-s*0.8);e.setAttribute("width",s*2.5);e.setAttribute("height",s*1.6);e.setAttribute("rx",shape=="rrect"?7:3);}
+  else if(shape=="square"){e=document.createElementNS(NS,"rect");e.setAttribute("x",x-s*0.86);e.setAttribute("y",y-s*0.86);e.setAttribute("width",s*1.72);e.setAttribute("height",s*1.72);}
+  else{e=document.createElementNS(NS,"polygon");e.setAttribute("points",shapePts(shape,x,y,s));}
+  e.setAttribute("fill",fill);if(stroke){e.setAttribute("stroke",stroke);e.setAttribute("stroke-width","1.5");}
+  return e;
 }
-// ---- rail ----
-const TC={Drug:"--s1",Company:"--s2",MoAClass:"--s7",Target:"--s3",MarketSegment:"--s4",Catalyst:"--s5",Indication:"--ink2"};
-function openRail(n,groups){
-  document.getElementById("r-type").textContent=n.type;document.getElementById("r-type").style.background=css(TC[n.type]||"--ink2");
-  document.getElementById("r-name").textContent=n.label;
-  const sub=[];if(n.attrs.brand)sub.push(n.attrs.brand);if(n.attrs.sub_class)sub.push(n.attrs.sub_class);if(n.attrs.type)sub.push(n.attrs.type);
-  document.getElementById("r-sub").textContent=sub.join(" · ");
-  const body=document.getElementById("r-body");body.innerHTML="";const kp=el("div",{cls:"kpis"});const K=(v,l)=>kp.append(el("div",{cls:"k"},[el("b",{text:v}),el("span",{text:l})]));
-  if(n.type=="Drug"){const a=n.attrs;K(PLABEL[a.highest_phase],"phase");if(a.annual_sales_usd_m)K(fmt$(a.annual_sales_usd_m),"sales "+(a.sales_year||""));if(a.p90!=null)K(a.p90+"%","PASI 90");if(a.route)K(a.route+(a.dose?" "+a.dose:""),"route/dose");if(a.appr)K(a.appr,"approved");body.append(kp);
-    if(a.note)body.append(el("div",{cls:"prose",text:a.note}));if(a.bios)body.append(el("div",{cls:"prose",html:"<b>Biosimilars:</b> "+esc(a.bios)}));
-    const m=oN(n.id,"HAS_MECHANISM")[0];if(m&&m.attrs.safety)body.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(m.attrs.safety)}));
-  }else if(n.type=="Company"){const dr=iN(n.id,"DEVELOPED_BY");K(dr.length,"assets");K(dedupe(dr.flatMap(d=>oN(d.id,"HAS_MECHANISM"))).length,"mechanisms");K(dr.filter(d=>d.attrs.highest_phase=="approved").length,"approved");body.append(kp);if(n.attrs.positioning)body.append(el("div",{cls:"prose",text:n.attrs.positioning}));
-  }else if(n.type=="MoAClass"){const dr=iN(n.id,"HAS_MECHANISM");K(dr.length,"drugs");K(dr.filter(d=>d.attrs.highest_phase=="approved").length,"approved");const best=Math.max(0,...dr.map(d=>d.attrs.p90||0));if(best)K(best+"%","best PASI 90");body.append(kp);
-    if(n.attrs.safety)body.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(n.attrs.safety)}));
-  }else if(n.type=="Target"){if(n.attrs.ot_association_score)K(n.attrs.ot_association_score.toFixed(2),"OT assoc.");K(iN(n.id,"HITS").length,"drugs");body.append(kp);
-  }else if(n.type=="Catalyst"){K(n.attrs.date,"date");if(n.attrs.kind)K(n.attrs.kind.replace("_"," "),"type");body.append(kp);if(n.attrs.significance)body.append(el("div",{cls:"prose",text:n.attrs.significance}));if(n.attrs.company)body.append(el("div",{cls:"prose",html:"<b>Company:</b> "+esc(n.attrs.company)}));}
-  else body.append(kp);
-  body.append(egoGraph(n,groups));
-  groups.forEach(g=>{const w=el("div",{cls:"rel"},[el("h5",{text:g.label+" · "+g.nodes.length})]);const ch=el("div",{cls:"chips"});g.nodes.slice(0,28).forEach(nn=>{const c=el("div",{cls:"chip"},[el("span",{cls:"dot",style:`background:${css(TC[nn.type]||"--sN")}`}),el("span",{text:nn.label})]);c.onclick=()=>focusNode(nn.id);ch.append(c);});w.append(ch);body.append(w);});
-  if(n.sources&&n.sources.length)body.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")}));
-  rail.classList.add("open");backdrop.classList.add("on");
+function shapeLegendHTML(){
+  const m={Drug:"● drug",Company:"▭ company",MoAClass:"◆ mechanism",Target:"▲ target",MarketSegment:"⬡ segment",Catalyst:"⬠ catalyst"};
+  return Object.entries(m).map(([t,l])=>`<span style="color:${css(TYPE[t].c)};font-weight:700">${l.split(" ")[0]}</span>&nbsp;<span style="color:var(--muted)">${l.split(" ")[1]}</span>`).join("&nbsp;&nbsp; ");
 }
-function egoGraph(center,groups){
-  const NS="http://www.w3.org/2000/svg",W=338,H=200,cx=W/2,cy=H/2;
-  const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","egograph");svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
-  const seen=new Set(),pts=[];groups.forEach(g=>g.nodes.slice(0,3).forEach(nn=>{if(!seen.has(nn.id)&&nn.id!=center.id){seen.add(nn.id);pts.push(nn);}}));
-  const P=pts.slice(0,10),R=74;
-  P.forEach((nn,i)=>{const ang=-Math.PI/2+i*2*Math.PI/Math.max(1,P.length),x=cx+R*Math.cos(ang),y=cy+R*Math.sin(ang);
-    const ln=document.createElementNS(NS,"line");ln.setAttribute("x1",cx);ln.setAttribute("y1",cy);ln.setAttribute("x2",x);ln.setAttribute("y2",y);ln.setAttribute("stroke",css("--line"));ln.setAttribute("stroke-width","1.3");svg.append(ln);
-    const c=document.createElementNS(NS,"circle");c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r",6.5);c.setAttribute("fill",css(TC[nn.type]||"--sN"));c.style.cursor="pointer";c.onclick=()=>focusNode(nn.id);svg.append(c);
-    const tx=document.createElementNS(NS,"text");tx.setAttribute("x",x);tx.setAttribute("y",y>cy?y+14:y-10);tx.setAttribute("text-anchor","middle");tx.setAttribute("font-size","8");tx.textContent=nn.label.length>15?nn.label.slice(0,14)+"…":nn.label;svg.append(tx);});
-  const c0=document.createElementNS(NS,"circle");c0.setAttribute("cx",cx);c0.setAttribute("cy",cy);c0.setAttribute("r",10);c0.setAttribute("fill",css(TC[center.type]||"--s1"));c0.setAttribute("stroke",css("--ink"));c0.setAttribute("stroke-width","2");svg.append(c0);
-  const t0=document.createElementNS(NS,"text");t0.setAttribute("x",cx);t0.setAttribute("y",cy+22);t0.setAttribute("text-anchor","middle");t0.setAttribute("font-size","9");t0.setAttribute("font-weight","700");t0.textContent=center.label.length>18?center.label.slice(0,17)+"…":center.label;svg.append(t0);
+const REL={DEVELOPED_BY:"developed by",HAS_MECHANISM:"has mechanism",HITS:"targets",HAS_MODALITY:"modality",DEVELOPED_IN:"studied in",SERVES:"serves",HAS_CATALYST:"catalyst",ACTS_ON:"acts on",PARTY_TO:"party to"};
+
+// ---- MODAL / ER POPUP ----
+const backdrop=document.getElementById("backdrop"), modal=document.getElementById("modal");
+let CENTER=null;
+function closeModal(){backdrop.classList.remove("on");CENTER=null;}
+backdrop.onclick=e=>{if(e.target==backdrop)closeModal();};
+document.addEventListener("keydown",e=>{if(e.key=="Escape")closeModal();});
+function neighborsOf(id){
+  const out=(OUT[id]||[]).map(e=>({other:e.target,type:e.type,dir:"out"}));
+  const inc=(INC[id]||[]).map(e=>({other:e.source,type:e.type,dir:"in"}));
+  const seen=new Set(),list=[];
+  [...out,...inc].forEach(x=>{if(x.other!=id&&!seen.has(x.other)&&N[x.other]){seen.add(x.other);list.push(x);}});
+  // prioritise informative types, keep drugs of a mechanism/company
+  const rank=t=>({HAS_MECHANISM:0,DEVELOPED_BY:1,HITS:2,SERVES:3,HAS_CATALYST:4,DEVELOPED_IN:5,ACTS_ON:1,PARTY_TO:3,HAS_MODALITY:6}[t]??7);
+  list.sort((a,b)=>rank(a.type)-rank(b.type));
+  return list;
+}
+function openModal(id){
+  const n=N[id]; if(!n)return; CENTER=id;
+  const tc=css((TYPE[n.type]||{c:"--accent"}).c);
+  modal.style.setProperty("--mc",tc);
+  modal.innerHTML="";
+  // header
+  const hd=el("div",{cls:"mhead"});
+  const sh=document.createElementNS(NS,"svg"); sh.setAttribute("viewBox","0 0 28 28"); sh.setAttribute("class","shape");
+  sh.append(drawShape((TYPE[n.type]||{s:"circle"}).s,14,14,10,tc,css("--ink")));
+  hd.append(sh);
+  hd.append(el("div",{},[el("div",{cls:"tt",text:n.type=="MoAClass"?"Mechanism":n.type}),el("h2",{text:n.label}),el("div",{cls:"sub",text:[n.attrs.brand,n.attrs.sub_class,n.attrs.type].filter(Boolean).join(" · ")})]));
+  hd.append(el("button",{cls:"x",onclick:closeModal,text:"×"}));
+  // body: info + graph
+  const info=el("div",{cls:"minfo"}); fillInfo(info,n);
+  const gwrap=el("div",{cls:"mgraph"});
+  const svg=erDiagram(n); gwrap.append(svg);
+  gwrap.append(el("div",{cls:"glegend",html:shapeLegendHTML()}));
+  modal.append(hd,el("div",{cls:"mbody"},[info,gwrap]));
+  backdrop.classList.add("on");
+}
+function fillInfo(info,n){
+  const a=n.attrs, kp=el("div",{cls:"kpis"}), K=(v,l)=>{if(v!=null&&v!=="")kp.append(el("div",{cls:"k"},[el("b",{text:v}),el("span",{text:l})]));};
+  if(n.type=="Drug"){K(PLABEL[a.highest_phase]?.split(" ")[0]||a.highest_phase,"phase");K(a.annual_sales_usd_m?fmt$(a.annual_sales_usd_m):null,"sales "+(a.sales_year||""));K(a.p90!=null?a.p90+"%":null,"PASI 90");K(a.route&&a.dose?a.route+" "+a.dose:a.route,"route/dose");K(a.appr,"approved");}
+  else if(n.type=="Company"){const dr=iN(n.id,"DEVELOPED_BY");K(dr.length,"assets");K(new Set(dr.map(d=>(oN(d.id,"HAS_MECHANISM")[0]||{}).id)).size,"mechanisms");K(dr.filter(d=>d.attrs.highest_phase=="approved").length,"approved");}
+  else if(n.type=="MoAClass"){const dr=iN(n.id,"HAS_MECHANISM");K(dr.length,"drugs");K(dr.filter(d=>d.attrs.highest_phase=="approved").length,"approved");const best=Math.max(0,...dr.map(d=>d.attrs.p90||0));K(best||null,"best PASI 90");}
+  else if(n.type=="Target"){K(a.ot_association_score?a.ot_association_score.toFixed(2):null,"OT assoc.");K(iN(n.id,"HITS").length,"drugs");}
+  else if(n.type=="Catalyst"){K(a.date,"date");K(a.kind?a.kind.replace("_"," "):null,"type");K(a.company,"company");}
+  info.append(kp);
+  const desc=describe(n); if(desc)info.append(el("div",{cls:"desc",html:desc}));
+  if(n.type=="Drug"){const m=oN(n.id,"HAS_MECHANISM")[0]; if(m&&m.attrs.safety)info.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(m.attrs.safety)}));}
+  if(n.type=="MoAClass"&&a.safety)info.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(a.safety)}));
+  if(n.sources&&n.sources.length)info.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")}));
+}
+function describe(n){
+  const a=n.attrs;
+  if(n.type=="Drug"){let s=a.note?esc(a.note):"";const m=oN(n.id,"HAS_MECHANISM")[0];if(m)s=`<b>${esc(m.label)}</b>${a.mechanism?" — "+esc(a.mechanism):""}. `+s;if(a.bios)s+=` <b>Biosimilars:</b> ${esc(a.bios)}.`;return s;}
+  if(n.type=="Company")return a.positioning?esc(a.positioning):`Develops ${iN(n.id,"DEVELOPED_BY").length} psoriasis asset(s).`;
+  if(n.type=="MoAClass"){let s="";if(a.rationale)s+="<b>Rationale.</b> "+esc(a.rationale)+" ";if(a.mechanism)s+="<b>Mechanism.</b> "+esc(a.mechanism);return s;}
+  if(n.type=="Target")return a.rationale?esc(a.rationale):(a.name?esc(a.name):"");
+  if(n.type=="Catalyst")return a.significance?esc(a.significance):"";
+  if(n.type=="MarketSegment")return a.note?esc(a.note):"";
+  return "";
+}
+function erDiagram(center){
+  const svg=document.createElementNS(NS,"svg"); svg.setAttribute("viewBox","0 0 620 480"); svg.setAttribute("preserveAspectRatio","xMidYMid meet");
+  const defs=document.createElementNS(NS,"defs");
+  defs.innerHTML=`<marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="${css('--muted')}"/></marker>`;
+  svg.append(defs);
+  const cx=310,cy=232, neigh=neighborsOf(center.id), M=Math.min(neigh.length,15), shown=neigh.slice(0,M);
+  const R=shown.length>10?168:150;
+  // edges + nodes
+  shown.forEach((nb,i)=>{
+    const ang=-Math.PI/2 + i*2*Math.PI/Math.max(1,shown.length);
+    const x=cx+R*Math.cos(ang), y=cy+R*Math.sin(ang), o=N[nb.other], tc=css((TYPE[o.type]||{c:"--sN"}).c);
+    // edge (respect direction): from -> to
+    const A=nb.dir=="out"?{x:cx,y:cy}:{x,y}, B=nb.dir=="out"?{x,y}:{x:cx,y:cy};
+    // shorten to shape edges
+    const dx=B.x-A.x,dy=B.y-A.y,L=Math.hypot(dx,dy)||1, ux=dx/L,uy=dy/L;
+    const a2={x:A.x+ux*(A.x==cx?14:13),y:A.y+uy*(A.y==cy?14:13)}, b2={x:B.x-ux*(B.x==cx?16:15),y:B.y-uy*(B.y==cy?16:15)};
+    const ln=document.createElementNS(NS,"line");ln.setAttribute("x1",a2.x);ln.setAttribute("y1",a2.y);ln.setAttribute("x2",b2.x);ln.setAttribute("y2",b2.y);
+    ln.setAttribute("stroke",css("--rule2"));ln.setAttribute("stroke-width","1.4");ln.setAttribute("marker-end","url(#ah)");svg.append(ln);
+    const lx=A.x+(B.x-A.x)*0.52,ly=A.y+(B.y-A.y)*0.52;
+    const rl=document.createElementNS(NS,"text");rl.setAttribute("x",lx);rl.setAttribute("y",ly-2);rl.setAttribute("text-anchor","middle");rl.setAttribute("class","erel");rl.textContent=REL[nb.type]||nb.type.toLowerCase();svg.append(rl);
+    // neighbor node
+    const g=document.createElementNS(NS,"g");g.setAttribute("class","enode");g.style.cursor="pointer";g.onclick=()=>openModal(o.id);
+    g.append(drawShape((TYPE[o.type]||{s:"circle"}).s,x,y,11,tc,css("--paper")));
+    const tl=document.createElementNS(NS,"text");tl.setAttribute("x",x);tl.setAttribute("y",y> cy?y+24:y-16);tl.setAttribute("text-anchor","middle");tl.setAttribute("class","elabel");tl.textContent=o.label.length>18?o.label.slice(0,17)+"…":o.label;g.append(tl);
+    svg.append(g);
+  });
+  // center
+  const tc=css((TYPE[center.type]||{c:"--s1"}).c);
+  svg.append(drawShape((TYPE[center.type]||{s:"circle"}).s,cx,cy,17,tc,css("--ink")));
+  const cl=document.createElementNS(NS,"text");cl.setAttribute("x",cx);cl.setAttribute("y",cy+34);cl.setAttribute("text-anchor","middle");cl.setAttribute("class","ecenter-label");cl.textContent=center.label.length>22?center.label.slice(0,21)+"…":center.label;svg.append(cl);
+  if(neigh.length>M){const more=document.createElementNS(NS,"text");more.setAttribute("x",cx);more.setAttribute("y",470);more.setAttribute("text-anchor","middle");more.setAttribute("class","erel");more.textContent=`+${neigh.length-M} more relationships`;svg.append(more);}
   return svg;
 }
-let raf;function redraw(){if(!FOCUS)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const{W}=relatedFor(FOCUS);drawWires(FOCUS,W);});}
-stage.addEventListener("scroll",redraw);
-document.getElementById("lens").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#lens button").forEach(x=>x.classList.remove("on"));b.classList.add("on");LENS=b.dataset.lens;buildLandscape();buildBenchmark();buildLegend();if(FOCUS)focusNode(FOCUS);};
-document.getElementById("reset").onclick=clearFocus;document.getElementById("r-close").onclick=clearFocus;backdrop.onclick=clearFocus;
-document.addEventListener("keydown",e=>{if(e.key=="Escape")clearFocus();});
-document.getElementById("theme").onclick=()=>{const r=document.documentElement,cur=r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");r.setAttribute("data-theme",cur=="dark"?"light":"dark");buildLandscape();buildMatrix();buildBenchmark();buildStrips();buildLegend();if(FOCUS)focusNode(FOCUS);};
-const search=document.getElementById("search");search.addEventListener("change",()=>{const q=search.value.trim().toLowerCase();const hit=G.nodes.find(n=>n.label.toLowerCase()==q)||G.nodes.find(n=>n.label.toLowerCase().includes(q));if(hit){focusNode(hit.id);search.value=hit.label;}});
-document.getElementById("brand").innerHTML=`${esc(G.meta.focus)} <small>INDICATION ATLAS · SPOTLIGHT PROTOTYPE · ${esc(G.meta.as_of||G.meta.generated||"")} · ${G.nodes.filter(n=>n.type=="Drug").length} assets</small>`;
-(function(){const k=document.getElementById("kpis");(G.meta.headline_stats||[]).forEach(s=>k.append(el("div",{cls:"kpi"},[el("b",{text:s.value}),el("span",{text:s.label})])));})();
+
+// ---- masthead + search + theme ----
+document.getElementById("ttl").innerHTML=`${esc(G.meta.focus)}<small>${esc(G.meta.as_of||G.meta.generated||"")} · ${G.nodes.filter(n=>n.type=="Drug").length} assets · spotlight prototype</small>`;
+document.getElementById("one").textContent=G.meta.one_liner||"";
+(function(){const k=document.getElementById("kpis");(G.meta.headline_stats||[]).slice(0,3).forEach(s=>k.append(el("div",{cls:"kpi"},[el("b",{text:s.value}),el("span",{text:s.label})])));})();
 (function(){const d=document.getElementById("allnodes");G.nodes.filter(n=>["Drug","Company","MoAClass","Target"].includes(n.type)).forEach(n=>d.append(el("option",{value:n.label})));})();
-if(G.meta.sales_note)document.getElementById("hint").title=G.meta.sales_note;
-buildLandscape();buildMatrix();buildBenchmark();buildStrips();buildLegend();
+document.getElementById("search").addEventListener("change",e=>{const q=e.target.value.trim().toLowerCase();const hit=G.nodes.find(n=>n.label.toLowerCase()==q)||G.nodes.find(n=>n.label.toLowerCase().includes(q));if(hit)openModal(hit.id);});
+document.getElementById("theme").onclick=()=>{const r=document.documentElement,cur=r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");r.setAttribute("data-theme",cur=="dark"?"light":"dark");buildMap();buildSide();if(CENTER)openModal(CENTER);};
+buildMap(); buildSide();
 </script></body></html>
