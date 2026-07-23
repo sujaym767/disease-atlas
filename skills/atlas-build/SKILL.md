@@ -3,15 +3,15 @@ name: atlas-build
 description: >-
   Build the interactive, self-contained HTML disease atlas from a semantic atlas.json.
   This is the BUILDER half of the atlas pipeline: it compiles a validated atlas.json (produced
-  by the atlas-research skill, or hand-authored) into the RA-Capital-style interactive poster —
-  the Objective→Asset strategy map, the IL-23/IL-17-style mechanism schematic, the ER-diagram
-  popups, the force-directed network explorer, biology path-finding, and the market-research
-  bands (forecast & scenarios, patient funnel & opportunity, payer access, competitive posture).
-  Deterministic and offline: no APIs, no web search, no synthesis. Use this when you already
-  have an atlas.json and want the HTML, when re-rendering after editing atlas.json, or as the
-  final step of an atlas-research run. If you need to RESEARCH an indication first (gather the
-  pipeline, market, epidemiology, etc.), use atlas-research — it produces the atlas.json this
-  skill consumes.
+  by the disease-atlas research skill, or hand-authored) into the RA-Capital-style interactive
+  poster — the Objective→Asset strategy map, the IL-23/IL-17-style mechanism schematic, the
+  ER-diagram popups, the force-directed network explorer, biology path-finding, and the
+  market-research bands (forecast & scenarios, patient funnel & opportunity, payer access,
+  competitive posture). Deterministic and offline: no APIs, no web search, no synthesis. Use this
+  when you already have an atlas.json and want the HTML, when re-rendering after editing atlas.json,
+  or as the final step of a disease-atlas research run. If you need to RESEARCH an indication first
+  (gather the pipeline, market, epidemiology, etc.), use the disease-atlas skill — it produces the
+  atlas.json this skill consumes.
 ---
 
 # Atlas Build

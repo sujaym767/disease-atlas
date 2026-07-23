@@ -123,6 +123,52 @@ def validate(atlas: dict) -> None:
                 if asset_ids and ref not in asset_ids:
                     warn(f"moa_landscape[{i}] ({m.get('class')}) drug ref {ref!r} not in pipeline.assets")
 
+    # --- render sections (consumed by atlas-build) ---
+    asset_names = {a.get("name") for a in (assets or []) if isinstance(a, dict) and a.get("name")}
+    fam_keys = {f.get("key") for f in (atlas.get("families") or []) if isinstance(f, dict)}
+    fam_keys |= {m.get("family_key") for m in (moa if isinstance(moa, list) else []) if isinstance(m, dict) and m.get("family_key")}
+    # every asset's family_key should resolve to a lane
+    if fam_keys:
+        for i, a in enumerate(assets or []):
+            fk = isinstance(a, dict) and a.get("family_key")
+            if fk and fk not in fam_keys:
+                warn(f"pipeline.assets[{i}] ({a.get('name')}) family_key {fk!r} not in families/moa_landscape")
+
+    # strategy_map: collect leaf drug names; check they resolve and place every asset once
+    placed = []
+
+    def _collect(node):
+        if isinstance(node, dict):
+            placed.extend(node.get("drugs", []) or [])
+            for c in node.get("ch", []) or []:
+                _collect(c)
+    for obj in atlas.get("strategy_map", []) or []:
+        _collect(obj)
+    if placed:
+        for nm in placed:
+            if asset_names and nm not in asset_names:
+                err(f"strategy_map places {nm!r}, which is not a pipeline.assets name")
+        dupes = {n for n in placed if placed.count(n) > 1}
+        if dupes:
+            warn(f"strategy_map places these assets more than once: {sorted(dupes)}")
+        missing = asset_names - set(placed)
+        if missing:
+            warn(f"strategy_map does not place {len(missing)} asset(s): {sorted(missing)[:8]}{' …' if len(missing) > 8 else ''}")
+
+    # biology_graph: edge endpoints and anchors must reference declared nodes
+    bio = atlas.get("biology_graph") or {}
+    if isinstance(bio, dict) and bio.get("nodes"):
+        bio_ids = {n.get("id") for n in bio.get("nodes", []) if isinstance(n, dict)}
+        for i, e in enumerate(bio.get("edges", []) or []):
+            for end in ("source", "target"):
+                if e.get(end) not in bio_ids:
+                    err(f"biology_graph.edges[{i}].{end} {e.get(end)!r} is not a declared biology node")
+        for fk, nid in (bio.get("anchors") or {}).items():
+            if fam_keys and fk not in fam_keys:
+                warn(f"biology_graph.anchors key {fk!r} is not a family key")
+            if nid not in bio_ids:
+                err(f"biology_graph.anchors[{fk}] → {nid!r} is not a declared biology node")
+
     # --- quality: uncited numeric claims ---
     for i, stat in enumerate(atlas.get("headline_stats", []) or []):
         if isinstance(stat, dict) and stat.get("value") and not stat.get("sources"):

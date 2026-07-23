@@ -1,95 +1,135 @@
 ---
 name: disease-atlas
 description: >-
-  Generate a market-research "atlas" — a highly detailed, interactive, self-contained
-  HTML web app — for any disease, indication, or therapeutic area. The atlas is a
-  bird's-eye strategic landscape (in the spirit of RA Capital's landscape maps): patient
-  burden & epidemiology, standard of care with top products and sales, a full
-  mechanism-of-action breakdown, the clinical pipeline by phase/company, the competitive
-  landscape and deals, market size & forecast, opportunity/whitespace, catalysts, and
-  cited evidence. Use this whenever the user wants to understand or map a therapeutic
-  area or indication at a strategic level — e.g. "build a disease atlas / landscape /
-  market map for X", "map the treatment landscape / competitive landscape / pipeline for
-  X", "what are the mechanisms of action / SoC / market size / players in X", "give me
-  the big picture on X disease", or asks for a therapeutic-area overview, drug-development
-  landscape, or MoA/pipeline map — even if they don't use the word "atlas". Produces a
-  standalone atlas_<disease>.html from public APIs + cited web research. Not for deep
-  single-target dossiers (that's dbtips) or individual patient/clinical decisions.
+  Research a disease, indication, or therapeutic area and produce a market-research ATLAS — a
+  highly detailed, interactive, self-contained HTML web app in the spirit of RA Capital's landscape
+  maps. This is the RESEARCH + AUTHORING skill: it gathers the landscape from public APIs + cited
+  web research and composes a single semantic atlas.json (pipeline, MoA landscape, standard of care,
+  epidemiology, biology cascade, the Objective→Asset strategy map, market forecast & scenarios,
+  patient funnel & opportunity, payer access, competitive posture, catalysts, evidence), then hands
+  off to the atlas-build skill to render it. Use this whenever the user wants to understand or map a
+  therapeutic area at a strategic level — "build a disease atlas / landscape / market map for X",
+  "map the treatment landscape / pipeline / competition for X", "size the market / show the MoA
+  landscape for X", "give me the big picture on X disease" — even if they don't say "atlas". Produces
+  atlas.json (+ the rendered atlas_<disease>.html via atlas-build). Standalone: public sources only.
+  Not for single-target dossiers or individual clinical decisions.
 ---
 
-# Disease Atlas
+# Disease Atlas — research & author `atlas.json`
 
-Generate an interactive market-research **atlas** for a disease, indication, or therapeutic area: a single self-contained `atlas_<disease>.html` that maps the whole landscape and lets the reader drill into each angle.
+The atlas is built in **two skills**: **this one researches** an indication and composes a semantic
+**`atlas.json`**; **`atlas-build`** compiles that into the interactive HTML poster. This split means
+the research is re-usable and re-renderable — edit `atlas.json`, rebuild, done. Keep them in sync via
+the shared contract in **`../atlas-build/references/atlas-schema.md`**.
 
-**Read alongside this file (load as needed — progressive disclosure):**
-- `references/atlas-blueprint.md` — what each panel should contain and how deep to go.
-- `references/atlas-schema.md` — the `atlas.json` contract the renderer consumes.
-- `references/data-sources.md` — public API endpoints, query recipes, and where each panel's data comes from.
+**Read alongside this file (progressive disclosure — load when the workflow reaches them):**
+- `references/atlas-blueprint.md` — what each section should contain and how deep to go.
+- `references/render-sections.md` — how to SYNTHESIZE the six render sections that make the atlas
+  RA-Capital-grade: the strategy map, the biology cascade, and the market-research layer (forecast /
+  funnel / access / competitive), plus response-kinetics, trials-in-focus, and the glossary.
+- `references/data-sources.md` — public API endpoints, query recipes, and where each panel's data
+  comes from.
+- `../atlas-build/references/atlas-schema.md` — the exact `atlas.json` shape the builder consumes.
 
-Below, `<skill>` = this skill's directory (in the repo, `skills/disease-atlas`). Work in a run directory `runs/<disease-slug>/` (git-ignored).
+`<skill>` = this skill's directory (`skills/disease-atlas`). Work in `runs/<disease-slug>/` (git-ignored).
 
-## The prime directives
+## Prime directives
 
-1. **Accuracy is the product.** Every non-obvious fact (numbers, dates, sales, market size, phases) must trace to a source in `atlas.json`'s `sources[]`. Label estimates as estimates. **Never invent** NCT IDs, drug/company names, or figures — a sourced gap beats a confident fabrication.
-2. **Right altitude.** This is a strategic map, not a literature review. Breadth first; go deep enough per angle to be decision-useful, then stop.
-3. **Standalone & cited.** Hard data from public APIs; market/epi/deals from web search, always with real URLs. No internal services or credentials.
-4. **Honest empty states.** Thin public data on a panel → say so. Never fill with plausible filler.
-5. **Intensive is fine.** A great atlas is worth many API calls and a lot of reasoning. Optimize the result, not the runtime.
+1. **Accuracy is the product.** Every non-obvious fact (numbers, dates, sales, market size, phases)
+   traces to a source in `atlas.json`'s `sources[]`. Label estimates `is_estimate`/`[Estimated]`.
+   **Never invent** NCT IDs, drug/company names, or figures — a sourced gap beats a confident guess.
+2. **Right altitude.** A strategic map, not a literature review. Breadth first; go deep enough per
+   angle to be decision-useful, then stop.
+3. **Standalone & cited.** Hard data from public APIs; market/epi/deals from web search with real
+   URLs. No internal services or credentials.
+4. **Honest empty states.** Thin public data on a section → say so and omit it; the builder shows an
+   honest empty state. Never fill with plausible filler.
+5. **Intensive is fine.** A great atlas is worth many API calls and a lot of reasoning. Optimize the
+   result, not the runtime.
 
 ## Workflow
 
-### 0. Scaffold the run
+### 0. Scaffold
 ```bash
 python <skill>/scripts/new_atlas.py --disease "plaque psoriasis" --scope indication
-# creates runs/plaque-psoriasis/{raw/,atlas.json (stub),notes.md} and prints the slug
+# → runs/plaque-psoriasis/{raw/, atlas.json (stub), notes.md}
 ```
 
 ### 1. Scope & resolve
-- Confirm the target and **scope**: a single `indication` (e.g. plaque psoriasis) or a broader `therapeutic_area` (e.g. immuno-oncology) that rolls up several indications. If the user's request is broad ("oncology"), consider narrowing or note that the atlas will be area-level. Ask only if genuinely ambiguous.
-- Collect the **common name + key synonyms/abbreviations** (query APIs with all of them).
-- Resolve the **Open Targets EFO id** (`fetch_open_targets.py --resolve "<disease>"`) — it canonicalizes synonyms and unlocks targets/known-drugs.
+Confirm the target and **scope** (`indication` vs `therapeutic_area`). Collect the common name +
+synonyms/abbreviations (query APIs with all). Resolve the Open Targets EFO id
+(`fetch_open_targets.py --resolve "<disease>"`).
 
 ### 2. Gather hard data (public APIs → `runs/<slug>/raw/`)
-Run the fetchers (they're standalone, cache to `--out`, and degrade gracefully). These are independent — run them together.
+Run the fetchers together (standalone, cached, degrade gracefully):
 ```bash
-python <skill>/scripts/fetch_clinical_trials.py --disease "plaque psoriasis" --out runs/plaque-psoriasis/raw/trials.json
-python <skill>/scripts/fetch_open_targets.py   --disease "plaque psoriasis" --out runs/plaque-psoriasis/raw/opentargets.json
-python <skill>/scripts/fetch_openfda.py        --disease "psoriasis"       --out runs/plaque-psoriasis/raw/openfda.json
-python <skill>/scripts/fetch_pubmed.py         --disease "plaque psoriasis" --focus "phase 3 pivotal" --out runs/plaque-psoriasis/raw/literature.json
+python <skill>/scripts/fetch_clinical_trials.py --disease "<d>" --out runs/<slug>/raw/trials.json
+python <skill>/scripts/fetch_open_targets.py    --disease "<d>" --out runs/<slug>/raw/opentargets.json
+python <skill>/scripts/fetch_openfda.py         --disease "<d>" --out runs/<slug>/raw/openfda.json
+python <skill>/scripts/fetch_pubmed.py          --disease "<d>" --focus "phase 3 pivotal" --out runs/<slug>/raw/literature.json
 ```
-Then read the raw files. From them you get: the pipeline/assets and sponsors (trials), mechanism-of-action classes and targets (Open Targets `knownDrugs`), approved products + labels + boxed warnings (openFDA), and landmark publications (PubMed/Europe PMC). See `data-sources.md` for field maps.
+From these: the pipeline/assets + sponsors (trials), MoA classes + targets (Open Targets
+`knownDrugs`), approved products + labels + boxed warnings (openFDA), landmark publications (PubMed).
 
 ### 3. Gather commercial / epidemiological facts (web search, cited)
-The panels with no clean API — **market size & forecast, product sales, deal flow, fine-grained epidemiology** — come from **web search**. For each: find a real, preferably primary source (company 10-K for sales; GBD/CDC/WHO or a prevalence study for epi; a named analyst report for market size), capture the URL, and add a `sources[]` entry. Triangulate when sources disagree; label forecasts `is_estimate: true`. If you can't source a number, leave it out and note it in `coverage_note`. (See `data-sources.md` §6.)
+Market size & forecast, product sales, deal flow, fine-grained epidemiology, payer/access — the
+panels with no clean API — come from **web search**, each with a real primary source (10-K for
+sales; GBD/CDC/WHO or a prevalence study for epi; named analyst report or company guidance for
+market). Triangulate; label forecasts as estimates. This is the raw material for the market-research
+layer (see `render-sections.md` for the market-sizing method: bottom-up
+`patients × treatment-rate × net-price` reconciled against a top-down envelope).
 
-### 4. Synthesize `atlas.json`
-Build the atlas **section by section** following `atlas-blueprint.md` for editorial guidance and `atlas-schema.md` for shape. Work incrementally — write the file, add sections, re-validate. Key moves:
-- **Normalize & dedupe assets** across trials + Open Targets into one `pipeline.assets` list (lowercase-match names; keep the highest phase). Give each a stable `id`.
-- **Build the MoA landscape** by grouping assets/known-drugs by mechanism/target into classes; for each class write rationale, mechanism, trade-offs, validation status, key players; reference member drug ids. Include emerging and failed classes — breadth is the point.
-- **Attach `sources` as you go** so nothing ends up uncited. Add the source entry the moment you use a datum.
-- Fill `overview`, `epidemiology`, `biology`, `standard_of_care`, `companies`, `market`, `catalysts`, `evidence`, and (optionally) `swot`. Set `meta.coverage_note` honestly.
+### 4. Compose the SEMANTIC core of `atlas.json`
+Follow `atlas-blueprint.md` (editorial) + `../atlas-build/references/atlas-schema.md` (shape). Work
+incrementally; validate as you go. Key moves:
+- **Normalize & dedupe assets** across trials + Open Targets into one `pipeline.assets[]` (lowercase
+  match; keep the highest phase). Give each a stable `id` and the **extended render fields**
+  (`family_key`, `sub_class`, `dose`, `annual_sales_usd_m`, `sales_year`, `efficacy`, `biosimilar`,
+  `note`) — these drive the cards, donut, dev-matrix, and efficacy panels.
+- **Build the MoA landscape / families** by grouping assets by mechanism into classes; each becomes a
+  colour lane. Assets bind to a lane via `family_key`.
+- **Fill** `overview`, `epidemiology` (with burden extras), `standard_of_care.lines`, `companies`,
+  `market`, `catalysts`, `evidence.landmark_trials`, `sites`, `market_share`, attaching `sources` as
+  you go.
 
-For anything but a trivial disease this is a lot of structured writing — that's expected. If helpful, assemble large sections as separate JSON fragments and merge, keeping `atlas.json` the single source of truth.
+### 5. Synthesize the SIX render sections — the RA-Capital depth
+This is what lifts the atlas from a dashboard to a landscape. See **`references/render-sections.md`**
+for the how-to. In brief:
+- **`strategy_map`** — the Objective→Strategy→Approach→Mechanism→Asset decision tree; place every
+  asset exactly once. (Synthesized from the roster + clinical intent — no API gives this.)
+- **`biology_graph`** — the disease's mechanism cascade as first-class nodes + edges (cells,
+  cytokines, receptors, intracellular signalling) with a `signal_path` and family `anchors`. Powers
+  the clickable schematic and biology path-finding.
+- **`market_research`** — forecast & scenarios, patient funnel & opportunity, payer/access, sales
+  attribution & competitive posture. Compose a **report-model.json** for the market layer (the
+  therapeutic-area research method in `render-sections.md`), then fold it in:
+  `python <skill>/scripts/ingest_report.py runs/<slug>/report-model.json` → merge its `market_research`.
+- **`response_kinetics`**, **`trials_focus`**, **`glossary`** — the primary-endpoint onset curves,
+  the strategically important programmes (CT.gov detail), and key terms.
 
-### 5. Validate
+### 6. Validate
 ```bash
-python <skill>/scripts/validate_atlas.py runs/plaque-psoriasis/atlas.json
+python <skill>/scripts/validate_atlas.py runs/<slug>/atlas.json
 ```
-Fix every error (missing required fields, dangling `source` refs, bad enums) and heed warnings (uncited numbers, empty panels).
+Fix every error (missing required fields, dangling `source` refs). Heed warnings (uncited numbers,
+empty panels). Confirm `strategy_map` places each asset once and `family_key`s resolve.
 
-### 6. Render
+### 7. Render (hand off to atlas-build)
 ```bash
-python <skill>/scripts/render_atlas.py runs/plaque-psoriasis/atlas.json \
-       --out runs/plaque-psoriasis/atlas_plaque-psoriasis.html
+python skills/atlas-build/scripts/build_atlas.py runs/<slug>/atlas.json \
+       --out runs/<slug>/atlas_<slug>.html
 ```
-This inlines everything into one HTML file (no external requests at view time). Open it to confirm every panel renders (or shows an honest empty state), filters/search work, and citations link out.
+Open it; confirm the strategy map, mechanism schematic, ER popup, network + path-finding, and the
+four market-research bands render (or show honest empty states). Headless-verify 0 JS errors.
 
-### 7. Deliver
-Share the HTML (it renders as a Claude artifact and opens by double-click). Summarize for the user: the headline picture, what's well-covered vs thin, and the key caveats from `coverage_note`. Offer to promote a finished atlas into `examples/`.
+### 8. Deliver
+Share the HTML (renders as a Claude artifact, opens by double-click). Summarize the headline picture,
+what's well-covered vs thin, and the key caveats. Offer to promote a finished atlas into `examples/`.
 
 ## Tips & guardrails
-- **Parallelize** the independent fetches; **cache** raw responses so re-runs don't re-hit APIs.
-- **Synonyms**: always query condition APIs with the common name *and* abbreviations, then merge.
-- **Don't** copy `dbtips` anti-patterns (committed keys, disabled TLS). Keys come from env vars; TLS stays on.
-- **Don't** hand-edit the rendered HTML — change `atlas.json` or `assets/atlas_template.html` and re-render.
-- If a source API is down or empty, continue with the others and reflect the gap honestly — the pipeline must never hard-fail on one source.
+- **Parallelize** independent fetches; **cache** raw responses.
+- Always query condition APIs with the common name *and* abbreviations, then merge.
+- Keys come from env vars; **TLS stays on**; never commit secrets (don't copy `dbtips` anti-patterns).
+- **Don't hand-edit the rendered HTML** — change `atlas.json` and rebuild via atlas-build.
+- If a source API is down or empty, continue with the others and reflect the gap honestly — the
+  pipeline must never hard-fail on one source.
