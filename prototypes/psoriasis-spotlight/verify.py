@@ -21,9 +21,16 @@ with sync_playwright() as p:
     pg.wait_for_timeout(600)
 
     # 1) poster loads, counts
-    counts = pg.evaluate("({nodes:G.nodes.length, bio:G.nodes.filter(n=>n.type=='Biology').length, edges:G.edges.length, wires:document.querySelectorAll('#wires path').length, blocks:document.querySelectorAll('.block').length})")
+    counts = pg.evaluate("({nodes:G.nodes.length, bio:G.nodes.filter(n=>n.type=='Biology').length, hobj:document.querySelectorAll('.hobj').length, hmech:document.querySelectorAll('.hmech').length, hassets:document.querySelectorAll('.hasset').length, hwires:document.querySelectorAll('#wires path.hwire').length, soctab:document.querySelectorAll('.soctab').length, devmx:document.querySelectorAll('.devmx tr').length})")
     print("1) poster:", counts)
     shot(pg, "preview_poster.png")
+
+    # click a mind-map asset chip -> opens that drug's modal
+    pg.evaluate("[...document.querySelectorAll('.hasset .han')].find(x=>x.textContent.trim()==='risankizumab').closest('.hasset').click()")
+    pg.wait_for_timeout(300)
+    chip = pg.evaluate("({on:document.getElementById('backdrop').classList.contains('on'), title:document.querySelector('.mhead h2')?.textContent})")
+    print("1b) asset-chip click:", chip)
+    pg.evaluate("document.getElementById('backdrop').classList.remove('on')")
 
     # 2) click a Biology cell (dendritic cell) -> modal shows scientific description
     pg.evaluate("openModal('bio:dc')")

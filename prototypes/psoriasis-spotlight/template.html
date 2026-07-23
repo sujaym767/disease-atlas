@@ -80,6 +80,27 @@ button{font-family:inherit;cursor:pointer}
 .legend .lr{margin:3px 0}.legend .fam{display:inline-flex;align-items:center;gap:3px;margin:1px 6px 1px 0}.legend .fam i{width:8px;height:8px;display:inline-block;border-radius:2px}
 /* band label */
 .bandlabel{position:absolute;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--rule2);font-size:13px}
+/* ---- objective mind-map (RA-Capital-style decision tree) ---- */
+.hnode{position:absolute;transform:translateY(-50%);border-radius:6px}
+.hobj{color:#fff;padding:9px 12px;box-shadow:var(--shadow);border-radius:7px}
+.hobj .ht{font-family:var(--cond);font-weight:700;font-size:17px;line-height:1.0;text-transform:uppercase;letter-spacing:.005em}
+.hobj .hd{font-size:9px;line-height:1.3;margin-top:5px;opacity:.93}
+.hstrat{color:#fff;padding:6px 10px;box-shadow:var(--shadowsm)}
+.hstrat .ht{font-family:var(--cond);font-weight:700;font-size:13.5px;line-height:1.06}
+.hstrat .hd{font-size:8px;line-height:1.24;margin-top:2px;opacity:.9}
+.happr{padding:5px 9px;box-shadow:var(--shadowsm);border:1px solid var(--hc)}
+.happr .ht{font-weight:700;font-size:10.5px;line-height:1.12;color:var(--ink)}
+.happr .hd{font-size:8px;color:var(--ink2);margin-top:2px;line-height:1.22}
+.hmech{border:1px solid var(--hc);box-shadow:var(--shadowsm);background:var(--block);border-radius:6px;overflow:hidden}
+.hmech .mh{font-weight:700;font-size:9.5px;padding:3px 8px;color:var(--ink);background:color-mix(in srgb,var(--hc) 30%,var(--block));border-bottom:1px solid var(--hc)}
+.hmech .md{font-size:7.5px;color:var(--ink2);padding:3px 8px 2px;line-height:1.22;font-style:italic}
+.hasset{display:grid;grid-template-columns:15px 1fr;gap:6px;padding:2px 8px;font-size:9px;cursor:pointer;align-items:baseline;border-top:1px dotted var(--rule)}
+.hasset:hover{background:color-mix(in srgb,var(--hc) 14%,transparent)}
+.hasset .hs{font-family:var(--mono);font-weight:700;font-size:8px;text-align:center;color:var(--st,var(--muted))}
+.hasset .han{font-weight:650;color:var(--ink)}.hasset.disc .han{text-decoration:line-through;color:var(--muted)}
+.hasset .hac{color:var(--muted);font-size:7.5px}
+.hasset .mk{font-size:7px}
+.hwire{fill:none;stroke-linecap:round}
 /* standard-of-care ladder */
 .soc{display:flex;align-items:stretch}
 .soc .step{flex:1;position:relative;padding:8px 11px 9px 18px;border-left:1px solid var(--rule);min-width:0}
@@ -112,6 +133,31 @@ button{font-family:inherit;cursor:pointer}
 .mshare .row i{width:10px;height:10px;border-radius:2px;box-shadow:0 0 5px color-mix(in srgb,var(--mc) 50%,transparent)}
 .mshare .row .cl{font-weight:600;color:var(--ink)}
 .mshare .row .tr{color:var(--ink2);font-style:italic;text-align:right;white-space:nowrap}
+/* SoC stage table */
+.soctab{display:grid;grid-template-columns:118px repeat(3,1fr);font-size:9px;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.soctab .hd{font-family:var(--cond);font-weight:700;font-size:11px;color:#fff;padding:4px 8px;text-transform:uppercase;line-height:1}
+.soctab .hd span{font-weight:400;font-size:7.5px;opacity:.9;text-transform:none}
+.soctab .rl{font-weight:700;color:var(--ink);padding:4px 8px;border-top:1px solid var(--rule);display:flex;align-items:center;font-size:9px}
+.soctab .cell{border-top:1px solid var(--rule);border-left:1px solid var(--rule);min-height:19px;display:flex;align-items:center}
+.soctab .pres{font-size:8px;color:var(--ink2);padding:3px 7px;line-height:1.2;align-items:flex-start}
+.soctab .pill{height:100%;min-height:17px;width:100%;display:flex;align-items:center;padding:0 8px;color:#fff;font-weight:700;font-size:8.5px}
+.socnote{font-size:9px;color:var(--muted);margin-top:7px;font-style:italic}
+/* sales donut */
+.donut{display:flex;gap:12px;align-items:center}
+.donut svg{flex:none}
+.donut .lg{font-size:8.5px;color:var(--ink2);flex:1;min-width:0}
+.donut .lg .row{display:grid;grid-template-columns:9px 1fr auto;gap:6px;align-items:center;margin:1.5px 0;cursor:pointer}
+.donut .lg .row:hover{color:var(--ink)}
+.donut .lg i{width:9px;height:9px;border-radius:2px}
+.donut .lg b{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:700}
+/* dev matrix */
+.devmx{border-collapse:collapse;width:100%;font-size:8.5px}
+.devmx th{font-family:var(--cond);font-weight:700;font-size:9px;color:var(--ink2);padding:3px 2px;text-align:center;vertical-align:bottom;line-height:1}
+.devmx th.co{text-align:left;padding-left:4px}
+.devmx td{border:1px solid var(--rule);text-align:center;padding:2px 0}
+.devmx td.co{text-align:left;font-weight:600;color:var(--ink);padding:2px 5px;white-space:nowrap;border-left:0}
+.devmx .cc{display:inline-block;min-width:16px;padding:0 2px;border-radius:2px;color:#fff;font-family:var(--mono);font-weight:700;font-size:8px}
+.devmx tr:hover td{background:color-mix(in srgb,var(--accent) 5%,transparent)}
 /* schematic labels */
 .schlab{font-family:var(--sans);font-weight:700;font-size:11px;fill:var(--ink)}
 .schsub{font-size:8.5px;fill:var(--ink2)}
@@ -200,19 +246,19 @@ const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phas
 const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
-const CW=2760, CH=2280; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
+const CW=3400, CH=2680; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 
-/* ---------- schematic (IL-23 / IL-17 immune cascade) ---------- */
-const SOX=1050, SOY=330, SW=900, SH=560;   // schematic div origin + size on the canvas
-const SCH={ // canvas coords of each cascade node
-  dc:[1180,470], p40:[1330,405], il23:[1330,530], th17:[1500,540], tyk2:[1575,615], il22:[1610,460],
-  il17:[1500,665], tnf:[1330,690], pde4:[1225,600], kera:[1740,560], plaque:[1870,560]
+/* ---------- schematic (IL-23 / IL-17 immune cascade) — a corner region, local coords ---------- */
+let SOX=1930, SOY=940; const SW=900, SH=560;   // schematic div origin (in the mid-right void) + size
+const SCH={ // LOCAL coords within the schematic SVG (0..SW, 0..SH)
+  dc:[130,140], p40:[280,75], il23:[280,200], th17:[450,210], tyk2:[525,285], il22:[560,130],
+  il17:[450,335], tnf:[280,360], pde4:[175,270], kera:[690,230], plaque:[820,230]
 };
 const schBio=k=>N["bio:"+k];  // schematic key -> Biology node
 function buildSchematic(){
   const g=el("div",{cls:"node",style:`left:${SOX}px;top:${SOY}px;width:${SW}px;height:${SH}px`});
   const s=svgEl("svg",{viewBox:`0 0 ${SW} ${SH}`,width:SW,height:SH}); g.append(s);
-  const off=p=>[SCH[p][0]-SOX,SCH[p][1]-SOY];
+  const off=p=>[SCH[p][0],SCH[p][1]];
   const cellC=css("--cell"), keraC=css("--kera"), accC=css("--accent");
   s.append((()=>{const d=svgEl("defs");d.innerHTML=
     `<marker id="sah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${css('--ink2')}"/></marker>`+
@@ -326,97 +372,173 @@ function drawConnectors(){
   }
 }
 
+/* ---------- objective mind-map (Objective -> Strategy -> Approach -> Mechanism -> Assets) ---------- */
+const MMTOP=330, CENTERX=CW/2, HGAP=54;
+const HW={obj:252,strat:188,appr:174,mech:198}, HH={chipH:22,mechHead:20,vGap:12,minH:26};
+const DBYN={}; G.nodes.forEach(n=>{if(n.type==="Drug")DBYN[n.label.toLowerCase()]=n;});
+function hMeasure(n){
+  if(n.k==="mech"){const na=(n.drugs||[]).length; n._h=HH.mechHead+(n.d?15:0)+(na?na*HH.chipH+4:8); return n._h;}
+  const kids=n.ch||[]; let h=0; kids.forEach((c,i)=>{h+=hMeasure(c); if(i)h+=HH.vGap;}); n._h=Math.max(h,HH.minH); return n._h;
+}
+function hPlace(n,depth,side,xInner,yTop){
+  n._depth=depth; n._side=side; n._yTop=yTop; n._yc=yTop+n._h/2;
+  const w=HW[n.k]||HW.mech; n._w=w; n._innerX=xInner; n._x=side<0?xInner-w:xInner; n._outerX=side<0?n._x:n._x+w;
+  const kids=n.ch||[]; if(kids.length){
+    const childInner=side<0?n._outerX-HGAP:n._outerX+HGAP;
+    let kh=0; kids.forEach((c,i)=>{kh+=c._h; if(i)kh+=HH.vGap;});
+    let y=n._yc-kh/2; kids.forEach(c=>{hPlace(c,depth+1,side,childInner,y); y+=c._h+HH.vGap;});
+  }
+}
+function buildHierarchy(){
+  const H=G.hierarchy||[]; if(!H.length)return;
+  H.forEach(hMeasure);
+  let ly=MMTOP; H.filter(o=>o.side==="left").forEach(o=>{hPlace(o,0,-1,CENTERX-150,ly); ly+=o._h+80;});
+  let ry=MMTOP; H.filter(o=>o.side!=="left").forEach(o=>{hPlace(o,0,+1,CENTERX+150,ry); ry+=o._h+80;});
+  const tint=(c,p)=>`color-mix(in srgb, ${css(c)} ${p}%, var(--block))`;
+  const walk=(n,fn)=>{fn(n); (n.ch||[]).forEach(c=>walk(c,fn));};
+  H.forEach(o=>{const oc=o.c||"--s1", ocv=css(oc);
+    walk(o,n=>{(n.ch||[]).forEach(c=>{const x1=n._outerX,y1=n._yc,x2=c._innerX,y2=c._yc,mx=(x1+x2)/2;
+      const w=n.k==="obj"?3:n.k==="strat"?2:1.4;
+      WIRES.append(svgEl("path",{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,class:"hwire",stroke:ocv,"stroke-width":w,opacity:.5}));});});
+    walk(o,n=>CANVAS.append(hbox(n,oc,ocv,tint)));
+  });
+}
+function hbox(n,oc,ocv,tint){
+  const d=el("div",{cls:"hnode h"+n.k,style:`left:${n._x}px;top:${n._yc}px;width:${n._w}px;--hc:${ocv}`});
+  if(n.k==="obj"){d.style.background=`linear-gradient(158deg, ${ocv}, color-mix(in srgb,${ocv} 66%, #000))`;
+    d.append(el("div",{cls:"ht",text:n.t})); if(n.d)d.append(el("div",{cls:"hd",text:n.d}));}
+  else if(n.k==="strat"){d.style.background=`linear-gradient(160deg, ${tint(oc,64)}, ${tint(oc,50)})`;
+    d.append(el("div",{cls:"ht",text:n.t})); if(n.d)d.append(el("div",{cls:"hd",text:n.d}));}
+  else if(n.k==="appr"){d.style.background=tint(oc,15);
+    d.append(el("div",{cls:"ht",text:n.t})); if(n.d)d.append(el("div",{cls:"hd",text:n.d}));}
+  else { d.append(el("div",{cls:"mh",text:n.t})); if(n.d)d.append(el("div",{cls:"md",text:n.d}));
+    (n.drugs||[]).forEach(nm=>{const dr=DBYN[(nm||"").toLowerCase()]; if(!dr)return; const a=dr.attrs, st=STAGE[a.highest_phase]||["?","--muted"], comp=oN(dr.id,"DEVELOPED_BY")[0];
+      let mk=""; if(a.bios)mk+='<span class="mk bio">B</span>'; if((a.note||"").toLowerCase().includes("boxed warning"))mk+='<span class="mk warn">⚠</span>';
+      const row=el("div",{cls:"hasset"+(a.highest_phase==="discontinued"?" disc":"")},[
+        el("span",{cls:"hs",style:`--st:${css(st[1])}`,text:st[0]}),
+        el("div",{html:`<span class="han">${esc(dr.label)}${mk}</span>`+(comp?` <span class="hac">· ${esc(comp.label)}</span>`:"")})]);
+      row.onclick=e=>{e.stopPropagation();openModal(dr.id);}; d.append(row);});
+  }
+  return d;
+}
 /* ---------- panels ---------- */
 function panel(x,y,w,title,bodyFn){const p=el("div",{cls:"panel",style:`left:${x}px;top:${y}px;width:${w}px`});if(title)p.append(el("h4",{text:title}));const c=el("div",{cls:"pc"});bodyFn(c);p.append(c);CANVAS.append(p);return p;}
 function buildPanels(){
+  const e=G.epi||{};
   // masthead
-  const mast=el("div",{cls:"mast",style:"left:30px;top:24px;width:560px"});
-  mast.append(el("div",{cls:"t",html:esc(G.meta.focus)+"<small>DISEASE ATLAS · "+esc(G.meta.as_of||"")+" · "+G.nodes.filter(n=>n.type=="Drug").length+" ASSETS</small>"}));
+  const mast=el("div",{cls:"mast",style:"left:40px;top:24px;width:940px"});
+  mast.append(el("div",{cls:"t",html:esc(G.meta.focus)+"<small>DISEASE ATLAS · "+esc(G.meta.as_of||"")+" · "+G.nodes.filter(n=>n.type=="Drug").length+" ASSETS · "+(G.hierarchy||[]).length+" STRATEGIC OBJECTIVES</small>"}));
   mast.append(el("div",{cls:"o",text:G.meta.one_liner||""}));
   const kb=el("div",{cls:"kb"}); (G.meta.headline_stats||[]).slice(0,4).forEach(s=>kb.append(el("div",{cls:"k"},[el("b",{text:s.value}),el("span",{text:s.label})]))); mast.append(kb);
   CANVAS.append(mast);
-  // patient burden (top-left, under masthead)
-  const e=G.epi||{};
-  panel(30,196,340,"Patient burden",c=>{
-    const st=el("div",{cls:"st"}); (e.stats||[]).forEach(([v,l])=>st.append(el("b",{text:v}),el("span",{text:l}))); c.append(st);
-    if(e.comorbidities)c.append(el("div",{cls:"note",html:"<b>Comorbidity.</b> "+esc(e.comorbidities)}));
-    if(e.unmet)c.append(el("div",{cls:"note",html:"<b>Unmet need.</b> "+esc(e.unmet)}));
-  });
-  // market (top-right area)
+  CANVAS.append(el("div",{cls:"bandlabel",style:"left:1140px;top:300px;font-size:11px;color:var(--rule2)",text:"THE STRATEGY MAP  ·  objective ▸ strategy ▸ approach ▸ mechanism ▸ asset  ·  click any asset"}));
+  // market (top-right)
   const mkV=(G.meta.headline_stats.find(s=>/market/i.test(s.label))||{}).value||"$27–33B";
-  panel(2430,24,300,"Market",c=>{c.append(el("div",{cls:"mkt"},[el("div",{cls:"big",text:mkV}),
+  panel(3070,24,300,"Market",c=>{c.append(el("div",{cls:"mkt"},[el("div",{cls:"big",text:mkV}),
     el("div",{cls:"r"},[el("span",{text:"Global treatment market"}),el("span",{text:"2024"})]),
     el("div",{style:"font-size:9.5px;color:var(--ink2);margin-top:4px",text:"Biologics-led; IL-23 & IL-17 dominate; TNF & Stelara biosimilars reshaping economics. Forecast ~$39–51B by 2030."})]));});
-  // PASI benchmark (lower-center-left)
-  panel(700,900,470,"Efficacy — PASI 90 at wk 12–16 (NMA-anchored)",c=>{
+  // ---- LEFT MARGIN column ----
+  panel(30,338,520,"Patient burden",c=>{
+    const st=el("div",{cls:"st"}); (e.stats||[]).forEach(([v,l])=>st.append(el("b",{text:v}),el("span",{text:l}))); c.append(st);
+    if(e.comorbidities)c.append(el("div",{cls:"note",html:"<b>Comorbidity.</b> "+esc(e.comorbidities)}));
+    if(e.unmet)c.append(el("div",{cls:"note",html:"<b>Unmet need.</b> "+esc(e.unmet)}));});
+  panel(30,556,520,"Efficacy — PASI 90 at wk 12–16 (NMA-anchored)",c=>{
     const b=el("div",{cls:"bench"}); G.nodes.filter(n=>n.type=="Drug"&&n.attrs.p90!=null).sort((a,b)=>b.attrs.p90-a.attrs.p90).slice(0,14).forEach(d=>{
       const m=oN(d.id,"HAS_MECHANISM")[0],col=css(m?FAM[m.attrs.family_key].colorVar:"--sN");
       const r=el("div",{cls:"row","data-node":d.id},[el("div",{cls:"lab",text:d.label}),el("div",{cls:"tr"},el("div",{cls:"fi",style:`width:${d.attrs.p90}%;background:${col}`})),el("div",{cls:"vv tab",text:d.attrs.p90})]);
       r.onclick=()=>openModal(d.id); b.append(r);}); c.append(b);});
-  // hard-to-treat sites (lower-center)
-  panel(1200,900,340,"Hard-to-treat sites & populations",c=>{c.classList.add("sites");
+  panel(30,900,520,"Hard-to-treat sites & populations",c=>{c.classList.add("sites");
     const t=el("table"); (G.sites||[]).forEach(s=>t.append(el("tr",{},[el("td",{text:s.site}),el("td",{text:s.prev}),el("td",{text:s.note})]))); c.append(t);});
-  // catalysts (lower-right)
-  panel(1560,900,330,"Catalysts & exclusivity",c=>{
+  panel(30,1188,520,"Catalysts & exclusivity",c=>{c.classList.add("cats");
     G.nodes.filter(n=>n.type=="Catalyst").sort((a,b)=>String(a.attrs.date).localeCompare(String(b.attrs.date))).forEach(ev=>{
       const r=el("div",{cls:"row","data-node":ev.id},[el("div",{},[el("div",{cls:"d",text:ev.attrs.date}),el("div",{cls:"k",text:(ev.attrs.kind||"").replace("_"," ")})]),el("div",{text:ev.label})]);
-      r.onclick=()=>openModal(ev.id); c.classList.add("cats"); c.append(r);});});
-  // deal-flow (right, below the kinase block)
-  panel(2430,900,300,"Deal flow",c=>{c.classList.add("deals");
-    (G.deals||[]).forEach(d=>{const dn=G.nodes.find(n=>n.type=="Deal"&&n.attrs.acquirer==d.acquirer&&(n.attrs.counterparty==d.counterparty));
-      const r=el("div",{cls:"row"},[el("span",{html:`<b>${esc(d.acquirer)}</b> ← ${esc(d.counterparty)} · <span class="v">${esc(d.value)}</span> (${d.year})<br><span style="color:var(--muted)">${esc(d.asset)} · ${esc(d.kind)}</span>`})]);
-      if(dn)r.onclick=()=>openModal(dn.id); c.append(r);});});
-  // legend (bottom-left)
-  panel(30,1120,340,"Legend",c=>{c.classList.add("legend");
+      r.onclick=()=>openModal(ev.id); c.append(r);});});
+  panel(30,1640,520,"Legend",c=>{c.classList.add("legend");
     c.append(el("div",{cls:"lr",html:'<b>Stage:</b> <code>M</code> marketed <code>III</code> Ph3 <code>II</code> Ph2 <code>I</code> Ph1 <code>P</code> preclin <code>✕</code> disc.'}));
     c.append(el("div",{cls:"lr",html:'<span class="mk bio">B</span> biosimilar <span class="mk combo">+</span> combo <span class="mk warn">⚠</span> boxed warning'}));
-    const fr=el("div",{cls:"lr"}); (G.families||[]).forEach(f=>fr.append(el("span",{cls:"fam"},[el("i",{style:`background:${css(f.colorVar)}`}),el("span",{text:f.label})]))); c.append(fr);
     c.append(el("div",{cls:"lr",html:'<b>Relationship view shapes:</b> '+shapeLegendHTML()}));
-    if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));
-  });
-  // ===================== DEEPER-DIVE bottom band =====================
-  CANVAS.append(el("div",{cls:"bandlabel",style:"left:30px;top:1344px",text:"— Deeper dive · mechanism, standard of care, evidence & terms —"}));
-  // Standard-of-care treatment ladder
-  panel(30,1382,1690,"Standard of care — line-of-therapy escalation",c=>{
-    const bar=el("div",{cls:"socbar"}); (G.soc||[]).forEach(s=>bar.append(el("i",{style:`background:${css(s.colorVar)}`}))); c.append(bar);
-    const lad=el("div",{cls:"soc"}); (G.soc||[]).forEach((s,i)=>{
-      lad.append(el("div",{cls:"step",style:`--sc:${css(s.colorVar)}`},[
-        el("div",{cls:"tier",text:"Line "+s.tier}),el("div",{cls:"nm",text:s.label}),
-        el("div",{cls:"ag",text:s.agents}),el("div",{cls:"nt",text:s.note})]));});
-    c.append(lad);
-    if(G.soc_note)c.append(el("div",{cls:"socnote",text:G.soc_note}));
-  });
-  // Intracellular signal-transduction inset
-  buildSignalInset(1750,1382,980);
-  // Landmark clinical-trial milestones
-  panel(30,1720,2700,"Landmark clinical-trial milestones",c=>{c.classList.add("trials");
-    const grid=el("div",{cls:"tgrid"});
-    (G.trials||[]).slice().sort((a,b)=>a.year-b.year).forEach(t=>{
-      const col=css((FAM[t.family_key]||{}).colorVar||"--sN");
-      const row=el("div",{cls:"trow",style:`--tc:${col}`},[
-        el("div",{cls:"yr",text:t.year}),
-        el("div",{},[el("div",{cls:"tn",html:esc(t.trial)+' <i>· '+esc(t.asset)+'</i>'}),el("div",{cls:"tr",text:t.result})])]);
-      const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)row.onclick=()=>openModal(dn.id);
-      grid.append(row);});
-    c.append(grid);
-  });
-  // Glossary
-  panel(30,1988,1690,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
-    (G.glossary||[]).forEach(t=>g.append(el("div",{cls:"g",html:`<b>${esc(t.term)}</b> — <span>${esc(t.def)}</span>`}))); c.append(g);});
-  // Comorbidity & QoL burden (deep)
-  panel(1750,1988,470,"Comorbidity & QoL burden",c=>{
-    const cb=el("div",{cls:"comorb"}); (e.comorbid||[]).forEach(row=>cb.append(el("span",{text:row[0]}),el("b",{text:row[1]}))); c.append(cb);
-    if(e.dlqi)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>DLQI.</b> "+esc(e.dlqi)}));
-    if(e.economic)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Economics.</b> "+esc(e.economic)}));
-    if(e.mortality)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Mortality.</b> "+esc(e.mortality)}));
-  });
-  // Market share by mechanism class + durability
-  panel(2250,1988,480,"Market share & durability",c=>{const ms=el("div",{cls:"mshare"});
+    if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));});
+  // ---- RIGHT VOID (below the objective-2/3 branches) ----
+  panel(2880,338,490,"Market share & durability",c=>{const ms=el("div",{cls:"mshare"});
     (G.market_share||[]).forEach(m=>ms.append(el("div",{cls:"row",style:`--mc:${css(m.colorVar)}`},[
       el("i",{style:`background:${css(m.colorVar)}`}),el("span",{cls:"cl",text:m.cls}),el("span",{cls:"tr",text:m.trend})]))); c.append(ms);
     if(G.market_note)c.append(el("div",{style:"font-size:8.5px;color:var(--muted);margin-top:7px;font-style:italic;line-height:1.3",text:G.market_note}));
-    if(e.drug_survival)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>Drug survival.</b> "+esc(e.drug_survival)}));
-  });
+    if(e.drug_survival)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>Drug survival.</b> "+esc(e.drug_survival)}));});
+  panel(2880,620,490,"Comorbidity & QoL burden",c=>{
+    const cb=el("div",{cls:"comorb"}); (e.comorbid||[]).forEach(row=>cb.append(el("span",{text:row[0]}),el("b",{text:row[1]}))); c.append(cb);
+    if(e.dlqi)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:7px;line-height:1.3",html:"<b>DLQI.</b> "+esc(e.dlqi)}));
+    if(e.economic)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Economics.</b> "+esc(e.economic)}));
+    if(e.mortality)c.append(el("div",{style:"font-size:9px;color:var(--ink2);margin-top:5px;line-height:1.3",html:"<b>Mortality.</b> "+esc(e.mortality)}));});
+  panel(2880,900,490,"Deal flow",c=>{c.classList.add("deals");
+    (G.deals||[]).forEach(d=>{const dn=G.nodes.find(n=>n.type=="Deal"&&n.attrs.acquirer==d.acquirer&&(n.attrs.counterparty==d.counterparty));
+      const r=el("div",{cls:"row"},[el("span",{html:`<b>${esc(d.acquirer)}</b> ← ${esc(d.counterparty)} · <span class="v">${esc(d.value)}</span> (${d.year})<br><span style="color:var(--muted)">${esc(d.asset)} · ${esc(d.kind)}</span>`})]);
+      if(dn)r.onclick=()=>openModal(dn.id); c.append(r);});});
+  // schematic region title + signal inset sit in the mid-right void (schematic drawn by buildSchematic at SOX/SOY)
+  buildSignalInset(1900,1660,1470);
+  // ===================== BOTTOM: STANDARD OF CARE, EVIDENCE & TERMS =====================
+  CANVAS.append(el("div",{cls:"bandlabel",style:"left:40px;top:2262px",text:"— Standard of care · market · development · evidence · terms —"}));
+  panel(40,2300,1180,"Standard of care — by severity",c=>socTable(c));
+  panel(1250,2300,760,"2025 franchise sales",c=>salesDonut(c));
+  panel(2040,2300,1330,"Development matrix — company × mechanism",c=>devMatrix(c));
+  panel(40,2610,1600,"Landmark clinical-trial milestones",c=>{c.classList.add("trials");
+    const grid=el("div",{cls:"tgrid"});
+    (G.trials||[]).slice().sort((a,b)=>a.year-b.year).forEach(t=>{const col=css((FAM[t.family_key]||{}).colorVar||"--sN");
+      const row=el("div",{cls:"trow",style:`--tc:${col}`},[el("div",{cls:"yr",text:t.year}),
+        el("div",{},[el("div",{cls:"tn",html:esc(t.trial)+' <i>· '+esc(t.asset)+'</i>'}),el("div",{cls:"tr",text:t.result})])]);
+      const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)row.onclick=()=>openModal(dn.id); grid.append(row);});
+    c.append(grid);});
+  panel(1670,2610,1700,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
+    (G.glossary||[]).forEach(t=>g.append(el("div",{cls:"g",html:`<b>${esc(t.term)}</b> — <span>${esc(t.def)}</span>`}))); c.append(g);});
+}
+/* ---- SoC severity table ---- */
+function socTable(c){
+  const stages=[["Mild","<3% BSA","--s6"],["Moderate","3–10% BSA","--s4"],["Severe",">10% BSA / special sites","--s8"]];
+  const cov={1:[0,1],2:[1,2],3:[1,2],4:[1,2],5:[1,2]};
+  const pres=["Localised plaques; scalp; nails","Wider involvement; QoL impact; PsA risk","Extensive; erythroderma / pustular; high systemic burden"];
+  const g=el("div",{cls:"soctab"});
+  g.append(el("div",{cls:"hd",style:"background:var(--ink2)",text:"Severity →"}));
+  stages.forEach(s=>g.append(el("div",{cls:"hd",style:`background:${css(s[2])}`,html:s[0]+" <span>"+s[1]+"</span>"})));
+  g.append(el("div",{cls:"rl",text:"Presentation"}));
+  pres.forEach(p=>g.append(el("div",{cls:"cell pres",text:p})));
+  (G.soc||[]).forEach(s=>{g.append(el("div",{cls:"rl",text:s.label}));
+    const[a,b]=cov[s.tier]||[0,2];
+    for(let col=0;col<3;col++){const cell=el("div",{cls:"cell"});
+      if(col>=a&&col<=b){const pill=el("div",{cls:"pill",style:`background:${css(s.colorVar)}`});
+        if(col===a)pill.textContent=s.agents.split(" · ").slice(0,2).join(" · ");
+        cell.style.borderLeft=col===a?"":"0";cell.append(pill);} g.append(cell);}});
+  c.append(g);
+  if(G.soc_note)c.append(el("div",{cls:"socnote",text:G.soc_note}));
+}
+/* ---- 2025 franchise sales donut ---- */
+function salesDonut(c){
+  const ds=G.nodes.filter(n=>n.type=="Drug"&&n.attrs.annual_sales_usd_m).map(n=>({n,v:n.attrs.annual_sales_usd_m,fam:(oN(n.id,"HAS_MECHANISM")[0]||{}).attrs?.family_key})).sort((a,b)=>b.v-a.v);
+  const total=ds.reduce((s,d)=>s+d.v,0),wrap=el("div",{cls:"donut"});
+  const R=56,ri=33,cx=62,cy=62,svg=svgEl("svg",{viewBox:"0 0 124 124",width:124,height:124});
+  let ang=-Math.PI/2;
+  ds.forEach(d=>{const f=d.v/total,a2=ang+f*2*Math.PI,col=css((FAM[d.fam]||{}).colorVar||"--sN"),lg=f>0.5?1:0;
+    const p=svgEl("path",{d:`M${cx+R*Math.cos(ang)},${cy+R*Math.sin(ang)} A${R},${R} 0 ${lg} 1 ${cx+R*Math.cos(a2)},${cy+R*Math.sin(a2)} L${cx+ri*Math.cos(a2)},${cy+ri*Math.sin(a2)} A${ri},${ri} 0 ${lg} 0 ${cx+ri*Math.cos(ang)},${cy+ri*Math.sin(ang)} Z`,fill:col,stroke:css("--panel"),"stroke-width":.9});
+    p.style.cursor="pointer";p.onclick=()=>openModal(d.n.id);svg.append(p);ang=a2;});
+  const t1=svgEl("text",{x:cx,y:cy-1,"text-anchor":"middle","font-size":"15","font-weight":"700",fill:css("--ink"),"font-family":"var(--cond)"});t1.textContent="$"+(total/1000).toFixed(0)+"B";svg.append(t1);
+  const t2=svgEl("text",{x:cx,y:cy+12,"text-anchor":"middle","font-size":"7.5",fill:css("--muted")});t2.textContent="FY2025";svg.append(t2);
+  const lg=el("div",{cls:"lg"}); ds.slice(0,11).forEach(d=>{const row=el("div",{cls:"row"},[el("i",{style:`background:${css((FAM[d.fam]||{}).colorVar||"--sN")}`}),el("span",{text:d.n.label}),el("b",{text:fmt$(d.v)})]);row.onclick=()=>openModal(d.n.id);lg.append(row);});
+  wrap.append(svg,lg);c.append(wrap);
+  c.append(el("div",{style:"font-size:8px;color:var(--muted);margin-top:6px;font-style:italic;line-height:1.25",text:"All-indication franchise totals (not psoriasis-only). ≈"+fmt$(total)+" across "+ds.length+" marketed products."}));
+}
+/* ---- development matrix: company × mechanism family, best phase ---- */
+function devMatrix(c){
+  const fams=(G.families||[]).filter(f=>f.key!=="hist");
+  const SH={il23:"IL-23",il17:"IL-17",tnf:"TNF",kinase:"TYK2/JAK",pde4:"PDE4",topical:"Top-NS",steroid:"Steroid",conv:"Conv",novel:"Novel"};
+  const rows=[]; G.nodes.filter(n=>n.type=="Company").forEach(co=>{const drs=iN(co.id,"DEVELOPED_BY"); if(!drs.length)return;
+    const byf={}; drs.forEach(d=>{const fk=(oN(d.id,"HAS_MECHANISM")[0]||{}).attrs?.family_key; if(!fk)return; const cur=byf[fk];
+      if(cur==null||PORD[d.attrs.highest_phase]<PORD[cur])byf[fk]=d.attrs.highest_phase;});
+    if(Object.keys(byf).length)rows.push({co,n:drs.length,byf});});
+  rows.sort((a,b)=>b.n-a.n||b.byf&&0); const top=rows.slice(0,14);
+  const tbl=el("table",{cls:"devmx"});const hr=el("tr");hr.append(el("th",{cls:"co",text:"Company ("+top.length+")"}));
+  fams.forEach(f=>hr.append(el("th",{html:SH[f.key]||f.key})));tbl.append(hr);
+  top.forEach(x=>{const tr=el("tr");tr.append(el("td",{cls:"co",text:x.co.label}));
+    fams.forEach(f=>{const ph=x.byf[f.key],td=el("td");if(ph){const st=STAGE[ph]||["?","--muted"];td.innerHTML=`<span class="cc" style="background:${css(st[1])}">${st[0]}</span>`;}tr.append(td);});
+    tr.onclick=()=>openModal(x.co.id);tbl.append(tr);});
+  c.append(tbl);
 }
 /* intracellular signal-transduction inset (IL-23R→TYK2/JAK2→STAT3→RORγt; IL-17R→NF-κB) */
 function buildSignalInset(x,y,w){
@@ -663,6 +785,6 @@ function tracePath(){const rib=document.getElementById("ribbon");
 document.getElementById("ptrace").onclick=tracePath;
 document.getElementById("pin2").addEventListener("keydown",e=>{if(e.key==="Enter")tracePath();});
 
-function rebuild(){[...CANVAS.querySelectorAll(".block,.panel,.mast,.node,.bandlabel")].forEach(n=>n.remove());buildSchematic();buildBlocks();buildPanels();requestAnimationFrame(drawConnectors);}
+function rebuild(){[...CANVAS.querySelectorAll(".block,.panel,.mast,.node,.bandlabel,.hnode")].forEach(n=>n.remove());WIRES.innerHTML="";buildHierarchy();buildSchematic();buildPanels();}
 rebuild(); fit();
 </script></body></html>

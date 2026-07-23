@@ -246,6 +246,75 @@ SIGNAL_PATH=[("il23","il23r","IL-23 binds"),("il23r","tyk2","receptor-associated
 # bridge target -> biology (lets drug->target->biology path-finding reach the cascade)
 TARGET_BIO={"IL23A":"il23","IL12B":"p40","IL17A":"il17","IL17RA":"il17r","TNF":"tnf","TYK2":"tyk2","PDE4":"pde4","IL23R":"il23r"}
 
+# =====================================================================
+# OBJECTIVE -> STRATEGY -> APPROACH -> MECHANISM -> ASSET mind-map (RA-Capital-style tree)
+# Leaves carry an explicit drug list (drug names from ROSTER). Every asset is placed once.
+# node: {t: title, d: desc?, k: kind(obj|strat|appr|mech), c: colorVar?, side?, ch: children | drugs: [names]}
+# =====================================================================
+def L(title, drugs, d=None):            # leaf mechanism node
+    return {"t":title,"k":"mech","drugs":drugs,**({"d":d} if d else {})}
+def NODE(title,kind,children,d=None,c=None,side=None):
+    n={"t":title,"k":kind,"ch":children}
+    if d:n["d"]=d
+    if c:n["c"]=c
+    if side:n["side"]=side
+    return n
+HIER=[
+ NODE("Clear the skin & control inflammation","obj",[
+   NODE("Systemic cytokine-directed biologics","strat",[
+     NODE("Block the IL-23 / Th17 axis","appr",[
+       L("IL-23 p19 inhibitors",["guselkumab","risankizumab","tildrakizumab","mirikizumab"],"Selective p19 blockade starves pathogenic Th17 cells — the deepest, most durable maintenance class."),
+       L("IL-12/23 p40 inhibitors",["ustekinumab","briakinumab","ebdarokimab"],"Blocks the shared p40 subunit (IL-12 + IL-23); first-generation, now facing biosimilars."),
+       L("Oral IL-23R antagonist",["icotrokinra"],"First targeted oral peptide blocking the IL-23 receptor — biologic-like selectivity in a pill."),
+     ],"Neutralise the IL-23 signal that sustains Th17 cells — the most disease-specific axis."),
+     NODE("Block IL-17 effector signalling","appr",[
+       L("IL-17A inhibitors",["secukinumab","ixekizumab","vunakizumab","CJM-112"],"Neutralise the dominant effector cytokine; fast, deep clearance."),
+       L("IL-17A/F inhibitors",["bimekizumab","sonelokimab"],"Dual IL-17A + IL-17F blockade — the deepest PASI-100 rates to date."),
+       L("IL-17RA inhibitors",["brodalumab"],"Blocks the receptor (all IL-17 ligands); boxed warning shaped uptake."),
+       L("Oral / small-protein IL-17",["izokibep","DC-806","DC-853","LEO-153339"],"Affibody and oral small-molecule attempts to bring IL-17 blockade to a pill."),
+     ],"Neutralise the effector cytokines acting on keratinocytes."),
+     NODE("Block TNF-α","appr",[
+       L("TNF inhibitors",["adalimumab","etanercept","infliximab","certolizumab pegol"],"The original biologic target; now biosimilar-eroded but still workhorses, esp. with joint disease."),
+     ]),
+   ],"Neutralise a specific cytokine or receptor with an engineered protein — the deepest, most durable clearance."),
+   NODE("Oral small-molecule targeted therapy","strat",[
+     NODE("Intracellular kinase inhibition","appr",[
+       L("TYK2 allosteric inhibitors",["deucravacitinib","zasocitinib","ESK-001"],"Allosteric TYK2 blockade avoids the JAK boxed warning; the fast-growing oral class."),
+       L("TYK2 / JAK inhibitors",["ropsacitinib","brepocitinib","tofacitinib","peficitinib","ruxolitinib"],"Broader kinase inhibition (incl. topical JAK); efficacy vs class safety trade-offs."),
+     ],"Inhibit the intracellular signalling that transduces IL-23 and other cytokines."),
+     NODE("Raise cAMP (PDE4)","appr",[
+       L("Oral PDE4 inhibitors",["apremilast","orismilast"],"Dampen cytokine output; modest efficacy, benign safety, no monitoring."),
+     ]),
+   ],"Convenient oral therapy — increasingly a first-line systemic choice."),
+   NODE("Topical therapy","strat",[
+     L("Non-steroidal topicals",["tapinarof","calcipotriene","calcitriol","tazarotene","roflumilast","crisaborole"],"Steroid-sparing keratinocyte-normalising agents (AhR, vitamin-D, retinoid, PDE4) now reaching scalp & folds."),
+     L("Topical corticosteroids",["clobetasol propionate","betamethasone dipropionate","halobetasol propionate","desoximetasone"],"Anti-inflammatory mainstay for mild / localised disease."),
+   ],"First line for mild or localised disease (~80% of patients)."),
+   NODE("Conventional systemics","strat",[
+     L("Legacy oral systemics",["methotrexate","cyclosporine","acitretin","dimethyl fumarate"],"Low-cost, widely used globally; require organ-toxicity monitoring."),
+   ],"Cost-effective moderate-to-severe therapy where biologics are inaccessible."),
+ ],"Psoriasis is a chronic IL-23/IL-17-driven disease; the dominant goal is durable skin clearance (PASI 90–100), escalating from topicals to cytokine blockade and oral targeted agents.","--s1","left"),
+
+ NODE("Treat special & hard-to-treat disease","obj",[
+   NODE("Generalised pustular psoriasis (GPP)","strat",[
+     L("IL-36 receptor inhibitors",["spesolimab","imsidolimab"],"A distinct IL-36-driven neutrophilic variant; spesolimab is the first approved GPP-specific therapy."),
+   ],"A severe, distinct pustular variant driven by the IL-36 axis rather than IL-23/IL-17."),
+   NODE("Hard-to-treat sites & populations","strat",[
+     L("Site-directed label expansion",[],"Scalp, nails, palmoplantar, genital and pediatric disease drive systemic step-up. No unique mechanism — the battleground is label expansion of IL-17 / IL-23 agents (see the sites panel)."),
+   ],"Special sites and pediatrics carry outsized QoL impact and shape switching."),
+ ],"Beyond plaque clearance, distinct variants and hard-to-treat sites need dedicated mechanisms and label expansion.","--s2","right"),
+
+ NODE("Pursue durable remission & disease interception","obj",[
+   NODE("Novel effector & cytokine mechanisms","strat",[
+     L("Emerging cytokine targets",["fezakinumab","vixarelimab","namilumab"],"IL-22, OSMRβ/IL-31 and GM-CSF — exploratory effectors beyond the IL-23/IL-17 core."),
+     L("Intracellular / other novel",["GSK2982772","piclidenoson"],"RIPK1 and A3-adenosine programmes probing new inflammatory nodes (efficacy so far modest)."),
+   ],"Exploratory mechanisms seeking efficacy or durability the core axes don't deliver."),
+   NODE("Immune trafficking & tolerance","strat",[
+     L("T-cell / trafficking modulators",["ponesimod","efalizumab","alefacept"],"S1P modulation and (withdrawn) T-cell-directed agents — the historical arc toward immune modulation and, aspirationally, drug-free remission."),
+   ],"The whitespace: durable, treatment-free remission remains unproven — the field's biggest unmet goal."),
+ ],"No therapy yet delivers durable drug-free remission; this is the field's aspirational frontier, sparsely populated and high-risk.","--s7","right"),
+]
+
 # --- standard-of-care treatment ladder (line of therapy; AAD-NPF) ---
 # (tier index, short label, typical agents, positioning, colorVar) — escalates left->right
 SOC=[
@@ -402,7 +471,21 @@ graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026
     "market_share":[{"cls":c,"trend":t,"colorVar":cv} for c,t,cv in MARKET_SHARE],
     "market_note":MARKET_NOTE,
     "signal_path":[{"from":"bio:"+f,"to":"bio:"+t,"label":l} for f,t,l in SIGNAL_PATH],
+    "hierarchy":HIER,
     "nodes":list(nodes.values()),"edges":edges,"sources":SOURCES}
+
+# --- validate the mind-map covers every asset exactly once ---
+def _leafdrugs(n,acc):
+    if n.get("drugs"): acc.extend(n["drugs"])
+    for c in n.get("ch",[]): _leafdrugs(c,acc)
+_hd=[]; [ _leafdrugs(o,_hd) for o in HIER ]
+_roster=[d["name"] for d in ROSTER]
+_missing=[n for n in _roster if n not in _hd]
+_unknown=[n for n in _hd if n not in _roster]
+from collections import Counter as _C
+_dupes=[n for n,c in _C(_hd).items() if c>1]
+print("hierarchy: %d leaves place %d assets (roster %d) | missing=%s unknown=%s dupes=%s"%(
+    sum(1 for _ in _hd), len(set(_hd)), len(_roster), _missing or "none", _unknown or "none", _dupes or "none"))
 json.dump(graph,open(os.path.join(HERE,"graph.json"),"w",encoding="utf-8"),indent=2,ensure_ascii=False)
 from collections import Counter
 print("assets:",len(ROSTER)," nodes:",len(nodes),dict(Counter(n["type"] for n in nodes.values())))

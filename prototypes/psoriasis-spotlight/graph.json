@@ -546,6 +546,313 @@
       "label": "inflammation"
     }
   ],
+  "hierarchy": [
+    {
+      "t": "Clear the skin & control inflammation",
+      "k": "obj",
+      "ch": [
+        {
+          "t": "Systemic cytokine-directed biologics",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "Block the IL-23 / Th17 axis",
+              "k": "appr",
+              "ch": [
+                {
+                  "t": "IL-23 p19 inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "guselkumab",
+                    "risankizumab",
+                    "tildrakizumab",
+                    "mirikizumab"
+                  ],
+                  "d": "Selective p19 blockade starves pathogenic Th17 cells — the deepest, most durable maintenance class."
+                },
+                {
+                  "t": "IL-12/23 p40 inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "ustekinumab",
+                    "briakinumab",
+                    "ebdarokimab"
+                  ],
+                  "d": "Blocks the shared p40 subunit (IL-12 + IL-23); first-generation, now facing biosimilars."
+                },
+                {
+                  "t": "Oral IL-23R antagonist",
+                  "k": "mech",
+                  "drugs": [
+                    "icotrokinra"
+                  ],
+                  "d": "First targeted oral peptide blocking the IL-23 receptor — biologic-like selectivity in a pill."
+                }
+              ],
+              "d": "Neutralise the IL-23 signal that sustains Th17 cells — the most disease-specific axis."
+            },
+            {
+              "t": "Block IL-17 effector signalling",
+              "k": "appr",
+              "ch": [
+                {
+                  "t": "IL-17A inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "secukinumab",
+                    "ixekizumab",
+                    "vunakizumab",
+                    "CJM-112"
+                  ],
+                  "d": "Neutralise the dominant effector cytokine; fast, deep clearance."
+                },
+                {
+                  "t": "IL-17A/F inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "bimekizumab",
+                    "sonelokimab"
+                  ],
+                  "d": "Dual IL-17A + IL-17F blockade — the deepest PASI-100 rates to date."
+                },
+                {
+                  "t": "IL-17RA inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "brodalumab"
+                  ],
+                  "d": "Blocks the receptor (all IL-17 ligands); boxed warning shaped uptake."
+                },
+                {
+                  "t": "Oral / small-protein IL-17",
+                  "k": "mech",
+                  "drugs": [
+                    "izokibep",
+                    "DC-806",
+                    "DC-853",
+                    "LEO-153339"
+                  ],
+                  "d": "Affibody and oral small-molecule attempts to bring IL-17 blockade to a pill."
+                }
+              ],
+              "d": "Neutralise the effector cytokines acting on keratinocytes."
+            },
+            {
+              "t": "Block TNF-α",
+              "k": "appr",
+              "ch": [
+                {
+                  "t": "TNF inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "adalimumab",
+                    "etanercept",
+                    "infliximab",
+                    "certolizumab pegol"
+                  ],
+                  "d": "The original biologic target; now biosimilar-eroded but still workhorses, esp. with joint disease."
+                }
+              ]
+            }
+          ],
+          "d": "Neutralise a specific cytokine or receptor with an engineered protein — the deepest, most durable clearance."
+        },
+        {
+          "t": "Oral small-molecule targeted therapy",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "Intracellular kinase inhibition",
+              "k": "appr",
+              "ch": [
+                {
+                  "t": "TYK2 allosteric inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "deucravacitinib",
+                    "zasocitinib",
+                    "ESK-001"
+                  ],
+                  "d": "Allosteric TYK2 blockade avoids the JAK boxed warning; the fast-growing oral class."
+                },
+                {
+                  "t": "TYK2 / JAK inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "ropsacitinib",
+                    "brepocitinib",
+                    "tofacitinib",
+                    "peficitinib",
+                    "ruxolitinib"
+                  ],
+                  "d": "Broader kinase inhibition (incl. topical JAK); efficacy vs class safety trade-offs."
+                }
+              ],
+              "d": "Inhibit the intracellular signalling that transduces IL-23 and other cytokines."
+            },
+            {
+              "t": "Raise cAMP (PDE4)",
+              "k": "appr",
+              "ch": [
+                {
+                  "t": "Oral PDE4 inhibitors",
+                  "k": "mech",
+                  "drugs": [
+                    "apremilast",
+                    "orismilast"
+                  ],
+                  "d": "Dampen cytokine output; modest efficacy, benign safety, no monitoring."
+                }
+              ]
+            }
+          ],
+          "d": "Convenient oral therapy — increasingly a first-line systemic choice."
+        },
+        {
+          "t": "Topical therapy",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "Non-steroidal topicals",
+              "k": "mech",
+              "drugs": [
+                "tapinarof",
+                "calcipotriene",
+                "calcitriol",
+                "tazarotene",
+                "roflumilast",
+                "crisaborole"
+              ],
+              "d": "Steroid-sparing keratinocyte-normalising agents (AhR, vitamin-D, retinoid, PDE4) now reaching scalp & folds."
+            },
+            {
+              "t": "Topical corticosteroids",
+              "k": "mech",
+              "drugs": [
+                "clobetasol propionate",
+                "betamethasone dipropionate",
+                "halobetasol propionate",
+                "desoximetasone"
+              ],
+              "d": "Anti-inflammatory mainstay for mild / localised disease."
+            }
+          ],
+          "d": "First line for mild or localised disease (~80% of patients)."
+        },
+        {
+          "t": "Conventional systemics",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "Legacy oral systemics",
+              "k": "mech",
+              "drugs": [
+                "methotrexate",
+                "cyclosporine",
+                "acitretin",
+                "dimethyl fumarate"
+              ],
+              "d": "Low-cost, widely used globally; require organ-toxicity monitoring."
+            }
+          ],
+          "d": "Cost-effective moderate-to-severe therapy where biologics are inaccessible."
+        }
+      ],
+      "d": "Psoriasis is a chronic IL-23/IL-17-driven disease; the dominant goal is durable skin clearance (PASI 90–100), escalating from topicals to cytokine blockade and oral targeted agents.",
+      "c": "--s1",
+      "side": "left"
+    },
+    {
+      "t": "Treat special & hard-to-treat disease",
+      "k": "obj",
+      "ch": [
+        {
+          "t": "Generalised pustular psoriasis (GPP)",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "IL-36 receptor inhibitors",
+              "k": "mech",
+              "drugs": [
+                "spesolimab",
+                "imsidolimab"
+              ],
+              "d": "A distinct IL-36-driven neutrophilic variant; spesolimab is the first approved GPP-specific therapy."
+            }
+          ],
+          "d": "A severe, distinct pustular variant driven by the IL-36 axis rather than IL-23/IL-17."
+        },
+        {
+          "t": "Hard-to-treat sites & populations",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "Site-directed label expansion",
+              "k": "mech",
+              "drugs": [],
+              "d": "Scalp, nails, palmoplantar, genital and pediatric disease drive systemic step-up. No unique mechanism — the battleground is label expansion of IL-17 / IL-23 agents (see the sites panel)."
+            }
+          ],
+          "d": "Special sites and pediatrics carry outsized QoL impact and shape switching."
+        }
+      ],
+      "d": "Beyond plaque clearance, distinct variants and hard-to-treat sites need dedicated mechanisms and label expansion.",
+      "c": "--s2",
+      "side": "right"
+    },
+    {
+      "t": "Pursue durable remission & disease interception",
+      "k": "obj",
+      "ch": [
+        {
+          "t": "Novel effector & cytokine mechanisms",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "Emerging cytokine targets",
+              "k": "mech",
+              "drugs": [
+                "fezakinumab",
+                "vixarelimab",
+                "namilumab"
+              ],
+              "d": "IL-22, OSMRβ/IL-31 and GM-CSF — exploratory effectors beyond the IL-23/IL-17 core."
+            },
+            {
+              "t": "Intracellular / other novel",
+              "k": "mech",
+              "drugs": [
+                "GSK2982772",
+                "piclidenoson"
+              ],
+              "d": "RIPK1 and A3-adenosine programmes probing new inflammatory nodes (efficacy so far modest)."
+            }
+          ],
+          "d": "Exploratory mechanisms seeking efficacy or durability the core axes don't deliver."
+        },
+        {
+          "t": "Immune trafficking & tolerance",
+          "k": "strat",
+          "ch": [
+            {
+              "t": "T-cell / trafficking modulators",
+              "k": "mech",
+              "drugs": [
+                "ponesimod",
+                "efalizumab",
+                "alefacept"
+              ],
+              "d": "S1P modulation and (withdrawn) T-cell-directed agents — the historical arc toward immune modulation and, aspirationally, drug-free remission."
+            }
+          ],
+          "d": "The whitespace: durable, treatment-free remission remains unproven — the field's biggest unmet goal."
+        }
+      ],
+      "d": "No therapy yet delivers durable drug-free remission; this is the field's aspirational frontier, sparsely populated and high-risk.",
+      "c": "--s7",
+      "side": "right"
+    }
+  ],
   "nodes": [
     {
       "id": "ind:plaque-psoriasis",
