@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+
+# Atlas working directories (raw API pulls, intermediate JSON).
+# Keep curated, shareable outputs under examples/ instead.
+runs/
+*.tmp
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
