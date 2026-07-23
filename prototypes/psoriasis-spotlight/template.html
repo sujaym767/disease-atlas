@@ -142,14 +142,25 @@ button{font-family:inherit;cursor:pointer}
 .soctab .pres{font-size:8px;color:var(--ink2);padding:3px 7px;line-height:1.2;align-items:flex-start}
 .soctab .pill{height:100%;min-height:17px;width:100%;display:flex;align-items:center;padding:0 8px;color:#fff;font-weight:700;font-size:8.5px}
 .socnote{font-size:9px;color:var(--muted);margin-top:7px;font-style:italic}
-/* sales donut */
-.donut{display:flex;gap:12px;align-items:center}
+/* sales donut — bigger pie, drug + company mapping */
+.donut{display:flex;gap:14px;align-items:center}
 .donut svg{flex:none}
-.donut .lg{font-size:8.5px;color:var(--ink2);flex:1;min-width:0}
-.donut .lg .row{display:grid;grid-template-columns:9px 1fr auto;gap:6px;align-items:center;margin:1.5px 0;cursor:pointer}
-.donut .lg .row:hover{color:var(--ink)}
-.donut .lg i{width:9px;height:9px;border-radius:2px}
-.donut .lg b{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:700}
+.donut .lg{flex:1;min-width:0}
+.donut .lg .row{display:grid;grid-template-columns:11px 1fr auto;gap:8px;align-items:center;padding:2px 0;cursor:pointer;border-bottom:1px dotted var(--rule)}
+.donut .lg .row:last-child{border-bottom:0}
+.donut .lg .row:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.donut .lg i{width:11px;height:11px;border-radius:2px}
+.donut .lg .nm{font-weight:700;color:var(--ink);font-size:9.5px;line-height:1.02;display:block}
+.donut .lg .co{font-size:7.5px;color:var(--muted);display:block}
+.donut .lg .vsh{text-align:right;white-space:nowrap}
+.donut .lg .vsh b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums;font-size:9.5px}
+.donut .lg .vsh .sh{font-size:7.5px;color:var(--muted);display:block}
+/* PASI response-kinetics chart */
+.pasi svg{width:100%;display:block}
+.pasi .lg{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:8.5px;margin-top:5px}
+.pasi .lg span{display:inline-flex;align-items:center;gap:4px;color:var(--ink2)}
+.pasi .lg i{width:11px;height:3px;display:inline-block;border-radius:2px}
+.pasi .lg b{color:var(--ink)}
 /* dev matrix */
 .devmx{border-collapse:collapse;width:100%;font-size:8.5px}
 .devmx th{font-family:var(--cond);font-weight:700;font-size:9px;color:var(--ink2);padding:3px 2px;text-align:center;vertical-align:bottom;line-height:1}
@@ -183,10 +194,10 @@ button{font-family:inherit;cursor:pointer}
 .tmev:hover .dot{transform:scale(1.25)}
 /* compact date timeline (catalysts / cliffs) */
 .mtl{position:relative}
-.mtl .yr{position:absolute;transform:translateX(-50%);font-family:var(--cond);font-weight:700;font-size:10px;color:var(--muted)}
-.mtl .ev{position:absolute;transform:translateX(-50%);width:132px;cursor:pointer}
-.mtl .ev .d{font-family:var(--cond);font-weight:700;font-size:10.5px;color:var(--tc)}
-.mtl .ev .l{font-size:8px;color:var(--ink);line-height:1.16;font-weight:600}
+.mtl .yr{position:absolute;transform:translateX(-50%);font-family:var(--cond);font-weight:700;font-size:10.5px;color:var(--muted)}
+.mtl .ev{position:absolute;transform:translateX(-50%);width:130px;cursor:pointer}
+.mtl .ev .d{font-family:var(--cond);font-weight:700;font-size:12px;color:var(--tc)}
+.mtl .ev .l{font-size:9px;color:var(--ink);line-height:1.18;font-weight:600}
 .mtl .ev:hover .l{color:var(--tc)}
 .mtl .dot{position:absolute;width:9px;height:9px;border-radius:50%;border:2px solid var(--panel);z-index:2;box-shadow:var(--shadowsm)}
 /* richer deal flow */
@@ -219,6 +230,12 @@ button{font-family:inherit;cursor:pointer}
 .xlinks a{color:var(--s1);text-decoration:none;border:1px solid var(--rule2);border-radius:4px;padding:2px 8px;font-size:10.5px;font-weight:600}
 .xlinks a:hover{background:var(--block)}
 .xnote{font-size:9px;color:var(--muted);margin-top:6px;font-style:italic}
+/* drug detail (openFDA + ChEMBL + PubChem) */
+.ddhead{font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.05em;color:var(--accent);margin:12px 0 5px;border-top:1px solid var(--rule);padding-top:9px}
+.ddgrid{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:11px;margin-bottom:6px}
+.ddgrid b{color:var(--ink);font-weight:600}.ddgrid span{color:var(--ink2);font-variant-numeric:tabular-nums}
+.ddp{font-size:10.5px;color:var(--ink2);line-height:1.36;margin:4px 0}.ddp b{color:var(--ink)}
+.ddp.warn{color:var(--s8)}.ddp.warn b{color:var(--s8)}
 /* schematic labels */
 .schlab{font-family:var(--sans);font-weight:700;font-size:11px;fill:var(--ink)}
 .schsub{font-size:8.5px;fill:var(--ink2)}
@@ -307,7 +324,7 @@ const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phas
 const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
-const CW=3400, CH=3380; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
+const CW=3400, CH=3260; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 
 /* ---------- schematic (IL-23 / IL-17 immune cascade) — a corner region, local coords ---------- */
 let SOX=1930, SOY=940; const SW=900, SH=560;   // schematic div origin (in the mid-right void) + size
@@ -341,11 +358,15 @@ function buildSchematic(){
   arrow("il23","th17",css("--s1")); annot("il23","th17","sustains Th17",-6);
   arrow("il23","tyk2",css("--s3"),true,1.6); annot("il23","tyk2","signals via TYK2",12);
   arrow("th17","il17",css("--s2")); arrow("th17","il22",css("--s2"),false,1.6);
-  arrow("il17","kera",css("--s2")); annot("il17","kera","hyperproliferation",-6);
+  arrow("il17","kera",css("--s2"));
+  {const[kx,ky]=off("kera");const t=svgEl("text",{x:kx-72,y:ky-16,"text-anchor":"middle",class:"schnote"});t.textContent="hyperproliferation";s.append(t);}
   arrow("il22","kera",css("--s2"),false,1.4);
   arrow("tnf","kera",css("--s5"),true); annot("tnf","kera","amplifies",14);
   arrow("kera","plaque",css("--accent"));
-  arrow("kera","dc",css("--muted"),true); annot("kera","dc","self-amplifying feedback loop",-8);
+  // feedback loop kera -> dc, routed BELOW the cascade so it doesn't cross the Th17 cell/label
+  {const[ax,ay]=off("kera"),[bx,by]=off("dc"),dip=478;
+    s.append(svgEl("path",{d:`M${ax},${ay+20} C${ax},${dip} ${bx},${dip} ${bx},${by+22}`,fill:"none",stroke:css("--muted"),"stroke-width":1.6,"stroke-dasharray":"4 3","marker-end":"url(#sah)"}));
+    const t=svgEl("text",{x:(ax+bx)/2,y:dip-5,"text-anchor":"middle",class:"schnote"});t.textContent="self-amplifying feedback loop";s.append(t);}
   // cells (clickable Biology) — gradient-shaded with a soft drop shadow + membrane ring
   function cell(k,r,grad){const [x,y]=off(k),b=schBio(k);const grp=svgEl("g",{class:"anchor"});grp.style.cursor="pointer";
     grp.append(svgEl("ellipse",{cx:x,cy:y,rx:r*1.15,ry:r,fill:`url(#${grad})`,stroke:css("--rule2"),"stroke-width":1.5,filter:"url(#schsh)"}));
@@ -513,6 +534,7 @@ function buildPanels(){
       const m=oN(d.id,"HAS_MECHANISM")[0],col=css(m?FAM[m.attrs.family_key].colorVar:"--sN");
       const r=el("div",{cls:"row","data-node":d.id},[el("div",{cls:"lab",text:d.label}),el("div",{cls:"tr"},el("div",{cls:"fi",style:`width:${d.attrs.p90}%;background:${col}`})),el("div",{cls:"vv tab",text:d.attrs.p90})]);
       r.onclick=()=>openModal(d.id); b.append(r);}); c.append(b);});
+  panel(30,1470,520,"Response kinetics — PASI 90 onset by class",c=>pasiChart(c));
   // ================= MARKET & BUSINESS (far right) =================
   clabel(2870,314,"Market & business");
   const mkV=(G.meta.headline_stats.find(s=>/market/i.test(s.label))||{}).value||"$27–33B";
@@ -547,14 +569,20 @@ function buildPanels(){
   panel(40,2500,1650,"Catalysts — approvals, readouts & filings",c=>dateTL(c,1632,catEvents(["approval","readout","filing"])));
   panel(1720,2500,1650,"Patent cliffs & loss of exclusivity",c=>dateTL(c,1632,catEvents(["patent_expiry"])));
   clabel(40,2710,"Landmark trials");
-  panel(40,2740,3330,"Milestone trials — timeline",c=>trialsTimeline(c,3330));
-  clabel(40,3060,"Reference");
-  panel(40,3090,900,"Legend",c=>{c.classList.add("legend");
+  panel(40,2740,3330,"Milestone pivotal trials",c=>{c.classList.add("trials");
+    const grid=el("div",{cls:"tgrid"});
+    (G.trials||[]).slice().sort((a,b)=>a.year-b.year).forEach(t=>{const col=css((FAM[t.family_key]||{}).colorVar||"--sN");
+      const row=el("div",{cls:"trow",style:`--tc:${col}`},[el("div",{cls:"yr",text:t.year}),
+        el("div",{},[el("div",{cls:"tn",html:esc(t.trial)+' <i>· '+esc(t.asset)+'</i>'}),el("div",{cls:"tr",text:t.result})])]);
+      const dn=G.nodes.find(n=>n.type=="Drug"&&n.label==t.asset); if(dn)row.onclick=()=>openModal(dn.id); grid.append(row);});
+    c.append(grid);});
+  clabel(40,2960,"Reference");
+  panel(40,2990,900,"Legend",c=>{c.classList.add("legend");
     c.append(el("div",{cls:"lr",html:'<b>Stage:</b> <code>M</code> marketed <code>III</code> Ph3 <code>II</code> Ph2 <code>I</code> Ph1 <code>P</code> preclin <code>✕</code> disc.'}));
     c.append(el("div",{cls:"lr",html:'<span class="mk bio">B</span> biosimilar <span class="mk combo">+</span> combo <span class="mk warn">⚠</span> boxed warning'}));
     c.append(el("div",{cls:"lr",html:'<b>Relationship shapes:</b> '+shapeLegendHTML()}));
     if(G.meta.sales_note)c.append(el("div",{cls:"lr",style:"color:var(--muted);font-size:8.5px",text:G.meta.sales_note}));});
-  panel(970,3090,2400,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
+  panel(970,2990,2400,"Glossary — key terms",c=>{const g=el("div",{cls:"gloss2"});
     (G.glossary||[]).forEach(t=>g.append(el("div",{cls:"g",html:`<b>${esc(t.term)}</b> — <span>${esc(t.def)}</span>`}))); c.append(g);});
 }
 /* ---- SoC severity table (presentation, goal, line-of-therapy bars) ---- */
@@ -603,17 +631,18 @@ function trialsTimeline(c,w){
 /* ---- compact date timeline (catalysts / patent cliffs) ---- */
 function dateTL(c,w,events){
   if(!events.length)return; const yrs=events.map(e=>e.year),y0=Math.min(...yrs),y1=Math.max(...yrs);
-  const IW=w,PAD=42,mid=70,H=158,span=Math.max(1,y1-y0),xOf=y=>PAD+(y-y0)/span*(IW-2*PAD);
+  const IW=w,PAD=78,mid=72,H=162,HALF=65,span=Math.max(1,y1-y0),xOf=y=>PAD+(y-y0)/span*(IW-2*PAD);
+  const clampC=x=>Math.max(HALF+2,Math.min(IW-HALF-2,x));   // keep cards inside the panel
   const box=el("div",{cls:"mtl",style:`height:${H}px;width:${IW}px`});
   box.append(el("div",{style:`position:absolute;left:${PAD}px;width:${IW-2*PAD}px;top:${mid}px;height:2px;background:var(--rule2)`}));
   for(let y=y0;y<=y1;y++){const x=xOf(y);box.append(el("div",{cls:"yr",style:`left:${x}px;top:${mid+6}px`,text:"’"+String(y).slice(2)}));}
   let prevY=null,prevUp=false;
   events.slice().sort((a,b)=>a.year-b.year).forEach((e,i)=>{let up=i%2===0; if(e.year===prevY)up=!prevUp; prevY=e.year;prevUp=up;
-    const x=xOf(e.year),col=css(e.color||"--accent"),sh=up?26:14;
+    const x=xOf(e.year),cx=clampC(x),col=css(e.color||"--accent"),sh=up?26:14;
     box.append(el("div",{cls:"dot",style:`left:${x-4.5}px;top:${mid-4.5}px;background:${col}`}));
     box.append(el("div",{style:`position:absolute;left:${x-0.5}px;top:${up?mid-sh:mid}px;width:1px;height:${sh}px;background:${col};opacity:.5`}));
-    const lab=e.label.length>52?e.label.slice(0,50)+"…":e.label;
-    const ev=el("div",{cls:"ev",style:`left:${x}px;top:${up?mid-sh-40:mid+sh+7}px;--tc:${col}`});
+    const lab=e.label.length>50?e.label.slice(0,48)+"…":e.label;
+    const ev=el("div",{cls:"ev",style:`left:${cx}px;top:${up?mid-sh-42:mid+sh+7}px;--tc:${col}`});
     ev.innerHTML=`<div class="d">${esc(e.date)}</div><div class="l">${esc(lab)}</div>`;
     if(e.nodeId)ev.onclick=()=>openModal(e.nodeId); box.append(ev);});
   c.append(box);
@@ -654,20 +683,42 @@ function openTrialModal(i){const t=(G.trials_focus||[])[i]; if(!t)return; const 
   if(G.trials_focus_note)body.append(el("div",{cls:"xnote",text:G.trials_focus_note}));
   modal.append(hd,body); backdrop.classList.add("on");
 }
-/* ---- 2025 franchise sales donut ---- */
+/* ---- 2025 franchise sales donut (bigger pie, mapped to drug + company) ---- */
 function salesDonut(c){
   const ds=G.nodes.filter(n=>n.type=="Drug"&&n.attrs.annual_sales_usd_m).map(n=>({n,v:n.attrs.annual_sales_usd_m,fam:(oN(n.id,"HAS_MECHANISM")[0]||{}).attrs?.family_key})).sort((a,b)=>b.v-a.v);
   const total=ds.reduce((s,d)=>s+d.v,0),wrap=el("div",{cls:"donut"});
-  const R=56,ri=33,cx=62,cy=62,svg=svgEl("svg",{viewBox:"0 0 124 124",width:124,height:124});
+  const R=76,ri=45,cx=82,cy=82,VB=164,svg=svgEl("svg",{viewBox:`0 0 ${VB} ${VB}`,width:VB,height:VB});
   let ang=-Math.PI/2;
   ds.forEach(d=>{const f=d.v/total,a2=ang+f*2*Math.PI,col=css((FAM[d.fam]||{}).colorVar||"--sN"),lg=f>0.5?1:0;
-    const p=svgEl("path",{d:`M${cx+R*Math.cos(ang)},${cy+R*Math.sin(ang)} A${R},${R} 0 ${lg} 1 ${cx+R*Math.cos(a2)},${cy+R*Math.sin(a2)} L${cx+ri*Math.cos(a2)},${cy+ri*Math.sin(a2)} A${ri},${ri} 0 ${lg} 0 ${cx+ri*Math.cos(ang)},${cy+ri*Math.sin(ang)} Z`,fill:col,stroke:css("--panel"),"stroke-width":.9});
-    p.style.cursor="pointer";p.onclick=()=>openModal(d.n.id);svg.append(p);ang=a2;});
-  const t1=svgEl("text",{x:cx,y:cy-1,"text-anchor":"middle","font-size":"15","font-weight":"700",fill:css("--ink"),"font-family":"var(--cond)"});t1.textContent="$"+(total/1000).toFixed(0)+"B";svg.append(t1);
-  const t2=svgEl("text",{x:cx,y:cy+12,"text-anchor":"middle","font-size":"7.5",fill:css("--muted")});t2.textContent="FY2025";svg.append(t2);
-  const lg=el("div",{cls:"lg"}); ds.slice(0,11).forEach(d=>{const row=el("div",{cls:"row"},[el("i",{style:`background:${css((FAM[d.fam]||{}).colorVar||"--sN")}`}),el("span",{text:d.n.label}),el("b",{text:fmt$(d.v)})]);row.onclick=()=>openModal(d.n.id);lg.append(row);});
+    const p=svgEl("path",{d:`M${cx+R*Math.cos(ang)},${cy+R*Math.sin(ang)} A${R},${R} 0 ${lg} 1 ${cx+R*Math.cos(a2)},${cy+R*Math.sin(a2)} L${cx+ri*Math.cos(a2)},${cy+ri*Math.sin(a2)} A${ri},${ri} 0 ${lg} 0 ${cx+ri*Math.cos(ang)},${cy+ri*Math.sin(ang)} Z`,fill:col,stroke:css("--panel"),"stroke-width":1});
+    p.style.cursor="pointer";p.onclick=()=>openModal(d.n.id);
+    p.addEventListener("mouseenter",()=>p.setAttribute("opacity",".78"));p.addEventListener("mouseleave",()=>p.setAttribute("opacity","1"));svg.append(p);ang=a2;});
+  const t1=svgEl("text",{x:cx,y:cy-2,"text-anchor":"middle","font-size":"21","font-weight":"700",fill:css("--ink"),"font-family":"var(--cond)"});t1.textContent="$"+(total/1000).toFixed(0)+"B";svg.append(t1);
+  const t2=svgEl("text",{x:cx,y:cy+13,"text-anchor":"middle","font-size":"8",fill:css("--muted")});t2.textContent="FY2025 · "+ds.length+" products";svg.append(t2);
+  const lg=el("div",{cls:"lg"}); ds.slice(0,12).forEach(d=>{const comp=oN(d.n.id,"DEVELOPED_BY")[0];
+    const row=el("div",{cls:"row"},[el("i",{style:`background:${css((FAM[d.fam]||{}).colorVar||"--sN")}`}),
+      el("div",{},[el("span",{cls:"nm",text:d.n.label}),el("span",{cls:"co",text:comp?comp.label:""})]),
+      el("div",{cls:"vsh"},[el("b",{text:fmt$(d.v)}),el("span",{cls:"sh",text:Math.round(d.v/total*100)+"%"})])]);
+    row.onclick=()=>openModal(d.n.id);lg.append(row);});
   wrap.append(svg,lg);c.append(wrap);
-  c.append(el("div",{style:"font-size:8px;color:var(--muted);margin-top:6px;font-style:italic;line-height:1.25",text:"All-indication franchise totals (not psoriasis-only). ≈"+fmt$(total)+" across "+ds.length+" marketed products."}));
+  c.append(el("div",{style:"font-size:8px;color:var(--muted);margin-top:6px;font-style:italic;line-height:1.25",text:"All-indication franchise totals (not psoriasis-only), coloured by mechanism class. ≈"+fmt$(total)+" total."}));
+}
+/* ---- PASI-90 response kinetics (the psoriasis analog of RA Capital's PK curves) ---- */
+function pasiChart(c){const K=G.pasi_kinetics; if(!K)return; c.classList.add("pasi");
+  const IW=500,H=196,PADL=26,PADR=54,PADT=10,PADB=24,ax0=PADL,ax1=IW-PADR,ay0=PADT,ay1=H-PADB;
+  const wk=K.weeks,wmax=wk[wk.length-1],X=w=>ax0+(w/wmax)*(ax1-ax0),Y=v=>ay1-(v/100)*(ay1-ay0);
+  const svg=svgEl("svg",{viewBox:`0 0 ${IW} ${H}`,preserveAspectRatio:"none"});
+  [0,25,50,75,100].forEach(v=>{const y=Y(v);svg.append(svgEl("line",{x1:ax0,y1:y,x2:ax1,y2:y,stroke:css("--rule"),"stroke-width":.7,opacity:v?.55:1}));
+    const t=svgEl("text",{x:ax0-4,y:y+3,"text-anchor":"end","font-size":"8",fill:css("--muted")});t.textContent=v;svg.append(t);});
+  wk.forEach(w=>{const t=svgEl("text",{x:X(w),y:H-8,"text-anchor":"middle","font-size":"8",fill:css("--muted")});t.textContent=w;svg.append(t);});
+  const xl=svgEl("text",{x:(ax0+ax1)/2,y:H-0.5,"text-anchor":"middle","font-size":"7.5",fill:css("--muted")});xl.textContent="weeks";svg.append(xl);
+  K.series.forEach(se=>{const col=css(se.colorVar),pts=se.pts.map((v,i)=>[X(wk[i]),Y(v)]);
+    svg.append(svgEl("path",{d:pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+","+p[1].toFixed(1)).join(" "),fill:"none",stroke:col,"stroke-width":2.2,"stroke-linecap":"round","stroke-linejoin":"round"}));
+    pts.forEach((p,i)=>svg.append(svgEl("circle",{cx:p[0],cy:p[1],r:i==pts.length-1?2.6:1.6,fill:col})));
+    const last=pts[pts.length-1],t=svgEl("text",{x:last[0]+4,y:last[1]+3,"font-size":"8.5","font-weight":"700",fill:col});t.textContent=se.pts[se.pts.length-1];svg.append(t);});
+  c.append(svg);
+  const lg=el("div",{cls:"lg"}); K.series.forEach(se=>lg.append(el("span",{},[el("i",{style:`background:${css(se.colorVar)}`}),el("span",{html:esc(se.label)})])));c.append(lg);
+  if(K.note)c.append(el("div",{style:"font-size:8px;color:var(--muted);margin-top:5px;font-style:italic;line-height:1.25",text:K.note}));
 }
 /* ---- development matrix: company × mechanism family, best phase ---- */
 function devMatrix(c){
@@ -779,6 +830,18 @@ function fillInfo(info,n){const a=n.attrs,kp=el("div",{cls:"kpis"}),K=(v,l)=>{if
   if(n.type=="Drug"){const m=oN(n.id,"HAS_MECHANISM")[0];if(m&&m.attrs.safety)info.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(m.attrs.safety)}));}
   if(n.type=="MoAClass"&&a.safety)info.append(el("div",{cls:"safety",html:"<b>Class safety.</b> "+esc(a.safety)}));
   if(n.sources&&n.sources.length)info.append(el("div",{cls:"srcs",html:"Sources: "+n.sources.map(i=>SRC[i]?`<a href="${esc(SRC[i].url||'#')}" target="_blank" rel="noopener">${esc(SRC[i].name||i)}</a>`:i).join(", ")}));
+  if(n.type=="Drug"&&a.detail){const D=a.detail,ch=D.chembl||{},fda=D.openfda||{},pc=D.pubchem||{};
+    info.append(el("div",{cls:"ddhead",text:"Drug detail — openFDA · ChEMBL"+(pc.cid?" · PubChem":"")}));
+    const facts=[]; if(ch.mol_type)facts.push(["Type",ch.mol_type]);
+    const formula=ch.formula||pc.formula, mw=ch.mw||pc.mw;
+    if(formula)facts.push(["Formula",formula]); if(mw)facts.push(["Mol. weight",mw+" g/mol"]);
+    if(ch.mech)facts.push(["Mechanism",ch.mech+(ch.action?" ("+String(ch.action).toLowerCase()+")":"")]);
+    if(ch.chembl_id)facts.push(["ChEMBL",ch.chembl_id]);
+    if(facts.length){const g=el("div",{cls:"ddgrid"});facts.forEach(([k,v])=>g.append(el("b",{text:k}),el("span",{text:v})));info.append(g);}
+    if(fda.indication)info.append(el("div",{cls:"ddp",html:"<b>Indication.</b> "+esc(fda.indication)}));
+    if(fda.dosing)info.append(el("div",{cls:"ddp",html:"<b>Dosing.</b> "+esc(fda.dosing)}));
+    if(fda.moa)info.append(el("div",{cls:"ddp",html:"<b>MoA (FDA label).</b> "+esc(fda.moa)}));
+    if(fda.boxed)info.append(el("div",{cls:"ddp warn",html:"<b>⚠ Boxed warning.</b> "+esc(fda.boxed)}));}
   if(n.type=="Drug"){const q=encodeURIComponent(n.label);
     info.append(el("div",{cls:"xlinks"},[
       el("a",{href:"https://go.drugbank.com/unearth/q?query="+q+"&searcher=drugs",target:"_blank",rel:"noopener",text:"DrugBank ↗"}),

@@ -428,6 +428,17 @@ MARKET_SHARE=[
 ]
 MARKET_NOTE="Directional shares of the branded systemic/biologic market — illustrative, not audited. IL-23 & IL-17 lead; oral targeted therapy is the fastest-growing slice."
 
+# --- PASI-90 response kinetics by class (the psoriasis analog of RA Capital's PK curves) ---
+PASI_KINETICS={"weeks":[0,4,8,12,16],
+ "note":"Class-representative PASI-90 trajectories (NMA / onset-of-action-informed; illustrative). IL-17 acts fastest and deepest; IL-23 p19 climbs more slowly but is durable; oral agents plateau lower.",
+ "series":[
+  {"label":"IL-17 (A / A-F)","colorVar":"--s2","pts":[0,45,72,80,83]},
+  {"label":"IL-23 p19","colorVar":"--s1","pts":[0,12,40,63,75]},
+  {"label":"TNF-α","colorVar":"--s5","pts":[0,8,25,40,46]},
+  {"label":"Oral TYK2","colorVar":"--s3","pts":[0,10,26,33,36]},
+  {"label":"Oral PDE4","colorVar":"--s7","pts":[0,5,12,16,19]},
+ ]}
+
 nodes={}; edges=[]
 def node(nid,ntype,label,attrs=None,sources=None):
     nodes[nid]={"id":nid,"type":ntype,"label":label,"attrs":attrs or {},"sources":sources or []}; return nid
@@ -447,12 +458,16 @@ def company(name):
 seg=[node("seg:mild","MarketSegment","Mild (topical-managed)",{"share_pct":80}),
      node("seg:modsev","MarketSegment","Moderate-to-severe (systemic-eligible)",{"share_pct":20})]
 
+# public drug detail (openFDA + ChEMBL, optionally PubChem) from fetch_drug_detail.py, if present
+try: DETAIL=json.load(open(os.path.join(HERE,"drug_detail.json"),encoding="utf-8"))
+except Exception: DETAIL={}
 for d in ROSTER:
     did="drug:"+slug(d["name"])
     attrs={k:d[k] for k in ("brand","sub","route","dose","appr","sales","syr","bios","combo","disc","p75","p90","p100","note","mod") if d.get(k) is not None}
     attrs["highest_phase"]=d["phase"]; attrs["phase_num"]=PHASE_NUM[d["phase"]]
     attrs["modality"]=d["mod"]; attrs["moa_family"]=FAM[d["fam"]][0]; attrs["sub_class"]=d["sub"]
     if d.get("sales"): attrs["annual_sales_usd_m"]=d["sales"]; attrs["sales_year"]=d.get("syr")
+    if slug(d["name"]) in DETAIL: attrs["detail"]=DETAIL[slug(d["name"])]
     src=["ot"]
     if d.get("appr"): src.append("fda")
     if d.get("sales"): src.append(COMP_SALES_SRC.get(d["company"],"xtalks"))
@@ -519,6 +534,7 @@ graph={"meta":{"scope":"indication","focus":"Plaque psoriasis","generated":"2026
     "trials_focus_note":TRIALS_FOCUS_NOTE,
     "market_share":[{"cls":c,"trend":t,"colorVar":cv} for c,t,cv in MARKET_SHARE],
     "market_note":MARKET_NOTE,
+    "pasi_kinetics":PASI_KINETICS,
     "signal_path":[{"from":"bio:"+f,"to":"bio:"+t,"label":l} for f,t,l in SIGNAL_PATH],
     "hierarchy":HIER,
     "nodes":list(nodes.values()),"edges":edges,"sources":SOURCES}

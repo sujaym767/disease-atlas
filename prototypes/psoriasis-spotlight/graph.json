@@ -656,6 +656,73 @@
     }
   ],
   "market_note": "Directional shares of the branded systemic/biologic market — illustrative, not audited. IL-23 & IL-17 lead; oral targeted therapy is the fastest-growing slice.",
+  "pasi_kinetics": {
+    "weeks": [
+      0,
+      4,
+      8,
+      12,
+      16
+    ],
+    "note": "Class-representative PASI-90 trajectories (NMA / onset-of-action-informed; illustrative). IL-17 acts fastest and deepest; IL-23 p19 climbs more slowly but is durable; oral agents plateau lower.",
+    "series": [
+      {
+        "label": "IL-17 (A / A-F)",
+        "colorVar": "--s2",
+        "pts": [
+          0,
+          45,
+          72,
+          80,
+          83
+        ]
+      },
+      {
+        "label": "IL-23 p19",
+        "colorVar": "--s1",
+        "pts": [
+          0,
+          12,
+          40,
+          63,
+          75
+        ]
+      },
+      {
+        "label": "TNF-α",
+        "colorVar": "--s5",
+        "pts": [
+          0,
+          8,
+          25,
+          40,
+          46
+        ]
+      },
+      {
+        "label": "Oral TYK2",
+        "colorVar": "--s3",
+        "pts": [
+          0,
+          10,
+          26,
+          33,
+          36
+        ]
+      },
+      {
+        "label": "Oral PDE4",
+        "colorVar": "--s7",
+        "pts": [
+          0,
+          5,
+          12,
+          16,
+          19
+        ]
+      }
+    ]
+  },
   "signal_path": [
     {
       "from": "bio:il23",
@@ -1187,7 +1254,21 @@
         "moa_family": "IL-23 / Th17 axis",
         "sub_class": "IL-23 p19 inhibitor",
         "annual_sales_usd_m": 5200,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE TREMFYA is an interleukin-23 antagonist indicated for the treatment of: adults and pediatric patients 6 years of age and older who also weigh at least 40 kg with moderate-to-severe plaque psoriasis and who are candidates for systemic ther…",
+            "dosing": "DOSAGE AND ADMINISTRATION For the treatment of ulcerative colitis or Crohn's disease: Obtain liver enzymes and bilirubin levels prior to initiating treatment with TREMFYA. ( 2.1 , 5.4 ). For…",
+            "moa": "Mechanism of Action Guselkumab is a human monoclonal IgG1λ antibody that selectively binds to the p19 subunit of interleukin 23 (IL-23) and inhibits its interaction with the IL-23 receptor. IL-23 is a naturally occurring cytokine that is involved in normal inflammatory and immune…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL2364648",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin-23 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1245,7 +1326,21 @@
         "moa_family": "IL-23 / Th17 axis",
         "sub_class": "IL-23 p19 inhibitor",
         "annual_sales_usd_m": 17562,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE SKYRIZI is an interleukin-23 antagonist indicated for the treatment of: moderate-to-severe plaque psoriasis in adults and pediatric patients 6 years of age and older who are candidates for systemic therapy or phototherapy. ( 1.1 ) active …",
+            "dosing": "DOSAGE AND ADMINISTRATION For the treatment of moderately to severely active Crohn’s disease and ulcerative colitis: Obtain liver enzymes and bilirubin levels prior to initiating treatment w…",
+            "moa": "Mechanism of Action Risankizumab-rzaa is a humanized IgG1 monoclonal antibody that selectively binds to the p19 subunit of human IL-23 cytokine and inhibits its interaction with the IL-23 receptor. IL-23 is a naturally occurring cytokine that is involved in inflammatory and immun…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL3990029",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin-23 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1282,7 +1377,21 @@
         "phase_num": 4,
         "modality": "mAb",
         "moa_family": "IL-23 / Th17 axis",
-        "sub_class": "IL-23 p19 inhibitor"
+        "sub_class": "IL-23 p19 inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE ILUMYA ® is indicated for the treatment of adults with moderate-to-severe plaque psoriasis who are candidates for systemic therapy or phototherapy. ILUMYA is an interleukin-23 antagonist indicated for the treatment of adults with moderate…",
+            "dosing": "DOSAGE AND ADMINISTRATION See the full prescribing information for recommended evaluations and immunizations prior to treatment. ( 2.1 ) Administer by subcutaneous injection. ( 2.2 ) Recomme…",
+            "moa": "Mechanism of Action Tildrakizumab is a humanized IgG1/k monoclonal antibody that selectively binds to the p19 subunit of IL-23 and inhibits its interaction with the IL-23 receptor. IL-23 is a naturally occurring cytokine that is involved in inflammatory and immune responses. Tild…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL2108681",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin-23 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1316,7 +1425,21 @@
         "phase_num": 3,
         "modality": "mAb",
         "moa_family": "IL-23 / Th17 axis",
-        "sub_class": "IL-23 p19 inhibitor"
+        "sub_class": "IL-23 p19 inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE OMVOH is indicated for the treatment of: moderately to severely active ulcerative colitis in adults. moderately to severely active Crohn's disease in adults. OMVOH TM is an interleukin-23 antagonist indicated for the treatment of: moderat…",
+            "dosing": "DOSAGE AND ADMINISTRATION Prior to Treatment Initiation Evaluate patients for tuberculosis (TB) infection. ( 2.1 , 5.3 ) Obtain liver enzymes and bilirubin levels. ( 2.1 , 5.4 ) Complete all…",
+            "moa": "Mechanism of Action Mirikizumab-mrkz is a humanized IgG4 monoclonal antibody that selectively binds to the p19 subunit of human IL-23 cytokine and inhibits its interaction with the IL-23 receptor. IL-23 is involved in mucosal inflammation and affects the differentiation, expansio…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL3990014",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin-23 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1349,7 +1472,19 @@
         "phase_num": 4,
         "modality": "peptide",
         "moa_family": "IL-23 / Th17 axis",
-        "sub_class": "Oral IL-23R antagonist"
+        "sub_class": "Oral IL-23R antagonist",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE ICOTYDE is indicated for the treatment of moderate-to-severe plaque psoriasis in adults and pediatric patients 12 years of age and older who weigh at least 40 kg who are candidates for systemic therapy or phototherapy. ICOTYDE is an inter…",
+            "dosing": "DOSAGE AND ADMINISTRATION See the full prescribing information for recommended evaluation and immunizations prior to treatment. ( 2.1 ) Recommended dosage is 200 mg orally once daily. ( 2.2 …",
+            "moa": "Mechanism of Action Icotrokinra is a peptide that selectively binds to the IL-23 receptor (IL-23R) with a dissociation constant of 7 pM and antagonizes the binding of IL-23. IL-23 is a naturally occurring cytokine that is involved in inflammatory and immune responses. Icotrokinra…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL6068124",
+            "mol_type": "Small molecule",
+            "max_phase": "2.0"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1397,7 +1532,21 @@
         "moa_family": "IL-23 / Th17 axis",
         "sub_class": "IL-12/23 p40 inhibitor",
         "annual_sales_usd_m": 6080,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Ustekinumab-aekn is a human interleukin-12 and -23 antagonist indicated for the treatment of: Adult patients with: moderate to severe plaque psoriasis (PsO) who are candidates for phototherapy or systemic therapy. ( 1.1 ) active psoriatic…",
+            "dosing": "DOSAGE AND ADMINISTRATION Adult Patients with Plaque Psoriasis Subcutaneous Recommended Dosage ( 2.1 ): Weight Range (kilograms) Dosage less than or equal to 100 kg 45 mg administered subcut…",
+            "moa": "Mechanism of Action Ustekinumab products are human IgG1κ monoclonal antibodies that bind with specificity to the p40 protein subunit used by both the IL-12 and IL-23 cytokines. IL-12 and IL-23 are naturally occurring cytokines that are involved in inflammatory and immune response…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1201835",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin-12 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1431,7 +1580,16 @@
         "phase_num": -1,
         "modality": "mAb",
         "moa_family": "IL-23 / Th17 axis",
-        "sub_class": "IL-12/23 p40 inhibitor"
+        "sub_class": "IL-12/23 p40 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL1742995",
+            "mol_type": "Antibody",
+            "max_phase": "3.0",
+            "mech": "Interleukin-23 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1463,7 +1621,16 @@
         "phase_num": 3,
         "modality": "mAb",
         "moa_family": "IL-23 / Th17 axis",
-        "sub_class": "IL-12/23 p40 inhibitor"
+        "sub_class": "IL-12/23 p40 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4650437",
+            "mol_type": "Antibody",
+            "max_phase": "3.0",
+            "mech": "Interleukin-12 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1502,7 +1669,21 @@
         "moa_family": "IL-17 axis",
         "sub_class": "IL-17A inhibitor",
         "annual_sales_usd_m": 6700,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE COSENTYX is a human interleukin-17A antagonist indicated for the treatment of: moderate to severe plaque psoriasis (PsO) in adults and pediatric patients 6 years and older who are candidates for systemic therapy or phototherapy. ( 1.1 ) a…",
+            "dosing": "DOSAGE AND ADMINISTRATION Prior to COSENTYX initiation, complete all age-appropriate vaccinations, evaluate patients for tuberculosis (TB). ( 2.1 ) See Full Prescribing Information for instr…",
+            "moa": "Mechanism of Action Secukinumab is a human IgG1 monoclonal antibody that selectively binds to the interleukin-17A (IL-17A) cytokine and inhibits its interaction with the IL-17 receptor. IL-17A is a naturally occurring cytokine that is involved in normal inflammatory and immune re…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1743068",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin 17A inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1552,7 +1733,21 @@
         "moa_family": "IL-17 axis",
         "sub_class": "IL-17A inhibitor",
         "annual_sales_usd_m": 3260,
-        "sales_year": 2024
+        "sales_year": 2024,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE TALTZ ® is a humanized interleukin-17A antagonist indicated for the treatment of: patients aged 6 years or older with moderate-to-severe plaque psoriasis who are candidates for systemic therapy or phototherapy. ( 1.1 ) adults with active …",
+            "dosing": "DOSAGE AND ADMINISTRATION Administer by subcutaneous injection. Adult Plaque Psoriasis ( 2.2 ) Recommended dosage is 160 mg (two 80 mg injections) at Week 0, followed by 80 mg at Weeks 2, 4,…",
+            "moa": "Mechanism of Action Ixekizumab is a humanized IgG4 monoclonal antibody that selectively binds with the interleukin 17A (IL-17A) cytokine and inhibits its interaction with the IL-17 receptor. IL-17A is a naturally occurring cytokine that is involved in normal inflammatory and immu…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1743034",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin 17A inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1577,7 +1772,16 @@
         "phase_num": 3,
         "modality": "mAb",
         "moa_family": "IL-17 axis",
-        "sub_class": "IL-17A inhibitor"
+        "sub_class": "IL-17A inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4298102",
+            "mol_type": "Antibody",
+            "max_phase": "3.0",
+            "mech": "Interleukin 17A inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1617,7 +1821,21 @@
         "moa_family": "IL-17 axis",
         "sub_class": "IL-17A/F inhibitor",
         "annual_sales_usd_m": 2400,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE BIMZELX is a humanized interleukin-17A and F antagonist indicated for the treatment of: Moderate to severe plaque psoriasis (PSO) in adults who are candidates for systemic therapy or phototherapy. ( 1.1 ) Adults with active psoriatic arth…",
+            "dosing": "DOSAGE AND ADMINISTRATION Prior to treatment: ( 2.1 ) Evaluate patients for tuberculosis infection. Test liver enzymes, alkaline phosphatase, and bilirubin. Complete all age-appropriate vacc…",
+            "moa": "Mechanism of Action Bimekizumab-bkzx is a humanized immunoglobulin IgG1/ κ monoclonal antibody with two identical antigen binding regions that selectively bind to human interleukin 17A (IL-17A), interleukin 17F (IL-17F), and interleukin 17-AF cytokines, and inhibits their interac…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL4297700",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin 17A inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1652,7 +1870,16 @@
         "phase_num": 2,
         "modality": "protein",
         "moa_family": "IL-17 axis",
-        "sub_class": "IL-17A/F inhibitor"
+        "sub_class": "IL-17A/F inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4298023",
+            "mol_type": "Unknown",
+            "max_phase": "3.0",
+            "mech": "Interleukin 17A inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1695,7 +1922,22 @@
         "phase_num": 4,
         "modality": "mAb",
         "moa_family": "IL-17 axis",
-        "sub_class": "IL-17RA inhibitor"
+        "sub_class": "IL-17RA inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE SILIQ ® (brodalumab) is indicated for the treatment of moderate to severe plaque psoriasis in adult patients who are candidates for systemic therapy or phototherapy and have failed to respond or have lost response to other systemic therap…",
+            "dosing": "DOSAGE AND ADMINISTRATION Administer 210 mg of SILIQ by subcutaneous injection at Weeks 0, 1, and 2 followed by 210 mg every 2 weeks. ( 2.2 ) 2.1 Tuberculosis Assessment Prior to Initiation …",
+            "moa": "Mechanism of Action Brodalumab is a human monoclonal IgG2 antibody that selectively binds to human IL-17RA and inhibits its interactions with cytokines IL-17A, IL-17F, IL-17C, IL-17A/F heterodimer, and IL-25. IL-17RA is a protein expressed on the cell surface and is a required co…",
+            "boxed": "WARNING: SUICIDAL IDEATION AND BEHAVIOR Suicidal ideation and behavior, including completed suicides, have occurred in patients treated with SILIQ. Prior to prescribing SILIQ, weigh the potential risk…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1742996",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Interleukin-17 receptor A antagonist",
+            "action": "ANTAGONIST"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1737,7 +1979,16 @@
         "phase_num": 2,
         "modality": "protein",
         "moa_family": "IL-17 axis",
-        "sub_class": "IL-17A (small protein)"
+        "sub_class": "IL-17A (small protein)",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4297686",
+            "mol_type": "Protein",
+            "max_phase": "3.0",
+            "mech": "Interleukin 17A inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1769,7 +2020,15 @@
         "phase_num": 1,
         "modality": "small_molecule",
         "moa_family": "IL-17 axis",
-        "sub_class": "Oral IL-17 inhibitor"
+        "sub_class": "Oral IL-17 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL5864290",
+            "mw": "492.56",
+            "formula": "C24H24N6O4S",
+            "smiles": "Cc1ccc(NC(=O)c2ccnc(S(C)(=O)=O)c2)cc1-c1cc(N2CCOCC2)n2nccc2n1"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1808,7 +2067,16 @@
         "phase_num": 0,
         "modality": "small_molecule",
         "moa_family": "IL-17 axis",
-        "sub_class": "Oral IL-17 inhibitor"
+        "sub_class": "Oral IL-17 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL3700888",
+            "mol_type": "Small molecule",
+            "mw": "426.38",
+            "formula": "C21H14F4N6",
+            "smiles": "Nc1cnc(-c2ccc(-c3ccc(C(F)(F)F)cc3-c3cnc(N)nc3)cc2F)cn1"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1830,7 +2098,16 @@
         "phase_num": 1,
         "modality": "mAb",
         "moa_family": "IL-17 axis",
-        "sub_class": "IL-17A inhibitor"
+        "sub_class": "IL-17A inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4297926",
+            "mol_type": "Unknown",
+            "max_phase": "2.0",
+            "mech": "Interleukin 17A binding agent",
+            "action": "BINDING AGENT"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1853,7 +2130,16 @@
         "phase_num": 0,
         "modality": "small_molecule",
         "moa_family": "IL-17 axis",
-        "sub_class": "Oral IL-17 inhibitor"
+        "sub_class": "Oral IL-17 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL3545074",
+            "mol_type": "Unknown",
+            "max_phase": "1.0",
+            "mech": "MAP kinase p38 alpha inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -1893,7 +2179,22 @@
         "moa_family": "TNF inhibitors",
         "sub_class": "TNF inhibitor",
         "annual_sales_usd_m": 4540,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE HUMIRA is a tumor necrosis factor (TNF) blocker indicated for: Reducing signs and symptoms, inducing major clinical response, inhibiting the progression of structural damage, and improving physical function in adult patients with moderate…",
+            "dosing": "DOSAGE AND ADMINISTRATION Administer by subcutaneous injection ( 2 ) Rheumatoid Arthritis, Psoriatic Arthritis, Ankylosing Spondylitis ( 2.1 ): Adults: 40 mg every other week. Some patients …",
+            "moa": "Mechanism of Action Adalimumab binds specifically to TNF-alpha and blocks its interaction with the p55 and p75 cell surface TNF receptors. Adalimumab also lyses surface TNF expressing cells in vitro in the presence of complement. Adalimumab does not bind or inactivate lymphotoxin…",
+            "boxed": "WARNING: SERIOUS INFECTIONS AND MALIGNANCY SERIOUS INFECTIONS Patients treated with HUMIRA are at increased risk for developing serious infections that may lead to hospitalization or death [see Warnin…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1201580",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "TNF-alpha inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1935,7 +2236,22 @@
         "moa_family": "TNF inhibitors",
         "sub_class": "TNF inhibitor",
         "annual_sales_usd_m": 2200,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Enbrel is a tumor necrosis factor (TNF) blocker indicated for the treatment of: Adult patients with: Rheumatoid Arthritis (RA) ( 1.1 ) Psoriatic Arthritis (PsA) ( 1.3 ) Ankylosing Spondylitis (AS) ( 1.4 ) Plaque Psoriasis (PsO) ( 1.5 ) Pe…",
+            "dosing": "DOSAGE AND ADMINISTRATION Enbrel is administered by subcutaneous injection. Patient Population Recommended Dose and Frequency Adult RA and PsA ( 2.3 ) 50 mg once weekly with or without metho…",
+            "moa": "Mechanism of Action TNF is a naturally occurring cytokine that is involved in normal inflammatory and immune responses. It plays an important role in the inflammatory processes of RA, polyarticular JIA, PsA, and AS and the resulting joint pathology. In addition, TNF plays a role …",
+            "boxed": "WARNING: SERIOUS INFECTIONS and MALIGNANCIES WARNING: SERIOUS INFECTIONS and MALIGNANCIES See full prescribing information for complete boxed warning. SERIOUS INFECTIONS Increased risk of serious infe…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1201572",
+            "mol_type": "Protein",
+            "max_phase": "4.0",
+            "mech": "TNF-alpha inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -1976,7 +2292,22 @@
         "moa_family": "TNF inhibitors",
         "sub_class": "TNF inhibitor",
         "annual_sales_usd_m": 1768,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE REMICADE is a tumor necrosis factor (TNF) blocker indicated for: Crohn's Disease : reducing signs and symptoms and inducing and maintaining clinical remission in adult patients with moderately to severely active disease who have had an in…",
+            "dosing": "DOSAGE AND ADMINISTRATION Prior to treatment, ensure appropriate personnel and medication are available to treat reactions (e.g., hypersensitivity) that occur during infusion and shortly aft…",
+            "moa": "Mechanism of Action Infliximab neutralizes the biological activity of TNFα by binding with high affinity to the soluble and transmembrane forms of TNFα and inhibits binding of TNFα with its receptors. Infliximab does not neutralize TNFβ (lymphotoxin-α), a related cytokine that ut…",
+            "boxed": "WARNING: SERIOUS INFECTIONS and MALIGNANCY WARNING: SERIOUS INFECTIONS and MALIGNANCY See full prescribing information for complete boxed warning. Increased risk of serious infections leading to hospi…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1201581",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "TNF-alpha inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2008,7 +2339,22 @@
         "moa_family": "TNF inhibitors",
         "sub_class": "TNF inhibitor",
         "annual_sales_usd_m": 2100,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE CIMZIA is a tumor necrosis factor (TNF) blocker indicated for: Reducing signs and symptoms of Crohn's disease and maintaining clinical response in adult patients with moderately to severely active disease who have had an inadequate respon…",
+            "dosing": "DOSAGE AND ADMINISTRATION CIMZIA is administered by subcutaneous injection . Injection sites should be rotated and injections should not be given into areas where the skin is tender, bruised…",
+            "moa": "Mechanism of Action Certolizumab pegol binds to human TNFα with a KD of 90pM. TNFα is a key pro-inflammatory cytokine with a central role in inflammatory processes. Certolizumab pegol selectively neutralizes TNFα (IC 90 of 4 ng/mL for inhibition of human TNFα in the in vitro L929…",
+            "boxed": "WARNING: SERIOUS INFECTIONS and MALIGNANCY SERIOUS INFECTIONS Patients treated with CIMZIA are at increased risk for developing serious infections that may lead to hospitalization or death [see Warnin…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1201831",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "TNF-alpha inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2041,7 +2387,24 @@
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
         "sub_class": "TYK2 allosteric inhibitor",
         "annual_sales_usd_m": 291,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE SOTYKTU is a tyrosine kinase 2 (TYK2) inhibitor indicated for: • the treatment of moderate-to-severe plaque psoriasis in adults who are candidates for systemic therapy or phototherapy. ( 1.1 ) Limitations of Use : Not recommended for use …",
+            "dosing": "DOSAGE AND ADMINISTRATION • For recommended evaluation prior to SOTYKTU initiation, see Full Prescribing Information. (2.1) • Recommended dosage is 6 mg orally once daily, with or without fo…",
+            "moa": "Mechanism of Action Deucravacitinib is an inhibitor of tyrosine kinase 2 (TYK2). TYK2 is a member of the Janus kinase (JAK) family. Deucravacitinib binds to the regulatory domain of TYK2, stabilizing an inhibitory interaction between the regulatory and the catalytic domains of th…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL4435170",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "425.47",
+            "formula": "C20H22N8O3",
+            "smiles": "[2H]C([2H])([2H])NC(=O)c1nnc(NC(=O)C2CC2)cc1Nc1cccc(-c2ncn(C)n2)c1OC",
+            "mech": "Tyrosine-protein kinase TYK2 negative allosteric modulator",
+            "action": "NEGATIVE ALLOSTERIC MODULATOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2085,7 +2448,17 @@
         "phase_num": 3,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "TYK2 allosteric inhibitor"
+        "sub_class": "TYK2 allosteric inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL5314423",
+            "mol_type": "Small molecule",
+            "max_phase": "3.0",
+            "mw": "460.50",
+            "formula": "C23H24N8O3",
+            "smiles": "CNc1cc(Nc2cccn(-c3ccccn3)c2=O)nc2c(C(=O)N[C@@H]3CC[C@H]3OC)cnn12"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2116,7 +2489,16 @@
         "phase_num": 3,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "TYK2 allosteric inhibitor"
+        "sub_class": "TYK2 allosteric inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4303484",
+            "mol_type": "Small molecule",
+            "mw": "548.64",
+            "formula": "C33H32N4O4",
+            "smiles": "O=C1[C@@H](Cc2ccc(O)cc2)N2C(=O)CCN(C(=O)NCc3ccccc3)[C@H]2CN1Cc1cccc2ccccc12"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2148,7 +2530,19 @@
         "phase_num": 2,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "TYK2 inhibitor"
+        "sub_class": "TYK2 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4459585",
+            "mol_type": "Small molecule",
+            "max_phase": "2.0",
+            "mw": "383.42",
+            "formula": "C20H17N9",
+            "smiles": "Cn1cc(-c2cn3nccc3c(-c3cnn([C@]4(CC#N)C[C@@H](C#N)C4)c3)n2)cn1",
+            "mech": "Tyrosine-protein kinase TYK2 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2180,7 +2574,16 @@
         "phase_num": 2,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "TYK2/JAK1 inhibitor"
+        "sub_class": "TYK2/JAK1 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4747591",
+            "mol_type": "Unknown",
+            "mw": "389.41",
+            "formula": "C18H21F2N7O",
+            "smiles": "Cn1cc(Nc2nccc(N3CC4CCC(C3)N4C(=O)[C@@H]3CC3(F)F)n2)cn1"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2212,7 +2615,25 @@
         "phase_num": 3,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "JAK inhibitor"
+        "sub_class": "JAK inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE XELJANZ (tablets and oral solution) and XELJANZ XR (extended-release tablets) are Janus kinase (JAK) inhibitors. XELJANZ tablets and XELJANZ XR are indicated for the treatment of adult patients with: • Moderately to severely active rheuma…",
+            "dosing": "DOSAGE AND ADMINISTRATION Recommended Evaluations and Immunization Prior to Treatment Initiation • Prior to initiating XELJANZ/XELJANZ XR, consider performing an active and latent TB evaluat…",
+            "moa": "Mechanism of Action Tofacitinib is a Janus kinase (JAK) inhibitor. JAKs are intracellular enzymes which transmit signals arising from cytokine or growth factor-receptor interactions on the cellular membrane to influence cellular processes of hematopoiesis and immune cell function…",
+            "boxed": "WARNING: SERIOUS INFECTIONS, MORTALITY, MALIGNANCY, MAJOR ADVERSE CARDIOVASCULAR EVENTS, and THROMBOSIS WARNING: SERIOUS INFECTIONS, MORTALITY, MALIGNANCY, MAJOR ADVERSE CARDIOVASCULAR EVENTS, and THR…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL2103743",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "504.50",
+            "formula": "C22H28N6O8",
+            "smiles": "C[C@@H]1CCN(C(=O)CC#N)C[C@@H]1N(C)c1ncnc2[nH]ccc12.O=C(O)CC(O)(CC(=O)O)C(=O)O",
+            "mech": "Janus Kinase (JAK) inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2242,7 +2663,19 @@
         "phase_num": 3,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "JAK inhibitor"
+        "sub_class": "JAK inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL3137308",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "326.40",
+            "formula": "C18H22N4O2",
+            "smiles": "NC(=O)c1cnc2[nH]ccc2c1N[C@@H]1[C@@H]2CC3C[C@H]1C[C@@](O)(C3)C2",
+            "mech": "Janus Kinase (JAK) inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2280,7 +2713,22 @@
         "phase_num": 2,
         "modality": "small_molecule",
         "moa_family": "Oral kinase inhibitors (TYK2 / JAK)",
-        "sub_class": "JAK inhibitor (topical)"
+        "sub_class": "JAK inhibitor (topical)",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE OPZELURA is a Janus kinase (JAK) inhibitor indicated for: the topical short-term and non-continuous chronic treatment of mild to moderate atopic dermatitis in non-immunocompromised adult and pediatric patients 2 years of age and older who…",
+            "dosing": "DOSAGE AND ADMINISTRATION Atopic Dermatitis Apply a thin layer of OPZELURA topically twice daily to affected areas of up to 20% body surface area. ( 2.1 ) Do not use OPZELURA with occlusive …",
+            "moa": "Mechanism of Action Ruxolitinib, a Janus kinase (JAK) inhibitor, inhibits JAK1 and JAK2 which mediate the signaling of a number of cytokines and growth factors that are important for hematopoiesis and immune function. JAK signaling involves recruitment of STATs (signal transducer…",
+            "boxed": "WARNING: SERIOUS INFECTIONS, MORTALITY, MALIGNANCY, MAJOR ADVERSE CARDIOVASCULAR EVENTS, AND THROMBOSIS SERIOUS INFECTIONS Patients treated with oral Janus kinase inhibitors for inflammatory condition…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1287854",
+            "mol_type": "Small molecule",
+            "mw": "306.37",
+            "formula": "C17H18N6",
+            "smiles": "N#CC[C@@H](C1CCCC1)n1cc(-c2ncnc3[nH]ccc23)cn1"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2319,7 +2767,24 @@
         "moa_family": "PDE4 inhibitors",
         "sub_class": "Oral PDE4 inhibitor",
         "annual_sales_usd_m": 2400,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE OTEZLA/OTEZLA XR, an inhibitor of phosphodiesterase 4 (PDE4), is indicated for the treatment of: Adult patients with: Active psoriatic arthritis ( 1.1 ) Plaque psoriasis who are candidates for phototherapy or systemic therapy ( 1.2 ) Oral…",
+            "dosing": "DOSAGE AND ADMINISTRATION To reduce the risk of gastrointestinal symptoms, titrate to recommended dosage as follows: Adults with Psoriatic Arthritis, Plaque Psoriasis, or Behçet's Disease Se…",
+            "moa": "Mechanism of Action Apremilast is an oral small molecule inhibitor of phosphodiesterase 4 (PDE4) specific for cyclic adenosine monophosphate (cAMP). PDE4 inhibition results in increased intracellular cAMP levels. The specific mechanism(s) by which apremilast exerts its therapeuti…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL514800",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "460.51",
+            "formula": "C22H24N2O7S",
+            "smiles": "CCOc1cc([C@@H](CS(C)(=O)=O)N2C(=O)c3cccc(NC(C)=O)c3C2=O)ccc1OC",
+            "mech": "Phosphodiesterase 4 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2353,7 +2818,17 @@
         "phase_num": 2,
         "modality": "small_molecule",
         "moa_family": "PDE4 inhibitors",
-        "sub_class": "Oral PDE4 inhibitor"
+        "sub_class": "Oral PDE4 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL3654384",
+            "mol_type": "Small molecule",
+            "max_phase": "2.0",
+            "mw": "510.30",
+            "formula": "C19H15Cl2F2NO7S",
+            "smiles": "O=C(Cc1c(Cl)c[n+]([O-])cc1Cl)c1ccc(OC(F)F)c2c1OC1(CCS(=O)(=O)CC1)O2"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2390,7 +2865,24 @@
         "moa_family": "PDE4 inhibitors",
         "sub_class": "Topical PDE4 inhibitor",
         "annual_sales_usd_m": 372,
-        "sales_year": 2025
+        "sales_year": 2025,
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE ZORYVE cream is a phosphodiesterase 4 inhibitor: Plaque Psoriasis ZORYVE cream, 0.3%, is indicated for the topical treatment of plaque psoriasis, including intertriginous areas, in adult and pediatric patients 2 years of age and older. ( …",
+            "dosing": "DOSAGE AND ADMINISTRATION Plaque Psoriasis Use ZORYVE cream, 0.3%, for the treatment of plaque psoriasis in adult and pediatric patients 2 years of age and older. Atopic Dermatitis Use ZORYV…",
+            "moa": "Mechanism of Action Roflumilast and its active metabolite (roflumilast N-oxide) are inhibitors of PDE4. Roflumilast and roflumilast N-oxide inhibition of PDE4 (a major cyclic 3′,5′-adenosine monophosphate [cyclic AMP] metabolizing enzyme) activity leads to accumulation of intrace…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL193240",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "403.21",
+            "formula": "C17H14Cl2F2N2O3",
+            "smiles": "O=C(Nc1c(Cl)cncc1Cl)c1ccc(OC(F)F)c(OCC2CC2)c1",
+            "mech": "Phosphodiesterase 4 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2424,7 +2916,24 @@
         "phase_num": 2,
         "modality": "small_molecule",
         "moa_family": "PDE4 inhibitors",
-        "sub_class": "Topical PDE4 inhibitor"
+        "sub_class": "Topical PDE4 inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE EUCRISA is indicated for topical treatment of mild to moderate atopic dermatitis in adult and pediatric patients 3 months of age and older. EUCRISA is a phosphodiesterase 4 inhibitor indicated for topical treatment of mild to moderate ato…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin layer of EUCRISA twice daily to affected areas. Once clinical effect is achieved, consider reducing application to once daily [see Clinical Studies (14…",
+            "moa": "Mechanism of Action Crisaborole is a phosphodiesterase 4 (PDE-4) inhibitor. PDE-4 inhibition results in increased intracellular cyclic adenosine monophosphate (cAMP) levels. The specific mechanism(s) by which crisaborole exerts its therapeutic action for the treatment of atopic d…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL484785",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "251.05",
+            "formula": "C14H10BNO3",
+            "smiles": "N#Cc1ccc(Oc2ccc3c(c2)COB3O)cc1",
+            "mech": "Phosphodiesterase 4 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2447,7 +2956,24 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical non-steroidal",
-        "sub_class": "AhR agonist (topical)"
+        "sub_class": "AhR agonist (topical)",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE VTAMA cream, 1% is an aryl hydrocarbon receptor agonist indicated for: the topical treatment of plaque psoriasis in adults. ( 1.1 ) the topical treatment of atopic dermatitis in adults and pediatric patients 2 years of age and older. ( 1.…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin layer of VTAMA cream to affected areas once daily. Wash hands after application, unless VTAMA cream is for treatment of the hands. VTAMA cream is not f…",
+            "moa": "Mechanism of Action Tapinarof is an aryl hydrocarbon receptor (AhR) agonist. The specific mechanisms by which VTAMA cream exerts its therapeutic actions are unknown."
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL259571",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "254.33",
+            "formula": "C17H18O2",
+            "smiles": "CC(C)c1c(O)cc(/C=C/c2ccccc2)cc1O",
+            "mech": "Aryl hydrocarbon receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2490,7 +3016,24 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical non-steroidal",
-        "sub_class": "Vitamin D analog (topical)"
+        "sub_class": "Vitamin D analog (topical)",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Calcipotriene and Betamethasone Dipropionate Ointment is indicated for the topical treatment of plaque psoriasis in patients 12 years of age and older. Calcipotriene and Betamethasone Dipropionate Ointment is a vitamin D analogue and cort…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply an adequate layer of Calcipotriene and Betamethasone Dipropionate Ointment to the affected area(s) once daily for up to 4 weeks. Calcipotriene and Betamethaso…",
+            "moa": "Mechanism of Action Calcipotriene and Betamethasone Dipropionate Ointment combines the pharmacological effects of calcipotriene as a synthetic vitamin D 3 analogue and betamethasone dipropionate as a synthetic corticosteroid. However, while their pharmacologic and clinical effect…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1200666",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "412.61",
+            "formula": "C27H40O3",
+            "smiles": "C=C1/C(=C\\C=C2/CCC[C@]3(C)[C@@H]([C@H](C)/C=C/[C@@H](O)C4CC4)CC[C@@H]23)C[C@@H](O)C[C@@H]1O",
+            "mech": "Vitamin D receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2532,7 +3075,21 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical non-steroidal",
-        "sub_class": "Vitamin D analog (topical)"
+        "sub_class": "Vitamin D analog (topical)",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE VECTICAL Ointment is a vitamin D analog indicated for the topical treatment of mild to moderate plaque psoriasis in adult and pediatric patients 2 years and older. ( 1.1 ) Limitations of Use The safety and effectiveness of VECTICAL Ointme…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply VECTICAL Ointment to affected areas twice daily, morning and evening Adults: • The maximum weekly dose should not exceed 200 grams. Pediatrics: • 2 to 6 years…",
+            "moa": "Mechanism of Action The mechanism of action of calcitriol in the treatment of psoriasis has not been established."
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL4068172",
+            "mol_type": "Small molecule",
+            "mw": "416.65",
+            "formula": "C27H44O3",
+            "smiles": "C=C1/C(=C\\C=C2/CCC[C@]3(C)C(C(C)CCCC(C)(C)O)CC[C@@H]23)C[C@@H](O)C[C@@H]1O"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2565,7 +3122,24 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical non-steroidal",
-        "sub_class": "Retinoid (topical)"
+        "sub_class": "Retinoid (topical)",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE TAZORAC ® Cream 0.05% and 0.1% is a retinoid indicated for the topical treatment of plaque psoriasis. ( 1.1 ) TAZORAC Cream 0.1% is indicated for the topical treatment of acne vulgaris. ( 1.2 ) 1.1 Plaque Psoriasis TAZORAC ® (tazarotene) …",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin layer of TAZORAC Cream only to the affected area once daily in the evening. ( 2.1 , 2.2 ) Not for ophthalmic, oral, or intravaginal use. ( 2.2 ) If con…",
+            "moa": "Mechanism of Action Tazarotene is a retinoid prodrug which is converted to its active form, the carboxylic acid of tazarotene, by deesterification. Tazarotenic acid binds to all three members of the retinoic acid receptor (RAR) family: RARα, RARβ, and RARɣ, but shows relative sel…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1657",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "351.47",
+            "formula": "C21H21NO2S",
+            "smiles": "CCOC(=O)c1ccc(C#Cc2ccc3c(c2)C(C)(C)CCS3)nc1",
+            "mech": "Retinoic acid receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2605,7 +3179,23 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical corticosteroids",
-        "sub_class": "Topical corticosteroid"
+        "sub_class": "Topical corticosteroid",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Clobetasol propionate ointment USP, 0.05% is super-high potency corticosteroid formulations indicated for the relief of the inflammatory and pruritic manifestations of corticosteroid-responsive dermatoses. Treatment beyond 2 consecutive w…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin layer of clobetasol propionate ointment to the affected skin areas twice daily and rub in gently and completely. (See INDICATIONS AND USAGE .) Clobetas…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1159650",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "466.98",
+            "formula": "C25H32ClFO5",
+            "smiles": "CCC(=O)O[C@]1(C(=O)CCl)[C@@H](C)C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]21C",
+            "mech": "Glucocorticoid receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2645,7 +3235,21 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical corticosteroids",
-        "sub_class": "Topical corticosteroid"
+        "sub_class": "Topical corticosteroid",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE DIPROLENE ® Ointment is a corticosteroid indicated for the relief of the inflammatory and pruritic manifestations of corticosteroid-responsive dermatoses in patients 13 years of age or older. DIPROLENE Ointment is a corticosteroid indicat…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin film of DIPROLENE Ointment to the affected skin areas once or twice daily. Therapy should be discontinued when control is achieved. If no improvement i…",
+            "moa": "Mechanism of Action Corticosteroids play a role in cellular signaling, immune function, inflammation, and protein regulation; however, the precise mechanism of action of DIPROLENE Ointment in corticosteroid responsive dermatoses is unknown."
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL3138708",
+            "mol_type": "Small molecule",
+            "mw": "504.60",
+            "formula": "C28H37FO7",
+            "smiles": "CCC(=O)OCC(=O)[C@]1(OC(=O)CC)[C@H](C)C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]21C"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2668,7 +3272,24 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical corticosteroids",
-        "sub_class": "Topical corticosteroid"
+        "sub_class": "Topical corticosteroid",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE ULTRAVATE lotion is indicated for the topical treatment of plaque psoriasis in patients 12 years of age and older. ULTRAVATE lotion is a corticosteroid indicated for the topical treatment of plaque psoriasis in patients 12 years of age an…",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin layer of ULTRAVATE lotion to the affected skin twice daily for up to two weeks. Rub in gently. Discontinue therapy when control is achieved. If no impr…",
+            "moa": "Mechanism of Action Corticosteroids play a role in cellular signaling, immune function, inflammation, and protein regulation; however, the precise mechanism of action in plaque psoriasis is unknown."
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1200908",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "484.97",
+            "formula": "C25H31ClF2O5",
+            "smiles": "CCC(=O)O[C@]1(C(=O)CCl)[C@@H](C)C[C@H]2[C@@H]3C[C@H](F)C4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]21C",
+            "mech": "Glucocorticoid receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2690,7 +3311,23 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Topical corticosteroids",
-        "sub_class": "Topical corticosteroid"
+        "sub_class": "Topical corticosteroid",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Topicort ® (desoximetasone ointment USP) 0.05% is indicated for the relief of the inflammatory and pruritic manifestations of corticosteroid-responsive dermatoses.",
+            "dosing": "DOSAGE AND ADMINISTRATION Apply a thin film of Topicort ® (desoximetasone ointment USP) 0.05% to the affected skin areas twice daily. Rub in gently."
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1766",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "376.47",
+            "formula": "C22H29FO4",
+            "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@]2(C)[C@H]1C(=O)CO",
+            "mech": "Glucocorticoid receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2714,7 +3351,22 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Conventional systemics",
-        "sub_class": "Antimetabolite (DHFR)"
+        "sub_class": "Antimetabolite (DHFR)",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Methotrexate tablets are a diydrofolate reductase inhibitor indicated for the: • Treatment of adults and pediatric patients with acute lymphoblastic leukemia (ALL) as part of a combination chemotherapy maintenance regimen (1.1) • Treatmen…",
+            "dosing": "DOSAGE AND ADMINISTRATION • Instruct patients and caregivers to take the recommended dosage as directed, because medication errors have led to deaths. (2.1, 5.9) • Verify pregnancy status in…",
+            "moa": "Mechanism of Action Methotrexate inhibits dihydrofolic acid reductase. Dihydrofolates must be reduced to tetrahydrofolates by this enzyme before they can be utilized as carriers of one-carbon groups in the synthesis of purine nucleotides and thymidylate. Therefore, methotrexate i…",
+            "boxed": "WARNING: EMBRYO-FETAL TOXICITY, HYPERSENSITIVITY REACTIONS, SEVERE ADVERSE REACTIONS, and RISK OF MEDICATION ERRORS • Methotrexate tablets can cause embryo-fetal toxicity, including fetal death. For n…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL2074969",
+            "mol_type": "Small molecule",
+            "mw": "841.79",
+            "formula": "C35H43N11O14",
+            "smiles": "CN(Cc1cnc2nc(N)nc(N)c2n1)c1ccc(C(=O)N[C@@H](CCC(=O)N[C@@H](CCC(=O)N[C@@H](CCC(=O)N[C@@H](CCC(=O)O)C(=O)O)C(=O)O)C(=O)O)C(=O)O)cc1"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2744,7 +3396,21 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Conventional systemics",
-        "sub_class": "Calcineurin inhibitor"
+        "sub_class": "Calcineurin inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Kidney, Liver, and Heart Transplantation Neoral is indicated for the prophylaxis of organ rejection in kidney, liver, and heart allogeneic transplants. Neoral has been used in combination with azathioprine and corticosteroids. Rheumatoid …",
+            "dosing": "DOSAGE AND ADMINISTRATION Neoral Soft Gelatin Capsules (cyclosporine capsules, USP) MODIFIED and Neoral Oral Solution (cyclosporine oral solution, USP) MODIFIED Neoral has increased bioavail…",
+            "boxed": "WARNING Only physicians experienced in management of systemic immunosuppressive therapy for the indicated disease should prescribe Neoral. At doses used in solid organ transplantation, only physicians…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL406352",
+            "mol_type": "Small molecule",
+            "mw": "1202.63",
+            "formula": "C62H111N11O12",
+            "smiles": "C/C=C/C[C@@H](C)[C@@H](O)C1C(=O)N[C@@H](CC)C(=O)N(C)CC(=O)N(C)[C@@H](CC(C)C)C(=O)N[C@@H](C(C)C)C(=O)N(C)[C@@H](CC(C)C)C(=O)N[C@@H](C)C(=O)N[C@H](C)C(=O)N(C)[C@@H](CC(C)C)C(=O)N(C)[C@@H](CC(C)C)C(=O)N(C)[C@@H](C(C)C)C(=O)N1C"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2774,7 +3440,24 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Conventional systemics",
-        "sub_class": "Systemic retinoid"
+        "sub_class": "Systemic retinoid",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Acitretin Capsules, USP are indicated for the treatment of severe psoriasis in adults. Because of significant adverse effects associated with its use, Acitretin Capsules, USP should be prescribed only by those knowledgeable in the systemi…",
+            "dosing": "DOSAGE AND ADMINISTRATION There is intersubject variation in the pharmacokinetics, clinical efficacy, and incidence of side effects with Acitretin Capsules, USP. A number of the more common …",
+            "boxed": "CONTRAINDICATIONS AND WARNINGS: Pregnancy Acitretin must not be used by females who are pregnant, or who intend to become pregnant during therapy or at any time for at least 3 years following disconti…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1131",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "326.44",
+            "formula": "C21H26O3",
+            "smiles": "COc1cc(C)c(/C=C/C(C)=C/C=C/C(C)=C/C(=O)O)c(C)c1C",
+            "mech": "Retinoid receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2805,7 +3488,24 @@
         "phase_num": 4,
         "modality": "small_molecule",
         "moa_family": "Conventional systemics",
-        "sub_class": "Fumaric acid ester"
+        "sub_class": "Fumaric acid ester",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE Dimethyl fumarate delayed-release capsules are indicated for the treatment of relapsing forms of multiple sclerosis (MS), to include clinically isolated syndrome, relapsing-remitting disease, and active secondary progressive disease, in a…",
+            "dosing": "DOSAGE AND ADMINISTRATION Starting dose: 120 mg twice a day, orally, for 7 days ( 2.1 ) Maintenance dose after 7 days: 240 mg twice a day, orally ( 2.1 ) Swallow dimethyl fumarate delayed-re…",
+            "moa": "Mechanism of Action The mechanism by which dimethyl fumarate (DMF) exerts its therapeutic effect in multiple sclerosis is unknown. DMF and the metabolite, monomethyl fumarate (MMF), have been shown to activate the Nuclear factor (erythroid-derived 2)-like 2 (Nrf2) pathway in vitr…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL2107333",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "144.13",
+            "formula": "C6H8O4",
+            "smiles": "COC(=O)/C=C/C(=O)OC",
+            "mech": "Kelch-like ECH-associated protein 1 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -2845,7 +3545,19 @@
         "phase_num": 3,
         "modality": "small_molecule",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "A3 adenosine agonist"
+        "sub_class": "A3 adenosine agonist",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL3989873",
+            "mol_type": "Small molecule",
+            "max_phase": "3.0",
+            "mw": "510.29",
+            "formula": "C18H19IN6O4",
+            "smiles": "CNC(=O)[C@H]1O[C@@H](n2cnc3c(NCc4ccc(I)cc4)ncnc32)[C@H](O)[C@@H]1O",
+            "mech": "Adenosine A3 receptor agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2883,7 +3595,16 @@
         "phase_num": 2,
         "modality": "mAb",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "IL-22 inhibitor"
+        "sub_class": "IL-22 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL1743017",
+            "mol_type": "Antibody",
+            "max_phase": "2.0",
+            "mech": "Interleukin-22 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2912,7 +3633,16 @@
         "phase_num": 2,
         "modality": "mAb",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "OSMRβ inhibitor (IL-31/OSM)"
+        "sub_class": "OSMRβ inhibitor (IL-31/OSM)",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4594341",
+            "mol_type": "Antibody",
+            "max_phase": "2.0",
+            "mech": "Oncostatin-M-specific receptor subunit beta inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2950,7 +3680,16 @@
         "phase_num": 2,
         "modality": "mAb",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "GM-CSF inhibitor"
+        "sub_class": "GM-CSF inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL1743044",
+            "mol_type": "Antibody",
+            "max_phase": "2.0",
+            "mech": "Granulocyte-macrophage colony-stimulating factor inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -2990,7 +3729,21 @@
         "phase_num": 4,
         "modality": "mAb",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "IL-36R inhibitor"
+        "sub_class": "IL-36R inhibitor",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE SPEVIGO is indicated for the treatment of generalized pustular psoriasis (GPP) in adults and pediatric patients 12 years of age and older and weighing at least 40 kg. SPEVIGO is an interleukin-36 receptor antagonist indicated for the trea…",
+            "dosing": "DOSAGE AND ADMINISTRATION Subcutaneous Dosage for Treatment of GPP When Not Experiencing a Flare Administer a subcutaneous loading dose of 600 mg, followed by 300 mg subcutaneously 4 weeks l…",
+            "moa": "Mechanism of Action Spesolimab-sbzo is a humanized monoclonal immunoglobulin G1 antibody that inhibits interleukin-36 (IL-36) signaling by specifically binding to the IL36R. Binding of spesolimab-sbzo to IL36R prevents the subsequent activation of IL36R by its ligands (IL-36 α, β…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL4297911",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "IL36 receptor antagonist",
+            "action": "ANTAGONIST"
+          }
+        }
       },
       "sources": [
         "ot",
@@ -3030,7 +3783,16 @@
         "phase_num": 3,
         "modality": "mAb",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "IL-36R inhibitor"
+        "sub_class": "IL-36R inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4650441",
+            "mol_type": "Antibody",
+            "max_phase": "3.0",
+            "mech": "IL36 receptor antagonist",
+            "action": "ANTAGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -3061,7 +3823,19 @@
         "phase_num": 2,
         "modality": "small_molecule",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "RIPK1 inhibitor"
+        "sub_class": "RIPK1 inhibitor",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL4071864",
+            "mol_type": "Small molecule",
+            "max_phase": "2.0",
+            "mw": "377.40",
+            "formula": "C20H19N5O3",
+            "smiles": "CN1C(=O)[C@@H](NC(=O)c2n[nH]c(Cc3ccccc3)n2)COc2ccccc21",
+            "mech": "Receptor-interacting serine/threonine-protein kinase 1 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -3100,7 +3874,24 @@
         "phase_num": -1,
         "modality": "small_molecule",
         "moa_family": "Novel / emerging mechanisms",
-        "sub_class": "S1P receptor modulator"
+        "sub_class": "S1P receptor modulator",
+        "detail": {
+          "openfda": {
+            "indication": "INDICATIONS AND USAGE PONVORY is indicated for the treatment of relapsing forms of multiple sclerosis (MS), to include clinically isolated syndrome, relapsing-remitting disease, and active secondary progressive disease, in adults. PONVORY is a sphingosine 1-ph…",
+            "dosing": "DOSAGE AND ADMINISTRATION Assessments are required prior to initiating PONVORY ( 2.1 ) Titration is required for treatment initiation ( 2.2 ) The recommended maintenance dosage is 20 mg take…",
+            "moa": "Mechanism of Action Ponesimod is a S1P receptor 1 modulator that binds with high affinity to S1P receptor 1. Ponesimod blocks the capacity of lymphocytes to egress from lymph nodes, reducing the number of lymphocytes in peripheral blood. The mechanism by which ponesimod exerts th…"
+          },
+          "chembl": {
+            "chembl_id": "CHEMBL1096146",
+            "mol_type": "Small molecule",
+            "max_phase": "4.0",
+            "mw": "460.98",
+            "formula": "C23H25ClN2O4S",
+            "smiles": "CCC/N=C1\\S/C(=C\\c2ccc(OC[C@H](O)CO)c(Cl)c2)C(=O)N1c1ccccc1C",
+            "mech": "Sphingosine 1-phosphate receptor Edg-1 agonist",
+            "action": "AGONIST"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -3130,7 +3921,16 @@
         "phase_num": -1,
         "modality": "mAb",
         "moa_family": "Withdrawn / discontinued",
-        "sub_class": "Anti-CD11a (LFA-1)"
+        "sub_class": "Anti-CD11a (LFA-1)",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL1201575",
+            "mol_type": "Antibody",
+            "max_phase": "4.0",
+            "mech": "Integrin alpha-L/beta-2 (LFA-1) inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
@@ -3169,7 +3969,16 @@
         "phase_num": -1,
         "modality": "protein",
         "moa_family": "Withdrawn / discontinued",
-        "sub_class": "Anti-CD2 (LFA-3 fusion)"
+        "sub_class": "Anti-CD2 (LFA-3 fusion)",
+        "detail": {
+          "chembl": {
+            "chembl_id": "CHEMBL1201571",
+            "mol_type": "Protein",
+            "max_phase": "4.0",
+            "mech": "T-cell surface antigen CD2 inhibitor",
+            "action": "INHIBITOR"
+          }
+        }
       },
       "sources": [
         "ot"
