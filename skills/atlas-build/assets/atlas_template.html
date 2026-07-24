@@ -244,6 +244,14 @@ button{font-family:inherit;cursor:pointer}
 .anchor{cursor:pointer}
 /* controls */
 .ctrls{position:fixed;right:14px;bottom:14px;display:flex;gap:6px;z-index:30}
+/* draggable quick-jump nav widget */
+.navwidget{position:fixed;left:14px;top:70px;z-index:31;width:132px;background:var(--panel);border:1px solid var(--rule2);border-radius:5px;box-shadow:0 3px 12px rgba(0,0,0,.20)}
+.navwidget .nwh{cursor:grab;user-select:none;padding:4px 8px;font-family:var(--cond);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:10.5px;color:var(--accent);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:6px}
+.navwidget .nwh::before{content:"⠿";color:var(--muted);font-size:12px}
+.navwidget.dragging .nwh{cursor:grabbing}
+.navwidget .nwb{display:flex;flex-direction:column;padding:4px}
+.navwidget .nwb button{border:0;background:transparent;text-align:left;padding:3px 7px;border-radius:3px;color:var(--ink);font-size:10.5px;font-weight:600;font-family:inherit}
+.navwidget .nwb button:hover{background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent)}
 .ctrls button{width:32px;height:32px;border:1px solid var(--rule2);background:var(--panel);color:var(--ink);border-radius:4px;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .hintbar{position:fixed;left:14px;bottom:12px;z-index:30;font-size:10px;color:var(--muted);background:color-mix(in srgb,var(--paper) 80%,transparent);padding:3px 8px;border:1px solid var(--rule)}
 .search{position:fixed;left:50%;transform:translateX(-50%);top:12px;z-index:30;background:var(--panel);border:1px solid var(--rule2);color:var(--ink);border-radius:3px;padding:6px 9px;font-size:12px;width:210px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
@@ -394,6 +402,15 @@ button{font-family:inherit;cursor:pointer}
 <div class="pathribbon" id="ribbon"></div>
 <div class="hintbar" id="hintbar">Drag to pan · scroll to zoom · click any entity for its relationship map</div>
 <div class="ctrls"><button id="net-toggle" title="Toggle network explorer">⌗</button><button id="zin">+</button><button id="zout">–</button><button id="zfit">⤢</button><button id="theme">◐</button></div>
+<div class="navwidget" id="navwidget"><div class="nwh" id="nwh" title="Drag to move">Jump to</div><div class="nwb">
+<button data-goto="__top">▲&nbsp; Top</button>
+<button data-goto="disease mechanism">◆&nbsp; Mechanism</button>
+<button data-goto="market &amp; business">$&nbsp; Market</button>
+<button data-goto="pipeline">▦&nbsp; Pipeline</button>
+<button data-goto="market research">▧&nbsp; Forecast</button>
+<button data-goto="reference">§&nbsp; References</button>
+<button data-goto="glossary">A&nbsp; Glossary</button>
+</div></div>
 <div class="backdrop" id="backdrop"><div class="modal" id="modal"></div></div>
 
 <script id="graph" type="application/json">__GRAPH__</script>
@@ -1168,7 +1185,22 @@ function fit(){const vw=vp.clientWidth,vh=vp.clientHeight;const FH=Math.min(ADAP
 vp.addEventListener("wheel",e=>{e.preventDefault();const r=vp.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
   const ns=Math.min(3,Math.max(0.15,sc*(e.deltaY<0?1.12:0.89)));tx=mx-(mx-tx)*ns/sc;ty=my-(my-ty)*ns/sc;sc=ns;apply();},{passive:false});
 let pan=null;
-vp.addEventListener("mousedown",e=>{if(e.target.closest(".search,.pathbar,.ctrls,.backdrop"))return;pan={x:e.clientX-tx,y:e.clientY-ty};vp.classList.add("drag");});
+vp.addEventListener("mousedown",e=>{if(e.target.closest(".search,.pathbar,.ctrls,.backdrop,.navwidget"))return;pan={x:e.clientX-tx,y:e.clientY-ty};vp.classList.add("drag");});
+// ---- quick-jump nav widget: camera to a region by its label, and drag-to-move the widget ----
+function gotoLabel(txt){
+  if(txt==="__top"){fit();return;}
+  let el=[...CANVAS.querySelectorAll(".clusterlabel,.secband")].find(n=>n.textContent.toLowerCase().includes(txt));
+  if(!el){const h=[...CANVAS.querySelectorAll(".panel h4")].find(n=>n.textContent.toLowerCase().includes(txt)); if(h)el=h.closest(".panel");}
+  if(!el)return;
+  const vw=vp.clientWidth; sc=Math.min(vw/CW*1.55,0.7); tx=Math.round((vw-CW*sc)/2); ty=Math.round(96-el.offsetTop*sc); apply();
+}
+(function(){const nw=document.getElementById("navwidget"),nwh=document.getElementById("nwh");if(!nw)return;
+  nw.querySelectorAll("button[data-goto]").forEach(b=>b.addEventListener("click",()=>gotoLabel(b.getAttribute("data-goto").toLowerCase())));
+  let d=null;
+  nwh.addEventListener("mousedown",e=>{d={x:e.clientX-nw.offsetLeft,y:e.clientY-nw.offsetTop};nw.classList.add("dragging");e.preventDefault();});
+  addEventListener("mousemove",e=>{if(d){nw.style.left=Math.max(0,e.clientX-d.x)+"px";nw.style.top=Math.max(0,e.clientY-d.y)+"px";nw.style.right="auto";}});
+  addEventListener("mouseup",()=>{d=null;nw.classList.remove("dragging");});
+})();
 addEventListener("mousemove",e=>{if(pan){tx=e.clientX-pan.x;ty=e.clientY-pan.y;apply();}});
 addEventListener("mouseup",()=>{pan=null;vp.classList.remove("drag");});
 document.getElementById("zin").onclick=()=>{sc=Math.min(3,sc*1.2);apply();};
