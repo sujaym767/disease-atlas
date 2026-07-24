@@ -105,7 +105,11 @@ Anchor to NMA / onset-of-action data where available; label illustrative.
 The handful of pivotal/registrational trials that decide the field, each with CT.gov-style detail
 (endpoints, latest readout, timeline, key inclusion, sites, KOLs, why it matters). Pull the granular
 fields live from ClinicalTrials.gov v2 by NCT id; curate the readout from cited toplines. Named KOLs
-= pivotal-trial lead authors.
+= pivotal-trial lead authors. **Always carry the real `nct_id`** — the builder turns it into a
+canonical `clinicaltrials.gov/study/<NCT>` link, and every asset should carry its `nct_ids` (the
+fetcher already aggregates them). Programmatic-first: NCT ids, phases, sponsors, targets, MoA,
+approvals come from the APIs/MCP tools (`mcp__Clinical_Trials__*`, `mcp__Open_Targets__*`,
+`mcp__ChEMBL__*`), verifiable and never guessed; only sales/market/deals/fine-epi are web-cited.
 
 ## 6. `glossary`
 

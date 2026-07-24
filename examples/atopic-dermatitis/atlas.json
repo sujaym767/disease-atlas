@@ -347,7 +347,17 @@
     "efficacy": {
      "p75": 51
     },
-    "note": "FY2024 Dupixent global net sales ~$14.15B (all indications); the category anchor"
+    "note": "FY2024 Dupixent global net sales ~$14.15B (all indications); the category anchor",
+    "nct_ids": [
+     "NCT03720470",
+     "NCT01639040",
+     "NCT05265234",
+     "NCT02277769",
+     "NCT04512339",
+     "NCT07352566",
+     "NCT01385657",
+     "NCT02612454"
+    ]
    },
    {
     "id": "d_tralokinumab",
@@ -365,7 +375,17 @@
     "efficacy": {
      "p75": 33
     },
-    "note": "first selective IL-13 mAb in AD"
+    "note": "first selective IL-13 mAb in AD",
+    "nct_ids": [
+     "NCT03562377",
+     "NCT05958407",
+     "NCT03363854",
+     "NCT05388760",
+     "NCT05194540",
+     "NCT07352566",
+     "NCT03526861",
+     "NCT03761537"
+    ]
    },
    {
     "id": "d_lebrikizumab",
@@ -383,7 +403,17 @@
     "efficacy": {
      "p75": 43
     },
-    "note": "approved US Sep 2024; q4w maintenance"
+    "note": "approved US Sep 2024; q4w maintenance",
+    "nct_ids": [
+     "NCT06526182",
+     "NCT05369403",
+     "NCT05372419",
+     "NCT07352566",
+     "NCT04250350",
+     "NCT05990725",
+     "NCT02465606",
+     "NCT06921759"
+    ]
    },
    {
     "id": "d_cendakimab",
@@ -412,7 +442,17 @@
     "route": "SC",
     "dose": "q4w",
     "approval_year": 2024,
-    "note": "targets pruritus / prurigo nodularis; approved AD 2024"
+    "note": "targets pruritus / prurigo nodularis; approved AD 2024",
+    "nct_ids": [
+     "NCT07352566",
+     "NCT03989206",
+     "NCT03921411",
+     "NCT04921345",
+     "NCT04921345",
+     "NCT01986933",
+     "NCT03100344",
+     "NCT03985943"
+    ]
    },
    {
     "id": "d_abrocitinib",
@@ -430,7 +470,15 @@
     "efficacy": {
      "p75": 63
     },
-    "note": "JAK1-selective; boxed warning (JAK class)"
+    "note": "JAK1-selective; boxed warning (JAK class)",
+    "nct_ids": [
+     "NCT07352566",
+     "NCT07242638",
+     "NCT05602207",
+     "NCT06807268",
+     "NCT04903093",
+     "NCT06807281"
+    ]
    },
    {
     "id": "d_upadacitinib",
@@ -448,7 +496,17 @@
     "efficacy": {
      "p75": 70
     },
-    "note": "highest EASI-75 among orals; boxed warning (JAK class)"
+    "note": "highest EASI-75 among orals; boxed warning (JAK class)",
+    "nct_ids": [
+     "NCT06390722",
+     "NCT07352566",
+     "NCT04195698",
+     "NCT03568318",
+     "NCT03661138",
+     "NCT06701331",
+     "NCT02925117",
+     "NCT03738397"
+    ]
    },
    {
     "id": "d_baricitinib",
@@ -466,7 +524,17 @@
     "efficacy": {
      "p75": 45
     },
-    "note": "approved AD in EU/Japan; not US for AD; boxed warning"
+    "note": "approved AD in EU/Japan; not US for AD; boxed warning",
+    "nct_ids": [
+     "NCT03435081",
+     "NCT03334396",
+     "NCT03334435",
+     "NCT03952559",
+     "NCT03334422",
+     "NCT07262983",
+     "NCT02576938",
+     "NCT03733301"
+    ]
    },
    {
     "id": "d_delgocitinib",
@@ -481,7 +549,15 @@
     "route": "topical",
     "dose": "BID",
     "approval_year": 2024,
-    "note": "approved chronic hand eczema (EU 2024)"
+    "note": "approved chronic hand eczema (EU 2024)",
+    "nct_ids": [
+     "NCT03826901",
+     "NCT04949841",
+     "NCT05355818",
+     "NCT05486117",
+     "NCT06004050",
+     "NCT05259722"
+    ]
    },
    {
     "id": "d_ruxolitinib",
@@ -496,7 +572,13 @@
     "route": "topical",
     "dose": "BID",
     "approval_year": 2021,
-    "note": "first topical JAK for AD (US 2021)"
+    "note": "first topical JAK for AD (US 2021)",
+    "nct_ids": [
+     "NCT07352566",
+     "NCT06832618",
+     "NCT07661979",
+     "NCT04921969"
+    ]
    },
    {
     "id": "d_crisaborole",
@@ -511,7 +593,13 @@
     "route": "topical",
     "dose": "BID",
     "approval_year": 2016,
-    "note": "non-steroidal topical PDE4"
+    "note": "non-steroidal topical PDE4",
+    "nct_ids": [
+     "NCT07352566",
+     "NCT04023084",
+     "NCT03645057",
+     "NCT03832010"
+    ]
    },
    {
     "id": "d_roflumilast",
@@ -526,7 +614,11 @@
     "route": "topical",
     "dose": "QD",
     "approval_year": 2024,
-    "note": "cream 0.15% approved AD (US 2024)"
+    "note": "cream 0.15% approved AD (US 2024)",
+    "nct_ids": [
+     "NCT07352566",
+     "NCT07297602"
+    ]
    },
    {
     "id": "d_tapinarof",
@@ -541,7 +633,10 @@
     "route": "topical",
     "dose": "QD",
     "approval_year": 2024,
-    "note": "approved AD ≥2y (US Dec 2024)"
+    "note": "approved AD ≥2y (US Dec 2024)",
+    "nct_ids": [
+     "NCT07352566"
+    ]
    },
    {
     "id": "d_tacrolimus",
@@ -556,7 +651,17 @@
     "route": "topical",
     "dose": "BID",
     "approval_year": 2000,
-    "note": "steroid-sparing; boxed warning (theoretical malignancy)"
+    "note": "steroid-sparing; boxed warning (theoretical malignancy)",
+    "nct_ids": [
+     "NCT01782729",
+     "NCT07352566",
+     "NCT01828879",
+     "NCT01745159",
+     "NCT07519174",
+     "NCT00148746",
+     "NCT05324618",
+     "NCT01702181"
+    ]
    },
    {
     "id": "d_pimecrolimus",
@@ -570,7 +675,17 @@
     "phase": "approved",
     "route": "topical",
     "dose": "BID",
-    "approval_year": 2001
+    "approval_year": 2001,
+    "nct_ids": [
+     "NCT00117377",
+     "NCT00925730",
+     "NCT00510003",
+     "NCT00124709",
+     "NCT00946478",
+     "NCT00119158",
+     "NCT00509990",
+     "NCT00120302"
+    ]
    },
    {
     "id": "d_amlitelimab",
@@ -584,7 +699,17 @@
     "phase": "phase3",
     "route": "SC",
     "dose": "q4w",
-    "note": "non-depleting OX40L; Ph2 STREAM-AD positive; Ph3 ongoing"
+    "note": "non-depleting OX40L; Ph2 STREAM-AD positive; Ph3 ongoing",
+    "nct_ids": [
+     "NCT06224348",
+     "NCT06407934",
+     "NCT06686628",
+     "NCT06181435",
+     "NCT05492578",
+     "NCT06241118",
+     "NCT05131477",
+     "NCT06015308"
+    ]
    },
    {
     "id": "d_rocatinlimab",
@@ -598,7 +723,17 @@
     "phase": "phase3",
     "route": "SC",
     "dose": "q4w",
-    "note": "Ph3 ROCKET programme"
+    "note": "Ph3 ROCKET programme",
+    "nct_ids": [
+     "NCT05891119",
+     "NCT05651711",
+     "NCT05704738",
+     "NCT05724199",
+     "NCT05899816",
+     "NCT05633355",
+     "NCT05882877",
+     "NCT06214481"
+    ]
    },
    {
     "id": "d_tezepelumab",
@@ -612,7 +747,11 @@
     "phase": "phase2",
     "route": "SC",
     "dose": "q4w",
-    "note": "approved asthma; Ph2 AD mixed"
+    "note": "approved asthma; Ph2 AD mixed",
+    "nct_ids": [
+     "NCT00757042",
+     "NCT03809663"
+    ]
    }
   ]
  },
@@ -1080,8 +1219,29 @@
   ]
  },
  "trials_focus": {
-  "trials": [],
-  "note": "Detailed trial cards would be pulled from ClinicalTrials.gov v2 by NCT id in a full run."
+  "trials": [
+   {
+    "name": "JADE COMPARE",
+    "drug": "abrocitinib",
+    "fam": "jak",
+    "sponsor": "Pfizer",
+    "phase": "Phase 3",
+    "status": "Completed",
+    "nct_id": "NCT03720470",
+    "endpoints": [
+     "IGA 0/1 and EASI-75 at Week 12 vs placebo",
+     "Itch response (PP-NRS4) at Week 2 vs dupilumab"
+    ],
+    "readout": "Oral abrocitinib 200mg showed faster itch response than dupilumab; a landmark oral-vs-biologic head-to-head in AD.",
+    "start": "2018",
+    "end": "2020",
+    "inclusion": "Adults with moderate-to-severe AD on background topical therapy.",
+    "sites": "Global multi-country",
+    "kols": "Bieber, Simpson, Thaci (pivotal authors)",
+    "significance": "First head-to-head of an oral JAK against the IL-4Rα biologic standard."
+   }
+  ],
+  "note": "Cards carry the real NCT id, which deep-links to the exact ClinicalTrials.gov record. A full run pulls one card per pivotal programme by NCT id."
  },
  "catalysts": [
   {

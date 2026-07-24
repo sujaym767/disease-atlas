@@ -27,9 +27,14 @@ The base asset (`id`, `name`, `brand`, `company`, `moa_class`, `target`, `modali
   "is_combo": false,
   "efficacy": { "p75": 88, "p90": 75, "p100": 36 },  // response benchmark (e.g. PASI); powers the efficacy + kinetics panels
   "note": "…",
+  "nct_ids": ["NCT03047395", "NCT02694523"],  // real ClinicalTrials.gov ids (from fetch_clinical_trials.py); enable resolvable trial deep-links
   "detail": { "openfda": {…}, "chembl": {…}, "pubchem": {…} }  // optional drug-detail enrichment (fetch_drug_detail.py)
 }
 ```
+**Deep-links resolve, never guess.** A trial link is canonical `clinicaltrials.gov/study/<NCT>` when an
+`nct_id` is present, else a search scoped to the atlas's own disease (`meta.focus`) — so it always
+returns results. Give `trials_focus[].nct_id` and `pipeline.assets[].nct_ids` real ids captured from
+ClinicalTrials.gov; the builder does the rest. Never hand-type an NCT id you haven't verified.
 
 ## `families` — the mechanism colour lanes
 

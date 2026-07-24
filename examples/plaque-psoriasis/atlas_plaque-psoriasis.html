@@ -414,6 +414,11 @@ const MOA=Object.fromEntries(G.nodes.filter(n=>n.type=="MoAClass").map(m=>[m.att
 const STAGE={approved:["M","--s6"],filed:["F","--s1"],phase3:["III","--s1"],phase2_3:["II/III","--s1"],phase2:["II","--s4"],phase1_2:["I/II","--s4"],phase1:["I","--s2"],preclinical:["P","--muted"],discontinued:["✕","--s8"]};
 const PORD={approved:0,filed:1,phase3:2,phase2_3:3,phase2:4,phase1_2:5,phase1:6,preclinical:7,discontinued:8};
 const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
+// resolvable ClinicalTrials.gov link: a specific study when we have an NCT id, else a
+// search scoped to THIS atlas's disease (never a hardcoded condition) — always returns results.
+const ctLink=(nct,drug)=>nct
+  ?"https://clinicaltrials.gov/study/"+encodeURIComponent(nct)
+  :"https://clinicaltrials.gov/search?cond="+encodeURIComponent(G.meta.focus||"")+(drug?"&intr="+encodeURIComponent(drug):"");
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
 const CW=3400, CH=5580; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 
@@ -790,7 +795,7 @@ function openTrialModal(i){const t=(G.trials_focus||[])[i]; if(!t)return; const 
   body.append(gr);
   const dr=DBYN[(t.drug||"").toLowerCase()],links=el("div",{cls:"xlinks"});
   if(dr)links.append(el("a",{href:"#",text:"→ "+t.drug+" drug details",onclick:e=>{e.preventDefault();openModal(dr.id);}}));
-  links.append(el("a",{href:"https://clinicaltrials.gov/search?cond=Plaque+Psoriasis&intr="+encodeURIComponent(t.drug),target:"_blank",rel:"noopener",text:"ClinicalTrials.gov ↗"}));
+  links.append(el("a",{href:ctLink(t.nct_id,t.drug),target:"_blank",rel:"noopener",text:(t.nct_id?"Trial "+t.nct_id:"ClinicalTrials.gov")+" ↗"}));
   body.append(links);
   if(G.trials_focus_note)body.append(el("div",{cls:"xnote",text:G.trials_focus_note}));
   modal.append(hd,body); backdrop.classList.add("on");
@@ -1099,7 +1104,7 @@ function fillInfo(info,n){const a=n.attrs,kp=el("div",{cls:"kpis"}),K=(v,l)=>{if
     const links=[
       el("a",{href:"https://go.drugbank.com/unearth/q?query="+q+"&searcher=drugs",target:"_blank",rel:"noopener",text:"DrugBank ↗"}),
       el("a",{href:"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query="+q,target:"_blank",rel:"noopener",text:"FDA label (DailyMed) ↗"}),
-      el("a",{href:"https://clinicaltrials.gov/search?cond=Plaque+Psoriasis&intr="+q,target:"_blank",rel:"noopener",text:"ClinicalTrials.gov ↗"})];
+      el("a",{href:ctLink((a.nct_ids||[])[0]&&(a.nct_ids||[]).length==1?a.nct_ids[0]:null,n.label),target:"_blank",rel:"noopener",text:"ClinicalTrials.gov ↗"})];
     if(cid)links.push(el("a",{href:"https://pubchem.ncbi.nlm.nih.gov/compound/"+cid,target:"_blank",rel:"noopener",text:"PubChem CID "+cid+" ↗"}));
     info.append(el("div",{cls:"xlinks"},links));
     info.append(el("div",{cls:"xnote",text:"Deep drug data (PK, targets, structure, interactions) would be pulled on demand from openFDA / ChEMBL; DrugBank's full dataset needs a commercial licence."}));}}

@@ -102,6 +102,7 @@ def compile_atlas(atlas):
             "moa_family": FAM.get(fam, {}).get("label"), "highest_phase": phase,
             "phase_num": d.get("phase_num", PHASE_NUM.get(phase, 2)),
             "p75": eff.get("p75"), "p90": eff.get("p90"), "p100": eff.get("p100"),
+            "nct_ids": d.get("nct_ids") or None,
         }
         if d.get("annual_sales_usd_m") is not None:
             attrs["sales"] = d["annual_sales_usd_m"]
