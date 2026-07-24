@@ -120,7 +120,18 @@ python skills/atlas-build/scripts/build_atlas.py runs/<slug>/atlas.json \
        --out runs/<slug>/atlas_<slug>.html
 ```
 Open it; confirm the strategy map, mechanism schematic, ER popup, network + path-finding, and the
-four market-research bands render (or show honest empty states). Headless-verify 0 JS errors.
+four market-research bands render (or show honest empty states).
+
+### 7b. QC gate (data + visual)
+```bash
+python skills/atlas-build/scripts/qc_atlas.py runs/<slug>/atlas.json \
+       --html runs/<slug>/atlas_<slug>.html --check-links --shot runs/<slug>/qc.png
+```
+Blocks delivery on hard failures: malformed/dead NCT ids or source URLs, a data section that
+rendered empty, or any JS error. It also reports a canvas **fill-ratio** (low = blank space to
+tune). Then do the **LLM-judgment pass** on the saved screenshot — check for mislabelling (e.g. an
+endpoint named for the wrong indication), overlaps, and aesthetic balance the deterministic gate
+can't see. Fix and re-run until QC passes clean.
 
 ### 8. Deliver
 Share the HTML (renders as a Claude artifact, opens by double-click). Summarize the headline picture,
