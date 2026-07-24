@@ -227,6 +227,8 @@ atlas={
    "generator":"disease-atlas research skill (demonstration run)",
    "one_liner":"Chronic type-2 (IL-4/IL-13-driven), intensely itchy inflammatory skin disease — a maturing biologics + oral-JAK market anchored by Dupixent, now competing on itch, convenience, safety and durability.",
    "mechanism_label":"Type-2 (IL-4/IL-13/IL-31) cascade → intracellular signalling","efficacy_label":"EASI-75",
+   "cascade_label":"Type-2 immune cascade","signal_tracks":["Type-2 differentiation (IL-4/IL-13)","Itch & barrier signalling"],
+   "signal_caption":"Epithelial alarmins activate ILC2/Th2 cells → <b>IL-4/IL-13</b> signal via <b>IL-4Rα</b> and <b>JAK1/STAT6</b>; <b>IL-31</b> drives itch and <b>IL-13</b> drives keratinocyte barrier dysfunction. Click any node for the science.",
    "sales_note":"Dupixent sales are all-indication franchise totals (AD is the majority). Market and segment figures are bottom-up [Estimated] and cross-checked against published envelopes.",
    "coverage_note":"Demonstration atlas: structural data (assets, mechanisms, companies, phases) from live Open Targets + ClinicalTrials.gov + openFDA pulls; market/forecast figures are labeled [Estimated] or anchored to public company revenue. A full research pass would web-cite each market datum.",
    "headline_stats":[{"label":"Global prevalence (GBD)","value":"~223M"},{"label":"US adults / children","value":"~7% / ~13%"},

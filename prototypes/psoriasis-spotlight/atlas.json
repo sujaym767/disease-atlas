@@ -10,6 +10,12 @@
   "sales_note": "Franchise-sales donut is company-reported FY2025 totals across ALL indications. The dedicated attribution region below estimates the psoriasis-only split. PASI figures are cross-trial (NMA-anchored) unless a head-to-head is noted.",
   "mechanism_label": "IL-23 / IL-17 cascade → intracellular signalling",
   "efficacy_label": "PASI 90",
+  "cascade_label": "IL-23 / IL-17 immune cascade",
+  "signal_tracks": [
+   "IL-23 / Th17 differentiation",
+   "IL-17 / TNF effector signalling"
+  ],
+  "signal_caption": "IL-23 engages its receptor → <b>TYK2/JAK2</b> phosphorylate <b>STAT3</b> → <b>RORγt</b> locks in Th17 identity; IL-17 &amp; TNF drive <b>NF-κB</b> in keratinocytes. Click any node for the science.",
   "headline_stats": [
    {
     "label": "Global prevalence (GBD 2021)",

@@ -28,7 +28,13 @@
     "label": "Forecast 2030 · base",
     "value": "~$36B"
    }
-  ]
+  ],
+  "cascade_label": "Type-2 immune cascade",
+  "signal_tracks": [
+   "Type-2 differentiation (IL-4/IL-13)",
+   "Itch & barrier signalling"
+  ],
+  "signal_caption": "Epithelial alarmins activate ILC2/Th2 cells → <b>IL-4/IL-13</b> signal via <b>IL-4Rα</b> and <b>JAK1/STAT6</b>; <b>IL-31</b> drives itch and <b>IL-13</b> drives keratinocyte barrier dysfunction. Click any node for the science."
  },
  "epidemiology": {
   "headline": "~223M globally · ~10% of children, ~7% of US adults",
