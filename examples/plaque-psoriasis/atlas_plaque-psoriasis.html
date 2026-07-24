@@ -436,6 +436,9 @@ const fmt$=m=>m==null?null:(m>=1000?"$"+(m/1000).toFixed(1)+"B":"$"+m+"M");
 const ctLink=(nct,drug)=>nct
   ?"https://clinicaltrials.gov/study/"+encodeURIComponent(nct)
   :"https://clinicaltrials.gov/search?cond="+encodeURIComponent(G.meta.focus||"")+(drug?"&intr="+encodeURIComponent(drug):"");
+// layout overrides from the polish pass: region-id -> {x?,y?,w?}. Default {} (deterministic layout).
+const OVERRIDES={};
+const rslug=s=>String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,44);
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
 const CW=3400, CH=5580; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
 let TREE_BOTTOM=0, ADAPT_CH=CH;   // set by buildHierarchy / layoutAdapt (content-adaptive vertical flow)
@@ -619,7 +622,7 @@ function hbox(n,oc,ocv,tint){
   return d;
 }
 /* ---------- panels ---------- */
-function panel(x,y,w,title,bodyFn){const p=el("div",{cls:"panel",style:`left:${x}px;top:${y}px;width:${w}px`});if(title)p.append(el("h4",{text:title}));const c=el("div",{cls:"pc"});bodyFn(c);p.append(c);CANVAS.append(p);return p;}
+function panel(x,y,w,title,bodyFn){const p=el("div",{cls:"panel","data-region":rslug(title),style:`left:${x}px;top:${y}px;width:${w}px`});if(title)p.append(el("h4",{text:title}));const c=el("div",{cls:"pc"});bodyFn(c);p.append(c);CANVAS.append(p);return p;}
 function clabel(x,y,text,sub){CANVAS.append(el("div",{cls:"clusterlabel",style:`left:${x}px;top:${y}px`,html:esc(text)+(sub?` <span>${esc(sub)}</span>`:"")}));}
 function buildPanels(){
   const e=G.epi||{};
@@ -1308,6 +1311,9 @@ function layoutAdapt(){
     [...CANVAS.querySelectorAll(".panel,.clusterlabel,.secband")]
       .filter(n=>n.offsetTop>=B0-120).forEach(n=>{n.style.top=(n.offsetTop+dY)+"px";});
   }
+  // apply polish-pass layout overrides (region-id → {x,y,w}) before sizing the canvas
+  Object.entries(OVERRIDES||{}).forEach(([r,o])=>{const e=CANVAS.querySelector('[data-region="'+r+'"]');if(!e||!o)return;
+    if(o.x!=null)e.style.left=o.x+"px"; if(o.y!=null)e.style.top=o.y+"px"; if(o.w!=null)e.style.width=o.w+"px";});
   const all=[...CANVAS.querySelectorAll(".panel,.clusterlabel,.secband,.node")].map(n=>n.offsetTop+n.offsetHeight);
   ADAPT_CH=Math.round(Math.max(TREE_BOTTOM,...all)+70);
   CANVAS.style.height=ADAPT_CH+"px"; WIRES.setAttribute("height",ADAPT_CH);

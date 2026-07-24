@@ -133,6 +133,19 @@ tune). Then do the **LLM-judgment pass** on the saved screenshot — check for m
 endpoint named for the wrong indication), overlaps, and aesthetic balance the deterministic gate
 can't see. Fix and re-run until QC passes clean.
 
+### 7c. Layout polish (when the fill-ratio is low / a sparse indication)
+The builder's `layoutAdapt()` sizes and flows deterministically, but a *sparse* indication can still
+leave a big blank (the QC fill-ratio flags it). Close it with the polish pass:
+```bash
+python skills/atlas-build/scripts/polish_atlas.py runs/<slug>/atlas.json --html runs/<slug>/atlas_<slug>.html \
+       --manifest runs/<slug>/layout_manifest.json --shot runs/<slug>/layout.png
+```
+This emits a **layout manifest** (canvas size, every panel's `data-region` box, and the largest
+blank rectangles) + a full-poster screenshot. Feed both to the **polish agent**: it returns layout
+overrides (`region-id → {x,y,w}`) that relocate/resize panels to fill the blanks without overlapping
+the tree/schematic. Save them as `runs/<slug>/atlas_<slug>.overrides.json` (build_atlas.py picks up a
+sibling `<atlas>.overrides.json` automatically), rebuild, and re-run QC — the fill-ratio should rise.
+
 ### 8. Deliver
 Share the HTML (renders as a Claude artifact, opens by double-click). Summarize the headline picture,
 what's well-covered vs thin, and the key caveats. Offer to promote a finished atlas into `examples/`.

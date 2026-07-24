@@ -23,10 +23,11 @@ def slug(s):
     return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", (s or "").lower())).strip("-")
 
 
-def render(graph, template, title):
+def render(graph, template, title, overrides=None):
     # compact JSON, then neutralize "</" so it can't terminate the <script> tag (JSON.parse round-trips "<\/")
     data = json.dumps(graph, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    return template.replace("__TITLE__", title).replace("__GRAPH__", data)
+    ov = json.dumps(overrides or {}, separators=(",", ":")).replace("</", "<\\/")
+    return template.replace("__TITLE__", title).replace("__GRAPH__", data).replace("__OVERRIDES__", ov)
 
 
 def main():
@@ -34,6 +35,7 @@ def main():
     ap.add_argument("atlas", help="path to atlas.json")
     ap.add_argument("--out", help="output HTML path (default alongside atlas.json)")
     ap.add_argument("--graph", help="also write the intermediate graph.json here")
+    ap.add_argument("--overrides", help="layout-overrides JSON from the polish pass (default: <atlas>.overrides.json if present)")
     ap.add_argument("--template", default=DEFAULT_TEMPLATE)
     args = ap.parse_args()
 
@@ -42,10 +44,14 @@ def main():
     if args.graph:
         json.dump(graph, open(args.graph, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
+    # layout overrides: explicit --overrides, else a sibling <atlas>.overrides.json, else none
+    ov_path = args.overrides or os.path.splitext(args.atlas)[0] + ".overrides.json"
+    overrides = json.load(open(ov_path, encoding="utf-8")) if os.path.exists(ov_path) else {}
+
     disease = (atlas.get("meta", {}) or {}).get("disease", "Disease")
     title = "%s — Atlas" % disease
     template = open(args.template, encoding="utf-8").read()
-    html = render(graph, template, title)
+    html = render(graph, template, title, overrides)
 
     out = args.out or os.path.join(os.path.dirname(os.path.abspath(args.atlas)),
                                    "atlas_%s.html" % slug(disease))
