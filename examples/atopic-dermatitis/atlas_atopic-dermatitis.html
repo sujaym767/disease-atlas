@@ -437,7 +437,7 @@ const ctLink=(nct,drug)=>nct
   ?"https://clinicaltrials.gov/study/"+encodeURIComponent(nct)
   :"https://clinicaltrials.gov/search?cond="+encodeURIComponent(G.meta.focus||"")+(drug?"&intr="+encodeURIComponent(drug):"");
 // layout overrides from the polish pass: region-id -> {x?,y?,w?}. Default {} (deterministic layout).
-const OVERRIDES={};
+const OVERRIDES={"efficacy-easi-75-at-wk-12-16":{"x":590,"y":965,"w":870},"response-kinetics-easi-75-onset-by-class":{"x":590,"y":1113,"w":870},"top-products-2025-franchise-sales":{"x":590,"y":1420,"w":870},"deal-flow-m-a-licensing-partnerships":{"x":590,"y":1671,"w":870}};
 const rslug=s=>String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,44);
 const CANVAS=document.getElementById("canvas"), WIRES=document.getElementById("wires");
 const CW=3400, CH=5580; CANVAS.style.width=CW+"px"; CANVAS.style.height=CH+"px"; WIRES.setAttribute("width",CW); WIRES.setAttribute("height",CH);
